@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,300i,400,400i,500,500i,700,700i|Fira+Sans:300,300i,400,400i,500,500i,700,700i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
+
+html {
+  font: 14px/1.5 "Fira Sans", Verdana, sans-serif;
+}
+
+body, button, input, select, option {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #369;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  line-height: 1.2;
+  padding-bottom: 0.5em;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.0em; }
