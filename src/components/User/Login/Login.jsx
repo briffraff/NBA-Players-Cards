@@ -3,7 +3,7 @@ export default function Login() {
         <>
             <div className="login-box">
 
-                <h1 className="info-slogan">Login</h1>
+                <h1 className="box-slogan">Login</h1>
                 <div className="textbox">
                     <i className="fas fa-user"></i>
                     <input type="text" placeholder="Username" />
@@ -14,7 +14,7 @@ export default function Login() {
                     <input type="text" placeholder="Password" />
                 </div>
 
-                <input className="login-btn" type="button" value="Log in" />
+                <input className="login-btn" type="button" value="LOG IN" />
             </div>
         </>
     )
