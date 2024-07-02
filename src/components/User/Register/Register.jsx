@@ -33,6 +33,7 @@ export default function Register() {
                     repeatPassword: '',
                     username: ''
                 });
+                setError('')
             }).catch ((error) => {
                 let errorMessage = '';
                 console.log(error.message)
@@ -79,7 +80,9 @@ export default function Register() {
     return (
         <>
             <div className="login-box">
+
                 <h1 className="box-slogan">Register</h1>
+
                 <div className="textbox">
                     <i className="fas fa-user"></i>
                     <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
