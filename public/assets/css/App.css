@@ -56,6 +56,44 @@ h6 {
   font-size: 1em;
 }
 
+.site-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(15, 16, 19);
+  height: 100px;
+}
+.site-header .logo {
+  width: 100px;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+  color: antiquewhite;
+  background-color: red;
+}
+.site-header .site-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 25px;
+  margin: auto;
+}
+.site-header .site-nav .header-btn {
+  width: 100px;
+  text-align: right;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px;
+  padding-right: 5px;
+  border-radius: 8px;
+  color: whitesmoke;
+}
+.site-header .site-nav .header-btn:hover {
+  transition: background-color 0.5s ease;
+  background-color: #006bb7;
+}
+
 .login-box {
   width: 30%;
   position: absolute;
