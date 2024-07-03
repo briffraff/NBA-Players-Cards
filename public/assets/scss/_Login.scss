@@ -38,6 +38,7 @@
       border: none;
       outline: none;
       background: none;
+      background-origin: none;
       color: getColor(bg-0);
       font-size: 16px;
       width: 80%;
@@ -54,8 +55,8 @@
     padding: 5px;
     font-size: 18px;
     cursor: pointer;
-    margin: 12px 0;
     border-radius: 8px;
+    margin: 2vh 0 1vh 0;
   }
 
   .login-btn:hover {
@@ -63,4 +64,9 @@
     color: getColor(nba-p);
     // background: lighten(getColor(nba-p), 20%);
   }
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }

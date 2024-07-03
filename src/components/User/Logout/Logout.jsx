@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Logout() {
     return (
         <>
@@ -9,9 +11,9 @@ export default function Logout() {
                 <section className="log-reg">
                     <p>You have no registration ?</p>
                     <div>
-                        <a href="login/" className="login">login</a>
+                        <Link className="login" to="/login">Login</Link>
                         <p>|</p>
-                        <a href="register/" className="register">register</a>
+                        <Link className="register" to="/register">register</Link>
                     </div>
                 </section>
             </section>
