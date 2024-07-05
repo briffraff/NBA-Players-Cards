@@ -1,78 +1,44 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../service/firebase/firebase";
+import { registerUser } from "../../../service/authentication/authService";
 
 export default function Register() {
     const [form, setForm] = useState({
-        email: '',
-        password: '',
-        repeatPassword: '',
-        username: ''
+        email: "",
+        password: "",
+        repeatPassword: "",
+        username: "",
     });
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
 
-    // const isValidEmail = (email) => {
-    //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //     return emailPattern.test(email);
-    // };
-
-    const handleRegistration = () => {
+    const handleRegistration = async () => {
         if (form.password !== form.repeatPassword) {
-            setError('Passwords do not match');
+            setError("Passwords do not match");
             return;
         }
-        setError('');
+        setError("");
 
-        createUserWithEmailAndPassword(auth, form.email, form.password)
-            .then((userCredentials) => {
-                const user = userCredentials.user;
-                console.log(user);
-                setForm({
-                    email: '',
-                    password: '',
-                    repeatPassword: '',
-                    username: ''
-                });
-                setError('')
-            }).catch ((error) => {
-                let errorMessage = '';
-                console.log(error.message)
-                switch (error.message) {
-                    case 'Firebase: Error (auth/missing-email).':
-                        errorMessage = 'Email cannot be empty';
-                        break;
-                    case 'Firebase: Error (auth/missing-password).':
-                        errorMessage = 'Missing password';
-                        break;
-                    case 'Firebase: Error (auth/email-already-in-use).':
-                        errorMessage = 'Email already in use';
-                        break;
-                    case 'Firebase: Error (auth/invalid-email).':
-                        errorMessage = 'Invalid email address';
-                        break;
-                    case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-                        errorMessage = 'Weak password';
-                        break;
-                    default:
-                        errorMessage = error.message;
-                }
-                console.log(errorMessage);
-                setError(errorMessage);
-            });
+        try {
+            const { user } = await registerUser(form.email, form.password);
+            console.log(user);
+            setForm({ email: "", password: "", repeatPassword: "", username: "" });
+            setError("");
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setForm((prevForm) => ({
             ...prevForm,
-            [name]: value
+            [name]: value,
         }));
-        if (name === 'password' || name === 'repeatPassword') {
-            if (name === 'password' && value === form.repeatPassword) {
-                setError('');
+        if (name === "password" || name === "repeatPassword") {
+            if (name === "password" && value === form.repeatPassword) {
+                setError("");
             }
-            if (name === 'repeatPassword' && value === form.password) {
-                setError('');
+            if (name === "repeatPassword" && value === form.password) {
+                setError("");
             }
         }
     };
@@ -80,7 +46,6 @@ export default function Register() {
     return (
         <>
             <div className="login-box">
-
                 <h1 className="box-slogan">Register</h1>
 
                 <div className="textbox">
@@ -100,8 +65,7 @@ export default function Register() {
 
                 <div className="textbox">
                     <i className="fas fa-envelope"></i>
-                    <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange}
-                    />
+                    <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
                 </div>
 
                 {error && <div className="error-message">{error}</div>}
