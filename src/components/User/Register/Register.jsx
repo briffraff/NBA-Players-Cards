@@ -10,12 +10,13 @@ export default function Register() {
     });
     const [error, setError] = useState("");
 
-    const handleRegistration = async () => {
+    const handleRegistration = async (event) => {
+        event.preventDefault();
+
         if (form.password !== form.repeatPassword) {
             setError("Passwords do not match");
             return;
         }
-        setError("");
 
         try {
             const { user } = await registerUser(form.email, form.password);
@@ -45,7 +46,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="login-box">
+            <form className="login-box" onSubmit={handleRegistration}>
                 <h1 className="box-slogan">Register</h1>
 
                 <div className="textbox">
@@ -70,8 +71,8 @@ export default function Register() {
 
                 {error && <div className="error-message">{error}</div>}
 
-                <input className="login-btn" type="button" value="REGISTER" onClick={handleRegistration} />
-            </div>
+                <button className="login-btn" type="submit">REGISTER</button>
+            </form>
         </>
     );
 }
