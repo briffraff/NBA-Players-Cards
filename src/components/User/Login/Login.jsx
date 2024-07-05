@@ -9,7 +9,9 @@ export default function Login() {
 
     const [error, setError] = useState("");
 
-    const handleLogin = async () => {
+    const handleLogin = async (event) => {
+        event.preventDefault();
+
         try {
             const { user } = await loginUser(form.email, form.password);
             console.log(user);
@@ -30,7 +32,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="login-box">
+            <form className="login-box" onSubmit={handleLogin}>
                 <h1 className="box-slogan">Login</h1>
 
                 <div className="textbox">
@@ -45,8 +47,8 @@ export default function Login() {
 
                 {error && <div className="error-message">{error}</div>}
 
-                <input className="login-btn" type="button" value="LOGIN" onClick={handleLogin} />
-            </div>
+                <button className="login-btn" type="submit">LOGIN</button>
+            </form>
         </>
     );
 }
