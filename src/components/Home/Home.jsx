@@ -2,7 +2,7 @@ import Header from "../Header/Header"
 
 export default function Home() {
     const menu = [
-        "What is NBA",
+        "The Game",
         "NBA Teams",
         "Cards shop",
         "Login",
@@ -15,7 +15,8 @@ export default function Home() {
 
     return (
         <>
-            <Header menu={menu}/>
+            <Header menu={menu} />
+            <div>Home</div>
         </>
     )
 }

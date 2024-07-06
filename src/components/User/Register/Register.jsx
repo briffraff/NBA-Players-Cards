@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../service/authentication/authService";
 
 export default function Register() {
@@ -8,6 +9,7 @@ export default function Register() {
         repeatPassword: "",
         username: "",
     });
+    const navigate = useNavigate(); 
     const [error, setError] = useState("");
 
     const handleRegistration = async (event) => {
@@ -18,11 +20,17 @@ export default function Register() {
             return;
         }
 
+        if (form.username === "") {
+            setError("Username cannot be empty");
+            return;
+        }
+
         try {
-            const { user } = await registerUser(form.email, form.password);
+            const { user } = await registerUser(form.username, form.email, form.password);
             console.log(user);
             setForm({ email: "", password: "", repeatPassword: "", username: "" });
             setError("");
+            navigate("/")
         } catch (error) {
             setError(error.message);
         }
@@ -41,6 +49,9 @@ export default function Register() {
             if (name === "repeatPassword" && value === form.password) {
                 setError("");
             }
+        }
+        if (name === "username" && value !== "") {
+            setError("");
         }
     };
 
