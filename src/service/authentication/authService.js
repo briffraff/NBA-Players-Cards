@@ -1,9 +1,12 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 
-export const registerUser = async (email, password) => {
+export const registerUser = async (username, email, password) => {
     try {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(auth.currentUser, {
+            displayName: username
+        })
         return { user: userCredentials.user };
     } catch (error) {
         let errorMessage = "";

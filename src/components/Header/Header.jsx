@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../service/authentication/authService";
-import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/authContext";
 
 export default function Header(props) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        //check if user is logged in
-        const loggedIn = true;
-        setIsLoggedIn(loggedIn);
-    }, []);
+    const { userLoggedIn } = useAuth();
+    const { currentUser } = useAuth();
 
     const handleLogout = async () => {
         try {
             await logoutUser();
-            setIsLoggedIn(false);
         } catch (error) {
             console.error('Error during logout:', error.message);
         }
@@ -30,11 +24,11 @@ export default function Header(props) {
                     <Link className="header-btn" to="/cards-shop">/ {props.menu[2]}</Link>
                 </nav>
                 <div className="user-actions">
-                    {isLoggedIn ? (
+                    {userLoggedIn ? (
                         <div className="logged-in">
                             <div className="greeting">
-                                <span className="hello">Hello /</span>
-                                <Link className="user-profile" to="/profile">User</Link>
+                                <span className="hello">Hello,</span>
+                                <Link className="user-profile" to="/profile">{currentUser.displayName}</Link>
                             </div>
                             <Link className="cart-btn" to="/cart">/ {props.menu[7]}</Link>
                             <Link className="logout-btn" to="/logout" onClick={handleLogout}>/ {props.menu[8]}</Link>
