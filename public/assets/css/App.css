@@ -58,38 +58,111 @@ h6 {
 
 .site-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background-color: rgb(15, 16, 19);
-  height: 100px;
+  height: 60px;
+  padding-right: 15vh;
+  padding-left: 15vh;
 }
 .site-header .logo {
-  width: 100px;
+  width: auto;
+  height: 80px;
   text-align: center;
-  margin: auto;
-  padding: 5px;
-  color: antiquewhite;
-  background-color: red;
+  margin-right: 15vh;
 }
-.site-header .site-nav {
+.site-header .main-menu {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  flex-grow: 1;
+}
+.site-header .user-actions {
+  display: flex;
+}
+.site-header .user-actions .logged-in {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   gap: 25px;
-  margin: auto;
 }
-.site-header .site-nav .header-btn {
-  width: 100px;
-  text-align: right;
+.site-header .user-actions .logged-in .cart-btn {
+  width: auto;
+  text-align: center;
   text-decoration: none;
   font-weight: bold;
   font-size: 16px;
-  padding: 8px;
-  padding-right: 5px;
   border-radius: 8px;
   color: whitesmoke;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
 }
-.site-header .site-nav .header-btn:hover {
+.site-header .user-actions .logged-in .cart-btn:hover {
+  transition: background-color 0.5s ease;
+  background-color: #006bb7;
+}
+.site-header .user-actions .logged-in .logout-btn {
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  color: whitesmoke;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
+}
+.site-header .user-actions .logged-in .logout-btn:hover {
+  transition: background-color 0.5s ease;
+  background-color: #aa0b2d;
+}
+.site-header .user-actions .logged-in .greeting {
+  display: flex;
+  flex-direction: row;
+}
+.site-header .user-actions .logged-in .greeting .hello {
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  color: whitesmoke;
+  padding: 8px 15px;
+}
+.site-header .user-actions .logged-in .greeting .user-profile {
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #333;
+  color: whitesmoke;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
+}
+.site-header .user-actions .logged-in .greeting .user-profile:hover {
+  transition: background-color 0.5s ease;
+  color: whitesmoke;
+  background-color: #006bb7;
+}
+.site-header .user-actions .logged-out {
+  display: flex;
+  flex-direction: row;
+}
+.site-header .header-btn {
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  color: whitesmoke;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
+}
+.site-header .header-btn:hover {
   transition: background-color 0.5s ease;
   background-color: #006bb7;
 }
