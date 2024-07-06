@@ -1,40 +1,130 @@
+$bg-color: #f8f8f8;
+$border-color: #ddd;
+$text-color: #333;
+$hover-bg-color: #ddd;
+$padding: 8px 15px;
+$gap: 20px;
+
 .site-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background-color: getColor(bg);
-  height: 100px;
+  height: 60px;
+  padding-right: 15vh;
+  padding-left: 15vh;
 
   .logo {
-    width: 100px;
+    width: auto;
+    height: 80px;
     text-align: center;
-    margin: auto;
-    padding: 5px;
-    color: antiquewhite;
-    background-color: red;
+    margin-right: 15vh;
   }
 
-  .site-nav {
+  .main-menu {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
+    gap: $gap;
+    flex-grow: 1;
+  }
 
-    gap: 25px;
-    margin: auto;
+  .user-actions {
+    display: flex;
 
-    .header-btn {
-      width: 100px;
-      text-align: right;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      padding: 8px;
-      padding-right: 5px;
-      border-radius: 8px;
-      color: getColor(bg-0);
+    .logged-in {
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
+
+      .cart-btn {
+        width: auto;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 8px;
+        color: getColor(bg-0);
+        padding: $padding;
+        transition: background-color 0.3s;
+
+        &:hover {
+          transition: background-color 0.5s ease;
+          background-color: getColor(nba-p);
+        }
+      }
+
+      .logout-btn {
+        width: auto;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 8px;
+        color: getColor(bg-0);
+        padding: $padding;
+        transition: background-color 0.3s;
+
+        &:hover {
+          transition: background-color 0.5s ease;
+          background-color: getColor(nba-s);
+        }
+      }
+
+      .greeting {
+        display: flex;
+        flex-direction: row;
+
+        .hello {
+          width: auto;
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 16px;
+          border-radius: 8px;
+          color: getColor(bg-0);
+          padding: $padding;
+        }
+
+        .user-profile {
+          width: auto;
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 16px;
+          border-radius: 8px;
+          background-color: getColor(bg-3);
+          color: getColor(bg-0);
+          padding: $padding;
+          transition: background-color 0.3s;
+
+          &:hover {
+            transition: background-color 0.5s ease;
+            color: getColor(bg-0);
+            background-color: getColor(nba-p);
+          }
+        }
+      }
     }
 
-    .header-btn:hover {
+    .logged-out {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .header-btn {
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    color: getColor(bg-0);
+    padding: $padding;
+    transition: background-color 0.3s;
+
+    &:hover {
       transition: background-color 0.5s ease;
       background-color: getColor(nba-p);
     }

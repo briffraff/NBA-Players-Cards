@@ -13,7 +13,7 @@ export default function Login() {
         event.preventDefault();
 
         try {
-            const { user } = await loginUser(form.email, form.password);
+            const { user }  = await loginUser(form.email, form.password);
             console.log(user);
             setForm({ email: "", password: "" });
             setError("");
