@@ -1,0 +1,161 @@
+.site-footer {
+  grid-area: logoto-footer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  height: auto;
+
+  font-size: 12px;
+  background-color: getColor(text-s);
+  color: getColor(text-p);
+
+  .site-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 60px;
+
+    width: 100%;
+    height: auto;
+  }
+}
+
+.teams {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: -25px;
+
+  .teams-group {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding-top: 5px;
+      color: getColor(text-p);
+      opacity: 0.6;
+      padding: 0 5px;
+      margin-top: 10px;
+    }
+
+    a:before {
+      content: "| ";
+      opacity: 0.3;
+    }
+
+    a:hover {
+      opacity: 1;
+      color: getColor(text-p);
+      background-color: getColor(nba-s);
+      border-radius: 5px;
+    }
+  }
+}
+
+.footer-label {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.2;
+}
+
+.footer-teams {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.footer-social-icons {
+  width: 100%;
+  display: block;
+  justify-content: space-between;
+  flex-direction: column;
+  // background-color: greenyellow;
+
+  .social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15px;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.btn:hover {
+  background-color: getColor(nba-s);
+}
+
+.btn-outline {
+  border: 0.125rem solid rgb(70, 70, 70);
+}
+
+.btn-social {
+  border-radius: 50%;
+  font-size: 2rem;
+  color: getColor(text-p);
+  background-color: rgb(39, 39, 39);
+}
+
+.footer-social-subscribe {
+  width: 25%;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-subscribe-form {
+  display: block;
+  margin-top: 35px;
+
+  .subscribe {
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+    input[type="email"] {
+      height: 2em;
+      width: 100%;
+      margin-top: 15px;
+      border: 1px solid #bec1c5;
+      transition: all 0.4s;
+      background-color: rgb(39, 39, 39);
+      color: getColor(text-p);
+      padding-left: 15px;
+
+      &:focus {
+        border-color: getColor(nba-p);
+      }
+    }
+
+    input[type="submit"] {
+      height: 2.15em;
+      width: auto;
+      margin: 0 0.3em;
+      padding: 0 0.3em;
+      margin-top: 15px;
+      transition: all 0.4s;
+      color: getColor(text-p);
+      border: 1px solid getColor(logo-p);
+      border-radius: 5px;
+      background-color: getColor(logo-p);
+
+      &:focus {
+        border-color: getColor(logo-p);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: getColor(logo-p);
+      }
+    }
+  }
+}

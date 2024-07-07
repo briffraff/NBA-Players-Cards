@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "../../public/assets/css/App.css";
+import AuthProvider from "../contexts/authContext";
 
 import Home from "./Home/Home";
 import Login from "./User/Login/Login";
 import Register from "./User/Register/Register";
 import Logout from "./User/Logout/Logout";
-import AuthProvider from "../contexts/authContext";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
 

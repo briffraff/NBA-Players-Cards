@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { db } from "../../service/firebase/firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import TeamThumbnail from "../Teams/TeamThumbnail"
 
 export default function Teams() {
     const divisions = [
@@ -67,12 +67,7 @@ export default function Teams() {
                                     ))}
 
                                     {teams.map((team) => (
-                                        <div key={team.id} className="team-card">
-                                            <img src={team.thumbnail} alt={team.name} />
-                                            <Link to={`/team/${team.id}`}>
-                                                <p className="card-name">{team.name}</p>
-                                            </Link>
-                                        </div>
+                                        <TeamThumbnail key={team.id} team={team} />
                                     ))}
                                 </div>
                             </div>
