@@ -3,8 +3,7 @@ import { logoutUser } from "../../service/authentication/authService";
 import { useAuth } from "../../contexts/authContext";
 
 export default function Header(props) {
-    const { userLoggedIn } = useAuth();
-    const { currentUser } = useAuth();
+    const { currentUser, userLoggedIn, loading } = useAuth();
 
     const handleLogout = async () => {
         try {

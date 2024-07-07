@@ -63,8 +63,6 @@ h6 {
   padding: 10px 20px;
   background-color: rgb(15, 16, 19);
   height: 60px;
-  padding-right: 15vh;
-  padding-left: 15vh;
 }
 .site-header .logo {
   width: auto;
@@ -289,4 +287,148 @@ h6 {
 .logout-box .log-reg .register:hover {
   background-color: whitesmoke;
   color: #006bb7;
+}
+
+.teams-container-flexwrap {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.teams-container-flexwrap .division-title {
+  font-size: 20px;
+}
+.teams-container-flexwrap .bgblack {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.teams-container-flexwrap .bgblack:before {
+  content: "/ ";
+  font-weight: 900;
+  margin-left: 5.5%;
+  color: #006bb7;
+}
+.teams-container-flexwrap .team-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  margin-top: 5em;
+  margin: 1em;
+  border-radius: 0px 0px 15px 15px;
+}
+.teams-container-flexwrap .team-card .card-name {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: whitesmoke;
+}
+.teams-container-flexwrap .team-card .card-name:hover {
+  background-color: #006bb7;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.story-title {
+  padding-top: 50px;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.logoto-site-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.section-info-panel {
+  margin: 0.5em 0;
+  height: auto;
+  z-index: 1000;
+}
+
+.teams-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.team-name {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: -5em;
+}
+
+.location {
+  color: whitesmoke;
+}
+
+.team-title {
+  font-size: 100px;
+  margin-top: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+.single-team-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.single-team-container .team-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+.single-team-container .team-logo img {
+  margin-top: -50px;
+  z-index: 1000;
+  height: auto;
+}
+.single-team-container .team-info {
+  margin-top: 50px;
+  margin-bottom: 5em;
+}
+
+.site-content {
+  height: auto;
+  padding-bottom: 2em;
+  padding-left: 20%;
+  padding-right: 20%;
+  color: white;
+  background-color: #111;
+}
+
+.site-media {
+  min-height: 50vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-media:before {
+  display: block;
+  content: "";
+  opacity: 0.8;
+  background-color: rgb(15, 16, 19);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }/*# sourceMappingURL=App.css.map */
