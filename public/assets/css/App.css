@@ -228,6 +228,10 @@ h6 {
   margin-top: 10px;
 }
 
+.center {
+  text-align: center;
+}
+
 .logout-box {
   display: flex;
   flex-direction: column;
