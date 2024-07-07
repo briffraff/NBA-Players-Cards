@@ -9,23 +9,28 @@ import Register from "./User/Register/Register";
 import Logout from "./User/Logout/Logout";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
+import Header from "./Header/Header";
 
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route index path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout />} />
-          {/* <Route path="/about-nba" element={<AboutNba />} /> */}
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/team/:id" element={<TeamDetails />} />
-          {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/logout" element={<Logout />} />
+            {/* <Route path="/about-nba" element={<AboutNba />} /> */}
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/team/:id" element={<TeamDetails />} />
+            {/* <Route path="/profile/:id" element={<Profile />} /> */}
+            {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </>
+
   );
 }

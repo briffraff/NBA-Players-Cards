@@ -21,10 +21,15 @@ export default function Footer() {
                         <h4>Teams</h4>
                     </div>
                     <div className="teams">
-                        {teams.map((group, index) => (
-                            <div className="teams-group" key={index}>
-                                {group.map(team => (
-                                    <a href={`/collections/teams/${team.toLowerCase().replace(/ /g, "-")}.html`} key={team.id}>{team}</a>
+                        {teams.map((group, groupIndex) => (
+                            <div className="teams-group" key={`group-${groupIndex}`}>
+                                {group.map((team, teamIndex) => (
+                                    <a
+                                        href={`#`}
+                                        key={`team-${groupIndex}-${teamIndex}`}
+                                    >
+                                        {team}
+                                    </a>
                                 ))}
                             </div>
                         ))}
@@ -38,7 +43,7 @@ export default function Footer() {
                         </div>
                         <div className="social-icons">
                             {socialLinks.map((link, index) => (
-                                <a className="btn btn-social btn-outline" href={link.href} key={index}>
+                                <a className="btn btn-social btn-outline" href={link.href} key={`social-${index}`}>
                                     <i className={link.icon}></i>
                                 </a>
                             ))}

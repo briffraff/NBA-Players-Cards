@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react";
-import { db } from "../../service/firebase/firebase";
-import { getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import { getTeamById } from "../../service/firebase/firestore/firestore-service";
 
 export default function Team() {
     const [team, setTeam] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
-        const getTeam = async () => {
+        const fetchTeam = async () => {
             try {
-                const docRef = doc(db, "nba-teams", id);
-                const docSnap = await getDoc(docRef);
-
-                if (docSnap.exists()) {
-                    setTeam({ ...docSnap.data(), id: docSnap.id });
-                } else {
-                    console.log("No such document!");
-                }
+                const teamData = await getTeamById(id);
+                setTeam(teamData);
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
-        }
-        getTeam();
+        };
+
+        fetchTeam();
     }, [id]);
 
     if (!team) {

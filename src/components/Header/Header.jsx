@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logoutUser } from "../../service/authentication/authService";
+import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 
 export default function Header(props) {
