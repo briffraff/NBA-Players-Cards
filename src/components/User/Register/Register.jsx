@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../../service/authentication/authService";
+import { registerUser } from "../../../service/firebase/authentication/auth-service";
 
 export default function Register() {
     const [form, setForm] = useState({

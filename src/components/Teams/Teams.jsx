@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { db } from "../../service/firebase/firebase";
-import { getDocs, collection } from "firebase/firestore";
 import TeamThumbnail from "../Teams/TeamThumbnail"
+import { getTeams } from "../../service/firebase/firestore/firestore-service";
+
 
 export default function Teams() {
     const divisions = [
@@ -15,22 +15,17 @@ export default function Teams() {
 
     const [teams, setTeams] = useState([]);
 
-    const teamsCollectionRef = collection(db, "nba-teams");
-
     useEffect(() => {
-        const getTeamsList = async () => {
+        const fetchTeams = async () => {
             try {
-                const data = await getDocs(teamsCollectionRef)
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id
-                }))
-                setTeams(filteredData);
+                const teamsList = await getTeams();
+                setTeams(teamsList);
             } catch (error) {
-                console.log(error)
+                console.error("Error fetching teams: ", error);
             }
-        }
-        getTeamsList();
+        };
+
+        fetchTeams();
     }, []);
 
     return (

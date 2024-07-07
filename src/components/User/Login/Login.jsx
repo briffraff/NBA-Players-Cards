@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../../service/authentication/authService";
+import { loginUser } from "../../../service/firebase/authentication/auth-service";
 
 export default function Login() {
     const navigate = useNavigate();
