@@ -1,4 +1,6 @@
 import Header from "../Header/Header"
+import Teams from "../Teams/Teams";
+
 
 export default function Home() {
     const menu = [
@@ -16,7 +18,7 @@ export default function Home() {
     return (
         <>
             <Header menu={menu} />
-            <div>Home</div>
+            <Teams />
         </>
     )
 }
