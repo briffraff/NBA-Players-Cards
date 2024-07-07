@@ -1,3 +1,5 @@
+import Subscribe from "./Subscribe";
+
 export default function Footer() {
     const teams = [
         ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers"],
@@ -50,15 +52,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="footer-subscribe-form">
-                        <div className="footer-label">
-                            <h4>Subscribe</h4>
-                        </div>
-                        <div className="subscribe">
-                            <input type="email" placeholder="Your email address" />
-                            <input type="submit" value="Subscribe" />
-                        </div>
-                    </div>
+                    <Subscribe />
+
                 </div>
             </div>
         </footer>
