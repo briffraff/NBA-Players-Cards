@@ -3,7 +3,7 @@ const logo = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appsp
 export default function Logout() {
     return (
         <>
-            <section className="logout-box">
+            <section className="logout-box content">
                 <h1 className="welcome">Thank you for choosing logos.nba !</h1>
                 <h4 className="sub-head">Everything for</h4>
                 <Link to='/'><img className="nba" src={logo} alt="" /></Link>

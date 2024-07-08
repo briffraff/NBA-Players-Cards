@@ -167,12 +167,179 @@ h6 {
   background-color: #006bb7;
 }
 
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  height: auto;
+  font-size: 12px;
+  background-color: black;
+  color: white;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.site-footer .site-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: auto;
+}
+
+.teams {
+  display: flex;
+  justify-content: space-evenly;
+}
+.teams .teams-group {
+  display: flex;
+  flex-direction: column;
+}
+.teams .teams-group a {
+  padding-top: 5px;
+  color: white;
+  opacity: 0.6;
+  padding: 0 5px;
+  margin-top: 10px;
+}
+.teams .teams-group a:before {
+  content: "| ";
+  opacity: 0.3;
+}
+.teams .teams-group a:hover {
+  opacity: 1;
+  color: white;
+  background-color: #aa0b2d;
+  border-radius: 5px;
+}
+
+.footer-label {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.2;
+}
+
+.footer-teams {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.footer-social-icons {
+  width: 100%;
+  display: block;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.footer-social-icons .social-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.btn:hover {
+  background-color: #aa0b2d;
+}
+
+.btn-outline {
+  border: 0.125rem solid rgb(70, 70, 70);
+}
+
+.btn-social {
+  border-radius: 50%;
+  font-size: 40px;
+  color: white;
+  background-color: rgb(39, 39, 39);
+}
+
+.footer-social-subscribe {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-subscribe-form {
+  display: block;
+  margin-top: 35px;
+}
+.footer-subscribe-form .subscribe {
+  display: flex;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.footer-subscribe-form .subscribe input[type=email] {
+  height: 2em;
+  width: 100%;
+  margin-top: 15px;
+  border: 1px solid #bec1c5;
+  transition: all 0.4s;
+  background-color: rgb(39, 39, 39);
+  color: white;
+  padding-left: 15px;
+}
+.footer-subscribe-form .subscribe input[type=email]:focus {
+  border-color: #006bb7;
+}
+.footer-subscribe-form .subscribe input[type=submit] {
+  height: 2.15em;
+  width: auto;
+  margin: 0 0.3em;
+  padding: 0 0.3em;
+  margin-top: 15px;
+  transition: all 0.4s;
+  color: white;
+  border: 1px solid #d94364;
+  border-radius: 5px;
+  background-color: #d94364;
+}
+.footer-subscribe-form .subscribe input[type=submit]:focus {
+  border-color: #d94364;
+}
+.footer-subscribe-form .subscribe input[type=submit]:hover {
+  cursor: pointer;
+  background-color: #d94364;
+}
+
+.mini-wall {
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.mini-wall .transparent-text {
+  text-align: center;
+  margin-left: 18%;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  width: 450px;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.3;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-box {
   width: 30%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 100px;
   color: white;
   background-color: #111;
   padding: 15px;
@@ -232,6 +399,12 @@ h6 {
 
 .center {
   text-align: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout-box {
@@ -443,171 +616,6 @@ h6 {
   left: 0;
   right: 0;
   bottom: 0;
-}
-
-.site-footer {
-  grid-area: logoto-footer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  height: auto;
-  font-size: 12px;
-  background-color: black;
-  color: white;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-.site-footer .site-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  margin-bottom: 60px;
-  width: 100%;
-  height: auto;
-}
-
-.teams {
-  display: flex;
-  justify-content: space-evenly;
-}
-.teams .teams-group {
-  display: flex;
-  flex-direction: column;
-}
-.teams .teams-group a {
-  padding-top: 5px;
-  color: white;
-  opacity: 0.6;
-  padding: 0 5px;
-  margin-top: 10px;
-}
-.teams .teams-group a:before {
-  content: "| ";
-  opacity: 0.3;
-}
-.teams .teams-group a:hover {
-  opacity: 1;
-  color: white;
-  background-color: #aa0b2d;
-  border-radius: 5px;
-}
-
-.footer-label {
-  text-align: center;
-  font-size: 12px;
-  opacity: 0.2;
-}
-
-.footer-teams {
-  width: 60%;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-}
-
-.footer-social-icons {
-  width: 100%;
-  display: block;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.footer-social-icons .social-icons {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.3rem;
-  height: 2.3rem;
-}
-
-.btn:hover {
-  background-color: #aa0b2d;
-}
-
-.btn-outline {
-  border: 0.125rem solid rgb(70, 70, 70);
-}
-
-.btn-social {
-  border-radius: 50%;
-  font-size: 40px;
-  color: white;
-  background-color: rgb(39, 39, 39);
-}
-
-.footer-social-subscribe {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-subscribe-form {
-  display: block;
-  margin-top: 35px;
-}
-.footer-subscribe-form .subscribe {
-  display: flex;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.footer-subscribe-form .subscribe input[type=email] {
-  height: 2em;
-  width: 100%;
-  margin-top: 15px;
-  border: 1px solid #bec1c5;
-  transition: all 0.4s;
-  background-color: rgb(39, 39, 39);
-  color: white;
-  padding-left: 15px;
-}
-.footer-subscribe-form .subscribe input[type=email]:focus {
-  border-color: #006bb7;
-}
-.footer-subscribe-form .subscribe input[type=submit] {
-  height: 2.15em;
-  width: auto;
-  margin: 0 0.3em;
-  padding: 0 0.3em;
-  margin-top: 15px;
-  transition: all 0.4s;
-  color: white;
-  border: 1px solid #d94364;
-  border-radius: 5px;
-  background-color: #d94364;
-}
-.footer-subscribe-form .subscribe input[type=submit]:focus {
-  border-color: #d94364;
-}
-.footer-subscribe-form .subscribe input[type=submit]:hover {
-  cursor: pointer;
-  background-color: #d94364;
-}
-
-.mini-wall {
-  width: 100%;
-  overflow: hidden;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-}
-.mini-wall .transparent-text {
-  text-align: center;
-  margin-left: 18%;
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
-  letter-spacing: 0.5rem;
-  text-transform: uppercase;
-  width: 450px;
-  background-color: rgba(0, 0, 0, 0.3);
-  opacity: 0.3;
 }
 
 .imaginary {
