@@ -4,6 +4,8 @@ import { getTeams } from "../../service/firebase/firestore/firestore-service";
 
 
 export default function Teams() {
+    const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2FAQ4160-140FEATURED.jpg?alt=media&token=f6857ccb-aba7-4ed1-88c1-1bf0001bafcc"
+
     const divisions = [
         "Atlantic Division",
         "Central Division",
@@ -30,6 +32,13 @@ export default function Teams() {
 
     return (
         <>
+            <section className="site-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <section className="section-info-panel">
+                    <h1 className="info-slogan">The teams</h1>
+                    <h3 className="info-subslogan">all teams in association</h3>
+                </section>
+            </section>
+
             <main className="site-content">
                 <div className="site-wrapper">
                     <div className="mini-wall">

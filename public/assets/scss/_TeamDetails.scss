@@ -8,6 +8,10 @@
 }
 
 .section-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   margin: 0.5em 0;
   height: auto;
   z-index: 1000;

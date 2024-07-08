@@ -1,0 +1,57 @@
+.imaginary {
+  margin-top: 1.3em;
+  min-height: 41vh;
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.story-title {
+  width: 550px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(text-p);
+  border-left: 5px solid getColor(nba-p);
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 450px;
+  width: 17%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.info-slogan {
+  margin-top: 40px;
+  font-size: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(text-p);
+}
+
+.info-subslogan {
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(bg-0);
+}

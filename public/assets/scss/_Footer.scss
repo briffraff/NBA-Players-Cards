@@ -10,6 +10,8 @@
   font-size: 12px;
   background-color: getColor(text-s);
   color: getColor(text-p);
+  padding-left: 10%;
+  padding-right: 10%;
 
   .site-wrapper {
     display: flex;
@@ -25,7 +27,6 @@
 .teams {
   display: flex;
   justify-content: space-evenly;
-  margin-left: -25px;
 
   .teams-group {
     display: flex;
@@ -100,14 +101,13 @@
 
 .btn-social {
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 40px;
   color: getColor(text-p);
   background-color: rgb(39, 39, 39);
 }
 
 .footer-social-subscribe {
   width: 25%;
-  margin-right: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -120,7 +120,7 @@
     display: flex;
     margin-left: 50px;
     margin-right: 50px;
-    
+
     input[type="email"] {
       height: 2em;
       width: 100%;
@@ -157,5 +157,26 @@
         background-color: getColor(logo-p);
       }
     }
+  }
+}
+.mini-wall {
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  .transparent-text {
+    text-align: center;
+    margin-left: 18%;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    width: 450px;
+    color: getColor(bg-secondary);
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    opacity: 0.3;
   }
 }

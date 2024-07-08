@@ -1,3 +1,4 @@
+import Splitter from "./Splitter";
 import Subscribe from "./Subscribe";
 
 export default function Footer() {
@@ -16,46 +17,50 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="site-footer">
-            <div className="site-wrapper">
-                <div className="footer-teams">
-                    <div className="footer-label">
-                        <h4>Teams</h4>
-                    </div>
-                    <div className="teams">
-                        {teams.map((group, groupIndex) => (
-                            <div className="teams-group" key={`group-${groupIndex}`}>
-                                {group.map((team, teamIndex) => (
-                                    <a
-                                        href={`#`}
-                                        key={`team-${groupIndex}-${teamIndex}`}
-                                    >
-                                        {team}
-                                    </a>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="footer-social-subscribe">
-                    <div className="footer-social-icons">
+        <>
+            <Splitter />
+            
+            <footer className="site-footer">
+                <div className="site-wrapper">
+                    <div className="footer-teams">
                         <div className="footer-label">
-                            <h4>Social</h4>
+                            <h4>Teams</h4>
                         </div>
-                        <div className="social-icons">
-                            {socialLinks.map((link, index) => (
-                                <a className="btn btn-social btn-outline" href={link.href} key={`social-${index}`}>
-                                    <i className={link.icon}></i>
-                                </a>
+                        <div className="teams">
+                            {teams.map((group, groupIndex) => (
+                                <div className="teams-group" key={`group-${groupIndex}`}>
+                                    {group.map((team, teamIndex) => (
+                                        <a
+                                            href={`#`}
+                                            key={`team-${groupIndex}-${teamIndex}`}
+                                        >
+                                            {team}
+                                        </a>
+                                    ))}
+                                </div>
                             ))}
                         </div>
                     </div>
 
-                    <Subscribe />
+                    <div className="footer-social-subscribe">
+                        <div className="footer-social-icons">
+                            <div className="footer-label">
+                                <h4>Social</h4>
+                            </div>
+                            <div className="social-icons">
+                                {socialLinks.map((link, index) => (
+                                    <a className="btn btn-social btn-outline" href={link.href} key={`social-${index}`}>
+                                        <i className={link.icon}></i>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
 
+                        <Subscribe />
+
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </>
     );
 }

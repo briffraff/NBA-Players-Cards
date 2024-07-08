@@ -9,7 +9,7 @@ import Register from "./User/Register/Register";
 import Logout from "./User/Logout/Logout";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
-import Header from "./Header/Header";
+import AboutNba from "./About/AboutNba";
 
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<Logout />} />
-            {/* <Route path="/about-nba" element={<AboutNba />} /> */}
+            <Route path="/about-nba" element={<AboutNba />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/team/:id" element={<TeamDetails />} />
             {/* <Route path="/profile/:id" element={<Profile />} /> */}
