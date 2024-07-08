@@ -34,23 +34,27 @@ export default function Login() {
 
     return (
         <>
-            <form className="login-box" onSubmit={handleLogin}>
-                <h1 className="box-slogan">Login</h1>
+            <section className="content">
 
-                <div className="textbox">
-                    <i className="fas fa-envelope"></i>
-                    <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-                </div>
+                <form className="login-box" onSubmit={handleLogin}>
+                    <h1 className="box-slogan">Login</h1>
 
-                <div className="textbox">
-                    <i className="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-                </div>
+                    <div className="textbox">
+                        <i className="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                    </div>
 
-                {error && <div className="error-message">{error}</div>}
+                    <div className="textbox">
+                        <i className="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                    </div>
 
-                <button className="login-btn" type="submit">LOGIN</button>
-            </form>
+                    {error && <div className="error-message">{error}</div>}
+
+                    <button className="login-btn" type="submit">LOGIN</button>
+                </form>
+
+            </section>
         </>
     );
 }

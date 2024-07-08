@@ -1,5 +1,6 @@
-@import "Functions";
-@import "Variables";
+.content {
+  @include flex-center;
+}
 
 .logout-box {
   display: flex;

@@ -9,7 +9,7 @@ export default function Register() {
         repeatPassword: "",
         username: "",
     });
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [error, setError] = useState("");
 
     const handleRegistration = async (event) => {
@@ -57,33 +57,35 @@ export default function Register() {
 
     return (
         <>
-            <form className="login-box" onSubmit={handleRegistration}>
-                <h1 className="box-slogan">Register</h1>
+            <section className="content">
+                <form className="login-box" onSubmit={handleRegistration}>
+                    <h1 className="box-slogan">Register</h1>
 
-                <div className="textbox">
-                    <i className="fas fa-user"></i>
-                    <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
-                </div>
+                    <div className="textbox">
+                        <i className="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                    </div>
 
-                <div className="textbox">
-                    <i className="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-                </div>
+                    <div className="textbox">
+                        <i className="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                    </div>
 
-                <div className="textbox">
-                    <i className="fas fa-unlock"></i>
-                    <input type="password" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
-                </div>
+                    <div className="textbox">
+                        <i className="fas fa-unlock"></i>
+                        <input type="password" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
+                    </div>
 
-                <div className="textbox">
-                    <i className="fas fa-envelope"></i>
-                    <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-                </div>
+                    <div className="textbox">
+                        <i className="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                    </div>
 
-                {error && <div className="error-message">{error}</div>}
+                    {error && <div className="error-message">{error}</div>}
 
-                <button className="login-btn" type="submit">REGISTER</button>
-            </form>
+                    <button className="login-btn" type="submit">REGISTER</button>
+                </form>
+            </section>
         </>
     );
 }
