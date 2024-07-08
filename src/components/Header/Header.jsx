@@ -3,6 +3,7 @@ import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 
 export default function Header(props) {
+
     const logo = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Fnba.png?alt=media&token=69987172-bd26-40c1-874a-fce01d97d9b8"
 
     const { currentUser, userLoggedIn, loading } = useAuth();
