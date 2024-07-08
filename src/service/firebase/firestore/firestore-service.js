@@ -1,4 +1,3 @@
-// teamsService.js
 import { db } from "../firebase-config";
 import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore";
 
