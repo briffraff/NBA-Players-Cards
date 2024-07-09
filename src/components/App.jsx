@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { seedJsonDataToFirestore } from "../service/firebase/firestore/Seed/seedData";
 
 import "../../public/assets/css/App.css";
 import AuthProvider from "../contexts/authContext";
@@ -14,6 +16,13 @@ import AboutNba from "./About/AboutNba";
 
 
 export default function App() {
+
+  // //SEED init DATA
+  // useEffect(() => {
+  //   seedJsonDataToFirestore();
+  // }, [])
+
+
   return (
     <>
       <AuthProvider>

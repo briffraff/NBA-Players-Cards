@@ -17,7 +17,6 @@ export default function TeamThumbnail({
         handleImage();
     })
 
-
     return (
         <>
             <div className="team-card">

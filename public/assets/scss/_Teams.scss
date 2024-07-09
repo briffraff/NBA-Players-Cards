@@ -2,20 +2,22 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+
   .division-title {
-    font-size: 20px;
+    font-size: 30px;
+    margin-top: 50px;
+    // background-color: rgba($color: black, $alpha: 0.3);
+    width: 500px;
+    text-align: center;
+
+    &:before {
+      content: "/ ";
+      font-weight: 900;
+      margin-left: 5.5%;
+      color: getColor(nba-p);
+    }
   }
 
-  .bgblack {
-    background-color: rgba($color: black, $alpha: 0.3);
-  }
-
-  .bgblack:before {
-    content: "/ ";
-    font-weight: 900;
-    margin-left: 5.5%;
-    color: getColor(nba-p);
-  }
   .team-card {
     height: auto;
     display: flex;
@@ -37,11 +39,11 @@
   }
 }
 
-.story-title{
+.story-title {
   padding-top: 50px;
 }
 
-.about-text{
+.about-text {
   display: flex;
   flex-direction: column;
   justify-content: center;

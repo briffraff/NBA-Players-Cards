@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
-import TeamThumbnail from "../Teams/TeamThumbnail"
+import React, { useEffect, useState } from "react";
+import TeamThumbnail from "../Teams/TeamThumbnail";
 import { getTeams } from "../../service/firebase/firestore/firestore-service";
-
 
 export default function Teams() {
     const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2FAQ4160-140FEATURED.jpg?alt=media&token=f6857ccb-aba7-4ed1-88c1-1bf0001bafcc"
@@ -16,12 +15,26 @@ export default function Teams() {
     ];
 
     const [teams, setTeams] = useState([]);
+    const [groupedTeams, setGroupedTeams] = useState({});
 
     useEffect(() => {
         const fetchTeams = async () => {
             try {
                 const teamsList = await getTeams();
                 setTeams(teamsList);
+
+                if (teamsList) {
+                    const groupedByDivision = teams.reduce((acc, team) => {
+                        if (!acc[team.division]) {
+                            acc[team.division] = [];
+                        }
+                        acc[team.division].push(team)
+                        return acc;
+                    }, {});
+
+                    setGroupedTeams(groupedByDivision);
+                    console.log(groupedTeams);
+                }
             } catch (error) {
                 console.error("Error fetching teams: ", error);
             }
@@ -29,6 +42,10 @@ export default function Teams() {
 
         fetchTeams();
     }, []);
+
+    const transformDivision = (divisionFromObject) => {
+        return divisionFromObject.toLowerCase().split(' ').join('-')
+    }
 
     return (
         <>
@@ -61,23 +78,38 @@ export default function Teams() {
                     </article>
                 </div>
 
-                <section className="site-content">
-                    <div className="site-wrapper">
-                        <div className="teams-container team-info">
-                            <div className="teams-container-flexwrap">
-                                <div>
-                                    {divisions.map((division, index) => (
+
+                <div className="site-wrapper">
+                    <div className="teams-container team-info">
+                        <div className="teams-container-flexwrap">
+                            <div>
+                                {divisions.map((division, index) => (
+                                    <div className="teams-container-flexwrap" key={index}>
+                                        <p className="division-title">{division}</p>
+                                        <div className="teams-container-flexwrap">
+                                            {groupedTeams[transformDivision(division)] ? (
+                                                groupedTeams[transformDivision(division)].map((team) => (
+                                                    <TeamThumbnail key={team.id} team={team} />
+                                                ))
+                                            ) : (
+                                                <p>No teams in this division.</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {/* {divisions.map((division, index) => (
                                         <p key={index} className="bgblack division-title">{division}</p>
                                     ))}
 
                                     {teams.map((team) => (
                                         <TeamThumbnail key={team.id} team={team} />
-                                    ))}
-                                </div>
+                                    ))} */}
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+
             </main>
         </>
     )

@@ -422,6 +422,9 @@ h6 {
   font-size: 50px;
   color: whitesmoke;
 }
+.logout-box .home {
+  color: #aa0b2d;
+}
 .logout-box .sub-head {
   margin-top: 2vh;
   font-size: 15px;
@@ -474,12 +477,12 @@ h6 {
   flex-wrap: wrap;
 }
 .teams-container-flexwrap .division-title {
-  font-size: 20px;
+  font-size: 30px;
+  margin-top: 50px;
+  width: 500px;
+  text-align: center;
 }
-.teams-container-flexwrap .bgblack {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.teams-container-flexwrap .bgblack:before {
+.teams-container-flexwrap .division-title:before {
   content: "/ ";
   font-weight: 900;
   margin-left: 5.5%;
@@ -674,4 +677,52 @@ h6 {
   text-align: center;
   text-transform: uppercase;
   color: whitesmoke;
+}
+
+.welcome-media {
+  min-height: 50vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.welcome-media:before {
+  display: block;
+  content: "";
+  opacity: 0.8;
+  background-color: rgb(7, 7, 8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.welcome-media .welcome {
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  flex-direction: column;
+  margin-top: 100px;
+  padding: 25px;
+  z-index: 1;
+}
+.welcome-media .welcome .welcome-title {
+  font-size: 100px;
+  text-transform: uppercase;
+}
+.welcome-media .welcome .welcome-title:before {
+  content: "/ ";
+  font-weight: 900;
+  color: #aa0b2d;
+}
+.welcome-media .welcome .welcome-subtitle {
+  margin-left: 7%;
+  font-size: 25px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  color: whitesmoke;
+  background-color: rgb(7, 7, 8);
+  opacity: 0.8;
 }/*# sourceMappingURL=App.css.map */
