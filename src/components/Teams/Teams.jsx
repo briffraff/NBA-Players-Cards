@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import TeamThumbnail from "../Teams/TeamThumbnail";
 import { getTeams } from "../../service/firebase/firestore/firestore-service";
 
@@ -15,26 +15,12 @@ export default function Teams() {
     ];
 
     const [teams, setTeams] = useState([]);
-    const [groupedTeams, setGroupedTeams] = useState({});
 
     useEffect(() => {
         const fetchTeams = async () => {
             try {
                 const teamsList = await getTeams();
                 setTeams(teamsList);
-
-                if (teamsList) {
-                    const groupedByDivision = teams.reduce((acc, team) => {
-                        if (!acc[team.division]) {
-                            acc[team.division] = [];
-                        }
-                        acc[team.division].push(team)
-                        return acc;
-                    }, {});
-
-                    setGroupedTeams(groupedByDivision);
-                    console.log(groupedTeams);
-                }
             } catch (error) {
                 console.error("Error fetching teams: ", error);
             }
@@ -43,9 +29,27 @@ export default function Teams() {
         fetchTeams();
     }, []);
 
-    const transformDivision = (divisionFromObject) => {
+    const groupedTeams = useMemo(() => {
+        return teams.reduce((acc, team) => {
+            if (!acc[team.division]) {
+                acc[team.division] = [];
+            }
+            acc[team.division].push(team);
+            return acc;
+        }, {});
+    }, [teams]);
+
+    //"Pacific division" to "pacific-division"
+    const transformDivisionSnakeCase = (divisionFromObject) => {
         return divisionFromObject.toLowerCase().split(' ').join('-')
     }
+    //"pacific-division" to "Pacific division"
+    const transformDivision = (division) => {
+        return division
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
 
     return (
         <>
@@ -83,28 +87,18 @@ export default function Teams() {
                     <div className="teams-container team-info">
                         <div className="teams-container-flexwrap">
                             <div>
-                                {divisions.map((division, index) => (
-                                    <div className="teams-container-flexwrap" key={index}>
-                                        <p className="division-title">{division}</p>
-                                        <div className="teams-container-flexwrap">
-                                            {groupedTeams[transformDivision(division)] ? (
-                                                groupedTeams[transformDivision(division)].map((team) => (
+                                {Object.entries(groupedTeams).map(([division, teams]) => (
+                                    <div  key={division}>
+                                        <h3 className="division-title">{transformDivision(division)}</h3>
+                                        <div className="teams-container-flexwrap bottomDistance">
+                                            {groupedTeams[division] ? (
+                                                groupedTeams[division].map((team) => (
                                                     <TeamThumbnail key={team.id} team={team} />
                                                 ))
-                                            ) : (
-                                                <p>No teams in this division.</p>
-                                            )}
+                                            ) : (<p className="noteams">No teams in this division.</p>)}
                                         </div>
                                     </div>
                                 ))}
-
-                                {/* {divisions.map((division, index) => (
-                                        <p key={index} className="bgblack division-title">{division}</p>
-                                    ))}
-
-                                    {teams.map((team) => (
-                                        <TeamThumbnail key={team.id} team={team} />
-                                    ))} */}
                             </div>
                         </div>
                     </div>
