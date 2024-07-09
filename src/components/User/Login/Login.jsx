@@ -34,7 +34,7 @@ export default function Login() {
 
     return (
         <>
-            <section className="content">
+            <section className="login-content">
 
                 <form className="login-box" onSubmit={handleLogin}>
                     <h1 className="box-slogan">Login</h1>

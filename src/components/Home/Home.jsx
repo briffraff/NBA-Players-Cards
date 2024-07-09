@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
+
 export default function Home() {
 
     const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2F5ID7fg.jpg?alt=media&token=63b11dc2-3c6c-4072-b506-097b0b4a91de"
-
     return (
         <>
             <div className="site-wrapper">
@@ -13,6 +14,14 @@ export default function Home() {
                             <h1 className="welcome-title">Basketball</h1>
                             <h3 className="welcome-subtitle">everything for NBA </h3>
                             <h3 className="welcome-subtitle">history, teams , player cards , shop</h3>
+                            <section className="log-reg">
+                                <p>You have no registration ?</p>
+                                <div className="reg-login">
+                                    <Link className="login" to="/login">Login</Link>
+                                    <p>|</p>
+                                    <Link className="register" to="/register">register</Link>
+                                </div>
+                            </section>
                         </div>
                     </section>
                 </section>

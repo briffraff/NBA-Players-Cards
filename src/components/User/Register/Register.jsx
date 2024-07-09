@@ -57,7 +57,7 @@ export default function Register() {
 
     return (
         <>
-            <section className="content">
+            <section className="register-content">
                 <form className="login-box" onSubmit={handleRegistration}>
                     <h1 className="box-slogan">Register</h1>
 

@@ -1,12 +1,15 @@
-.content {
+.login-content {
   @include flex-center;
+  background-color: getColor(bg);
+  padding-top: 120px;
+  padding-bottom: 250px;
 }
 
 .login-box {
   width: 30%;
   margin: 100px;
   color: white;
-  background-color: getColor(bg-1);
+  background-color: getColor(bg);
   padding: 15px;
   border-radius: 8px;
 
@@ -62,6 +65,7 @@
     color: getColor(nba-p);
     // background: lighten(getColor(nba-p), 20%);
   }
+  
 }
 
 .error-message {

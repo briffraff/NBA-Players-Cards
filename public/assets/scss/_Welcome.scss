@@ -25,6 +25,44 @@
     padding: 25px;
     z-index: 1;
 
+    .log-reg {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 2vh;
+
+      p {
+        margin-top: 2.5vh;
+        color: getColor(bg-0);
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      .reg-login {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .login,
+      .register {
+        margin: 2vh;
+        width: 150px;
+        background-color: getColor(nba-p);
+        font-size: 18px;
+        color: white;
+        padding: 0.25vh;
+        border-radius: 8px;
+        border: 2px solid getColor(nba-p);
+      }
+
+      .login:hover,
+      .register:hover {
+        background-color: getColor(bg-0);
+        color: getColor(nba-p);
+      }
+    }
     .welcome-title {
       font-size: 100px;
       text-transform: uppercase;

@@ -331,17 +331,20 @@ h6 {
   opacity: 0.3;
 }
 
-.content {
+.login-content {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(15, 16, 19);
+  padding-top: 120px;
+  padding-bottom: 250px;
 }
 
 .login-box {
   width: 30%;
   margin: 100px;
   color: white;
-  background-color: #111;
+  background-color: rgb(15, 16, 19);
   padding: 15px;
   border-radius: 8px;
 }
@@ -401,13 +404,24 @@ h6 {
   text-align: center;
 }
 
-.content {
+.register-content {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(15, 16, 19);
+  padding-top: 100px;
+  padding-bottom: 200px;
 }
 
-.logout-box {
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(15, 16, 19);
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+.content-wrapper .logout-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -417,45 +431,45 @@ h6 {
   text-transform: uppercase;
   background-color: rgb(15, 16, 19);
 }
-.logout-box .welcome {
+.content-wrapper .logout-box .welcome {
   margin-top: 2vh;
   font-size: 50px;
   color: whitesmoke;
 }
-.logout-box .home {
+.content-wrapper .logout-box .home {
   color: #aa0b2d;
 }
-.logout-box .sub-head {
+.content-wrapper .logout-box .sub-head {
   margin-top: 2vh;
   font-size: 15px;
   letter-spacing: 15px;
   opacity: 0.6;
   color: whitesmoke;
 }
-.logout-box .nba {
+.content-wrapper .logout-box .nba {
   width: 200px;
   margin: auto;
   display: block;
 }
-.logout-box .log-reg {
+.content-wrapper .logout-box .log-reg {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   padding: 2vh;
 }
-.logout-box .log-reg p {
+.content-wrapper .logout-box .log-reg p {
   margin-top: 2.5vh;
   color: whitesmoke;
   font-size: 16px;
 }
-.logout-box .log-reg div {
+.content-wrapper .logout-box .log-reg div {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.logout-box .log-reg .login,
-.logout-box .log-reg .register {
+.content-wrapper .logout-box .log-reg .login,
+.content-wrapper .logout-box .log-reg .register {
   margin: 2vh;
   width: 150px;
   background-color: #006bb7;
@@ -465,8 +479,8 @@ h6 {
   border-radius: 8px;
   border: 2px solid #006bb7;
 }
-.logout-box .log-reg .login:hover,
-.logout-box .log-reg .register:hover {
+.content-wrapper .logout-box .log-reg .login:hover,
+.content-wrapper .logout-box .log-reg .register:hover {
   background-color: whitesmoke;
   color: #006bb7;
 }
@@ -716,6 +730,40 @@ h6 {
   margin-top: 100px;
   padding: 25px;
   z-index: 1;
+}
+.welcome-media .welcome .log-reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2vh;
+}
+.welcome-media .welcome .log-reg p {
+  margin-top: 2.5vh;
+  color: whitesmoke;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.welcome-media .welcome .log-reg .reg-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.welcome-media .welcome .log-reg .login,
+.welcome-media .welcome .log-reg .register {
+  margin: 2vh;
+  width: 150px;
+  background-color: #006bb7;
+  font-size: 18px;
+  color: white;
+  padding: 0.25vh;
+  border-radius: 8px;
+  border: 2px solid #006bb7;
+}
+.welcome-media .welcome .log-reg .login:hover,
+.welcome-media .welcome .log-reg .register:hover {
+  background-color: whitesmoke;
+  color: #006bb7;
 }
 .welcome-media .welcome .welcome-title {
   font-size: 100px;
