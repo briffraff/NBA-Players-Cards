@@ -476,10 +476,15 @@ h6 {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+.teams-container-flexwrap .noteams {
+  background-color: red;
+  margin-top: 65px;
+  height: 20px;
+}
 .teams-container-flexwrap .division-title {
   font-size: 30px;
-  margin-top: 50px;
-  width: 500px;
+  margin-top: 70px;
+  width: 100%;
   text-align: center;
 }
 .teams-container-flexwrap .division-title:before {
@@ -522,6 +527,10 @@ h6 {
   margin-bottom: 25px;
 }
 
+.bottomDistance {
+  margin-bottom: 50px;
+}
+
 .logoto-site-wrapper {
   display: flex;
   flex-direction: column;
@@ -557,6 +566,7 @@ h6 {
 
 .location {
   color: whitesmoke;
+  margin-top: 20px;
 }
 
 .team-title {
