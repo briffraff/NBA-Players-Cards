@@ -8,31 +8,30 @@ export default function Team() {
     const { id } = useParams();
     const [logoUrl, setLogoUrl] = useState("");
 
-
     useEffect(() => {
-        const handleImage = async () => {
-            let logoPath = team.logo;
-            let downloadUrl = await getDownloadUrlFromPath(logoPath);
-            setLogoUrl(downloadUrl);
-        }
-
-        const fetchTeam = async () => {
+        const fetchTeamAndLogo = async () => {
             try {
                 const teamData = await getTeamById(id);
                 setTeam(teamData);
+
+                if (teamData && teamData.logo) {
+                    const downloadUrl = await getDownloadUrlFromPath(teamData.logo);
+                    setLogoUrl(downloadUrl);
+                }
             } catch (error) {
                 console.error(error);
             }
         };
 
-        handleImage();
-        fetchTeam();
+        fetchTeamAndLogo();
     }, [id]);
+
+    
+
 
     if (!team) {
         return <div>Loading...</div>;
     }
-
 
     return (
         <>
