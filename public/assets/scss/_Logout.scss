@@ -1,76 +1,80 @@
-.content {
+.content-wrapper {
+
   @include flex-center;
-}
-
-.logout-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 45%;
-  padding: 2vh;
-  text-transform: uppercase;
   background-color: getColor(bg);
+  padding-top:100px;
+  padding-bottom: 200px;
 
-  .welcome {
-    margin-top: 2vh;
-    font-size: 50px;
-    color: getColor(bg-0);
-  }
-
-  .home{
-    color: getColor(nba-s);
-  }
-
-  .sub-head {
-    margin-top: 2vh;
-    font-size: 15px;
-    letter-spacing: 15px;
-    opacity: 0.6;
-    color: getColor(bg-0);
-  }
-
-  .nba {
-    width: 200px;
-    margin: auto;
-    display: block;
-  }
-
-  .log-reg {
+  .logout-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    width: 45%;
     padding: 2vh;
+    text-transform: uppercase;
+    background-color: getColor(bg);
 
-    p {
-      margin-top: 2.5vh;
+    .welcome {
+      margin-top: 2vh;
+      font-size: 50px;
       color: getColor(bg-0);
-      font-size: 16px;
     }
 
-    div {
+    .home {
+      color: getColor(nba-s);
+    }
+
+    .sub-head {
+      margin-top: 2vh;
+      font-size: 15px;
+      letter-spacing: 15px;
+      opacity: 0.6;
+      color: getColor(bg-0);
+    }
+
+    .nba {
+      width: 200px;
+      margin: auto;
+      display: block;
+    }
+
+    .log-reg {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
-    }
+      text-align: center;
+      padding: 2vh;
 
-    .login,
-    .register {
-      margin: 2vh;
-      width: 150px;
-      background-color: getColor(nba-p);
-      font-size: 18px;
-      color: white;
-      padding: 0.25vh;
-      border-radius: 8px;
-      border: 2px solid getColor(nba-p);
-    }
+      p {
+        margin-top: 2.5vh;
+        color: getColor(bg-0);
+        font-size: 16px;
+      }
 
-    .login:hover,
-    .register:hover {
-      background-color: getColor(bg-0);
-      color: getColor(nba-p);
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .login,
+      .register {
+        margin: 2vh;
+        width: 150px;
+        background-color: getColor(nba-p);
+        font-size: 18px;
+        color: white;
+        padding: 0.25vh;
+        border-radius: 8px;
+        border: 2px solid getColor(nba-p);
+      }
+
+      .login:hover,
+      .register:hover {
+        background-color: getColor(bg-0);
+        color: getColor(nba-p);
+      }
     }
   }
 }
