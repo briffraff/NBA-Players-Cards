@@ -335,9 +335,8 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(15, 16, 19);
-  padding-top: 120px;
-  padding-bottom: 250px;
+  padding-top: 212px;
+  padding-bottom: 200px;
 }
 
 .login-box {
@@ -347,6 +346,7 @@ h6 {
   background-color: rgb(15, 16, 19);
   padding: 15px;
   border-radius: 8px;
+  z-index: 1;
 }
 .login-box .box-slogan {
   font-size: 40px;
@@ -408,7 +408,6 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(15, 16, 19);
   padding-top: 100px;
   padding-bottom: 200px;
 }

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
-const logo = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Fnba.png?alt=media&token=69987172-bd26-40c1-874a-fce01d97d9b8"
-
+import { useDefaultImages } from "../../../contexts/defaultImagesContext"
 
 export default function Logout() {
+    const defaultImages = useDefaultImages();
+    const logo = defaultImages[8];
+
     return (
         <>
             <div className="content-wrapper">

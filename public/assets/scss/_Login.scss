@@ -1,8 +1,8 @@
 .login-content {
   @include flex-center;
-  background-color: getColor(bg);
-  padding-top: 120px;
-  padding-bottom: 250px;
+  // background-color: getColor(bg);
+  padding-top: 212px;
+  padding-bottom: 200px;
 }
 
 .login-box {
@@ -12,6 +12,7 @@
   background-color: getColor(bg);
   padding: 15px;
   border-radius: 8px;
+  z-index: 1;
 
   .box-slogan {
     font-size: 40px;

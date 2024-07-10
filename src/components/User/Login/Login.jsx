@@ -2,7 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../service/firebase/authentication/auth-service";
 
+import { useDefaultImages } from "../../../contexts/defaultImagesContext";
+
 export default function Login() {
+    const defaultImages = useDefaultImages();
+    const backgroundImage = defaultImages[0];
+
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
@@ -34,27 +39,30 @@ export default function Login() {
 
     return (
         <>
-            <section className="login-content">
+            <div className="site-wrapper">
+                <section className=" welcome-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                    <section className="login-content">
+                        <form className="login-box" onSubmit={handleLogin}>
+                            <h1 className="box-slogan">Login</h1>
 
-                <form className="login-box" onSubmit={handleLogin}>
-                    <h1 className="box-slogan">Login</h1>
+                            <div className="textbox">
+                                <i className="fas fa-envelope"></i>
+                                <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                            </div>
 
-                    <div className="textbox">
-                        <i className="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-                    </div>
+                            <div className="textbox">
+                                <i className="fas fa-lock"></i>
+                                <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                            </div>
 
-                    <div className="textbox">
-                        <i className="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-                    </div>
+                            {error && <div className="error-message">{error}</div>}
 
-                    {error && <div className="error-message">{error}</div>}
-
-                    <button className="login-btn" type="submit">LOGIN</button>
-                </form>
-
-            </section>
+                            <button className="login-btn" type="submit">LOGIN</button>
+                        </form>
+                    </section>
+                </section>
+            </div>
         </>
+
     );
 }

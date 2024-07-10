@@ -4,6 +4,7 @@ import { seedJsonDataToFirestore } from "../service/firebase/firestore/Seed/seed
 
 import "../../public/assets/css/App.css";
 import AuthProvider from "../contexts/authContext";
+import DefaultImagesProvider from "../contexts/defaultImagesContext";
 
 import Layout from "./_Layout/Layout";
 import Home from "./Home/Home";
@@ -25,23 +26,25 @@ export default function App() {
 
   return (
     <>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index path="/" element={<Home />}></Route>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/about-nba" element={<AboutNba />} />
-              <Route path="/teams" element={<Teams />} />
-              <Route path="/team/:id" element={<TeamDetails />} />
-              {/* <Route path="/profile/:id" element={<Profile />} /> */}
-              {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+      <DefaultImagesProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index path="/" element={<Home />}></Route>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/about-nba" element={<AboutNba />} />
+                <Route path="/teams" element={<Teams />} />
+                <Route path="/team/:id" element={<TeamDetails />} />
+                {/* <Route path="/profile/:id" element={<Profile />} /> */}
+                {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </DefaultImagesProvider>
     </>
   );
 }
