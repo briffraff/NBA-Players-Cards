@@ -1,5 +1,6 @@
 import Splitter from "./Splitter";
 import Subscribe from "./Subscribe";
+import Socials from "./Socials";
 
 export default function Footer() {
     const teams = [
@@ -10,16 +11,10 @@ export default function Footer() {
         ["Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"]
     ];
 
-    const socialLinks = [
-        { href: "https://www.facebook.com/nba/", icon: "fab fa-fw fa-facebook-f" },
-        { href: "https://www.instagram.com/nba/?hl=en", icon: "fab fa-fw fa-linkedin-in" },
-        { href: "https://twitter.com/NBA", icon: "fab fa-fw fa-twitter" }
-    ];
-
     return (
         <>
             <Splitter />
-            
+
             <footer className="site-footer">
                 <div className="site-wrapper">
                     <div className="footer-teams">
@@ -43,21 +38,8 @@ export default function Footer() {
                     </div>
 
                     <div className="footer-social-subscribe">
-                        <div className="footer-social-icons">
-                            <div className="footer-label">
-                                <h4>Social</h4>
-                            </div>
-                            <div className="social-icons">
-                                {socialLinks.map((link, index) => (
-                                    <a className="btn btn-social btn-outline" href={link.href} key={`social-${index}`}>
-                                        <i className={link.icon}></i>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-
+                        <Socials />
                         <Subscribe />
-
                     </div>
                 </div>
             </footer>
