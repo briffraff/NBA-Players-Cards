@@ -63,7 +63,7 @@ export const logoutUser = async () => {
         await signOut(auth);
         console.log("User signed out successfully");
     } catch (error) {
-        console.error("Error signing out:", error.message);
+        console.log("Error signing out:", error.message);
         throw new Error("Error signing out");
     }
 };

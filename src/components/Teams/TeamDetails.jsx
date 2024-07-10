@@ -19,7 +19,7 @@ export default function Team() {
                     setLogoUrl(downloadUrl);
                 }
             } catch (error) {
-                console.error(error);
+                console.log(error);
             }
         };
 

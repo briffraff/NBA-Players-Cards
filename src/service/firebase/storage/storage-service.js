@@ -6,15 +6,15 @@ export const listAllImages = async (storageFolder) => {
         const listRef = ref(storage, `/images/${storageFolder}`);
         const res = await listAll(listRef);
         if (res != {} && res) {
-            console.log("OK!")
+            // console.log("OK!")
             const urls = await Promise.all(
                 res.items.map((itemRef) => getDownloadURL(itemRef))
             );
-            console.log(urls);
+            // console.log(urls);
             return urls;
         }
     } catch (error) {
-        console.error("Error listing images:", error);
+        console.log("Error listing images:", error);
         return [];
     }
 };
@@ -25,7 +25,7 @@ export const getDownloadUrlFromPath = async (path) => {
         const url = await getDownloadURL(fileRef);
         return url;
     } catch (error) {
-        console.error("Error getting download URL:", error);
+        console.log("Error getting download URL:", error);
         return null;
     }
 };

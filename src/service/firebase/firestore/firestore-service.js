@@ -13,7 +13,7 @@ export const getTeams = async () => {
         }));
         return teams;
     } catch (error) {
-        console.error("Error fetching teams: ", error);
+        console.log("Error fetching teams: ", error);
         throw error;
     }
 };
@@ -29,7 +29,7 @@ export const getTeamById = async (id) => {
             return null;
         }
     } catch (error) {
-        console.error("Error fetching team: ", error);
+        console.log("Error fetching team: ", error);
         throw error;
     }
 };

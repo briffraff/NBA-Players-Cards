@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../service/firebase/authentication/auth-service";
-
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
 
 export default function Register() {
