@@ -7,14 +7,14 @@ import { useDefaultImages } from "../../contexts/defaultImagesContext";
 export default function Header(props) {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
-    
+
     const { currentUser, userLoggedIn, loading } = useAuth();
 
     const handleLogout = async () => {
         try {
             await logoutUser();
         } catch (error) {
-            console.error('Error during logout:', error.message);
+            console.log('Error during logout:', error.message);
         }
     };
 

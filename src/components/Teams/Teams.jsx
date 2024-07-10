@@ -25,7 +25,7 @@ export default function Teams() {
                 const teamsList = await getTeams();
                 setTeams(teamsList);
             } catch (error) {
-                console.error("Error fetching teams: ", error);
+                console.log("Error fetching teams: ", error);
             }
         };
 
