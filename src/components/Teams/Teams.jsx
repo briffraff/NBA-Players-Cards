@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
 import TeamThumbnail from "../Teams/TeamThumbnail";
 import { getTeams } from "../../service/firebase/firestore/firestore-service";
+import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 export default function Teams() {
-    const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2FAQ4160-140FEATURED.jpg?alt=media&token=f6857ccb-aba7-4ed1-88c1-1bf0001bafcc"
+
+    const defaultImages = useDefaultImages();
+    const backgroundImage = defaultImages[2];
 
     const divisions = [
         "Atlantic Division",

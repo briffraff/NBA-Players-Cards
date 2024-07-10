@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
+import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 export default function Home() {
+    const defaultImages = useDefaultImages();
+    const backgroundImage = defaultImages[1];
 
-    const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2F5ID7fg.jpg?alt=media&token=63b11dc2-3c6c-4072-b506-097b0b4a91de"
     return (
         <>
             <div className="site-wrapper">

@@ -1,12 +1,12 @@
+import { useDefaultImages } from "../../contexts/defaultImagesContext"
+
 export default function AboutNba() {
+    const defaultImages = useDefaultImages();
 
-    const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Fabout-nba.jpg?alt=media&token=7feb4fc7-dccc-4eef-b776-27fae9d013a7"
-
-    const jordan = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Fjordan.jpg?alt=media&token=53eac138-ae48-4d92-8734-b8fa748069d0"
-
-    const logoInspiration = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Flogo-inspiration.png?alt=media&token=79b457c7-8212-45b7-9cf0-e4e0e9a7cec8"
-
-    const logo = "https://firebasestorage.googleapis.com/v0/b/nba-player-cards.appspot.com/o/images%2Fcontent%2Fnba-logo.png?alt=media&token=55574cc0-e2b3-40cb-8144-a0d3a0c8de2f"
+    const backgroundImage = defaultImages[3]
+    const jordan = defaultImages[4]
+    const logoInspiration = defaultImages[6]
+    const logo = defaultImages[7]
 
     return (
         <>

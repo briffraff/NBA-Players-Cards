@@ -2,7 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../service/firebase/authentication/auth-service";
 
+import { useDefaultImages } from "../../../contexts/defaultImagesContext";
+
 export default function Register() {
+    const defaultImages = useDefaultImages();
+    const backgroundImage = defaultImages[0];
+
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -57,35 +62,39 @@ export default function Register() {
 
     return (
         <>
-            <section className="register-content">
-                <form className="login-box" onSubmit={handleRegistration}>
-                    <h1 className="box-slogan">Register</h1>
+            <div className="site-wrapper">
+                <section className=" welcome-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                    <section className="register-content">
+                        <form className="login-box" onSubmit={handleRegistration}>
+                            <h1 className="box-slogan">Register</h1>
 
-                    <div className="textbox">
-                        <i className="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
-                    </div>
+                            <div className="textbox">
+                                <i className="fas fa-user"></i>
+                                <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                            </div>
 
-                    <div className="textbox">
-                        <i className="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-                    </div>
+                            <div className="textbox">
+                                <i className="fas fa-lock"></i>
+                                <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                            </div>
 
-                    <div className="textbox">
-                        <i className="fas fa-unlock"></i>
-                        <input type="password" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
-                    </div>
+                            <div className="textbox">
+                                <i className="fas fa-unlock"></i>
+                                <input type="password" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
+                            </div>
 
-                    <div className="textbox">
-                        <i className="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-                    </div>
+                            <div className="textbox">
+                                <i className="fas fa-envelope"></i>
+                                <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                            </div>
 
-                    {error && <div className="error-message">{error}</div>}
+                            {error && <div className="error-message">{error}</div>}
 
-                    <button className="login-btn" type="submit">REGISTER</button>
-                </form>
-            </section>
+                            <button className="login-btn" type="submit">REGISTER</button>
+                        </form>
+                    </section>
+                </section>
+            </div>
         </>
     );
 }

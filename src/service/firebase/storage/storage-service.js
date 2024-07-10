@@ -1,16 +1,18 @@
 import { storage } from "../firebase-config";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
-export const listAllImages = async () => {
+export const listAllImages = async (storageFolder) => {
     try {
-        const listRef = ref(storage, '/images/thumbnails');
+        const listRef = ref(storage, `/images/${storageFolder}`);
         const res = await listAll(listRef);
-
-        // const urls = await Promise.all(
-        //     res.items.map((itemRef) => getDownloadURL(itemRef))
-        // );
-        console.log(res);
-        return res;
+        if (res != {} && res) {
+            console.log("OK!")
+            const urls = await Promise.all(
+                res.items.map((itemRef) => getDownloadURL(itemRef))
+            );
+            console.log(urls);
+            return urls;
+        }
     } catch (error) {
         console.error("Error listing images:", error);
         return [];
