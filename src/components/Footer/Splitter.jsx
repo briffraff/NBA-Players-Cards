@@ -3,7 +3,6 @@ import { useDefaultImages } from "../../contexts/defaultImagesContext"
 export default function Splitter() {
 
     const defaultImages = useDefaultImages();
-
     const backgroundImage = defaultImages[5];
 
     return (

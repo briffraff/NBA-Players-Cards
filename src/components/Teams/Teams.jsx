@@ -86,7 +86,6 @@ export default function Teams() {
                     </article>
                 </div>
 
-
                 <div className="site-wrapper">
                     <div className="teams-container team-info">
                         <div className="teams-container-flexwrap">
