@@ -26,9 +26,6 @@ export default function Team() {
         fetchTeamAndLogo();
     }, [id]);
 
-    
-
-
     if (!team) {
         return <div>Loading...</div>;
     }
