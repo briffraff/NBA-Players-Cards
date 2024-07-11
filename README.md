@@ -7,16 +7,35 @@
   - [Links](#links)
 
 ## Demo Screenshots
-![]()
+Home + Footer
+![Home](./public/assets/img/readme/home.jpg)
+
+The Game
+![About](./public/assets/img/readme/about.jpg)
+
+NBA Teams
+![NBA Teams](./public/assets/img/readme/teams.jpg)
+
+Team Details
+![NBA Teams](./public/assets/img/readme/teamDetails.jpg)
+
+Register
+![Logout](./public/assets/img/readme/register.jpg)
+
+Login
+![Logout](./public/assets/img/readme/login.jpg)
+
+Menu - Logged User
+![Menu - Logged User](./public/assets/img/readme/menu.jpg)
+
+Logout
+![Logout](./public/assets/img/readme/logout.jpg)
 
 ## Build with
 
 <img src="./public/assets/img/readme/vite.svg" width="50px" height="50px">[Vite](https://vitejs.dev/)
 
-
 <img src="./public/assets/img/readme/react.svg" width="50px" height="50px">[React](https://react.dev/)
-
-
 
 <img src="./public/assets/img/readme/firebase.svg" width="50px" height="50px">[Firebase](https://firebase.google.com/)
 
