@@ -803,6 +803,11 @@ h6 {
   color: whitesmoke;
   padding: 10px;
   border-radius: 8px;
+  cursor: pointer;
+}
+.user-section .user-section-info .delete-user:hover {
+  background-color: whitesmoke;
+  color: #aa0b2d;
 }
 .user-section .user-section-info .user-info {
   color: whitesmoke;

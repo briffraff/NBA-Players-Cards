@@ -5,7 +5,7 @@ export const registerUser = async (username, email, password) => {
     try {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser, {
-            displayName: username
+            displayName: username,
         })
         return { user: userCredentials.user };
     } catch (error) {

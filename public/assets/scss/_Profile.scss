@@ -17,6 +17,12 @@
       color: getColor(bg-0);
       padding: 10px;
       border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: getColor(bg-0);
+        color: getColor(nba-s);
+      }
     }
 
     .user-info {
