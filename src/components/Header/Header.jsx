@@ -32,7 +32,7 @@ export default function Header(props) {
                         <div className="logged-in">
                             <div className="greeting">
                                 <span className="hello">Hello,</span>
-                                <Link className="user-profile" to="/profile">{currentUser.displayName}</Link>
+                                <Link to={`/profile/${currentUser.uid}`} className="user-profile">{currentUser.displayName}</Link>
                             </div>
                             <Link className="cart-btn" to="/cart">/ {props.menu[7]}</Link>
                             <Link className="logout-btn" to="/logout" onClick={handleLogout}>/ {props.menu[8]}</Link>

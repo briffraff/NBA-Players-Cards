@@ -14,6 +14,7 @@ import Logout from "./User/Logout/Logout";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
 import AboutNba from "./About/AboutNba";
+import Profile from "./Profile/Profile";
 
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
                 <Route path="/about-nba" element={<AboutNba />} />
                 <Route path="/teams" element={<Teams />} />
                 <Route path="/team/:id" element={<TeamDetails />} />
-                {/* <Route path="/profile/:id" element={<Profile />} /> */}
+                <Route path="/profile/:id" element={<Profile />} />
                 {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
               </Route>
             </Routes>

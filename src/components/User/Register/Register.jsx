@@ -11,7 +11,7 @@ export default function Register() {
         email: "",
         password: "",
         repeatPassword: "",
-        username: "",
+        username: ""
     });
     const navigate = useNavigate();
     const [error, setError] = useState("");
