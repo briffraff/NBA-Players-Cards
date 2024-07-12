@@ -8,13 +8,20 @@ export default function TeamThumbnail({
     const [thumbnailUrl, setThumbnailUrl] = useState("");
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         const handleImage = async () => {
             let thumbnailPath = team.thumbnail;
-            let downloadUrl = await getDownloadUrlFromPath(thumbnailPath);
+            let downloadUrl =
+                await getDownloadUrlFromPath(thumbnailPath, { signal: abortController.signal });
             setThumbnailUrl(downloadUrl);
         }
 
         handleImage();
+
+        return () => {
+            abortController.abort();
+        }
     })
 
     return (

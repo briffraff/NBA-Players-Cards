@@ -4,7 +4,6 @@ import { getTeams } from "../../service/firebase/firestore/firestore-service";
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 export default function Teams() {
-
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[2];
 
@@ -20,9 +19,11 @@ export default function Teams() {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         const fetchTeams = async () => {
             try {
-                const teamsList = await getTeams();
+                const teamsList = await getTeams({ signal: abortController.signal });
                 setTeams(teamsList);
             } catch (error) {
                 console.log("Error fetching teams: ", error);
@@ -30,6 +31,10 @@ export default function Teams() {
         };
 
         fetchTeams();
+
+        return () => {
+            abortController.abort();
+        }
     }, []);
 
     const groupedTeams = useMemo(() => {
@@ -90,8 +95,8 @@ export default function Teams() {
                     <div className="teams-container team-info">
                         <div className="teams-container-flexwrap">
                             <div>
-                                {Object.entries(groupedTeams).map(([division, teams]) => (
-                                    <div  key={division}>
+                                {Object.entries(groupedTeams).map(([division]) => (
+                                    <div key={division}>
                                         <h3 className="division-title">{transformDivision(division)}</h3>
                                         <div className="teams-container-flexwrap bottomDistance">
                                             {groupedTeams[division] ? (

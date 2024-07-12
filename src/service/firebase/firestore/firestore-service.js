@@ -4,9 +4,9 @@ import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
 
-export const getTeams = async () => {
+export const getTeams = async ({ signal }) => {
     try {
-        const data = await getDocs(teamsCollectionRef);
+        const data = await getDocs(teamsCollectionRef, { signal });
         const teams = data.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id

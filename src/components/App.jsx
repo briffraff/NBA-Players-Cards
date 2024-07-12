@@ -27,8 +27,8 @@ export default function App() {
 
   return (
     <>
-      <DefaultImagesProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <DefaultImagesProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
@@ -44,8 +44,8 @@ export default function App() {
               </Route>
             </Routes>
           </BrowserRouter>
-        </AuthProvider>
-      </DefaultImagesProvider>
+        </DefaultImagesProvider>
+      </AuthProvider>
     </>
   );
 }
