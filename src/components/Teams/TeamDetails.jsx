@@ -5,17 +5,19 @@ import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-s
 
 export default function Team() {
     const [team, setTeam] = useState(null);
-    const { id } = useParams();
+    const { id, signal } = useParams();
     const [logoUrl, setLogoUrl] = useState("");
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         const fetchTeamAndLogo = async () => {
             try {
                 const teamData = await getTeamById(id);
                 setTeam(teamData);
 
                 if (teamData && teamData.logo) {
-                    const downloadUrl = await getDownloadUrlFromPath(teamData.logo);
+                    const downloadUrl = await getDownloadUrlFromPath(teamData.logo, { signal: abortController.signal });
                     setLogoUrl(downloadUrl);
                 }
             } catch (error) {
@@ -24,6 +26,10 @@ export default function Team() {
         };
 
         fetchTeamAndLogo();
+
+        return () => {
+            abortController.abort();
+        }
     }, [id]);
 
     if (!team) {

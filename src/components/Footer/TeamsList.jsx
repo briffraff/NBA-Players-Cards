@@ -14,9 +14,11 @@ export default function TeamsList() {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         const fetchTeams = async () => {
             try {
-                const teamsList = await getTeams();
+                const teamsList = await getTeams({ signal: abortController.signal });
 
                 const sortedGroupedTeamsList = teamsList
                     // .map((team) => ({ id: team.id, name: team.name }))
@@ -41,6 +43,10 @@ export default function TeamsList() {
         };
 
         fetchTeams();
+
+        return () => {
+            abortController.abort();
+        }
     }, []);
 
 

@@ -19,10 +19,10 @@ export const listAllImages = async (storageFolder) => {
     }
 };
 
-export const getDownloadUrlFromPath = async (path) => {
+export const getDownloadUrlFromPath = async (path, { signal }) => {
     try {
         const fileRef = ref(storage, path);
-        const url = await getDownloadURL(fileRef);
+        const url = await getDownloadURL(fileRef, { signal });
         return url;
     } catch (error) {
         console.log("Error getting download URL:", error);
