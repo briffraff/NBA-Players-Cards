@@ -782,4 +782,62 @@ h6 {
   color: whitesmoke;
   background-color: rgb(7, 7, 8);
   opacity: 0.8;
+}
+
+.user-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(15, 16, 19);
+}
+.user-section .user-section-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user-section .user-section-info .delete-user {
+  background-color: #aa0b2d;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 8px;
+}
+.user-section .user-section-info .user-info {
+  color: whitesmoke;
+  width: 550px;
+  letter-spacing: 0.5rem;
+  text-align: left;
+  margin-left: 20px;
+  padding-left: 110px;
+  text-transform: uppercase;
+  border-left: 5px solid #006bb7;
+  color: whitesmoke;
+}
+.user-section .user-section-info .user-info .user-info-values {
+  color: #006bb7;
+  letter-spacing: 0.2rem;
+}
+.user-section .user-items {
+  margin-top: 50px;
+}
+.user-section .user-items .user-items-topic {
+  width: 550px;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-left: 5px solid #006bb7;
+  color: whitesmoke;
+}
+.user-section .liked-items {
+  margin-top: 50px;
+}
+.user-section .liked-items .liked-items-topic {
+  width: 550px;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-left: 5px solid #006bb7;
+  color: whitesmoke;
 }/*# sourceMappingURL=App.css.map */

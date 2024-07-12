@@ -33,7 +33,7 @@ export default function TeamsList() {
                         return resultArray;
                     }, []);
 
-                console.log(sortedGroupedTeamsList);
+                // console.log(sortedGroupedTeamsList);
                 setTeams(sortedGroupedTeamsList);
             } catch (error) {
                 console.log("Error fetching teams: ", error);
