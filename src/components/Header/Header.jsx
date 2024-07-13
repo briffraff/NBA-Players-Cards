@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 
-export default function Header(props) {
+export default function Header({ menu }) {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
 
@@ -23,24 +23,24 @@ export default function Header(props) {
             <header className="site-header">
                 <Link to="/"><img className="logo" src={logo} /></Link>
                 <nav className="main-menu">
-                    <Link className="header-btn" to="/about-nba">/ {props.menu[0]}</Link>
-                    <Link className="header-btn" to="/teams">/ {props.menu[1]}</Link>
-                    <Link className="header-btn" to="/cards-shop">/ {props.menu[2]}</Link>
+                    <Link className={`header-btn ${menu[0].isActive ? `active` : ''}`} to={menu[0].path}>/ {menu[0].label}</Link>
+                    <Link className={`header-btn ${menu[1].isActive ? `active` : ''}`} to={menu[1].path}>/ {menu[1].label}</Link>
+                    <Link className={`header-btn ${menu[2].isActive ? `active` : ''}`} to={menu[2].path}>/ {menu[2].label}</Link>
                 </nav>
                 <div className="user-actions">
                     {userLoggedIn ? (
                         <div className="logged-in">
                             <div className="greeting">
                                 <span className="hello">Hello,</span>
-                                <Link to={`/profile/${currentUser.uid}`} className="user-profile">{currentUser.displayName}</Link>
+                                <Link to={menu[6].path.replace(':profileId', currentUser.uid)} className={`user-profile`}>{currentUser.displayName}</Link>
                             </div>
-                            <Link className="cart-btn" to="/cart">/ {props.menu[7]}</Link>
-                            <Link className="logout-btn" to="/logout" onClick={handleLogout}>/ {props.menu[8]}</Link>
+                            <Link className={`cart-btn ${menu[7].isActive ? `active` : ''}`} to={menu[7].path}>/ {menu[7].label}</Link>
+                            <Link className={`logout-btn ${menu[8].isActive ? `active` : ''}`} onClick={handleLogout} to={menu[8].path}>/ {menu[8].label}</Link>
                         </div>
                     ) : (
                         <div className="logged-out">
-                            <Link className="header-btn" to="/login"> / {props.menu[3]}</Link>
-                            <Link className="header-btn" to="/register">/ {props.menu[4]}</Link>
+                            <Link className={`header-btn ${menu[3].isActive ? `active` : ''}`} to={menu[3].path}>/ {menu[3].label}</Link>
+                            <Link className={`header-btn ${menu[4].isActive ? `active` : ''}`} to={menu[4].path}>/ {menu[4].label}</Link>
                         </div>
                     )}
                 </div>

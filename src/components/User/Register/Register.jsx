@@ -69,22 +69,22 @@ export default function Register() {
 
                             <div className="textbox">
                                 <i className="fas fa-user"></i>
-                                <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                                <input type="text" id="registerUsername" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
                             </div>
 
                             <div className="textbox">
                                 <i className="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                                <input type="password" id="registerPassword" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
                             </div>
 
                             <div className="textbox">
                                 <i className="fas fa-unlock"></i>
-                                <input type="password" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
+                                <input type="password" id="registerRepeatPassword" name="repeatPassword" placeholder="Repeat Password" value={form.repeatPassword} onChange={handleChange} />
                             </div>
 
                             <div className="textbox">
                                 <i className="fas fa-envelope"></i>
-                                <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                                <input type="email" id="registerEmail" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
                             </div>
 
                             {error && <div className="error-message">{error}</div>}
