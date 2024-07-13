@@ -1,4 +1,9 @@
 .not-found {
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,18 +14,26 @@
   color: getColor(bg-0);
 
   .btn {
-    background-color: red;
+    background-color: getColor(nba-s);
     color: white;
     padding: 15px;
     border-radius: 8px;
     font-size: 16px;
+    margin-top: 20px;
   }
 
-  h1 {
+  .error {
+    display: flex;
+    flex-direction: row;
     color: getColor(nba-s);
     font-size: 100px;
-    padding: 20px;
+
+    .error-number {
+      color: getColor(bg-0);
+      font-size: 100px;
+    }
   }
+
   h2 {
     padding: 20px;
   }
