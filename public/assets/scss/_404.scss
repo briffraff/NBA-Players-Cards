@@ -1,43 +1,53 @@
-.not-found {
-  * {
-    padding: 0;
-    margin: 0;
-  }
-
+.container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background-color: getColor(bg);
   justify-content: center;
   align-items: center;
-  text-align: center;
   padding: 150px;
-  background-color: getColor(bg);
-  color: getColor(bg-0);
+  color: whitesmoke;
 
-  .btn {
-    background-color: getColor(nba-s);
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-
-  .error {
-    display: flex;
-    flex-direction: row;
-    color: getColor(nba-s);
-    font-size: 100px;
-
-    .error-number {
-      color: getColor(bg-0);
-      font-size: 100px;
+  .not-found {
+    * {
+      padding: 0;
+      margin: 0;
     }
-  }
 
-  h2 {
-    padding: 20px;
-  }
-  h4 {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: getColor(bg-0);
+    width: 30%;
+    margin-left: 50px;
+
+    .btn {
+      background-color: getColor(nba-s);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 20px;
+      margin-left: 20px;
+      width: 40%;
+    }
+
+    .error {
+      display: flex;
+      flex-direction: row;
+      color: getColor(nba-s);
+      font-size: 100px;
+
+      .error-number {
+        color: getColor(bg-0);
+        font-size: 100px;
+      }
+    }
+
+    h2 {
+      padding: 20px;
+    }
+    h4 {
+      padding: 20px;
+    }
   }
 }

@@ -19,6 +19,9 @@ NBA Teams
 Team Details
 ![NBA Teams](./public/assets/img/readme/teamDetails.jpg)
 
+404 - Not Found
+![Not Found](./public/assets/img/readme/404.jpg)
+
 Register
 ![Logout](./public/assets/img/readme/register.jpg)
 
