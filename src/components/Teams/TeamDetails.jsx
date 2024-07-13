@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTeamById } from "../../service/firebase/firestore/firestore-service";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
+import NotFound from "../404/404";
 
 export default function Team() {
     const [team, setTeam] = useState(null);
-    const { id, signal } = useParams();
+    const { teamId } = useParams();
     const [logoUrl, setLogoUrl] = useState("");
 
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function Team() {
 
         const fetchTeamAndLogo = async () => {
             try {
-                const teamData = await getTeamById(id);
+                const teamData = await getTeamById(teamId);
                 setTeam(teamData);
 
                 if (teamData && teamData.logo) {
@@ -26,39 +27,36 @@ export default function Team() {
         };
 
         fetchTeamAndLogo();
-
         return () => {
             abortController.abort();
         }
-    }, [id]);
-
-    if (!team) {
-        return <div>Loading...</div>;
-    }
+    }, [teamId]);
 
     return (
         <>
-            <div className="site-wrapper">
-                <section className="site-media" style={{ backgroundImage: `url(${logoUrl})` }}>
-                    <section className="section-info-panel">
-                        <h1 className="team-title">{team.name}</h1>
-                        <div className="mini-wall team-name">
-                            <h3 className="location">Location : {team.location}</h3>
-                        </div>
+            {team
+                ? (<div className="site-wrapper">
+                    <section className="site-media" style={{ backgroundImage: `url(${logoUrl})` }}>
+                        <section className="section-info-panel">
+                            <h1 className="team-title">{team.name}</h1>
+                            <div className="mini-wall team-name">
+                                <h3 className="location">Location : {team.location}</h3>
+                            </div>
+                        </section>
                     </section>
-                </section>
 
-                <div className="site-content">
-                    <div className="single-team-container">
-                        <div className="team-logo">
-                            <img src={logoUrl} alt={team.name} />
+                    <div className="site-content">
+                        <div className="single-team-container">
+                            <div className="team-logo">
+                                <img src={logoUrl} alt={team.name} />
+                            </div>
+                            <article>
+                                <div className="about-text team-info">{team.info}</div>
+                            </article>
                         </div>
-                        <article>
-                            <div className="about-text team-info">{team.info}</div>
-                        </article>
                     </div>
-                </div>
-            </div>
+                </div>)
+                : (<NotFound />)}
         </>
     )
 }
