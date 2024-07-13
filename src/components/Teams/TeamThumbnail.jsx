@@ -27,11 +27,14 @@ export default function TeamThumbnail({
     return (
         <>
             <div className="team-card">
-                {thumbnailUrl ? (
-                    <img src={thumbnailUrl} alt={team.name} />
-                ) : (
-                    <p>Loading image...</p>
-                )}
+                {thumbnailUrl
+                    ? (
+                        <img src={thumbnailUrl} alt={team.name} />
+                    )
+                    : (
+                        <p>Loading image...</p>
+                    )
+                }
 
                 <Link to={`/team/${team.id}`}>
                     <p className="card-name">{team.name}</p>
