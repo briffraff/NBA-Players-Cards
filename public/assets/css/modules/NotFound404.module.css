@@ -6,6 +6,7 @@
   align-items: center;
   padding: 150px;
   color: whitesmoke;
+  padding-left: 300px;
 }
 .container .not-found {
   display: flex;
@@ -27,7 +28,7 @@
   font-size: 16px;
   margin-top: 20px;
   margin-left: 20px;
-  width: 40%;
+  width: 30%;
 }
 .container .not-found .error {
   display: flex;
@@ -44,4 +45,4 @@
 }
 .container .not-found h4 {
   padding: 20px;
-} /*# sourceMappingURL=NotFound404.module.css.map */
+}/*# sourceMappingURL=NotFound404.module.css.map */

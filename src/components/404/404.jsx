@@ -5,7 +5,7 @@ export default function NotFound() {
     return (
         <>
             <div className={styles.container}>
-                <img src={rim} alt="Rim" width={300} height={300} />
+                <img src={rim} alt="Rim" width={200} height={200} />
                 <div className={styles.notFound}>
                     <h1 className={styles.error}>
                         !<h1 className={styles.errorNumber}>404</h1>
