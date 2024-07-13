@@ -1,0 +1,30 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 150px;
+  background-color: getColor(bg);
+  color: getColor(bg-0);
+
+  .btn {
+    background-color: red;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  h1 {
+    color: getColor(nba-s);
+    font-size: 100px;
+    padding: 20px;
+  }
+  h2 {
+    padding: 20px;
+  }
+  h4 {
+    padding: 20px;
+  }
+}

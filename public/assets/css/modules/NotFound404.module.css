@@ -1,0 +1,28 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 150px;
+  background-color: rgb(15, 16, 19);
+  color: whitesmoke;
+}
+.not-found .btn {
+  background-color: red;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.not-found h1 {
+  color: #aa0b2d;
+  font-size: 100px;
+  padding: 20px;
+}
+.not-found h2 {
+  padding: 20px;
+}
+.not-found h4 {
+  padding: 20px;
+}/*# sourceMappingURL=NotFound404.module.css.map */
