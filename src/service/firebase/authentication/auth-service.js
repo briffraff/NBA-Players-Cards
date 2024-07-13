@@ -1,5 +1,16 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    updateProfile,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    deleteUser as firebaseDeleteUser
+}
+    from "firebase/auth";
+
 import { auth } from "../firebase-config";
+
 
 export const registerUser = async (username, email, password) => {
     try {
@@ -33,6 +44,40 @@ export const registerUser = async (username, email, password) => {
     }
 };
 
+export const reAuthentication = async (user) => {
+    try {
+        const password = prompt('Please enter your password for re-authentication:');
+        if (!password) {
+            throw new Error('Missing password');
+        }
+        const credential = EmailAuthProvider.credential(user.email, password);
+        await reauthenticateWithCredential(user, credential);
+
+    } catch (error) {
+        let errorMessage = "";
+        switch (error.code) {
+            case "auth/invalid-credential":
+                errorMessage = "Invalid credentials";
+                break;
+            case "auth/too-many-requests":
+                errorMessage = "Too many failed login attempts. Account is temporarily disabled!";
+                break;
+            default:
+                errorMessage = error.message;
+        }
+        throw new Error(errorMessage);
+    }
+};
+
+export const deleteUser = async (user) => {
+    try {
+        await firebaseDeleteUser(user);
+        console.log('User deleted successfully');
+    } catch (error) {
+        throw new Error(error.code);
+    }
+};
+
 export const loginUser = async (email, password) => {
     try {
         const userCredentials = await signInWithEmailAndPassword(auth, email, password);
@@ -50,6 +95,9 @@ export const loginUser = async (email, password) => {
                 break;
             case "Firebase: Error (auth/invalid-credential).":
                 errorMessage = "Invalid credentials";
+                break;
+            case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
+                errorMessage = "Too many failed login attemps. Account is temporarily disabled!";
                 break;
             default:
                 errorMessage = error.message;

@@ -46,12 +46,12 @@ export default function Login() {
 
                             <div className="textbox">
                                 <i className="fas fa-envelope"></i>
-                                <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                                <input type="email" id="loginEmail" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
                             </div>
 
                             <div className="textbox">
                                 <i className="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                                <input type="password" id="loginPassword" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
                             </div>
 
                             {error && <div className="error-message">{error}</div>}

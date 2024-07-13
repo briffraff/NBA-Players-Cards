@@ -1,57 +1,34 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../../contexts/authContext"
-import { getAuth, deleteUser, reauthenticateWithCredential } from 'firebase/auth';
 import NotFound from "../404/404";
+import { useNavigate, useParams } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
+import { useState } from "react";
+import { reAuthentication, deleteUser } from "../../service/firebase/authentication/auth-service";
 
 export default function Profile() {
 
+    const [error, setError] = useState();
     const navigate = useNavigate();
     const { profileId } = useParams();
 
     const auth = getAuth()
     const user = auth.currentUser;
 
-    const handleDeleteUser = () => {
-        if (user) {
-            deleteUser(user).then(() => {
-                console.log('User deleted successfully');
-                navigate('/logout')
-            }).catch((error) => {
-                console.log('Error deleting user:', error);
-                try {
-                    reAuthentication()
-                } catch (error) {
+    const handleDeleteUser = async (event) => {
+        event.preventDefault();
 
-                }
-            });
-        } else {
-            console.log('No user is signed in');
-        }
-    }
-
-    const reAuthentication = () => {
-        if (user) {
-            const password = prompt('Please enter your password for re-authentication:');
-
-            const credential = EmailAuthProvider.credential(user.email, password);
-
-            reauthenticateWithCredential(user, credential).then(() => {
-                return deleteUser(user);
-            }).then(() => {
-                console.log('User deleted successfully');
-                navigate('/logout')
-            }).catch((error) => {
-                console.log('Error deleting user:', error);
-            });
-        } else {
-            console.log('No user is signed in');
+        try {
+            await reAuthentication(user);
+            await deleteUser(user);
+            setError("");
+            navigate('/logout');
+        } catch (error) {
+            setError(error.message);
         }
     }
 
     return (
         <>
             {user.uid == profileId
-                
                 ? (<section className="user-section">
                     <div className="user-section-info">
                         <div className="delete-user" onClick={handleDeleteUser}>Delete User</div>
@@ -61,6 +38,8 @@ export default function Profile() {
                             <div>Role : <a className="user-info-values">{user.role}</a></div>
                         </div>
                     </div>
+
+                    {error && <div className="error-message">{error}</div>}
 
                     <div className="user-items">
                         <div className="user-items-topic">Your items :</div>
@@ -75,7 +54,7 @@ export default function Profile() {
                     {/* ADMIN   -> */}
                     {/* All users */}
                 </section>)
-                
+
                 : (<NotFound />)
             }
         </>

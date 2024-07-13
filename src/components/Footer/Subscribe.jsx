@@ -37,6 +37,7 @@ export default function Subscribe() {
                 <form className="subscribe" onSubmit={handleSubmit}>
                     <input
                         type="email"
+                        id="subscriberEmail"
                         placeholder="Your email address"
                         value={subscriberEmail}
                         onClick={(e) => setSubscriberEmail(e.target.value)}
