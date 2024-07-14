@@ -9,7 +9,8 @@ import {
 }
     from "firebase/auth";
 
-import { auth } from "../firebase-config";
+import { auth, db } from "../firebase-config";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 
 
 export const registerUser = async (username, email, password) => {
@@ -18,7 +19,29 @@ export const registerUser = async (username, email, password) => {
         await updateProfile(auth.currentUser, {
             displayName: username,
         })
+
+        const userCollectionRef = collection(db, "users");
+        const q = query(userCollectionRef, where("uid", "==", auth.currentUser.uid))
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            let errorMessage = `User ${auth.currentUser.username} already exists`
+            console.log(errorMessage);
+            throw new Error(errorMessage);
+        }
+
+        const updatedUserInfo = {
+            admin: false,
+            email: email,
+            profilePictureUrl: "",
+            uid: auth.currentUser.uid,
+            username: username,
+        }
+
+        await addDoc(userCollectionRef, updatedUserInfo)
+
         return { user: userCredentials.user };
+
     } catch (error) {
         let errorMessage = "";
         switch (error.message) {

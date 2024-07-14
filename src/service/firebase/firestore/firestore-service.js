@@ -3,6 +3,7 @@ import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase
 
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
+const usersCollectionRef = collection(db, "users");
 
 export const getTeams = async ({ signal }) => {
     try {
@@ -23,7 +24,7 @@ export const getTeamById = async (id) => {
         const docRef = doc(db, "nba-teams", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            return { ...docSnap.data(), id: docSnap.id };
+            return { ...docSnap.data(), id: docSnap.uid };
         } else {
             console.log("No such document!");
             return null;
@@ -32,6 +33,41 @@ export const getTeamById = async (id) => {
         console.log("Error fetching team: ", error);
         throw error;
     }
+};
+
+export const getAllFirestoreUsers = async () => {
+    try {
+        const data = await getDocs(usersCollectionRef);
+        const teams = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return teams;
+    } catch (error) {
+        console.log("Error fetching Users: ", error);
+        throw error;
+    }
+};
+
+
+export const getFirestoreUserById = async (profileId) => {
+    try {
+        const q = query(usersCollectionRef, where("uid", "==", profileId));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            let errorMessage = "No such user document!";
+            throw new Error(errorMessage);
+        } else {
+            const userDoc = querySnapshot.docs[0];
+            return userDoc.data();
+            // return { ...userDoc.data(), id: userDoc.id };
+        }
+    } catch (error) {
+        console.log("Error fetching user: ", error);
+        throw error;
+    }
+  
 };
 
 

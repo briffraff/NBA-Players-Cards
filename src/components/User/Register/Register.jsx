@@ -11,7 +11,8 @@ export default function Register() {
         email: "",
         password: "",
         repeatPassword: "",
-        username: ""
+        username: "",
+        // profilePictureUrl: "",
     });
     const navigate = useNavigate();
     const [error, setError] = useState("");
@@ -86,6 +87,11 @@ export default function Register() {
                                 <i className="fas fa-envelope"></i>
                                 <input type="email" id="registerEmail" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
                             </div>
+
+                            {/* <div className="textbox">
+                                <i className="fas fa-envelope"></i>
+                                <input id="img" name="img" placeholder="Your profile picture" value={form.profilePictureUrl} onChange={handleChange} />
+                            </div> */}
 
                             {error && <div className="error-message">{error}</div>}
 
