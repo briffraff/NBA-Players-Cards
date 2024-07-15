@@ -1,13 +1,16 @@
 import styles from "../../../../public/assets/css/modules/Modal.module.css"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../service/firebase/authentication/auth-service";
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
+import { useAuth } from "../../../contexts/authContext";
 
 export default function RegisterModal({ setIsRegisterOpen }) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
+
+    const { currentUser, userLoggedIn, loading } = useAuth();
 
     const [form, setForm] = useState({
         email: "",
@@ -16,9 +19,10 @@ export default function RegisterModal({ setIsRegisterOpen }) {
         username: "",
         // profilePictureUrl: "",
     });
-    const navigate = useNavigate();
-    const [error, setError] = useState("");
+
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleRegistration = async (event) => {
         event.preventDefault();
@@ -70,6 +74,10 @@ export default function RegisterModal({ setIsRegisterOpen }) {
         event.stopPropagation();
     };
 
+    useEffect(() => {
+        userLoggedIn && setIsRegisterOpen(false)
+    }, [userLoggedIn, setIsRegisterOpen]);
+
     const handleLoading = isSubmitting ? "REGISTERING..." : "REGISTER";
 
     return (
@@ -109,7 +117,9 @@ export default function RegisterModal({ setIsRegisterOpen }) {
 
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
-                    <button className={styles.modalBtn} type="submit">{handleLoading}</button >
+                    <button className={styles.modalBtn} type="submit">
+                        {handleLoading}
+                    </button>
 
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form >
