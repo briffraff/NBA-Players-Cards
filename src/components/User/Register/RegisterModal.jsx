@@ -65,7 +65,7 @@ export default function RegisterModal() {
     return (
         <>
 
-            <section className={styles.modalBackground}>
+            <section id="registerModal" className={styles.modalBackground}>
                 <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleRegistration}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Register</h1>

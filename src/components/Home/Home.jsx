@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
 import { useAuth } from "../../contexts/authContext";
+import { useState } from 'react'
+import LoginModal from "../User/Login/LoginModal.jsx"
 
 export default function Home() {
     const { currentUser, userLoggedIn, loading } = useAuth();
-
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[1];
 
@@ -23,7 +25,7 @@ export default function Home() {
                                 <section className="log-reg">
                                     <p>You have no registration ?</p>
                                     <div className="reg-login">
-                                        <Link className="login" to="/login">Login</Link>
+                                        <button className="login" onClick={() => setIsLoginOpen(true)}>Login</button>
                                         <p>|</p>
                                         <Link className="register" to="/register">register</Link>
                                     </div>
@@ -33,6 +35,8 @@ export default function Home() {
                     </section>
                 </section>
             </div>
+
+            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
         </>
     )
 }

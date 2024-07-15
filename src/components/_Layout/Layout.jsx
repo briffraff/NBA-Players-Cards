@@ -2,7 +2,7 @@ import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import { Outlet, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
-
+import LoginModal from "../User/Login/LoginModal";
 
 export default function Layout() {
     const [menuItems, setMenuItems] = useState([
@@ -17,6 +17,8 @@ export default function Layout() {
         { labelId: 8, label: "Logout", path: "/logout", isActive: false, public: false },
     ]);
 
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+
     const location = useLocation();
 
     useEffect(() => {
@@ -26,13 +28,18 @@ export default function Layout() {
             isActive: item.path === currentPath,
         })));
 
+        setIsLoginOpen(false);
+
     }, [location.pathname]);
+
+    const handleLoginClick = () => setIsLoginOpen(true);
 
     return (
         <>
-            <Header menu={menuItems} />
+            <Header menu={menuItems} onLoginClick={handleLoginClick} />
             <Outlet />
             <Footer />
+            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
         </>
     )
 }

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../service/firebase/authentication/auth-service";
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
 
-export default function LoginModal() {
+export default function LoginModal({ setIsLoginOpen }) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
 
@@ -39,13 +39,17 @@ export default function LoginModal() {
         }));
     };
 
+    const handleModalClick = (event) => {
+        event.stopPropagation();
+    };
+
     return (
         <>
-            <section className={`${styles.modalBackground}`}>
-                <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleLogin}>
+            <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setIsLoginOpen(false)}>
+                <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleLogin} onClick={handleModalClick}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Login</h1>
-                        <div className={styles.esc}>x</div>
+                        <div className={styles.esc} onClick={() => setIsLoginOpen(false)}>x</div>
                     </div>
                     <div className={styles.modalTextbox}>
                         <i className="fas fa-envelope"></i>

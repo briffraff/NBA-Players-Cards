@@ -157,6 +157,8 @@ h6 {
   padding-right: 20px;
 }
 .site-header .header-btn {
+  border: none;
+  cursor: pointer;
   width: 100px;
   text-align: center;
   text-decoration: none;
@@ -170,6 +172,10 @@ h6 {
 .site-header .header-btn:hover {
   transition: background-color 0.5s ease;
   background-color: #006bb7;
+}
+.site-header .profile-btn {
+  background-color: #333;
+  color: whitesmoke;
 }
 
 .site-footer {

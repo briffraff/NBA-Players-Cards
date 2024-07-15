@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { useDefaultImages } from "../../../contexts/defaultImagesContext"
+import { useState } from "react";
+import LoginModal from "../Login/LoginModal";
 
 export default function Logout() {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
+
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
 
     return (
         <>
@@ -17,13 +21,15 @@ export default function Logout() {
                     <section className="log-reg">
                         <p>You have no registration ?</p>
                         <div>
-                            <Link className="login" to="/login">Login</Link>
+                            <button className="login" onClick={() => setIsLoginOpen(true)}>Login</button>
                             <p>|</p>
                             <Link className="register" to="/register">register</Link>
                         </div>
                     </section>
                 </section>
             </div>
+
+            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
         </>
     )
 }
