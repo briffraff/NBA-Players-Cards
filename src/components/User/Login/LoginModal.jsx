@@ -56,6 +56,8 @@ export default function LoginModal({ setIsLoginOpen }) {
     }, [userLoggedIn, setIsLoginOpen]);
 
 
+    const handleLoading = isSubmitting ? "LOGGING..." : "LOGIN";
+    
     return (
         <>
             <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setIsLoginOpen(false)}>
@@ -77,7 +79,7 @@ export default function LoginModal({ setIsLoginOpen }) {
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
                     <button className={styles.modalBtn} type="submit">
-                        {isSubmitting ? "LOGGING..." : "LOGIN"}
+                        {handleLoading}
                     </button>
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form>
