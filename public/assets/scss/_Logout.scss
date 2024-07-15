@@ -1,8 +1,7 @@
 .content-wrapper {
-
   @include flex-center;
   background-color: getColor(bg);
-  padding-top:100px;
+  padding-top: 100px;
   padding-bottom: 200px;
 
   .logout-box {
@@ -60,6 +59,8 @@
 
       .login,
       .register {
+        text-transform: uppercase;
+        cursor: pointer;
         margin: 2vh;
         width: 150px;
         background-color: getColor(nba-p);
