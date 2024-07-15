@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
+
 
 export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
 
     const { currentUser, userLoggedIn, loading } = useAuth();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleLogout = async () => {
+        setIsSubmitting(true);
+
         try {
             await logoutUser();
         } catch (error) {
             console.log('Error during logout:', error.message);
+        } finally {
+            setIsSubmitting(false);
         }
     };
+
+    const handleLoading = isSubmitting ? "Logging out..." : `/ ${menu[8].label}`;
 
     return (
         <>
@@ -35,7 +43,7 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
                                 <Link to={menu[6].path.replace(':profileId', currentUser.uid)} className={`user-profile`}>{currentUser.displayName}</Link>
                             </div>
                             <Link className={`cart-btn ${menu[7].isActive ? `active` : ''}`} to={menu[7].path}>/ {menu[7].label}</Link>
-                            <Link className={`logout-btn ${menu[8].isActive ? `active` : ''}`} onClick={handleLogout} to={menu[8].path}>/ {menu[8].label}</Link>
+                            <Link className={`logout-btn ${menu[8].isActive ? `active` : ''}`} onClick={handleLogout} to={menu[8].path}>{handleLoading}</Link>
                         </div>
                     ) : (
                         <div className="logged-out">

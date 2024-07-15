@@ -4,6 +4,7 @@
   - [Demo Screenshots](#demo-screenshots)
   - [Build with](#build-with)
   - [Installation](#installation)
+  - [Data](#data)
   - [Links](#links)
 
 ## Demo Screenshots
@@ -78,6 +79,20 @@ http://localhost:5173/
 
 ```
 
+## Data
+```bash
+
+Pre-seed data:
+
+Admin
+email : admin@nbacards.com
+password: admin123
+
+User
+email: asd@asd.bg
+password: asdasd
+
+```
 ## Links
 https://www.svgrepo.com/
 

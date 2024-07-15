@@ -70,6 +70,8 @@ export default function RegisterModal({ setIsRegisterOpen }) {
         event.stopPropagation();
     };
 
+    const handleLoading = isSubmitting ? "REGISTERING..." : "REGISTER";
+
     return (
         <>
 
@@ -107,7 +109,7 @@ export default function RegisterModal({ setIsRegisterOpen }) {
 
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
-                    <button className={styles.modalBtn} type="submit">{isSubmitting ? "REGISTERING..." : "REGISTER"}</button >
+                    <button className={styles.modalBtn} type="submit">{handleLoading}</button >
 
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form >
