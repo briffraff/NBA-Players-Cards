@@ -18,9 +18,11 @@ export default function RegisterModal({ setIsRegisterOpen }) {
     });
     const navigate = useNavigate();
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleRegistration = async (event) => {
         event.preventDefault();
+        setIsSubmitting(true);
 
         if (form.password !== form.repeatPassword) {
             setError("Passwords do not match");
@@ -40,6 +42,8 @@ export default function RegisterModal({ setIsRegisterOpen }) {
             navigate("/")
         } catch (error) {
             setError(error.message);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -103,7 +107,7 @@ export default function RegisterModal({ setIsRegisterOpen }) {
 
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
-                    <button className={styles.modalBtn} type="submit">REGISTER</button >
+                    <button className={styles.modalBtn} type="submit">{isSubmitting ? "REGISTERING..." : "REGISTER"}</button >
 
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form >

@@ -18,11 +18,13 @@ export default function LoginModal({ setIsLoginOpen }) {
         password: "",
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setIsSubmitting(true);
 
         try {
             const { user } = await loginUser(form.email, form.password);
@@ -32,6 +34,8 @@ export default function LoginModal({ setIsLoginOpen }) {
             navigate('/')
         } catch (error) {
             setError(error.message);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -50,6 +54,7 @@ export default function LoginModal({ setIsLoginOpen }) {
     useEffect(() => {
         userLoggedIn && setIsLoginOpen(false)
     }, [userLoggedIn, setIsLoginOpen]);
+
 
     return (
         <>
@@ -71,7 +76,9 @@ export default function LoginModal({ setIsLoginOpen }) {
 
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
-                    <button className={styles.modalBtn} type="submit">LOGIN</button>
+                    <button className={styles.modalBtn} type="submit">
+                        {isSubmitting ? "LOGGING..." : "LOGIN"}
+                    </button>
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form>
             </section>
