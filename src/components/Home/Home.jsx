@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom"
-import { useDefaultImages } from "../../contexts/defaultImagesContext"
+import { Link } from "react-router-dom";
+import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import { useAuth } from "../../contexts/authContext";
-import { useState } from 'react'
-import LoginModal from "../User/Login/LoginModal.jsx"
+import { useState } from 'react';
+import LoginModal from "../User/Login/LoginModal.jsx";
+import RegisterModal from "../User/Register/RegisterModal.jsx";
 
 export default function Home() {
     const { currentUser, userLoggedIn, loading } = useAuth();
+
     const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[1];
 
@@ -25,9 +29,9 @@ export default function Home() {
                                 <section className="log-reg">
                                     <p>You have no registration ?</p>
                                     <div className="reg-login">
-                                        <button className="login" onClick={() => setIsLoginOpen(true)}>Login</button>
+                                        <button className="login" onClick={() => setIsLoginOpen(true)}>LOGIN</button>
                                         <p>|</p>
-                                        <Link className="register" to="/register">register</Link>
+                                        <div className="register" onClick={() => setIsRegisterOpen(true)}>REGISTER</div>
                                     </div>
                                 </section>
                             )}
@@ -37,6 +41,7 @@ export default function Home() {
             </div>
 
             {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
+            {isRegisterOpen && <RegisterModal setIsRegisterOpen={setIsRegisterOpen} />}
         </>
     )
 }

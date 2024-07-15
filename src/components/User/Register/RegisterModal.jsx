@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../service/firebase/authentication/auth-service";
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
 
-export default function RegisterModal() {
+export default function RegisterModal({ setIsRegisterOpen }) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
 
@@ -62,14 +62,18 @@ export default function RegisterModal() {
         }
     };
 
+    const handleModalClick = (event) => {
+        event.stopPropagation();
+    };
+
     return (
         <>
 
-            <section id="registerModal" className={styles.modalBackground}>
-                <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleRegistration}>
+            <section id="registerModal" className={styles.modalBackground} onClick={() => setIsRegisterOpen(false)}>
+                <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleRegistration} onClick={handleModalClick}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Register</h1>
-                        <div className={styles.esc}>x</div>
+                        <div className={styles.esc} onClick={() => setIsRegisterOpen(false)}>x</div>
                     </div>
 
                     <div className={styles.modalTextbox}>

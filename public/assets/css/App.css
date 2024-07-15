@@ -168,14 +168,11 @@ h6 {
   color: whitesmoke;
   padding: 8px 15px;
   transition: background-color 0.3s;
+  margin-right: 15px;
 }
 .site-header .header-btn:hover {
   transition: background-color 0.5s ease;
   background-color: #006bb7;
-}
-.site-header .profile-btn {
-  background-color: #333;
-  color: whitesmoke;
 }
 
 .site-footer {
@@ -462,6 +459,7 @@ h6 {
 }
 .content-wrapper .logout-box .log-reg .login,
 .content-wrapper .logout-box .log-reg .register {
+  cursor: pointer;
   margin: 2vh;
   width: 150px;
   background-color: #006bb7;
@@ -752,6 +750,7 @@ h6 {
 }
 .welcome-media .welcome .log-reg .login,
 .welcome-media .welcome .log-reg .register {
+  cursor: pointer;
   margin: 2vh;
   width: 150px;
   background-color: #006bb7;
@@ -822,14 +821,21 @@ h6 {
   border-left: 5px solid #006bb7;
   color: whitesmoke;
 }
+.user-section .user-section-info .user-info div {
+  color: #777;
+  font-weight: 800;
+}
 .user-section .user-section-info .user-info .user-info-values {
-  color: #006bb7;
+  color: whitesmoke;
+  font-weight: 800;
   letter-spacing: 0.2rem;
+  margin-left: 10px;
 }
 .user-section .user-items {
   margin-top: 50px;
 }
 .user-section .user-items .user-items-topic {
+  font-weight: 800;
   width: 550px;
   letter-spacing: 0.5rem;
   text-align: center;
@@ -841,6 +847,7 @@ h6 {
   margin-top: 50px;
 }
 .user-section .liked-items .liked-items-topic {
+  font-weight: 800;
   width: 550px;
   letter-spacing: 0.5rem;
   text-align: center;

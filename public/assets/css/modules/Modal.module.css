@@ -1,5 +1,5 @@
 .modal-background {
-  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
   width: 100vw;
   height: 100vh;
   top: 50%;
@@ -16,12 +16,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   border-radius: 8px;
+  border: 1px solid rgb(58, 73, 75);
   background-color: #0e1113;
   color: whitesmoke;
   padding: 15px;
   margin-bottom: 100px;
-  box-shadow: 0px 10px 20px 0 rgba(31, 28, 28, 0.8);
   z-index: 10;
+  box-shadow: 0px 0px 96px 28px rgba(131, 131, 131, 0.4);
 }
 .modal-background .modal-box .modal-header {
   display: flex;
@@ -97,7 +98,7 @@
   margin-right: 2%;
 }
 .modal-background .modal-box .forgot:hover {
-  color: #f30035;
+  color: #777;
 }
 .modal-background .centered {
   position: fixed;
@@ -106,6 +107,8 @@
   transform: translate(-50%, -50%);
 }
 .modal-background .error-message {
-  color: red;
+  color: rgb(255, 255, 255);
+  background-color: #aa0b2d;
   margin-top: 10px;
+  width: 90%;
 }/*# sourceMappingURL=Modal.module.css.map */

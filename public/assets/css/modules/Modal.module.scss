@@ -1,5 +1,8 @@
+@import "../../scss/Variables";
+@import "../../scss/Functions";
+
 .modal-background {
-  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
   width: 100vw;
   height: 100vh;
   top: 50%;
@@ -16,12 +19,16 @@
     flex-direction: column;
     flex-wrap: wrap;
     border-radius: 8px;
+    border: 1px solid rgb(58, 73, 75);
     background-color: #0e1113;
-    color: whitesmoke;
+    color: getColor(bg-0);
     padding: 15px;
     margin-bottom: 100px;
-    box-shadow: 0px 10px 20px 0 rgba(31, 28, 28, 0.8);
     z-index: 10;
+
+    -webkit-box-shadow: 0px 0px 96px 28px rgba(131, 131, 131, 0.4);
+    -moz-box-shadow: 0px 0px 96px 28px rgba(131, 131, 131, 0.4);
+    box-shadow: 0px 0px 96px 28px rgba(131, 131, 131, 0.4);
 
     .modal-header {
       display: flex;
@@ -32,7 +39,7 @@
 
       .modal-slogan {
         font-size: 40px;
-        border-bottom: 6px solid #006bb7;
+        border-bottom: 6px solid getColor(nba-p);
         margin-bottom: 20px;
         padding: 13px 0;
         width: 90%;
@@ -44,7 +51,7 @@
         text-align: center;
         align-content: center;
         font-weight: 500;
-        background-color: #aa0b2d;
+        background-color: getColor(nba-s);
         border-radius: 8px;
         padding: 0 2px 2px 2px;
         cursor: pointer;
@@ -61,7 +68,7 @@
       font-size: 20px;
       padding: 8px 0 8px 8px;
       margin: 8px 0 8px 8px;
-      border-bottom: 1px solid #006bb7;
+      border-bottom: 1px solid getColor(nba-p);
 
       i {
         width: 16px;
@@ -74,7 +81,7 @@
         border: none;
         outline: none;
         background: none;
-        color: whitesmoke;
+        color: getColor(bg-0);
         font-size: 16px;
         width: 80%;
       }
@@ -82,8 +89,8 @@
 
     .modal-btn {
       width: 100%;
-      background: #006bb7;
-      border: 2px solid #006bb7;
+      background: getColor(nba-p);
+      border: 2px solid getColor(nba-p);
       color: white;
       padding: 5px;
       font-size: 18px;
@@ -93,7 +100,7 @@
 
       &:hover {
         background-color: whitesmoke;
-        color: #006bb7;
+        color: getColor(nba-p);
       }
     }
 
@@ -105,7 +112,7 @@
       margin-right: 2%;
     }
     .forgot:hover {
-      color: #f30035;
+      color: getColor(bg-7)
     }
   }
 
@@ -117,7 +124,9 @@
   }
 
   .error-message {
-    color: red;
+    color: rgb(255, 255, 255);
+    background-color: getColor(nba-s);
     margin-top: 10px;
+    width: 90%;
   }
 }

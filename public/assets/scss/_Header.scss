@@ -129,15 +129,11 @@ $gap: 20px;
     color: getColor(bg-0);
     padding: $padding;
     transition: background-color 0.3s;
+    margin-right: 15px;
 
     &:hover {
       transition: background-color 0.5s ease;
       background-color: getColor(nba-p);
     }
-  }
-
-  .profile-btn{
-    background-color: #333;
-    color: whitesmoke;
   }
 }

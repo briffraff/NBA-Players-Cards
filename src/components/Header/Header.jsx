@@ -4,7 +4,7 @@ import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 
-export default function Header({ menu, onLoginClick }) {
+export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
 
@@ -39,8 +39,8 @@ export default function Header({ menu, onLoginClick }) {
                         </div>
                     ) : (
                         <div className="logged-out">
-                            <button className={`header-btn profile-btn${menu[3].isActive ? `active` : ''}`} onClick={onLoginClick}>/ {menu[3].label}</button>
-                            <Link className={`header-btn ${menu[4].isActive ? `active` : ''}`} to="">/ {menu[4].label}</Link>
+                            <div className={`header-btn ${menu[3].isActive ? `active` : ''}`} onClick={onLoginClick}>/ {menu[3].label}</div>
+                            <div className={`header-btn ${menu[4].isActive ? `active` : ''}`} onClick={onRegisterClick}>/ {menu[4].label}</div>
                         </div>
                     )}
                 </div>

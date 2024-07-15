@@ -36,9 +36,16 @@
       border-left: 5px solid getColor(nba-p);
       color: getColor(bg-0);
 
+      div {
+        color: getColor(bg-7);
+        font-weight: 800;
+      }
+
       .user-info-values {
-        color: getColor(nba-p);
+        color: getColor(bg-0);
+        font-weight: 800;
         letter-spacing: 0.2rem;
+        margin-left: 10px;
       }
     }
   }
@@ -46,6 +53,7 @@
   .user-items {
     margin-top: 50px;
     .user-items-topic {
+      font-weight: 800;
       width: 550px;
       letter-spacing: 0.5rem;
       text-align: center;
@@ -58,6 +66,7 @@
   .liked-items {
     margin-top: 50px;
     .liked-items-topic {
+      font-weight: 800;
       width: 550px;
       letter-spacing: 0.5rem;
       text-align: center;
