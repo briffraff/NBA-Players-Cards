@@ -64,7 +64,7 @@ export default function Register() {
         <>
             <div className="site-wrapper">
                 <section className=" welcome-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                    <section className="register-content">
+                    <section className="login-content">
                         <form className="login-box" onSubmit={handleRegistration}>
                             <h1 className="box-slogan">Register</h1>
 

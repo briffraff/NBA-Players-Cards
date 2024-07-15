@@ -8,14 +8,14 @@ import DefaultImagesProvider from "../contexts/defaultImagesContext";
 
 import Layout from "./_Layout/Layout";
 import Home from "./Home/Home";
-import Login from "./User/Login/Login";
-import Register from "./User/Register/Register";
 import Logout from "./User/Logout/Logout";
+import AboutNba from "./About/AboutNba";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
-import AboutNba from "./About/AboutNba";
 import Profile from "./Profile/Profile";
 import NotFound from "./404/404";
+import RegisterModal from "./User/Register/RegisterModal";
+import LoginModal from "./User/Login/LoginModal";
 
 export default function App() {
 
@@ -32,8 +32,6 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<Layout />}>
                                 <Route index path="/" element={<Home />}></Route>
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
                                 <Route path="/logout" element={<Logout />} />
                                 <Route path="/about-nba" element={<AboutNba />} />
                                 <Route path="/teams" element={<Teams />} />
@@ -42,6 +40,8 @@ export default function App() {
                                 {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
                                 <Route path="*" element={<NotFound />} />
                             </Route>
+                            <Route path="/register" element={<RegisterModal />} />
+                            <Route path="/login" element={<LoginModal />} />
                         </Routes>
                     </BrowserRouter>
                 </DefaultImagesProvider>

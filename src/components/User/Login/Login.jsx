@@ -39,7 +39,7 @@ export default function Login() {
     return (
         <>
             <div className="site-wrapper">
-                <section className=" welcome-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <section className="welcome-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <section className="login-content">
                         <form className="login-box" onSubmit={handleLogin}>
                             <h1 className="box-slogan">Login</h1>

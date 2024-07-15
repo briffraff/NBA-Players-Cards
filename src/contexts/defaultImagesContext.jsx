@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useContext, createContext } from "react";
-import { listAllImages } from "../service/firebase/storage/storage-service";
+import { getAllImagesFromStorage } from "../service/firebase/storage/storage-service";
 
 const DefaultImagesContext = createContext();
 
@@ -13,7 +13,7 @@ export default function DefaultImagesProvider({ children }) {
     useEffect(() => {
         const fetchImages = async () => {
             const defaultImagesStorageFolder = "content"
-            const images = await listAllImages(defaultImagesStorageFolder);
+            const images = await getAllImagesFromStorage(defaultImagesStorageFolder);
             if (images != undefined && images) {
                 setDefaultImages(images)
             }
