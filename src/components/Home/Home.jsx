@@ -29,9 +29,9 @@ export default function Home() {
                                 <section className="log-reg">
                                     <p>You have no registration ?</p>
                                     <div className="reg-login">
-                                        <button className="login" onClick={() => setIsLoginOpen(true)}>LOGIN</button>
+                                        <div className="login" onClick={() => setIsLoginOpen(true)}>login</div>
                                         <p>|</p>
-                                        <div className="register" onClick={() => setIsRegisterOpen(true)}>REGISTER</div>
+                                        <div className="register" onClick={() => setIsRegisterOpen(true)}>register</div>
                                     </div>
                                 </section>
                             )}

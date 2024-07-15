@@ -459,6 +459,7 @@ h6 {
 }
 .content-wrapper .logout-box .log-reg .login,
 .content-wrapper .logout-box .log-reg .register {
+  text-transform: uppercase;
   cursor: pointer;
   margin: 2vh;
   width: 150px;
@@ -750,6 +751,7 @@ h6 {
 }
 .welcome-media .welcome .log-reg .login,
 .welcome-media .welcome .log-reg .register {
+  text-transform: uppercase;
   cursor: pointer;
   margin: 2vh;
   width: 150px;

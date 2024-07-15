@@ -24,7 +24,7 @@ export default function Logout() {
                     <section className="log-reg">
                         <p>You have no registration ?</p>
                         <div>
-                            <button className="login" onClick={() => setIsLoginOpen(true)}>Login</button>
+                            <div className="login" onClick={() => setIsLoginOpen(true)}>login</div>
                             <p>|</p>
                             <div className="register" onClick={() => setIsRegisterOpen(true)}>register</div>
                         </div>
