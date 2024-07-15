@@ -6,26 +6,24 @@ import {
     reauthenticateWithCredential,
     EmailAuthProvider,
     deleteUser as firebaseDeleteUser
-}
-    from "firebase/auth";
+} from "firebase/auth";
 
 import { auth, db } from "../firebase-config";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-
 
 export const registerUser = async (username, email, password) => {
     try {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser, {
             displayName: username,
-        })
+        });
 
         const userCollectionRef = collection(db, "users");
-        const q = query(userCollectionRef, where("uid", "==", auth.currentUser.uid))
+        const q = query(userCollectionRef, where("uid", "==", auth.currentUser.uid));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-            let errorMessage = `User ${auth.currentUser.username} already exists`
+            let errorMessage = `User ${auth.currentUser.username} already exists`;
             console.log(errorMessage);
             throw new Error(errorMessage);
         }
@@ -36,9 +34,9 @@ export const registerUser = async (username, email, password) => {
             profilePictureUrl: "",
             uid: auth.currentUser.uid,
             username: username,
-        }
+        };
 
-        await addDoc(userCollectionRef, updatedUserInfo)
+        await addDoc(userCollectionRef, updatedUserInfo);
 
         return { user: userCredentials.user };
 
@@ -97,7 +95,7 @@ export const deleteUser = async (user) => {
         await firebaseDeleteUser(user);
         console.log('User deleted successfully');
     } catch (error) {
-        throw new Error(error.code);
+        throw new Error(error.message);  // Change to error.message for more descriptive error
     }
 };
 
@@ -105,8 +103,7 @@ export const loginUser = async (email, password) => {
     try {
         const userCredentials = await signInWithEmailAndPassword(auth, email, password);
         return { user: userCredentials.user };
-    }
-    catch (error) {
+    } catch (error) {
         let errorMessage = "";
         console.log(errorMessage);
         switch (error.message) {
@@ -120,7 +117,7 @@ export const loginUser = async (email, password) => {
                 errorMessage = "Invalid credentials";
                 break;
             case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
-                errorMessage = "Too many failed login attemps. Account is temporarily disabled!";
+                errorMessage = "Too many failed login attempts. Account is temporarily disabled!";
                 break;
             default:
                 errorMessage = error.message;

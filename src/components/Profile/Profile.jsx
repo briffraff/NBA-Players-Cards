@@ -33,7 +33,6 @@ export default function Profile() {
             try {
                 const userById = await getFirestoreUserById(profileId);
                 setUserFirestore(userById);
-                // console.log("Fetched user:", userById);
                 setError("");
             } catch (error) {
                 console.error("Error fetching user data:", error);
@@ -46,7 +45,7 @@ export default function Profile() {
 
     return (
         <>
-            {authenticatedUser && userFirestore.uid == profileId
+            {authenticatedUser && userFirestore.uid === profileId
 
                 ? (<section className="user-section">
                     <div className="user-section-info">
