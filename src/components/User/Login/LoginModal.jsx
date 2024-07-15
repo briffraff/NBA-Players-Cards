@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../../../public/assets/css/modules/Modal.module.css"
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../service/firebase/authentication/auth-service";
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
+import { useAuth } from "../../../contexts/authContext";
 
 export default function LoginModal({ setIsLoginOpen }) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
 
-    const navigate = useNavigate();
+    const { currentUser, userLoggedIn, loading } = useAuth();
+
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
+
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -43,6 +47,10 @@ export default function LoginModal({ setIsLoginOpen }) {
         event.stopPropagation();
     };
 
+    useEffect(() => {
+        userLoggedIn && setIsLoginOpen(false)
+    }, [userLoggedIn, setIsLoginOpen]);
+
     return (
         <>
             <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setIsLoginOpen(false)}>
@@ -67,7 +75,6 @@ export default function LoginModal({ setIsLoginOpen }) {
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form>
             </section>
-
         </>
     );
 }
