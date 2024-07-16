@@ -1,30 +1,30 @@
 import NotFound from "../404/404";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { reAuthentication, deleteUser } from "../../service/firebase/authentication/auth-service";
-import { useAuth } from "../../contexts/authContext";
 import { getFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
+import { auth } from "../../service/firebase/firebase-config";
+import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
 
 export default function Profile() {
 
+    const [userFirestore, setUserFirestore] = useState({});
+    const user = auth.currentUser;
+    const { profileId } = useParams();
     const [error, setError] = useState();
     const navigate = useNavigate();
-    const { profileId } = useParams();
-    const [userFirestore, setUserFirestore] = useState({});
 
-    const authContext = useAuth();
-    const authenticatedUser = authContext.currentUser;
 
     const handleDeleteUser = async (event) => {
         event.preventDefault();
 
         try {
-            await reAuthentication(authenticatedUser);
-            await deleteUser(authenticatedUser);
+            await reAuthentication(user);
+            await deleteAuthUser(user);
             setError("");
             navigate('/logout');
         } catch (error) {
             setError(error.message);
+            console.log('Error deleting user:', error);
         }
     }
 
@@ -41,18 +41,18 @@ export default function Profile() {
         };
 
         fetchUserData();
-    }, [profileId]);
+    }, [profileId, user]);
 
     return (
         <>
-            {authenticatedUser && userFirestore.uid === profileId
+            {user.uid === userFirestore.uid && profileId
 
                 ? (<section className="user-section">
                     <div className="user-section-info">
                         <div className="delete-user" onClick={handleDeleteUser}>Delete User</div>
                         <div className="user-info">
-                            <div>Username : <a className="user-info-values">{authenticatedUser.displayName}</a></div>
-                            <div>Email : <a className="user-info-values">{userFirestore.email}</a></div>
+                            <div>Username : <a className="user-info-values">{user.displayName}</a></div>
+                            <div>Email : <a className="user-info-values">{user.email}</a></div>
                             <div>Role : <a className="user-info-values">{`${userFirestore.admin === true ? "Admin" : "User"}`}</a></div>
                         </div>
                     </div>

@@ -67,12 +67,16 @@ export const registerUser = async (username, email, password) => {
 
 export const reAuthentication = async (user) => {
     try {
+
         const password = prompt('Please enter your password for re-authentication:');
+
         if (!password) {
-            throw new Error('Missing password');
+            throw new Error("Missing password!")
         }
+
         const credential = EmailAuthProvider.credential(user.email, password);
-        await reauthenticateWithCredential(user, credential);
+        const reauth = await reauthenticateWithCredential(user, credential);
+
 
     } catch (error) {
         let errorMessage = "";
@@ -86,18 +90,17 @@ export const reAuthentication = async (user) => {
             default:
                 errorMessage = error.message;
         }
+        
         throw new Error(errorMessage);
     }
 };
 
-export const deleteUser = async (user) => {
-    try {
-        await firebaseDeleteUser(user);
+export const deleteAuthUser = async (user) => {
+    await firebaseDeleteUser(user).then(() => {
         console.log('User deleted successfully');
-    } catch (error) {
-        throw new Error(error.message);  // Change to error.message for more descriptive error
-    }
+    })
 };
+
 
 export const loginUser = async (email, password) => {
     try {
