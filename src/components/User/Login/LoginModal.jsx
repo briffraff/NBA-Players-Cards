@@ -30,7 +30,7 @@ export default function LoginModal({ setIsLoginOpen }) {
             const { user } = await loginUser(form.email, form.password);
             console.log(user);
             setForm({ email: "", password: "" });
-            localStorage.clear();
+            localStorage.removeItem('loginEmail');
             setError("");
             navigate('/')
         } catch (error) {
@@ -52,6 +52,14 @@ export default function LoginModal({ setIsLoginOpen }) {
         event.stopPropagation();
     };
 
+
+    const handleResetForm = (event) => {
+        event.preventDefault();
+
+        localStorage.removeItem('loginEmail');
+        setForm({ email: "", password: "" });
+    }
+
     useEffect(() => {
         userLoggedIn && setIsLoginOpen(false)
     }, [userLoggedIn, setIsLoginOpen]);
@@ -63,11 +71,11 @@ export default function LoginModal({ setIsLoginOpen }) {
             ...prevForm,
             email: savedLoginEmail || "",
         }));
-    },[]);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('loginEmail', form.email);
-    });
+    }, [form.email]);
 
     const handleLoading = isSubmitting ? "LOGGING..." : "LOGIN";
 
@@ -94,6 +102,8 @@ export default function LoginModal({ setIsLoginOpen }) {
                     <button className={styles.modalBtn} type="submit">
                         {handleLoading}
                     </button>
+
+                    <p className={styles.forgot} onClick={handleResetForm}>Reset</p>
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form>
             </section>
