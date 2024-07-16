@@ -30,6 +30,7 @@ export default function LoginModal({ setIsLoginOpen }) {
             const { user } = await loginUser(form.email, form.password);
             console.log(user);
             setForm({ email: "", password: "" });
+            localStorage.clear();
             setError("");
             navigate('/')
         } catch (error) {
@@ -55,9 +56,21 @@ export default function LoginModal({ setIsLoginOpen }) {
         userLoggedIn && setIsLoginOpen(false)
     }, [userLoggedIn, setIsLoginOpen]);
 
+    useEffect(() => {
+        const savedLoginEmail = localStorage.getItem('loginEmail');
+
+        setForm((prevForm) => ({
+            ...prevForm,
+            email: savedLoginEmail || "",
+        }));
+    },[]);
+
+    useEffect(() => {
+        localStorage.setItem('loginEmail', form.email);
+    });
 
     const handleLoading = isSubmitting ? "LOGGING..." : "LOGIN";
-    
+
     return (
         <>
             <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setIsLoginOpen(false)}>
