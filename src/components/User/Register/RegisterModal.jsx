@@ -42,6 +42,8 @@ export default function RegisterModal({ setIsRegisterOpen }) {
             const { user } = await registerUser(form.username, form.email, form.password);
             console.log(user);
             setForm({ email: "", password: "", repeatPassword: "", username: "" });
+            localStorage.removeItem("registerUsername");
+            localStorage.removeItem("registerEmail");
             setError("");
             navigate("/")
         } catch (error) {
@@ -74,9 +76,33 @@ export default function RegisterModal({ setIsRegisterOpen }) {
         event.stopPropagation();
     };
 
+    const handleResetForm = (event) => {
+        event.preventDefault();
+
+        localStorage.removeItem("registerUsername");
+        localStorage.removeItem("registerEmail");
+        setForm({ email: "", password: "", repeatPassword: "", username: "" });
+    }
+
     useEffect(() => {
         userLoggedIn && setIsRegisterOpen(false)
     }, [userLoggedIn, setIsRegisterOpen]);
+
+    useEffect(() => {
+        const savedRegisterUsername = localStorage.getItem("registerUsername");
+        const savedRegisterEmail = localStorage.getItem("registerEmail");
+
+        setForm((prevForm) => ({
+            ...prevForm,
+            username: savedRegisterUsername || "",
+            email: savedRegisterEmail || "",
+        }));
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("registerUsername", form.username);
+        localStorage.setItem("registerEmail", form.email);
+    }, [form.username, form.email]);
 
     const handleLoading = isSubmitting ? "REGISTERING..." : "REGISTER";
 
@@ -121,6 +147,7 @@ export default function RegisterModal({ setIsRegisterOpen }) {
                         {handleLoading}
                     </button>
 
+                    <p className={styles.forgot} onClick={handleResetForm}>Reset</p>
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form >
 
