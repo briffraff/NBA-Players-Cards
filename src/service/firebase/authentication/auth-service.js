@@ -65,18 +65,14 @@ export const registerUser = async (username, email, password) => {
     }
 };
 
-export const reAuthentication = async (user) => {
+export const reAuthentication = async (user, password) => {
     try {
-
-        const password = prompt('Please enter your password for re-authentication:');
-
         if (!password) {
             throw new Error("Missing password!")
         }
 
         const credential = EmailAuthProvider.credential(user.email, password);
-        const reauth = await reauthenticateWithCredential(user, credential);
-
+        await reauthenticateWithCredential(user, credential);
 
     } catch (error) {
         let errorMessage = "";
@@ -90,7 +86,7 @@ export const reAuthentication = async (user) => {
             default:
                 errorMessage = error.message;
         }
-        
+
         throw new Error(errorMessage);
     }
 };
