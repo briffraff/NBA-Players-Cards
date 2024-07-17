@@ -4,8 +4,10 @@ import styles from "../../../public/assets/css/modules/Modal.module.css"
 
 import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
+import { deleteFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
 
-export default function DeleteUserConfirmation({ setShowDeleteConfirm, user }) {
+
+export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth, userFirestore }) {
 
     const { currentUser, userLoggedIn, loading } = useAuth();
     const [password, setPassword] = useState("");
@@ -18,8 +20,9 @@ export default function DeleteUserConfirmation({ setShowDeleteConfirm, user }) {
         setIsSubmitting(true);
 
         try {
-            await reAuthentication(user, password);
-            await deleteAuthUser(user);
+            await reAuthentication(userAuth, password);
+            await deleteAuthUser(userAuth);
+            await deleteFirestoreUserById(userAuth.uid, userFirestore.uid);
             setError("");
             navigate('/logout');
         } catch (error) {

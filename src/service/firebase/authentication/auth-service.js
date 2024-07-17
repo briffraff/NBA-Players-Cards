@@ -93,10 +93,9 @@ export const reAuthentication = async (user, password) => {
 
 export const deleteAuthUser = async (user) => {
     await firebaseDeleteUser(user).then(() => {
-        console.log('User deleted successfully');
+        // console.log('Auth User deleted successfully');
     })
 };
-
 
 export const loginUser = async (email, password) => {
     try {

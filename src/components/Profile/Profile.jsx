@@ -57,7 +57,7 @@ export default function Profile() {
                 : (<NotFound />)
             }
 
-            {showDeleteConfirm && <DeleteUserConfirmation setShowDeleteConfirm={setShowDeleteConfirm} user={user} />}
+            {showDeleteConfirm && <DeleteUserConfirmation setShowDeleteConfirm={setShowDeleteConfirm} userAuth={user} userFirestore={userFirestore} />}
         </>
     )
 }
