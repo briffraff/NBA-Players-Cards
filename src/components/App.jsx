@@ -17,10 +17,10 @@ import NotFound from "./404/404";
 
 export default function App() {
 
-    // // // SEED init DATA
-    useEffect(() => {
-        Start();
-    }, [])
+    // // SEED init DATA
+    // useEffect(() => {
+    //   Start();
+    // }, [])
 
     return (
         <>

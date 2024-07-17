@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import { useDefaultImages } from "../../../contexts/defaultImagesContext"
 import { useState } from "react";
 
@@ -9,8 +9,15 @@ export default function Logout() {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
 
-    const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLoginClick = () => {
+        navigate(`${location.pathname}?modal=login`);
+    };
+
+    const handleRegisterClick = () => {
+        navigate(`${location.pathname}?modal=register`);
+    };
 
     return (
         <>
@@ -24,16 +31,13 @@ export default function Logout() {
                     <section className="log-reg">
                         <p>You have no registration ?</p>
                         <div>
-                            <div className="login" onClick={() => setIsLoginOpen(true)}>login</div>
+                            <div className="login" onClick={handleLoginClick}>login</div>
                             <p>|</p>
-                            <div className="register" onClick={() => setIsRegisterOpen(true)}>register</div>
+                            <div className="register" onClick={handleRegisterClick}>register</div>
                         </div>
                     </section>
                 </section>
             </div>
-
-            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
-            {isRegisterOpen && <RegisterModal setIsRegisterOpen={setIsRegisterOpen} />}
         </>
     )
 }

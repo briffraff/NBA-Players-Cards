@@ -7,7 +7,7 @@ import { loginUser } from "../../../service/firebase/authentication/auth-service
 import { useDefaultImages } from "../../../contexts/defaultImagesContext";
 import { useAuth } from "../../../contexts/authContext";
 
-export default function LoginModal({ setIsLoginOpen }) {
+export default function LoginModal({ setIsLoginOpen}) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
 
