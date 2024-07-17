@@ -1,6 +1,6 @@
-import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
-import { Outlet, useLocation } from "react-router-dom"
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginModal from "../User/Login/LoginModal";
 import RegisterModal from "../User/Register/RegisterModal";
@@ -18,10 +18,11 @@ export default function Layout() {
         { labelId: 8, label: "Logout", path: "/logout", isActive: false, public: false },
     ]);
 
-    const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
     const location = useLocation();
+    const navigate = useNavigate();
+    const searchParams = new URLSearchParams(location.search);
+    const modalType = searchParams.get("modal");
 
     useEffect(() => {
         const currentPath = location.pathname;
@@ -30,21 +31,31 @@ export default function Layout() {
             isActive: item.path === currentPath,
         })));
 
-        setIsLoginOpen(false);
-        setIsRegisterOpen(false);
-
     }, [location.pathname]);
 
-    const handleLoginClick = () => setIsLoginOpen(true);
-    const handleRegisterClick = () => setIsRegisterOpen(true);
+    const handleLoginClick = () => {
+        navigate(`${location.pathname}?modal=login`);
+    };
+
+    const handleRegisterClick = () => {
+        navigate(`${location.pathname}?modal=register`);
+    };
+
+    const handleCloseModal = () => {
+        searchParams.delete("modal");
+        navigate({
+            pathname: location.pathname,
+            search: searchParams.toString(),
+        });
+    };
 
     return (
         <>
             <Header menu={menuItems} onLoginClick={handleLoginClick} onRegisterClick={handleRegisterClick} />
             <Outlet />
             <Footer />
-            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
-            {isRegisterOpen && <RegisterModal setIsRegisterOpen={setIsRegisterOpen} />}
+            {modalType === "login" && <LoginModal setIsLoginOpen={handleCloseModal} />}
+            {modalType === "register" && <RegisterModal setIsRegisterOpen={handleCloseModal} />}
         </>
-    )
+    );
 }

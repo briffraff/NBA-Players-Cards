@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import { useAuth } from "../../contexts/authContext";
 import { useState } from 'react';
@@ -8,11 +8,17 @@ import RegisterModal from "../User/Register/RegisterModal.jsx";
 export default function Home() {
     const { currentUser, userLoggedIn, loading } = useAuth();
 
-    const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[1];
+    const navigate = useNavigate();
+
+    const handleLoginClick = () => {
+        navigate(`${location.pathname}?modal=login`);
+    };
+
+    const handleRegisterClick = () => {
+        navigate(`${location.pathname}?modal=register`);
+    };
 
     return (
         <>
@@ -29,9 +35,9 @@ export default function Home() {
                                 <section className="log-reg">
                                     <p>You have no registration ?</p>
                                     <div className="reg-login">
-                                        <div className="login" onClick={() => setIsLoginOpen(true)}>login</div>
+                                        <div className="login" onClick={handleLoginClick}>login</div>
                                         <p>|</p>
-                                        <div className="register" onClick={() => setIsRegisterOpen(true)}>register</div>
+                                        <div className="register" onClick={handleRegisterClick}>register</div>
                                     </div>
                                 </section>
                             )}
@@ -40,8 +46,6 @@ export default function Home() {
                 </section>
             </div>
 
-            {isLoginOpen && <LoginModal setIsLoginOpen={setIsLoginOpen} />}
-            {isRegisterOpen && <RegisterModal setIsRegisterOpen={setIsRegisterOpen} />}
         </>
     )
 }
