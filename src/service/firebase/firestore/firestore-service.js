@@ -1,5 +1,5 @@
 import { db } from "../firebase-config";
-import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore";
+import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId } from "firebase/firestore";
 
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
@@ -67,7 +67,7 @@ export const getFirestoreUserById = async (profileId) => {
         console.log("Error fetching user: ", error);
         throw error;
     }
-  
+
 };
 
 
@@ -95,3 +95,18 @@ export const addSubscriber = async (email) => {
         throw error;
     }
 };
+
+export const deleteFirestoreUserById = async (userAuthId, userFirestoreId) => {
+    if (userAuthId === userFirestoreId) {
+
+        const q = query(usersCollectionRef, where("uid", "==", userAuthId));
+        const querySnapshot = await getDocs(q);
+        const documentID = querySnapshot.docs[0].id;
+        const docRef = doc(db, "users", documentID);
+
+        if (docRef) {
+            await deleteDoc(docRef);
+            // console.log("Firebase User deleted successfully!")
+        }
+    }
+}
