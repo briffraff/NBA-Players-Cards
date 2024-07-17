@@ -1,0 +1,16 @@
+[
+    {
+        "userId": "1",
+        "username": "Admin",
+        "email": "admin@nbacards.com",
+        "admin": true,
+        "profilePictureUrl": ""
+    },
+    {
+        "userId": "2",
+        "username": "Stavri",
+        "email": "stavri@asd.com",
+        "admin": false,
+        "profilePictureUrl": ""
+    }
+]

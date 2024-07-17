@@ -30,11 +30,13 @@ export default function RegisterModal({ setIsRegisterOpen }) {
 
         if (form.password !== form.repeatPassword) {
             setError("Passwords do not match");
+            setIsSubmitting(false);
             return;
         }
 
         if (form.username === "") {
             setError("Username cannot be empty");
+            setIsSubmitting(false);
             return;
         }
 
@@ -104,11 +106,16 @@ export default function RegisterModal({ setIsRegisterOpen }) {
         localStorage.setItem("registerEmail", form.email);
     }, [form.username, form.email]);
 
+    useEffect(() => {
+        if (!isSubmitting) {
+            setError("");
+        }
+    }, [isSubmitting]);
+
     const handleLoading = isSubmitting ? "REGISTERING..." : "REGISTER";
 
     return (
         <>
-
             <section id="registerModal" className={styles.modalBackground} onClick={() => setIsRegisterOpen(false)}>
                 <form className={`${styles.modalBox} ${styles.centered}`} onSubmit={handleRegistration} onClick={handleModalClick}>
                     <div className={styles.modalHeader}>

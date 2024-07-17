@@ -36,25 +36,33 @@
 //     console.log('Data successfully uploaded to Firestore!');
 // };
 
-
 import { db } from "../../firebase-config";
-import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore";
+import { query, where, getDocs, collection, addDoc } from "firebase/firestore";
 
 const collections = {
+    idFields: {
+        teams: "teamId",
+        subscribers: "subscriberId",
+        cards: "cardId",
+        users: "userId"
+    },
     paths: {
         teams: "src/service/firebase/firestore/Seed/teams.json",
         subscribers: "src/service/firebase/firestore/Seed/subscribers.json",
         cards: "src/service/firebase/firestore/Seed/cards.json",
+        users: "src/service/firebase/firestore/Seed/users.json"
     },
     dbNames: {
         teams: "nba-teams",
         subscribers: "subscribers",
         cards: "nba-cards",
+        users: "users"
     },
     queries: {
-        teams: ["name", "id"],
+        teams: ["name", "teamId"],
         subscribers: ["email"],
-        cards: ["playerName" , "cardId"],
+        cards: ["playerName", "cardId"],
+        users: ["email"]
     }
 };
 
@@ -65,6 +73,7 @@ const seedDataToFirestore = async (type) => {
 
         const collectionRef = collection(db, collections.dbNames[type]);
         const queryFields = collections.queries[type];
+        const idField = collections.idFields[type];
 
         for (const item of data) {
             try {
@@ -73,12 +82,15 @@ const seedDataToFirestore = async (type) => {
                 const itemSnapshot = await getDocs(checkForItem);
 
                 if (!itemSnapshot.empty) {
-                    console.log(`${item.name || item.email} already exists`);
+                    console.log(`${item.name || item.email || item.playerName || item.id} already exists`);
                     continue;
                 }
 
                 await addDoc(collectionRef, item);
-                console.log(`Item with ID ${item.id} successfully added to Firestore!`);
+
+                if (idField && item[idField]) {
+                    console.log(`Item with ID ${item[idField]} successfully added to Firestore!`);
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -91,6 +103,7 @@ const seedDataToFirestore = async (type) => {
 
 export const Start = async () => {
     await seedDataToFirestore('teams');
-    await seedDataToFirestore('subscribers');
     await seedDataToFirestore('cards');
+    await seedDataToFirestore('subscribers');
+    // await seedDataToFirestore('users');
 };
