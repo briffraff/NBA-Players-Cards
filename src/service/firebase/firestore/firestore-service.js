@@ -96,17 +96,14 @@ export const addSubscriber = async (email) => {
     }
 };
 
-export const deleteFirestoreUserById = async (userAuthId, userFirestoreId) => {
-    if (userAuthId === userFirestoreId) {
+export const deleteFirestoreUserById = async (userAuthId) => {
+    const q = query(usersCollectionRef, where("uid", "==", userAuthId));
+    const querySnapshot = await getDocs(q);
+    const documentID = querySnapshot.docs[0].id;
+    const docRef = doc(db, "users", documentID);
 
-        const q = query(usersCollectionRef, where("uid", "==", userAuthId));
-        const querySnapshot = await getDocs(q);
-        const documentID = querySnapshot.docs[0].id;
-        const docRef = doc(db, "users", documentID);
-
-        if (docRef) {
-            await deleteDoc(docRef);
-            // console.log("Firebase User deleted successfully!")
-        }
+    if (docRef) {
+        await deleteDoc(docRef);
+        // console.log("Firebase User deleted successfully!")
     }
 }

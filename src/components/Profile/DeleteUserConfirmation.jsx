@@ -22,7 +22,9 @@ export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth,
         try {
             await reAuthentication(userAuth, password);
             await deleteAuthUser(userAuth);
-            await deleteFirestoreUserById(userAuth.uid, userFirestore.uid);
+            if (userAuth.uid === userFirestore.uid) {
+                await deleteFirestoreUserById(userAuth.uid);
+            }
             setError("");
             navigate('/logout');
         } catch (error) {
