@@ -14,8 +14,6 @@ import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
 import Profile from "./Profile/Profile";
 import NotFound from "./404/404";
-import RegisterModal from "./User/Register/RegisterModal";
-import LoginModal from "./User/Login/LoginModal";
 
 export default function App() {
 
@@ -40,8 +38,6 @@ export default function App() {
                                 {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
                                 <Route path="*" element={<NotFound />} />
                             </Route>
-                            <Route path="/register" element={<RegisterModal />} />
-                            <Route path="/login" element={<LoginModal />} />
                         </Routes>
                     </BrowserRouter>
                 </DefaultImagesProvider>
