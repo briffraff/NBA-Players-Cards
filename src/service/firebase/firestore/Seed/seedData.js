@@ -37,39 +37,60 @@
 // };
 
 
-
 import { db } from "../../firebase-config";
 import { query, where, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore";
 
-export const seedJsonDataToFirestore = async () => {
+const collections = {
+    paths: {
+        teams: "src/service/firebase/firestore/Seed/teams.json",
+        subscribers: "src/service/firebase/firestore/Seed/subscribers.json",
+        cards: "src/service/firebase/firestore/Seed/cards.json",
+    },
+    dbNames: {
+        teams: "nba-teams",
+        subscribers: "subscribers",
+        cards: "nba-cards",
+    },
+    queries: {
+        teams: ["name", "id"],
+        subscribers: ["email"],
+        cards: ["playerName" , "cardId"],
+    }
+};
+
+const seedDataToFirestore = async (type) => {
     try {
-        const response = await fetch('src/service/firebase/firestore/Seed/teams.json');
+        const response = await fetch(collections.paths[type]);
         const data = await response.json();
 
-        const teamsCollectionRef = collection(db, "nba-teams");
+        const collectionRef = collection(db, collections.dbNames[type]);
+        const queryFields = collections.queries[type];
 
         for (const item of data) {
             try {
-                const checkForTeam = query(teamsCollectionRef,
-                    where("name", "==", item.name),
-                    where("id", "==", item.id));
-                const teamSnapshot = await getDocs(checkForTeam);
+                const conditions = queryFields.map(field => where(field, "==", item[field]));
+                const checkForItem = query(collectionRef, ...conditions);
+                const itemSnapshot = await getDocs(checkForItem);
 
-                if (!teamSnapshot.empty) {
-                    let errorMessage = `${item.name} already exists`
-                    console.log(errorMessage);
+                if (!itemSnapshot.empty) {
+                    console.log(`${item.name || item.email} already exists`);
                     continue;
                 }
 
-                await addDoc(teamsCollectionRef, item);
+                await addDoc(collectionRef, item);
                 console.log(`Item with ID ${item.id} successfully added to Firestore!`);
-
             } catch (error) {
                 console.log(error);
             }
-        };
+        }
         console.log(data);
     } catch (error) {
-        console.log('Error loading data from JSON file or writing to Firestore: ', error);
+        console.log(`Error loading data from JSON file or writing to Firestore: ${error}`);
     }
+};
+
+export const Start = async () => {
+    await seedDataToFirestore('teams');
+    await seedDataToFirestore('subscribers');
+    await seedDataToFirestore('cards');
 };
