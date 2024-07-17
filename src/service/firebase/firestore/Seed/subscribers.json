@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "email": "admin@nbacards.com",
+        "subscribeOn" : "2024"
+    },
+    {
+        "id": "2",
+        "email": "asd@nbacards.com",
+        "subscribeOn": "2024"
+    },
+]

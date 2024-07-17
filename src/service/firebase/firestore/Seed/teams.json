@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "teamId": "1",
     "name": "Atlanta Hawks",
     "logo": "/images/teams-logos/southeast-division/atlanta-hawks.png",
     "thumbnail": "/images/thumbnails/t-atlanta-hawks.jpg",
@@ -9,7 +9,7 @@
     "division": "southeast-division"
   },
   {
-    "id": "2",
+    "teamId": "2",
     "name": "Boston Celtics",
     "logo": "/images/teams-logos/atlantic-division/boston-celtics.png",
     "thumbnail": "/images/thumbnails/t-boston-celtics.jpg",
@@ -18,7 +18,7 @@
     "division": "atlantic-division"
   },
   {
-    "id": "3",
+    "teamId": "3",
     "name": "Brooklyn Nets",
     "logo": "/images/teams-logos/atlantic-division/new-jersey-nets.png",
     "thumbnail": "/images/thumbnails/t-new-jersey-nets.jpg",
@@ -27,7 +27,7 @@
     "division": "atlantic-division"
   },
   {
-    "id": "4",
+    "teamId": "4",
     "name": "Charlotte Bobcats",
     "logo": "/images/teams-logos/southeast-division/charlotte-bobcats.png",
     "thumbnail": "/images/thumbnails/t-charlotte-bobcats.jpg",
@@ -36,7 +36,7 @@
     "division": "southeast-division"
   },
   {
-    "id": "5",
+    "teamId": "5",
     "name": "Charlotte Hornets",
     "logo": "/images/teams-logos/southwest-division/hornets.png",
     "thumbnail": "/images/thumbnails/t-hornets.jpg",
@@ -45,7 +45,7 @@
     "division": "southwest-division"
   },
   {
-    "id": "6",
+    "teamId": "6",
     "name": "Chicago Bulls",
     "logo": "/images/teams-logos/central-division/chicago-bulls.png",
     "thumbnail": "/images/thumbnails/t-chicago-bulls.jpg",
@@ -54,7 +54,7 @@
     "division": "central-division"
   },
   {
-    "id": "7",
+    "teamId": "7",
     "name": "Cleveland Cavaliers",
     "logo": "/images/teams-logos/central-division/cleveland-cavaliers.png",
     "thumbnail": "/images/thumbnails/t-cleveland-cavaliers.jpg",
@@ -63,7 +63,7 @@
     "division": "central-division"
   },
   {
-    "id": "8",
+    "teamId": "8",
     "name": "Dallas Mavericks",
     "logo": "/images/teams-logos/southwest-division/dallas-mavericks.png",
     "thumbnail": "/images/thumbnails/t-dallas-mavericks.jpg",
@@ -72,7 +72,7 @@
     "division": "southwest-division"
   },
   {
-    "id": "9",
+    "teamId": "9",
     "name": "Denver Nuggets",
     "logo": "/images/teams-logos/northwest-division/denver-nuggets.png",
     "thumbnail": "/images/thumbnails/t-denver-nuggets.jpg",
@@ -81,7 +81,7 @@
     "division": "northwest-division"
   },
   {
-    "id": "10",
+    "teamId": "10",
     "name": "Detroit Pistons",
     "logo": "/images/teams-logos/central-division/detroit-pistons.png",
     "thumbnail": "/images/thumbnails/t-detroit-pistons.jpg",
@@ -90,7 +90,7 @@
     "division": "central-division"
   },
   {
-    "id": "11",
+    "teamId": "11",
     "name": "Golden State Warriors",
     "logo": "/images/teams-logos/pacific-division/goldenstate-wariors.png",
     "thumbnail": "/images/thumbnails/t-goldenstate-wariors.jpg",
@@ -99,7 +99,7 @@
     "division": "pacific-division"
   },
   {
-    "id": "12",
+    "teamId": "12",
     "name": "Houston Rockets",
     "logo": "/images/teams-logos/southwest-division/houston-rockets.png",
     "thumbnail": "/images/thumbnails/t-houston-rockets.jpg",
@@ -108,7 +108,7 @@
     "division": "southwest-division"
   },
   {
-    "id": "13",
+    "teamId": "13",
     "name": "Indiana Pacers",
     "logo": "/images/teams-logos/central-division/indiana-pacers.png",
     "thumbnail": "/images/thumbnails/t-indiana-pacers.jpg",
@@ -117,7 +117,7 @@
     "division": "central-division"
   },
   {
-    "id": "14",
+    "teamId": "14",
     "name": "LA Clippers",
     "logo": "/images/teams-logos/pacific-division/la-clippers.png",
     "thumbnail": "/images/thumbnails/t-la-clippers.jpg",
@@ -126,7 +126,7 @@
     "division": "pacific-division"
   },
   {
-    "id": "15",
+    "teamId": "15",
     "name": "Los Angeles Lakers",
     "logo": "/images/teams-logos/pacific-division/lakers.png",
     "thumbnail": "/images/thumbnails/t-lakers.jpg",
@@ -135,7 +135,7 @@
     "division": "pacific-division"
   },
   {
-    "id": "16",
+    "teamId": "16",
     "name": "Memphis Grizzlies",
     "logo": "/images/teams-logos/southwest-division/memphis-grizzlies.png",
     "thumbnail": "/images/thumbnails/t-memphis-grizzlies.jpg",
@@ -144,7 +144,7 @@
     "division": "southwest-division"
   },
   {
-    "id": "17",
+    "teamId": "17",
     "name": "Miami Heat",
     "logo": "/images/teams-logos/southeast-division/miami-heat.png",
     "thumbnail": "/images/thumbnails/t-miami-heat.jpg",
@@ -153,7 +153,7 @@
     "division": "southeast-division"
   },
   {
-    "id": "18",
+    "teamId": "18",
     "name": "Milwaukee Bucks",
     "logo": "/images/teams-logos/central-division/milwaukee-bucks.png",
     "thumbnail": "/images/thumbnails/t-milwaukee-bucks.jpg",
@@ -162,7 +162,7 @@
     "division": "central-division"
   },
   {
-    "id": "19",
+    "teamId": "19",
     "name": "Minnesota Timberwolves",
     "logo": "/images/teams-logos/northwest-division/minesota-timberwolves.png",
     "thumbnail": "/images/thumbnails/t-minesota-timberwolves.jpg",
@@ -171,7 +171,7 @@
     "division": "northwest-division"
   },
   {
-    "id": "20",
+    "teamId": "20",
     "name": "New York Knicks",
     "logo": "/images/teams-logos/atlantic-division/new-york-knicks.png",
     "thumbnail": "/images/thumbnails/t-new-york-knicks.jpg",
@@ -180,7 +180,7 @@
     "division": "atlantic-division"
   },
   {
-    "id": "21",
+    "teamId": "21",
     "name": "Oklahoma City Thunder",
     "logo": "/images/teams-logos/northwest-division/oklahoma-city-thunder.png",
     "thumbnail": "/images/thumbnails/t-oklahoma-city-thunder.jpg",
@@ -189,7 +189,7 @@
     "division": "northwest-division"
   },
   {
-    "id": "22",
+    "teamId": "22",
     "name": "Orlando Magic",
     "logo": "/images/teams-logos/southeast-division/orlando-magic.png",
     "thumbnail": "/images/thumbnails/t-orlando-magic.jpg",
@@ -198,7 +198,7 @@
     "division": "southeast-division"
   },
   {
-    "id": "23",
+    "teamId": "23",
     "name": "Philadelphia 76ers",
     "logo": "/images/teams-logos/atlantic-division/philadelphia-76ers.png",
     "thumbnail": "/images/thumbnails/t-philadelphia-76ers.jpg",
@@ -207,7 +207,7 @@
     "division": "atlantic-division"
   },
   {
-    "id": "24",
+    "teamId": "24",
     "name": "Phoenix Suns",
     "logo": "/images/teams-logos/pacific-division/phoenix-suns.png",
     "thumbnail": "/images/thumbnails/t-phoenix-suns.jpg",
@@ -216,7 +216,7 @@
     "division": "pacific-division"
   },
   {
-    "id": "25",
+    "teamId": "25",
     "name": "Portland Trail Blazers",
     "logo": "/images/teams-logos/northwest-division/portland-blazers.png",
     "thumbnail": "/images/thumbnails/t-portland-blazers.jpg",
@@ -225,7 +225,7 @@
     "division": "northwest-division"
   },
   {
-    "id": "26",
+    "teamId": "26",
     "name": "Sacramento Kings",
     "logo": "/images/teams-logos/pacific-division/sacramento-kings.png",
     "thumbnail": "/images/thumbnails/t-sacramento-kings.jpg",
@@ -234,7 +234,7 @@
     "division": "pacific-division"
   },
   {
-    "id": "27",
+    "teamId": "27",
     "name": "San Antonio Spurs",
     "logo": "/images/teams-logos/southwest-division/san-antonio-spurs.png",
     "thumbnail": "/images/thumbnails/t-san-antonio-spurs.jpg",
@@ -243,7 +243,7 @@
     "division": "southwest-division"
   },
   {
-    "id": "28",
+    "teamId": "28",
     "name": "Toronto Raptors",
     "logo": "/images/teams-logos/atlantic-division/toronto-raptors.png",
     "thumbnail": "/images/thumbnails/t-toronto-raptors.jpg",
@@ -252,7 +252,7 @@
     "division": "atlantic-division"
   },
   {
-    "id": "29",
+    "teamId": "29",
     "name": "Utah Jazz",
     "logo": "/images/teams-logos/northwest-division/utah-jazz.png",
     "thumbnail": "/images/thumbnails/t-utah-jazz.jpg",
@@ -261,7 +261,7 @@
     "division": "northwest-division"
   },
   {
-    "id": "30",
+    "teamId": "30",
     "name": "Washington Wizards",
     "logo": "/images/teams-logos/southeast-division/wash-wizards.png",
     "thumbnail": "/images/thumbnails/t-wash-wizards.jpg",
