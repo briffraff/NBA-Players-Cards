@@ -32,12 +32,12 @@ export default function Profile() {
 
                 ? (<section className="user-section">
                     <div className="user-section-info">
-                        <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                         <div className="user-info">
                             <div>Username : <a className="user-info-values">{user.displayName}</a></div>
                             <div>Email : <a className="user-info-values">{user.email}</a></div>
                             <div>Role : <a className="user-info-values">{`${userFirestore.admin === true ? "Admin" : "User"}`}</a></div>
                         </div>
+                        <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
 
                     <div className="user-items">

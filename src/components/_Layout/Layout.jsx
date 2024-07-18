@@ -4,7 +4,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginModal from "../User/Login/LoginModal";
 import RegisterModal from "../User/Register/RegisterModal";
-import styles from "../../../public/assets/css/modules/Layout.module.scss"
+import styles from "../../../public/assets/css/modules/_Layout.module.scss"
 
 
 export default function Layout() {

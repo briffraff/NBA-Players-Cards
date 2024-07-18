@@ -1,12 +1,14 @@
+@import "../../scss/Functions";
+@import "../../scss/Variables";
+
 .container {
   display: flex;
   flex-direction: row;
   background-color: getColor(bg);
   justify-content: center;
   align-items: center;
-  padding: 150px;
   color: whitesmoke;
-  padding-left: 300px;
+  margin:auto;
   
   .not-found {
     * {
@@ -18,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     color: getColor(bg-0);
-    width: 30%;
+    width: 50%;
     margin-left: 50px;
 
     .btn {

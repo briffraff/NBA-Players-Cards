@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../public/assets/css/modules/Modal.module.scss"
+import styles from "../../../public/assets/css/modules/_Modal.module.scss"
 
 import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
@@ -48,7 +48,7 @@ export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth,
     return (
         <>
             <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setShowDeleteConfirm(false)}>
-                <form className={`${styles.modalBox} ${styles.centered}`} onClick={handleModalClick} onSubmit={handleDeleteUser}>
+                <form className={`${styles.modalBox} ${styles.centered} ${styles.moveDeleteModal}`} onClick={handleModalClick} onSubmit={handleDeleteUser}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Delete Account</h1>
                         <div className={styles.esc} onClick={() => setShowDeleteConfirm(false)}>x</div>

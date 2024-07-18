@@ -112,7 +112,7 @@
       margin-right: 2%;
     }
     .forgot:hover {
-      color: getColor(bg-7)
+      color: getColor(bg-7);
     }
   }
 
@@ -128,5 +128,10 @@
     background-color: getColor(nba-s);
     margin-top: 10px;
     width: 90%;
+  }
+
+  .move-delete-modal {
+    top: 35%;
+    left: 75%;
   }
 }

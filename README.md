@@ -18,19 +18,22 @@ NBA Teams
 ![NBA Teams](./public/assets/img/readme/teams.jpg)
 
 Team Details
-![NBA Teams](./public/assets/img/readme/teamDetails.jpg)
+![Team Details](./public/assets/img/readme/teamDetails.jpg)
 
 404 - Not Found
 ![Not Found](./public/assets/img/readme/404.jpg)
 
 Register
-![Logout](./public/assets/img/readme/register.jpg)
+![Register](./public/assets/img/readme/register.jpg)
 
 Login
-![Logout](./public/assets/img/readme/login.jpg)
+![Login](./public/assets/img/readme/login.jpg)
 
-Menu - Logged User
-![Menu - Logged User](./public/assets/img/readme/menu.jpg)
+User Profile
+![User Profile](./public/assets/img/readme/UserProfile.jpg)
+
+User Profile Delete
+![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)
 
 Logout
 ![Logout](./public/assets/img/readme/logout.jpg)
@@ -83,14 +86,21 @@ http://localhost:5173/
 ```bash
 
 Pre-seed data:
+-- 2x USERS :
 
-Admin
-email : admin@nbacards.com
-password: admin123
+--- Admin
+"e-mail" : admin@nbacards.com
+"password": admin123
 
-User
-email: asd@asd.bg
-password: asdasd
+--- User
+"e-mail": asd@asd.bg
+"password": asdasd
+
+-- 30x NBA TEAMS :
+
+-- 2x SUBSCRIBERS :
+"e-mail": admin@nbacards.com
+"e-mail": asd@nbacards.com
 
 ```
 ## Links
