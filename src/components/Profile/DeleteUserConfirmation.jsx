@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../public/assets/css/modules/Modal.module.css"
+import styles from "../../../public/assets/css/modules/Modal.module.scss"
 
 import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
