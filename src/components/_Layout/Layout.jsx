@@ -4,6 +4,8 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginModal from "../User/Login/LoginModal";
 import RegisterModal from "../User/Register/RegisterModal";
+import styles from "../../../public/assets/css/modules/Layout.module.scss"
+
 
 export default function Layout() {
     const [menuItems, setMenuItems] = useState([
@@ -51,11 +53,15 @@ export default function Layout() {
 
     return (
         <>
-            <Header menu={menuItems} onLoginClick={handleLoginClick} onRegisterClick={handleRegisterClick} />
-            <Outlet />
-            <Footer />
-            {modalType === "login" && <LoginModal setIsLoginOpen={handleCloseModal} />}
-            {modalType === "register" && <RegisterModal setIsRegisterOpen={handleCloseModal} />}
+            <div className={styles.nbaContainer}>
+                <Header menu={menuItems} onLoginClick={handleLoginClick} onRegisterClick={handleRegisterClick} />
+                <div className={styles.nbaContent}>
+                    <Outlet />
+                </div>
+                <Footer />
+                {modalType === "login" && <LoginModal setIsLoginOpen={handleCloseModal} />}
+                {modalType === "register" && <RegisterModal setIsRegisterOpen={handleCloseModal} />}
+            </div>
         </>
     );
 }

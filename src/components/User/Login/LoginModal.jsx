@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "../../../../public/assets/css/modules/Modal.module.css"
+import styles from "../../../../public/assets/css/modules/Modal.module.scss"
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

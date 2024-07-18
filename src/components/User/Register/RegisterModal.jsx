@@ -1,4 +1,4 @@
-import styles from "../../../../public/assets/css/modules/Modal.module.css"
+import styles from "../../../../public/assets/css/modules/Modal.module.scss"
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
