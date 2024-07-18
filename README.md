@@ -4,7 +4,7 @@
   - [Demo Screenshots](#demo-screenshots)
   - [Build with](#build-with)
   - [Installation](#installation)
-  - [Data](#data)
+  - [Pre-seed data:](#pre-seed-data)
   - [Links](#links)
 
 ## Demo Screenshots
@@ -82,12 +82,10 @@ http://localhost:5173/
 
 ```
 
-## Data
+## Pre-seed data:
 ```bash
 
-Pre-seed data:
--- 2x USERS :
-
+## 2x USERS :
 --- Admin
 "e-mail" : admin@nbacards.com
 "password": admin123
@@ -96,9 +94,40 @@ Pre-seed data:
 "e-mail": asd@asd.bg
 "password": asdasd
 
--- 30x NBA TEAMS :
+## 30x NBA TEAMS :
 
--- 2x SUBSCRIBERS :
+Atlanta Hawks
+Boston Celtics
+Brooklyn Nets
+Charlotte Hornets
+Chicago Bulls
+Cleveland Cavaliers
+Dallas Mavericks
+Denver Nuggets
+Detroit Pistons
+Golden State Warriors
+Houston Rockets
+Indiana Pacers
+LA Clippers
+Los Angeles Lakers
+Memphis Grizzlies
+Miami Heat
+Milwaukee Bucks
+Minnesota Timberwolves
+Charlotte Bobcats
+New York Knicks
+Oklahoma City Thunder
+Orlando Magic
+Philadelphia 76ers
+Phoenix Suns
+Portland Trail Blazers
+Sacramento Kings
+San Antonio Spurs
+Toronto Raptors
+Utah Jazz
+Washington Wizards
+
+## 2x SUBSCRIBERS :
 "e-mail": admin@nbacards.com
 "e-mail": asd@nbacards.com
 
