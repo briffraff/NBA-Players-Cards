@@ -1,5 +1,5 @@
 import NotFound from "../404/404";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
 import { auth } from "../../service/firebase/firebase-config";
@@ -32,6 +32,7 @@ export default function Profile() {
 
                 ? (<section className="user-section">
                     <div className="user-section-info">
+                        <Link to="/card-create" className="create-card-btn">Create Card</Link>
                         <div className="user-info">
                             <div>Username : <a className="user-info-values">{user.displayName}</a></div>
                             <div>Email : <a className="user-info-values">{user.email}</a></div>

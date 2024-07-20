@@ -14,6 +14,8 @@ import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";
 import Profile from "./Profile/Profile";
 import NotFound from "./404/404";
+import CardCreate from "./Cards/CardCreate";
+import CardsShop from "./Cards/CardsShop";
 
 export default function App() {
 
@@ -35,7 +37,8 @@ export default function App() {
                                 <Route path="/teams" element={<Teams />} />
                                 <Route path="/team/:teamId" element={<TeamDetails />} />
                                 <Route path="/profile/:profileId" element={<Profile />} />
-                                {/* <Route path="/cards-shop" element={<CardsShop />} />  */}
+                                <Route path="/cards-shop" element={<CardsShop />} />
+                                <Route path="/card-create" element={<CardCreate />} />
                                 <Route path="*" element={<NotFound />} />
                             </Route>
                         </Routes>
