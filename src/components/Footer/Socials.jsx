@@ -1,8 +1,8 @@
 export default function Socials() {
     const socialLinks = [
-        { href: "https://www.facebook.com/nba/", icon: "fab fa-fw fa-facebook-f" },
-        { href: "https://www.instagram.com/nba/?hl=en", icon: "fab fa-fw fa-linkedin-in" },
-        { href: "https://twitter.com/NBA", icon: "fab fa-fw fa-twitter" }
+        { href: "https://www.facebook.com/nba/", icon: "fab fa-facebook-f" },
+        { href: "https://www.instagram.com/nba/?hl=en", icon: "fab fa-instagram" },
+        { href: "https://twitter.com/NBA", icon: "fab fa-twitter" }
     ];
 
     return (

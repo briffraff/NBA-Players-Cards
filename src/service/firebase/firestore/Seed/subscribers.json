@@ -1,11 +1,9 @@
 [
     {
-        "subscriberId": "1",
         "email": "admin@nbacards.com",
         "subscribeOn": "2024"
     },
     {
-        "subscriberId": "2",
         "email": "asd@nbacards.com",
         "subscribeOn": "2024"
     }

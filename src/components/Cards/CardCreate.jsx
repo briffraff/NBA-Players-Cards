@@ -6,53 +6,30 @@ export default function CardCreate() {
     const [error, setError] = useState(false);
 
     const [formData, setFormData] = useState({
-        playerName: '',
-        description: '',
-        shortInfo: '',
-        stats: {
-            passes: 0,
-            matchCount: 0
-        },
-        urls: {
-            Front: '',
-            Back: ''
-        }
+        playerName: "",
+        description: "",
+        shortInfo: "",
+        urlFront: ""
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        if (name.includes('stats')) {
-            const [_, statName] = name.split('.');
-            setFormData((prevState) => ({
-                ...prevState,
-                stats: {
-                    ...prevState.stats,
-                    [statName]: value
-                }
-            }));
-        } else if (name.includes('urls')) {
-            const [_, urlType] = name.split('.');
-            setFormData((prevState) => ({
-                ...prevState,
-                urls: {
-                    ...prevState.urls,
-                    [urlType]: value
-                }
-            }));
-        } else {
-            setFormData((prevState) => ({
-                ...prevState,
-                [name]: value
-            }));
-        }
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevForm) => ({
+            ...prevForm,
+            [name]: value,
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
     };
 
+    const isAnyFieldNotEmpty = (data) => {
+        return Object.values(data).some(value => value !== "");
+    }
+
     return (
-        <div className={styles.container}>
+        <div className={`${isAnyFieldNotEmpty(formData) ? styles.container : styles.centeredContainer}`}>
             <form className={`${styles.modalBox} ${styles.createFieldContainer}`} onSubmit={handleSubmit}>
                 <div className={styles.modalHeader}>
                     <h1 className={styles.modalSlogan}>Create Player Card</h1>
@@ -60,7 +37,7 @@ export default function CardCreate() {
 
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-lock"></i>
-                    <input type="text" name="urls.Front" value={formData.urls.Front} onChange={handleChange} placeholder="Front Image URL" />
+                    <input type="text" name="urlFront" value={formData.urlFront} onChange={handleChange} placeholder="Front Image URL" />
                 </div>
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-user"></i>
@@ -82,9 +59,14 @@ export default function CardCreate() {
                 </button>
             </form>
 
-            <CardPreview formData={formData} />
+            {isAnyFieldNotEmpty(formData) &&
+                <CardPreview formData={formData} />
+            }
 
             <div className={styles.descriptionContainer}>
+                {isAnyFieldNotEmpty(formData) &&
+                    <p className={styles.descriptionSlogan}>Description :</p>
+                }
                 <p className={styles.description}>{formData.description}</p>
             </div>
         </div>
