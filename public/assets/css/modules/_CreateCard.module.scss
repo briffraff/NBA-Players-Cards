@@ -129,12 +129,30 @@
   padding: 13px 0;
   width: 90%;
 }
+
 .modal-textbox {
+  display: flex;
+  align-items: center;
   background-color: #0e1113;
   font-size: 20px;
   padding: 8px 0 8px 8px;
   margin: 8px 0 8px 8px;
   border-bottom: 1px solid getColor(nba-p);
+}
+
+.modal-textbox textarea {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  color: whitesmoke;
+}
+
+textarea {
+  scrollbar-width: none;
+  scrollbar-color: #6c6c6c #2e2e2e;
 }
 
 i {

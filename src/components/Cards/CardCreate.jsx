@@ -81,7 +81,7 @@ export default function CardCreate() {
         }
     }, [isSubmitting]);
 
-    const handleCreateMessage = isSubmitting == true ? "CREATING CARD..." : "CREATE CARD";
+    const handleCreatingMessage = isSubmitting ? "CREATING CARD..." : "CREATE CARD";
 
     return (
         <div className={`${isAnyFieldNotEmpty(formData) ? styles.container : styles.centeredContainer}`}>
@@ -92,24 +92,35 @@ export default function CardCreate() {
 
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-image"></i>
-                    <input type="text" id="cardImage" name="urlFront" value={formData.urlFront} onChange={handleChange} placeholder="Front Image URL" />
+                    <input type="text" id="cardImage" name="urlFront" value={formData.urlFront} onChange={handleChange} placeholder="Front Image URL" required />
                 </div>
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-user"></i>
-                    <input type="text" id="cardPlayerName" name="playerName" value={formData.playerName} onChange={handleChange} placeholder="Player Name" />
+                    <input type="text" id="cardPlayerName" name="playerName" value={formData.playerName} onChange={handleChange} placeholder="Player Name" required />
                 </div>
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-file-alt"></i>
-                    <input type="text" id="cardDescription" name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
+                    <textarea
+                        id="cardDescription"
+                        maxLength={1200}
+                        rows={5}
+                        cols={30}
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        placeholder="Description"
+                        aria-label="Card Description"
+                        required
+                    />
                 </div>
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-info-circle"></i>
-                    <input type="text" id="cardShortInfo" name="shortInfo" value={formData.shortInfo} onChange={handleChange} placeholder="Short info" />
+                    <input type="text" id="cardShortInfo" name="shortInfo" value={formData.shortInfo} onChange={handleChange} placeholder="Short info" required />
                 </div>
 
                 {error && <div className={styles.errorMessage}>{error}</div>}
 
-                <button className={styles.createBtn} type="submit">{handleCreateMessage}
+                <button className={styles.createBtn} type="submit">{handleCreatingMessage}
                 </button>
 
                 <p className={styles.forgot} onClick={handleResetForm}>Reset</p>
