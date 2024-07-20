@@ -3,8 +3,15 @@
         "cardId": "1",
         "playerName": "Michael Jordan",
         "cardUserID": "",
-        "description": "",
-        "stats": 0,
-        "likes": 0
+        "description": "No 23",
+        "stats": {
+            "passes": 0,
+            "match count": 0
+        },
+        "likes": 0,
+        "urls": {
+            "Front": "",
+            "Back": ""
+        }
     }
 ]

@@ -11,14 +11,28 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 50%;
+
+    .create-card-btn {
+      background-color: getColor(nba-p);
+      color: getColor(bg-0);
+      padding: 10px 15px;
+      margin-right: 10vw;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: getColor(bg-0);
+        color: getColor(nba-s);
+      }
+    }
+
     .delete-user {
       background-color: getColor(nba-s);
       color: getColor(bg-0);
       padding: 10px;
-      margin-left: 15px;
       border-radius: 8px;
       cursor: pointer;
+
 
       &:hover {
         background-color: getColor(bg-0);
@@ -30,9 +44,9 @@
       color: getColor(bg-0);
       letter-spacing: 0.5rem;
       text-align: left;
-      margin-right: 20px;
+      margin-right: 150px;
       text-transform: uppercase;
-      border-right: 5px solid getColor(nba-p);
+
       color: getColor(bg-0);
       padding-right: 25px;
 

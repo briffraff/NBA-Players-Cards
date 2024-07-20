@@ -801,13 +801,23 @@ h6 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 50%;
+}
+.user-section .user-section-info .create-card-btn {
+  background-color: #006bb7;
+  color: whitesmoke;
+  padding: 10px 15px;
+  margin-right: 10vw;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.user-section .user-section-info .create-card-btn:hover {
+  background-color: whitesmoke;
+  color: #aa0b2d;
 }
 .user-section .user-section-info .delete-user {
   background-color: #aa0b2d;
   color: whitesmoke;
   padding: 10px;
-  margin-left: 15px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -819,9 +829,8 @@ h6 {
   color: whitesmoke;
   letter-spacing: 0.5rem;
   text-align: left;
-  margin-right: 20px;
+  margin-right: 150px;
   text-transform: uppercase;
-  border-right: 5px solid #006bb7;
   color: whitesmoke;
   padding-right: 25px;
 }
