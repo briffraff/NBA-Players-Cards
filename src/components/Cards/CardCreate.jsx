@@ -12,8 +12,11 @@ export default function CardCreate() {
         playerName: "",
         description: "",
         shortInfo: "",
-        urlFront: ""
+        urlFront: "",
+        imageName: ""
     });
+
+    const [image, setImage] = useState();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -23,12 +26,28 @@ export default function CardCreate() {
         }));
     };
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result);
+                setFormData((prevForm) => ({
+                    ...prevForm,
+                    urlFront: reader.result,
+                    imageName: file.name
+                }));
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         try {
-            console.log(formData.playerName);
+            
             setError("");
             navigate("/cards-shop");
         } catch (error) {
@@ -39,41 +58,55 @@ export default function CardCreate() {
     };
 
     const isAnyFieldNotEmpty = (data) => {
-        return Object.values(data).some(value => value !== "");
+        return Object.values(data).some(value => value !== "") || data.urlFront !== "";
     }
 
     const handleResetForm = (event) => {
         event.preventDefault();
 
         localStorage.removeItem("cardImage");
+        localStorage.removeItem("cardImageName");
         localStorage.removeItem("cardPlayerName");
         localStorage.removeItem("cardDescription");
         localStorage.removeItem("cardShortInfo");
-        setFormData({ playerName: "", description: "", shortInfo: "", urlFront: "" });
+        setFormData({
+            playerName: "",
+            description: "",
+            shortInfo: "",
+            urlFront: "",
+            imageName: ""
+        });
     }
 
     useEffect(() => {
         const savedUrlImage = localStorage.getItem("cardImage");
+        const savedImageName = localStorage.getItem("cardImageName");
         const savedPlayerName = localStorage.getItem("cardPlayerName");
         const savedDescription = localStorage.getItem("cardDescription");
         const savedShortInfo = localStorage.getItem("cardShortInfo");
 
-        setFormData((prevForm) => ({
-            ...prevForm,
-            urlFront: savedUrlImage,
-            playerName: savedPlayerName,
-            description: savedDescription,
-            shortInfo: savedShortInfo
-        }))
-
+        setFormData({
+            playerName: savedPlayerName || "",
+            description: savedDescription || "",
+            shortInfo: savedShortInfo || "",
+            urlFront: savedUrlImage || "",
+            imageName: savedImageName || ""
+        });
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("cardImage", formData.urlFront);
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
-    }, [formData.urlFront, formData.playerName, formData.description, formData.shortInfo]);
+        localStorage.setItem("cardImage", formData.urlFront);
+        localStorage.setItem("cardImageName", formData.imageName);
+    }, [
+        formData.urlFront,
+        formData.imageName,
+        formData.playerName,
+        formData.description,
+        formData.shortInfo
+    ]);
 
     useEffect(() => {
         if (!isSubmitting) {
@@ -91,9 +124,20 @@ export default function CardCreate() {
                 </div>
 
                 <div className={styles.modalTextbox}>
-                    <i className="fas fa-image"></i>
-                    <input type="text" id="cardImage" name="urlFront" value={formData.urlFront} onChange={handleChange} placeholder="Front Image URL" required />
+                    <label htmlFor="cardImage">
+                        <i className="fas fa-camera"></i>
+                        <input
+                            type="file"
+                            id="cardImage"
+                            name="urlFront"
+                            onChange={handleImageChange}
+                            accept="image/*"
+                            className={styles.fileInput}
+                            required />
+                        <span id="imageName">{formData.imageName || "Select Image"}</span>
+                    </label>
                 </div>
+
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-user"></i>
                     <input type="text" id="cardPlayerName" name="playerName" value={formData.playerName} onChange={handleChange} placeholder="Player Name" required />
@@ -120,14 +164,13 @@ export default function CardCreate() {
 
                 {error && <div className={styles.errorMessage}>{error}</div>}
 
-                <button className={styles.createBtn} type="submit">{handleCreatingMessage}
-                </button>
+                <button className={styles.createBtn} type="submit">{handleCreatingMessage}</button>
 
                 <p className={styles.forgot} onClick={handleResetForm}>Reset</p>
             </form>
 
             {isAnyFieldNotEmpty(formData) &&
-                <CardPreview formData={formData} />
+                <CardPreview formData={formData} image={formData.urlFront} />
             }
 
             <div className={styles.descriptionContainer}>

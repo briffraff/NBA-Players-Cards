@@ -101,6 +101,19 @@
   }
 }
 
+input[type="file"] {
+  display: none;
+  padding: 6px 12px;
+
+  text-align: center;
+  padding: 3%;
+  border: thin solid black;
+
+  label {
+    cursor: pointer;
+  }
+}
+
 .modal-box {
   display: flex;
   flex-direction: column;
