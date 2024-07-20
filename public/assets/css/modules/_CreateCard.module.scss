@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 55%;
+  width: 70%;
   margin: auto;
   transition: all 0.5s ease-out;
 }
@@ -16,7 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
+  width: 75%;
   margin: auto;
   transition: all 0.5s ease-out;
 }
@@ -157,4 +157,15 @@ input {
   background-color: getColor(nba-s);
   margin-top: 10px;
   width: 90%;
+}
+
+.forgot {
+  width: 98%;
+  cursor: pointer;
+  padding: 5px;
+  text-align: right;
+  margin-right: 2%;
+}
+.forgot:hover {
+  color: getColor(bg-7);
 }
