@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import CardPreview from './CardPreview';
 import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { createCard } from '../../service/firebase/firestore/firestore-service';
+
+
 
 export default function CardCreate() {
     const [error, setError] = useState(false);
@@ -11,12 +14,26 @@ export default function CardCreate() {
     const [formData, setFormData] = useState({
         playerName: "",
         description: "",
-        shortInfo: "",
-        urlFront: "",
-        imageName: ""
+        shortInfo: ""
     });
 
     const [image, setImage] = useState();
+    const [imageName, setImageName] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            await createCard(formData);
+            setError("");
+            navigate("/cards-shop");
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -32,80 +49,62 @@ export default function CardCreate() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImage(reader.result);
-                setFormData((prevForm) => ({
-                    ...prevForm,
-                    urlFront: reader.result,
-                    imageName: file.name
-                }));
+                setImageName(file.name);
             };
             reader.readAsDataURL(file);
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            
-            setError("");
-            navigate("/cards-shop");
-        } catch (error) {
-            setError(error.message);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
     const isAnyFieldNotEmpty = (data) => {
-        return Object.values(data).some(value => value !== "") || data.urlFront !== "";
+        return Object.values(data).some(value => value !== "") || data.imageUrl !== "";
     }
 
     const handleResetForm = (event) => {
         event.preventDefault();
 
-        localStorage.removeItem("cardImage");
-        localStorage.removeItem("cardImageName");
         localStorage.removeItem("cardPlayerName");
         localStorage.removeItem("cardDescription");
         localStorage.removeItem("cardShortInfo");
+        localStorage.removeItem("cardImageName");
+        localStorage.removeItem("imageToPreview");
+
         setFormData({
             playerName: "",
             description: "",
             shortInfo: "",
-            urlFront: "",
-            imageName: ""
         });
+        setImageName("");
+        setImage("");
     }
 
     useEffect(() => {
-        const savedUrlImage = localStorage.getItem("cardImage");
-        const savedImageName = localStorage.getItem("cardImageName");
         const savedPlayerName = localStorage.getItem("cardPlayerName");
         const savedDescription = localStorage.getItem("cardDescription");
         const savedShortInfo = localStorage.getItem("cardShortInfo");
+        const savedImageName = localStorage.getItem("cardImageName");
+        const saveImageToPreview = localStorage.getItem("imageToPreview");
 
         setFormData({
             playerName: savedPlayerName || "",
             description: savedDescription || "",
             shortInfo: savedShortInfo || "",
-            urlFront: savedUrlImage || "",
-            imageName: savedImageName || ""
         });
+        setImageName(savedImageName);
+        setImage(saveImageToPreview);
+
     }, []);
 
     useEffect(() => {
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
-        localStorage.setItem("cardImage", formData.urlFront);
-        localStorage.setItem("cardImageName", formData.imageName);
+        localStorage.setItem("cardImageName", imageName);
+        localStorage.setItem("imageToPreview", image);
     }, [
-        formData.urlFront,
-        formData.imageName,
         formData.playerName,
         formData.description,
-        formData.shortInfo
+        formData.shortInfo,
+        imageName, image
     ]);
 
     useEffect(() => {
@@ -124,17 +123,17 @@ export default function CardCreate() {
                 </div>
 
                 <div className={styles.modalTextbox}>
-                    <label htmlFor="cardImage">
+                    <label htmlFor="cardImageName">
                         <i className="fas fa-camera"></i>
                         <input
                             type="file"
-                            id="cardImage"
-                            name="urlFront"
+                            id="cardImageName"
+                            name="cardImageName"
                             onChange={handleImageChange}
                             accept="image/*"
                             className={styles.fileInput}
                             required />
-                        <span id="imageName">{formData.imageName || "Select Image"}</span>
+                        <span id="imageName">{imageName || "Select Image"}</span>
                     </label>
                 </div>
 
@@ -170,7 +169,7 @@ export default function CardCreate() {
             </form>
 
             {isAnyFieldNotEmpty(formData) &&
-                <CardPreview formData={formData} image={formData.urlFront} />
+                <CardPreview formData={formData} image={image} />
             }
 
             <div className={styles.descriptionContainer}>

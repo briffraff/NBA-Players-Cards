@@ -41,10 +41,10 @@ import { query, where, getDocs, collection, addDoc } from "firebase/firestore";
 
 const collections = {
     idFields: {
-        teams: "teamId",
-        subscribers: "subscriberId",
-        cards: "cardId",
-        users: "userId"
+        teams: "id",
+        subscribers: "id",
+        cards: "id",
+        users: "id"
     },
     paths: {
         teams: "src/service/firebase/firestore/Seed/teams.json",
@@ -59,9 +59,9 @@ const collections = {
         users: "users"
     },
     queries: {
-        teams: ["name", "teamId"],
+        teams: ["name", "id"],
         subscribers: ["email"],
-        cards: ["playerName", "cardId"],
+        cards: ["playerName", "id"],
         users: ["email"]
     }
 };

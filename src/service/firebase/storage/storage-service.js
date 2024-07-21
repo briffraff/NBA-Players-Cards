@@ -1,6 +1,9 @@
 import { storage } from "../firebase-config";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
+// const imagesRef = ref(storage, `/images/${storageFolder}`);
+
+
 export const getAllImagesFromStorage = async (storageFolder) => {
     try {
         const listRef = ref(storage, `/images/${storageFolder}`);
@@ -29,3 +32,9 @@ export const getDownloadUrlFromPath = async (path, { signal }) => {
         return null;
     }
 };
+
+// export const uploadImageToCardsStorage = async (image, storageFolder) => {
+
+//     const imagesRef = ref(storage, `/images/${storageFolder}`);
+
+// }

@@ -4,6 +4,7 @@ import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, docu
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
 const usersCollectionRef = collection(db, "users");
+const cardsCollectionRef = collection(db, "nba-cards");
 
 export const getTeams = async ({ signal }) => {
     try {
@@ -106,4 +107,25 @@ export const deleteFirestoreUserById = async (userAuthId) => {
         await deleteDoc(docRef);
         // console.log("Firebase User deleted successfully!")
     }
+}
+
+export const createCard = async (cardData) => {
+    const q = query(cardsCollectionRef, where("playerName", "==", cardData.playerName), where("imageName", "==", cardData.imageName));
+    const snapshot = await getDocs(q);
+
+    if (!snapshot.empty) {
+        let errorMessage = `Card with ${cardData.playerName} player already exists`
+        console.log(errorMessage);
+        throw new Error(errorMessage);
+    }
+
+    const newCard = {
+        playerName: cardData.playerName,
+        description: cardData.description,
+        shortInfo: cardData.shortInfo,
+        image: cardData.image,
+        imageName: cardData.imageName
+    }
+
+    await addDoc(cardsCollectionRef, newCard);
 }
