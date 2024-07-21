@@ -22,7 +22,7 @@ export default function CardCreate() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
- 
+
         if (!image) {
             setError("Please select an image.");
             return;

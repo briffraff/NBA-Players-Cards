@@ -1,6 +1,9 @@
 import { db } from "../firebase-config";
 import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId } from "firebase/firestore";
 
+import { generateHashFromBase64 } from "../../utils/utils";
+import { uploadImageAndGetUrl } from "../storage/storage-service";
+
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
 const usersCollectionRef = collection(db, "users");
@@ -71,7 +74,6 @@ export const getFirestoreUserById = async (profileId) => {
 
 };
 
-
 export const addSubscriber = async (email) => {
     try {
         const currentYear = new Date().getFullYear();
@@ -111,31 +113,37 @@ export const deleteFirestoreUserById = async (userAuthId) => {
 
 export const createCard = async (cardData, image, imageName, userId) => {
 
+    // clean image from base64 metadata - 'data:image/jpg;base64'
+    const cleanImage = image.split(',')[1];
+    const imageHash = await generateHashFromBase64(cleanImage);
+
     try {
-        const q = query(cardsCollectionRef,
-            where("imageName", "==", imageName),
-            where("playerName", "==", cardData.playerName),
-            where("cardUserId", "==", userId)
-        );
+        const q = query(cardsCollectionRef, where("imageHash", "==", imageHash));
+
         const snapshot = await getDocs(q);
 
         if (!snapshot.empty) {
-            let errorMessage = `Card with ${cardData.playerName} player already exists`
+            let errorMessage = `Card with same content already exists`
             console.log(errorMessage);
             throw new Error(errorMessage);
         }
+
+        const cardImagesStorage = "nba-cards"
+        const imageUrl = await uploadImageAndGetUrl(image, cardImagesStorage, imageName);
 
         const newCard = {
             playerName: cardData.playerName,
             description: cardData.description,
             shortInfo: cardData.shortInfo,
-            image: image,
+            // image: image,
+            imageUrl: imageUrl,
             imageName: imageName,
+            imageHash: imageHash,
             cardUserId: userId
         }
 
         await addDoc(cardsCollectionRef, newCard);
-        
+
     } catch (error) {
         throw error
     }
