@@ -5,6 +5,9 @@ import { getFirestoreUserById } from "../../service/firebase/firestore/firestore
 import { auth } from "../../service/firebase/firebase-config";
 
 import DeleteUserConfirmation from "./DeleteUserConfirmation";
+import MiniCard from "../Cards/MiniCard";
+import { getAllCardsByUser } from "../../service/firebase/firestore/firestore-service";
+
 
 export default function Profile() {
 
@@ -12,6 +15,29 @@ export default function Profile() {
     const [userFirestore, setUserFirestore] = useState({});
     const { profileId } = useParams();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+    const [cardsByUser, setCardsByUser] = useState([]);
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        if (userFirestore.uid) {
+            const fetchCardsByUser = async () => {
+                try {
+                    const cards = await getAllCardsByUser(userFirestore.uid, { signal: abortController.signal });
+                    setCardsByUser(cards);
+                } catch (error) {
+                    console.log("Error fetching cards: ", error);
+                }
+            };
+
+            fetchCardsByUser();
+
+            return () => {
+                abortController.abort();
+            }
+        }
+    }, [userFirestore.uid]);
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -24,7 +50,7 @@ export default function Profile() {
         };
 
         fetchUserData();
-    }, [profileId, user]);
+    }, [profileId]);
 
     return (
         <>
@@ -41,13 +67,19 @@ export default function Profile() {
                         <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
 
+                    <div className="user-items-topic">Your items :</div>
                     <div className="user-items">
-                        <div className="user-items-topic">Your items :</div>
-                        {/* List all cards created by user*/}
+                        {cardsByUser.length > 0 ? (
+                            cardsByUser.map((card) => (
+                                <MiniCard key={card.id} card={card} />
+                            ))
+                        ) : (
+                            <p>No items found.</p>
+                        )}
                     </div>
 
+                    <div className="liked-items-topic">Items you liked :</div>
                     <div className="liked-items">
-                        <div className="liked-items-topic">Items you liked :</div>
                         {/* List all cards liked by user*/}
                     </div>
 
@@ -58,7 +90,12 @@ export default function Profile() {
                 : (<NotFound />)
             }
 
-            {showDeleteConfirm && <DeleteUserConfirmation setShowDeleteConfirm={setShowDeleteConfirm} userAuth={user} userFirestore={userFirestore} />}
+            {showDeleteConfirm &&
+                <DeleteUserConfirmation
+                    setShowDeleteConfirm={setShowDeleteConfirm}
+                    userAuth={user}
+                    userFirestore={userFirestore} />
+            }
         </>
     )
 }

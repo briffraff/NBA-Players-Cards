@@ -148,3 +148,18 @@ export const createCard = async (cardData, image, imageName, userId) => {
         throw error
     }
 }
+
+export const getAllCardsByUser = async (userId, { signal }) => {
+
+    const q = query(cardsCollectionRef, where("cardUserId", "==", userId));
+
+    const dataSnapshot = await getDocs(q, { signal });
+
+    const cardsByUser = dataSnapshot.docs.map((card) => ({
+        ...card.data(),
+        id: card.id
+    }));
+
+    return cardsByUser;
+
+}
