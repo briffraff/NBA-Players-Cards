@@ -839,10 +839,9 @@ h6 {
   margin-left: 10px;
   margin-right: 20px;
 }
-.user-section .user-items {
+.user-section .user-items-topic {
   margin-top: 50px;
-}
-.user-section .user-items .user-items-topic {
+  font-size: 18px;
   font-weight: 800;
   width: 550px;
   letter-spacing: 0.5rem;
@@ -851,10 +850,19 @@ h6 {
   border-left: 5px solid #006bb7;
   color: whitesmoke;
 }
+.user-section .user-items {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10vw;
+}
 .user-section .liked-items {
   margin-top: 50px;
 }
-.user-section .liked-items .liked-items-topic {
+.user-section .liked-items-topic {
+  margin-top: 150px;
+  font-size: 18px;
   font-weight: 800;
   width: 550px;
   letter-spacing: 0.5rem;
