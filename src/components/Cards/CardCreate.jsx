@@ -3,13 +3,13 @@ import CardPreview from './CardPreview';
 import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { createCard } from '../../service/firebase/firestore/firestore-service';
-
-
+import { useAuth } from '../../contexts/authContext';
 
 export default function CardCreate() {
     const [error, setError] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
 
     const [formData, setFormData] = useState({
         playerName: "",
@@ -17,7 +17,7 @@ export default function CardCreate() {
         shortInfo: ""
     });
 
-    const [image, setImage] = useState();
+    const [image, setImage] = useState("");
     const [imageName, setImageName] = useState("");
 
     const handleSubmit = async (e) => {
@@ -25,9 +25,10 @@ export default function CardCreate() {
         setIsSubmitting(true);
 
         try {
-            await createCard(formData);
+            await createCard(formData, image, imageName, currentUser.uid);
             setError("");
             navigate("/cards-shop");
+            handleResetForm();
         } catch (error) {
             setError(error.message);
         } finally {
@@ -50,62 +51,63 @@ export default function CardCreate() {
             reader.onloadend = () => {
                 setImage(reader.result);
                 setImageName(file.name);
+                localStorage.setItem('cardImage', reader.result);
+                localStorage.setItem('cardImageName', file.name);
             };
             reader.readAsDataURL(file);
         }
     };
 
     const isAnyFieldNotEmpty = (data) => {
-        return Object.values(data).some(value => value !== "") || data.imageUrl !== "";
-    }
+        return Object.values(data).some(value => value !== "") || image !== "";
+    };
 
     const handleResetForm = (event) => {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
 
         localStorage.removeItem("cardPlayerName");
         localStorage.removeItem("cardDescription");
         localStorage.removeItem("cardShortInfo");
         localStorage.removeItem("cardImageName");
-        localStorage.removeItem("imageToPreview");
+        localStorage.removeItem("cardImage");
 
         setFormData({
             playerName: "",
             description: "",
-            shortInfo: "",
+            shortInfo: ""
         });
         setImageName("");
         setImage("");
-    }
+    };
 
     useEffect(() => {
         const savedPlayerName = localStorage.getItem("cardPlayerName");
         const savedDescription = localStorage.getItem("cardDescription");
         const savedShortInfo = localStorage.getItem("cardShortInfo");
         const savedImageName = localStorage.getItem("cardImageName");
-        const saveImageToPreview = localStorage.getItem("imageToPreview");
+        const savedImage = localStorage.getItem("cardImage");
 
         setFormData({
             playerName: savedPlayerName || "",
             description: savedDescription || "",
-            shortInfo: savedShortInfo || "",
+            shortInfo: savedShortInfo || ""
         });
-        setImageName(savedImageName);
-        setImage(saveImageToPreview);
-
+        setImageName(savedImageName || "");
+        setImage(savedImage || "");
     }, []);
 
     useEffect(() => {
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
+    }, [formData.playerName, formData.description, formData.shortInfo]);
+
+    useEffect(() => {
         localStorage.setItem("cardImageName", imageName);
-        localStorage.setItem("imageToPreview", image);
-    }, [
-        formData.playerName,
-        formData.description,
-        formData.shortInfo,
-        imageName, image
-    ]);
+        localStorage.setItem("cardImage", image);
+    }, [imageName, image]);
 
     useEffect(() => {
         if (!isSubmitting) {

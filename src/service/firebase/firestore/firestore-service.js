@@ -109,8 +109,13 @@ export const deleteFirestoreUserById = async (userAuthId) => {
     }
 }
 
-export const createCard = async (cardData) => {
-    const q = query(cardsCollectionRef, where("playerName", "==", cardData.playerName), where("imageName", "==", cardData.imageName));
+export const createCard = async (cardData, image, imageName, userId) => {
+
+    const q = query(cardsCollectionRef,
+        where("imageName", "==", imageName),
+        where("playerName", "==", cardData.playerName),
+        where("cardUserId", "==", userId)
+    );
     const snapshot = await getDocs(q);
 
     if (!snapshot.empty) {
@@ -123,8 +128,9 @@ export const createCard = async (cardData) => {
         playerName: cardData.playerName,
         description: cardData.description,
         shortInfo: cardData.shortInfo,
-        image: cardData.image,
-        imageName: cardData.imageName
+        image: image,
+        imageName: imageName,
+        cardUserId: userId
     }
 
     await addDoc(cardsCollectionRef, newCard);
