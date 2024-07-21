@@ -6,7 +6,7 @@ import { createCard } from '../../service/firebase/firestore/firestore-service';
 import { useAuth } from '../../contexts/authContext';
 
 export default function CardCreate() {
-    const [error, setError] = useState(false);
+    const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
     const { currentUser } = useAuth();
@@ -22,9 +22,14 @@ export default function CardCreate() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
+ 
+        if (!image) {
+            setError("Please select an image.");
+            return;
+        }
 
         try {
+            setIsSubmitting(true);
             await createCard(formData, image, imageName, currentUser.uid);
             setError("");
             navigate("/cards-shop");
@@ -80,6 +85,7 @@ export default function CardCreate() {
         });
         setImageName("");
         setImage("");
+        setError("");
     };
 
     useEffect(() => {
@@ -109,12 +115,6 @@ export default function CardCreate() {
         localStorage.setItem("cardImage", image);
     }, [imageName, image]);
 
-    useEffect(() => {
-        if (!isSubmitting) {
-            setError("");
-        }
-    }, [isSubmitting]);
-
     const handleCreatingMessage = isSubmitting ? "CREATING CARD..." : "CREATE CARD";
 
     return (
@@ -134,7 +134,7 @@ export default function CardCreate() {
                             onChange={handleImageChange}
                             accept="image/*"
                             className={styles.fileInput}
-                            required />
+                        />
                         <span id="imageName">{imageName || "Select Image"}</span>
                     </label>
                 </div>

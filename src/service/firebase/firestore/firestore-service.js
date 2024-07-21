@@ -111,27 +111,32 @@ export const deleteFirestoreUserById = async (userAuthId) => {
 
 export const createCard = async (cardData, image, imageName, userId) => {
 
-    const q = query(cardsCollectionRef,
-        where("imageName", "==", imageName),
-        where("playerName", "==", cardData.playerName),
-        where("cardUserId", "==", userId)
-    );
-    const snapshot = await getDocs(q);
+    try {
+        const q = query(cardsCollectionRef,
+            where("imageName", "==", imageName),
+            where("playerName", "==", cardData.playerName),
+            where("cardUserId", "==", userId)
+        );
+        const snapshot = await getDocs(q);
 
-    if (!snapshot.empty) {
-        let errorMessage = `Card with ${cardData.playerName} player already exists`
-        console.log(errorMessage);
-        throw new Error(errorMessage);
+        if (!snapshot.empty) {
+            let errorMessage = `Card with ${cardData.playerName} player already exists`
+            console.log(errorMessage);
+            throw new Error(errorMessage);
+        }
+
+        const newCard = {
+            playerName: cardData.playerName,
+            description: cardData.description,
+            shortInfo: cardData.shortInfo,
+            image: image,
+            imageName: imageName,
+            cardUserId: userId
+        }
+
+        await addDoc(cardsCollectionRef, newCard);
+        
+    } catch (error) {
+        throw error
     }
-
-    const newCard = {
-        playerName: cardData.playerName,
-        description: cardData.description,
-        shortInfo: cardData.shortInfo,
-        image: image,
-        imageName: imageName,
-        cardUserId: userId
-    }
-
-    await addDoc(cardsCollectionRef, newCard);
 }
