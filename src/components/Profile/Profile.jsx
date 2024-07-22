@@ -8,15 +8,13 @@ import DeleteUserConfirmation from "./DeleteUserConfirmation";
 import MiniCard from "../Cards/MiniCard";
 import { getAllCardsByUser } from "../../service/firebase/firestore/firestore-service";
 
-
 export default function Profile() {
-
     const user = auth.currentUser;
     const [userFirestore, setUserFirestore] = useState({});
     const { profileId } = useParams();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-
     const [cardsByUser, setCardsByUser] = useState([]);
+
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -38,7 +36,6 @@ export default function Profile() {
         }
     }, [userFirestore.uid]);
 
-
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -52,21 +49,27 @@ export default function Profile() {
         fetchUserData();
     }, [profileId]);
 
+
+    const handleRole = `${userFirestore.admin === true ? "ADMIN" : "USER"}`;
+
     return (
         <>
             {user.uid === userFirestore.uid && profileId
-
                 ? (<section className="user-section">
-                    <div className="user-section-info">
-                        <Link to="/card-create" className="create-card-btn">Create Card</Link>
-                        <div className="user-info">
-                            <div>Username : <a className="user-info-values">{user.displayName}</a></div>
-                            <div>Email : <a className="user-info-values">{user.email}</a></div>
-                            <div>Role : <a className="user-info-values">{`${userFirestore.admin === true ? "Admin" : "User"}`}</a></div>
+                    <div className="header-container">
+                        <div className="slogan">
+                            {handleRole} PROFILE
                         </div>
+                        <div className="user-info">
+                            <div>Username: <a className="user-info-values">{user.displayName}</a></div>
+                            <div>Email: <a className="user-info-values">{user.email}</a></div>
+                            <div>Role: <a className="user-info-values">{handleRole}</a></div>
+                        </div>
+                    </div>
+                    <div className="button-container">
+                        <Link to="/card-create" className="create-card-btn">Create Card</Link>
                         <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
-
                     <div className="user-items-topic">Your items :</div>
                     <div className="user-items">
                         {cardsByUser.length > 0 ? (
@@ -80,15 +83,14 @@ export default function Profile() {
 
                     <div className="liked-items-topic">Items you liked :</div>
                     <div className="liked-items">
-                        {null ? (null ) : (
+                        {null ? (null) : (
                             <p className="no-items">No items found.</p>
                         )}
                     </div>
 
-                    {/* ADMIN   -> */}
+                    {/* ADMIN -> */}
                     {/* All users */}
                 </section>)
-
                 : (<NotFound />)
             }
 

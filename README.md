@@ -32,11 +32,17 @@ Login
 User Profile
 ![User Profile](./public/assets/img/readme/UserProfile.jpg)
 
-User Profile Create Card
-![User Profile Create Card](./public/assets/img/readme/createCard.jpg)
+Create Card
+![Create Card](./public/assets/img/readme/createCard.jpg)
+
+Card Details
+![Card Details](./public/assets/img/readme/cardDetails.jpg)
 
 User Profile Delete
 ![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)
+
+
+
 
 Logout
 ![Logout](./public/assets/img/readme/logout.jpg)

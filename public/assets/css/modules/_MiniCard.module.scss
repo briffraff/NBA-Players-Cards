@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.cardPreviewContainer {
+.card-preview-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,13 +19,14 @@
   background-color: #0e1113;
   box-shadow: 0 0 10px rgba(245, 243, 243, 0.1);
   border-radius: 20px;
-  max-width: 350px; 
-  max-height: 460px; 
-  width: 100%; 
-  height: auto; 
+  max-width: 350px;
+  max-height: 460px;
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 
-.cardHolder {
+.card-holder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,14 +34,14 @@
   height: 100%;
 }
 
-.cardImage {
+.card-image {
   width: 99%;
   height: 400px;
   object-fit: contain;
   margin-bottom: 10px;
 }
 
-.playerName {
+.player-name {
   margin: 10px 0;
   font-size: 35px;
   font-weight: bold;
@@ -51,6 +52,7 @@
   text-overflow: ellipsis;
   width: 100%;
   text-align: center;
+  color: whitesmoke;
 }
 
 .card {
@@ -58,4 +60,56 @@
   max-height: 480px;
   width: 100%;
   height: 100%;
+}
+
+.card-image {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.card-preview-container:hover .button-container {
+  opacity: 1;
+}
+
+.details-button {
+  width: 100px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1495c9;
+  }
 }

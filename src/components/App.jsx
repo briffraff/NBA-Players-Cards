@@ -16,6 +16,8 @@ import Profile from "./Profile/Profile";
 import NotFound from "./404/404";
 import CardCreate from "./Cards/CardCreate";
 import CardsShop from "./Cards/CardsShop";
+import CardDetails from "./Cards/CardDetails";
+
 
 export default function App() {
 
@@ -37,6 +39,7 @@ export default function App() {
                                 <Route path="/teams" element={<Teams />} />
                                 <Route path="/team/:teamId" element={<TeamDetails />} />
                                 <Route path="/profile/:profileId" element={<Profile />} />
+                                <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
                                 <Route path="/cards-shop" element={<CardsShop />} />
                                 <Route path="/card-create" element={<CardCreate />} />
                                 <Route path="*" element={<NotFound />} />

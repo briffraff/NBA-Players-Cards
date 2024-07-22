@@ -30,7 +30,7 @@ export default function CardCreate() {
 
         try {
             setIsSubmitting(true);
-            await createCard(formData, image, imageName, currentUser.uid);
+            await createCard(formData, image, imageName, currentUser);
             setError("");
             navigate("/cards-shop");
             handleResetForm();
