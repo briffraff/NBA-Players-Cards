@@ -32,23 +32,27 @@ export default function CardDetails() {
             ? (<p className={styles.loading}>Loading...</p>)
             : (
                 <div className={styles.centeredContainer}>
-                    <div className={styles.cardPreviewContainer}>
-                        <div className={styles.cardHolder}>
-                            <img className={styles.cardImage} src={card.imageUrl} alt="Front" />
-                            <h2 className={styles.playerName}>{card.playerName}</h2>
-                            <p className={styles.shortInfo}>{card.shortInfo}</p>
+                    <div className={styles.slogan}>Card details</div>
+                    <div className={styles.detailsContent}>
+                        <div className={styles.cardPreviewContainer}>
+                            <div className={styles.cardHolder}>
+                                <img className={styles.cardImage} src={card.imageUrl} alt="Front" />
+                                <h2 className={styles.playerName}>{card.playerName}</h2>
+                                <p className={styles.shortInfo}>{card.shortInfo}</p>
+                            </div>
+
+                            <div className={styles.buttonContainer}>
+                                <button className={styles.editButton}>Edit</button>
+                                <button className={styles.deleteButton}>Delete</button>
+                            </div>
                         </div>
 
-                        <div className={styles.buttonContainer}>
-                            <button className={styles.editButton}>Edit</button>
-                            <button className={styles.deleteButton}>Delete</button>
+                        <div className={styles.descriptionContainer}>
+                            <p className={styles.descriptionSlogan}>Description :</p>
+                            <p className={styles.description}>{card.description}</p>
                         </div>
                     </div>
 
-                    <div className={styles.descriptionContainer}>
-                        <p className={styles.descriptionSlogan}>Description :</p>
-                        <p className={styles.description}>{card.description}</p>
-                    </div>
                 </div>
             )
     );

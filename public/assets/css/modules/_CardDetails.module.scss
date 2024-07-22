@@ -3,7 +3,7 @@
 
 .centered-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 70%;
@@ -36,6 +36,13 @@
   box-shadow: 0 0 10px rgba(245, 243, 243, 0.1);
   border-radius: 20px;
   position: relative;
+}
+
+.details-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardHolder {
@@ -134,4 +141,12 @@
 
 .deleteButton:hover {
   background-color: #c52222;
+}
+
+.slogan {
+  color: whitesmoke;
+  font-size: 100px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 100px;
 }
