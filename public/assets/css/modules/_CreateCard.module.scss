@@ -2,6 +2,8 @@
 @import "../../scss/Functions";
 
 .centered-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +14,8 @@
 }
 
 .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
