@@ -45,6 +45,11 @@ export default function CardDetails() {
                                 <button className={styles.editButton}>Edit</button>
                                 <button className={styles.deleteButton}>Delete</button>
                             </div>
+
+                            <div className={styles.authorContainer}>
+                                author :
+                                <div className={styles.author}>{card.author}</div>
+                            </div>
                         </div>
 
                         <div className={styles.descriptionContainer}>
