@@ -9,7 +9,7 @@ export default function MiniCard({ card }) {
     return (
         <>
             <div className={`${styles.cardPreviewContainer} ${styles.card}`}>
-                <Link to={`/profile/${profileId}/${card.id}`} className={styles.cardHolder}>
+                <div className={styles.cardHolder}>
                     {isLoading && <p>Loading image...</p>}
                     <img
                         className={`${styles.cardImage} ${isLoading ? styles.hide : styles.show}`}
@@ -19,7 +19,10 @@ export default function MiniCard({ card }) {
                         onError={() => setIsLoading(false)}
                     />
                     <h2 className={styles.playerName}>{card.playerName}</h2>
-                </Link>
+                </div>
+                <div className={styles.buttonContainer}>
+                    <Link to={`/profile/${profileId}/${card.id}`} className={styles.detailsButton}>Details</Link>
+                </div>
             </div>
         </>
     );
