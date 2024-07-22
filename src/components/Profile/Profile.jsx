@@ -80,7 +80,7 @@ export default function Profile() {
 
                     <div className="liked-items-topic">Items you liked :</div>
                     <div className="liked-items">
-                        {null ? (null ) : (
+                        {null ? (null) : (
                             <p className="no-items">No items found.</p>
                         )}
                     </div>

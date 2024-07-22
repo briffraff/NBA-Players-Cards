@@ -1,0 +1,52 @@
+.team-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  margin-top: 5em;
+  margin: 1em;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.cardImage {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.cardImage.show {
+  opacity: 1;
+}
+
+.cardImage.hide {
+  opacity: 0;
+}
+
+.card-name {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: whitesmoke;
+}
+.card-name:hover {
+  background-color: getColor(nba-p);
+  border-radius: 0px 0px 15px 15px;
+}
+
+.division-title {
+  font-size: 30px;
+  margin-top: 70px;
+  // background-color: rgba($color: black, $alpha: 0.3);
+  width: 100%;
+  text-align: center;
+
+  &:before {
+    content: "/ ";
+    font-weight: 900;
+    margin-left: 5.5%;
+    color: getColor(nba-p);
+  }
+}
+
+.story-title {
+  padding-top: 50px;
+}
