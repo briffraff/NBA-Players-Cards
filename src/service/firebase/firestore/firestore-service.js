@@ -111,7 +111,7 @@ export const deleteFirestoreUserById = async (userAuthId) => {
     }
 }
 
-export const createCard = async (cardData, image, imageName, userId) => {
+export const createCard = async (cardData, image, imageName, currentUsers) => {
 
     // clean image from base64 metadata - 'data:image/jpg;base64'
     const cleanImage = image.split(',')[1];
@@ -139,7 +139,8 @@ export const createCard = async (cardData, image, imageName, userId) => {
             imageUrl: imageUrl,
             imageName: imageName,
             imageHash: imageHash,
-            cardUserId: userId
+            cardUserId: currentUsers.uid,
+            author : currentUsers.displayName
         }
 
         await addDoc(cardsCollectionRef, newCard);

@@ -21,7 +21,7 @@
   transition: all 0.5s ease-out;
 }
 
-.cardPreviewContainer {
+.card-preview-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,21 +35,21 @@
   border-radius: 20px;
 }
 
-.cardHolder {
+.card-holder {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.cardImage {
+.card-image {
   width: 100%;
   max-width: 450px;
   height: auto;
   margin-bottom: 10px;
 }
 
-.playerName {
+.player-name {
   margin: 10px 0;
   font-size: 35px;
   font-weight: bold;
@@ -57,7 +57,7 @@
   letter-spacing: 10px;
 }
 
-.shortInfo {
+.short-info {
   margin: 0;
   font-size: 20px;
 }
@@ -69,7 +69,7 @@
   text-transform: uppercase;
 }
 
-.descriptionContainer {
+.description-container {
   display: flex;
   flex-direction: column;
   width: 40%;

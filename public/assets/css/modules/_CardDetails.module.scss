@@ -22,7 +22,7 @@
   transition: all 0.5s ease-out;
 }
 
-.cardPreviewContainer {
+.card-preview-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,21 +45,21 @@
   align-items: center;
 }
 
-.cardHolder {
+.card-holder {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.cardImage {
+.card-image {
   width: 100%;
   max-width: 450px;
   height: auto;
   margin-bottom: 10px;
 }
 
-.playerName {
+.player-name {
   margin: 10px 0;
   font-size: 35px;
   font-weight: bold;
@@ -67,7 +67,7 @@
   letter-spacing: 10px;
 }
 
-.shortInfo {
+.short-info {
   margin: 0;
   font-size: 20px;
 }
@@ -79,7 +79,7 @@
   text-transform: uppercase;
 }
 
-.descriptionContainer {
+.description-container {
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -99,13 +99,13 @@
   color: whitesmoke;
 }
 
-.buttonContainer {
+.button-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
   padding: 25%;
-  background-color: rgba(0, 0, 0, 0.6); /* Леко прозрачна фонов цвят */
+  background-color: rgba(0, 0, 0, 0.6); 
   border-radius: 8px;
   transition: opacity 0.3s ease;
 
@@ -116,12 +116,12 @@
   opacity: 0;
 }
 
-.cardPreviewContainer:hover .buttonContainer {
+.card-preview-container:hover .button-container {
   opacity: 1;
 }
 
-.editButton,
-.deleteButton {
+.edit-button,
+.delete-button {
   width: 100px;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
@@ -135,11 +135,11 @@
   transition: background-color 0.3s ease;
 }
 
-.editButton:hover {
+.edit-button:hover {
   background-color: #1495c9;
 }
 
-.deleteButton:hover {
+.delete-button:hover {
   background-color: #c52222;
 }
 
@@ -148,5 +148,5 @@
   font-size: 100px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }

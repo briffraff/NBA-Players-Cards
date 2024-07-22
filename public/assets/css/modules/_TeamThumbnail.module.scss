@@ -8,16 +8,16 @@
   border-radius: 0px 0px 15px 15px;
 }
 
-.cardImage {
+.card-image {
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
 
-.cardImage.show {
+.card-image.show {
   opacity: 1;
 }
 
-.cardImage.hide {
+.card-image.hide {
   opacity: 0;
 }
 
