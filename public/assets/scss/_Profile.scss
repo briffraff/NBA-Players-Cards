@@ -54,6 +54,8 @@
     .create-card-btn {
       background-color: getColor(nba-p);
       color: getColor(bg-0);
+      font-weight: bold;
+      font-size: 16px;
       padding: 10px 15px;
       margin-right: 20px;
       border-radius: 8px;
@@ -61,7 +63,7 @@
 
       &:hover {
         background-color: getColor(bg-0);
-        color: getColor(nba-s);
+        color: getColor(nba-p);
       }
     }
 
@@ -69,6 +71,8 @@
       background-color: getColor(nba-s);
       color: getColor(bg-0);
       padding: 10px;
+      font-weight: bold;
+      font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
 

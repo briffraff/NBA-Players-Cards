@@ -821,6 +821,8 @@ h6 {
 .user-section .button-container .create-card-btn {
   background-color: #006bb7;
   color: whitesmoke;
+  font-weight: bold;
+  font-size: 16px;
   padding: 10px 15px;
   margin-right: 20px;
   border-radius: 8px;
@@ -828,12 +830,14 @@ h6 {
 }
 .user-section .button-container .create-card-btn:hover {
   background-color: whitesmoke;
-  color: #aa0b2d;
+  color: #006bb7;
 }
 .user-section .button-container .delete-user {
   background-color: #aa0b2d;
   color: whitesmoke;
   padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
 }
