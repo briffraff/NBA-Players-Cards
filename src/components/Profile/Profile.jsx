@@ -74,13 +74,15 @@ export default function Profile() {
                                 <MiniCard key={card.id} card={card} />
                             ))
                         ) : (
-                            <p>No items found.</p>
+                            <p className="no-items">No items found.</p>
                         )}
                     </div>
 
                     <div className="liked-items-topic">Items you liked :</div>
                     <div className="liked-items">
-                        {/* List all cards liked by user*/}
+                        {null ? (null ) : (
+                            <p className="no-items">No items found.</p>
+                        )}
                     </div>
 
                     {/* ADMIN   -> */}
