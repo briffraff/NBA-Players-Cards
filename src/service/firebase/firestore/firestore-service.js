@@ -140,7 +140,7 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
             imageName: imageName,
             imageHash: imageHash,
             cardUserId: currentUsers.uid,
-            author : currentUsers.displayName
+            author: currentUsers.displayName
         }
 
         await addDoc(cardsCollectionRef, newCard);
@@ -148,6 +148,10 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
     } catch (error) {
         throw error
     }
+}
+
+export const updateCard = async () => {
+    console.log("Update");
 }
 
 export const getAllCardsByUser = async (userId, { signal }) => {
@@ -179,3 +183,4 @@ export const getCardById = async (cardId) => {
         throw error;
     }
 };
+
