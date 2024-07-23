@@ -91,6 +91,27 @@ export const deleteFirestoreUserById = async (userAuthId) => {
 };
 
 
+//// ADMIN MANAGE USERS
+export const updateFirestoreUserRole = async (userId, isAdmin) => {
+    try {
+        const docRef = doc(usersCollectionRef, userId);
+
+        const updatedUser = {
+            admin: isAdmin
+        };
+
+        await updateDoc(docRef, updatedUser);
+
+        let role = isAdmin ? "Admin" : "User";
+        let successMessage = `User role updated to ${role}`;
+        console.log(successMessage);
+    } catch (error) {
+        console.error("Error updating user role:", error.message);
+        throw new Error("Failed to update user role.");
+    }
+};
+
+
 // SUBSCRIBERS
 export const addSubscriber = async (email) => {
     try {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/authContext";
-import styles from "../../../public/assets/css/modules/_ManageUsersModal.module.scss"
-import { getAllFirestoreUsers } from "../../service/firebase/firestore/firestore-service";
+import styles from "../../../public/assets/css/modules/_ManageUsersModal.module.scss";
+import { getAllFirestoreUsers, updateFirestoreUserRole } from "../../service/firebase/firestore/firestore-service";
 
 export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
 
@@ -14,20 +14,20 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
     useEffect(() => {
         const fetchAllUsers = async () => {
             try {
-                const firestoreUsers = await getAllFirestoreUsers()
-                setAllUsers(firestoreUsers);
-                setError("")
+                const firestoreUsers = await getAllFirestoreUsers();
+                const excludeCurrentUserList = firestoreUsers.filter((user) => user.username != currentUser.displayName && user.username != "Admin")
+                setAllUsers(excludeCurrentUserList);
+                setError("");
             } catch (error) {
-                setError(error);
+                setError(error.message);
                 console.log("Problem Loading users", error);
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
-        fetchAllUsers()
-    }, [])
-
+        fetchAllUsers();
+    }, []);
 
     const handleModalClick = (event) => {
         event.stopPropagation();
@@ -50,7 +50,7 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
     return (
         <>
             <section id="manageUsersModal" className={`${styles.modalBackground} ${styles.modalStretch}`} onClick={() => setShowAdminManageUsers(false)}>
-                <form className={`${styles.modalBox} ${styles.centered}`} onClick={handleModalClick} >
+                <form className={`${styles.modalBox} ${styles.centered}`} onClick={handleModalClick}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Manage Users</h1>
                         <div className={styles.esc} onClick={() => setShowAdminManageUsers(false)}>x</div>
@@ -71,11 +71,14 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
                                             <span>{`${user.username}`}</span>
                                             <span>{`${user.email}`}</span>
                                             <span>
-                                                <button className={styles.roleButton} onClick={() => handleRoleChange(user.id, user.admin)}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.roleButton}
+                                                    onClick={() => handleRoleChange(user.id, user.admin)}
+                                                >
                                                     {user.admin ? "Admin" : "User"}
                                                 </button>
                                             </span>
-
                                         </div>
                                     ))
                                 ) : (
@@ -87,7 +90,7 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
                 </form>
-            </section >
+            </section>
         </>
-    )
+    );
 }
