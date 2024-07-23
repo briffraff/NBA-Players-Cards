@@ -2,14 +2,16 @@ import { db } from "../firebase-config";
 import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId, updateDoc } from "firebase/firestore";
 
 import { generateHashFromBase64 } from "../../utils/utils";
-import { getDownloadUrlFromPath, uploadImageAndGetUrl } from "../storage/storage-service";
-import { getDownloadURL } from "firebase/storage";
+import { uploadImageAndGetUrl } from "../storage/storage-service";
+
 
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
 const usersCollectionRef = collection(db, "users");
 const cardsCollectionRef = collection(db, "nba-cards");
 
+
+//TEAMS
 export const getTeams = async ({ signal }) => {
     try {
         const data = await getDocs(teamsCollectionRef, { signal });
@@ -40,6 +42,8 @@ export const getTeamById = async (id) => {
     }
 };
 
+
+// USERS
 export const getAllFirestoreUsers = async () => {
     try {
         const data = await getDocs(usersCollectionRef);
@@ -53,7 +57,6 @@ export const getAllFirestoreUsers = async () => {
         throw error;
     }
 };
-
 
 export const getFirestoreUserById = async (profileId) => {
     try {
@@ -75,6 +78,20 @@ export const getFirestoreUserById = async (profileId) => {
 
 };
 
+export const deleteFirestoreUserById = async (userAuthId) => {
+    const q = query(usersCollectionRef, where("uid", "==", userAuthId));
+    const querySnapshot = await getDocs(q);
+    const documentID = querySnapshot.docs[0].id;
+    const docRef = doc(db, "users", documentID);
+
+    if (docRef) {
+        await deleteDoc(docRef);
+        // console.log("Firebase User deleted successfully!")
+    }
+};
+
+
+// SUBSCRIBERS
 export const addSubscriber = async (email) => {
     try {
         const currentYear = new Date().getFullYear();
@@ -100,18 +117,8 @@ export const addSubscriber = async (email) => {
     }
 };
 
-export const deleteFirestoreUserById = async (userAuthId) => {
-    const q = query(usersCollectionRef, where("uid", "==", userAuthId));
-    const querySnapshot = await getDocs(q);
-    const documentID = querySnapshot.docs[0].id;
-    const docRef = doc(db, "users", documentID);
 
-    if (docRef) {
-        await deleteDoc(docRef);
-        // console.log("Firebase User deleted successfully!")
-    }
-}
-
+// CARDS
 export const createCard = async (cardData, image, imageName, currentUsers) => {
 
     // clean image from base64 metadata - 'data:image/jpg;base64'
@@ -149,7 +156,7 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
     } catch (error) {
         throw error
     }
-}
+};
 
 export const updateCard = async (currentHash, cardId, currentUrl, formData, image, imageName) => {
     let newImageUrl = "";
@@ -170,7 +177,7 @@ export const updateCard = async (currentHash, cardId, currentUrl, formData, imag
             throw new Error(errorMessage);
         }
 
-        
+
         if (newImagehash && newImagehash !== currentHash) {
             const q = query(cardsCollectionRef, where("imageHash", "==", newImagehash));
             const snapshot = await getDocs(q);
@@ -192,7 +199,7 @@ export const updateCard = async (currentHash, cardId, currentUrl, formData, imag
             shortInfo: formData.shortInfo,
             imageUrl: newImageUrl !== "" ? newImageUrl : currentUrl,
             imageName: imageName,
-            imageHash: newImagehash 
+            imageHash: newImagehash
         };
 
         await updateDoc(docRef, updatedCard);
@@ -215,7 +222,7 @@ export const getAllCardsByUser = async (userId, { signal }) => {
     }));
 
     return cardsByUser;
-}
+};
 
 export const getCardById = async (cardId) => {
     try {
@@ -231,5 +238,14 @@ export const getCardById = async (cardId) => {
         console.log("Error fetching card: ", error);
         throw error;
     }
+};
+
+export const deleteCardById = async (cardId) => {
+    const docRef = doc(cardsCollectionRef, cardId);
+    if (docRef) {
+        await deleteDoc(docRef);
+    }
+
+    console.log("Delete Card successfully")
 };
 
