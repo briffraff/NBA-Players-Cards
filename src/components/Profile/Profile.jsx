@@ -68,6 +68,10 @@ export default function Profile() {
                     </div>
                     <div className="button-container">
                         <Link to="/card-create" className="create-card-btn">Create Card</Link>
+
+                        {userFirestore.admin == true &&                        
+                        <div className="delete-user" onClick={() => setShowAdminDeleteUsers(true)}></div>}
+
                         <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
                     <div className="user-items-topic">Your items :</div>
@@ -89,17 +93,18 @@ export default function Profile() {
                     </div>
 
                     {/* ADMIN -> */}
-                    {/* All users */}
-                </section>)
+            {/* All users */}
+        </section >)
                 : (<NotFound />)
-            }
+}
 
-            {showDeleteConfirm &&
-                <DeleteUserConfirmation
-                    setShowDeleteConfirm={setShowDeleteConfirm}
-                    userAuth={user}
-                    userFirestore={userFirestore} />
-            }
+{
+    showDeleteConfirm &&
+    <DeleteUserConfirmation
+        setShowDeleteConfirm={setShowDeleteConfirm}
+        userAuth={user}
+        userFirestore={userFirestore} />
+}
         </>
     )
 }
