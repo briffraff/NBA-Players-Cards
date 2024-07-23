@@ -1,18 +1,21 @@
-import NotFound from "../404/404";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
+import { getAllCardsByUser } from "../../service/firebase/firestore/firestore-service";
 import { auth } from "../../service/firebase/firebase-config";
 
+import NotFound from "../404/404";
 import DeleteUserConfirmation from "./DeleteUserConfirmation";
+import AdminDeleteUsersModal from "./AdminManageUsersModal";
 import MiniCard from "../Cards/MiniCard";
-import { getAllCardsByUser } from "../../service/firebase/firestore/firestore-service";
+import AdminManageUsersModal from "./AdminManageUsersModal";
 
 export default function Profile() {
     const user = auth.currentUser;
     const [userFirestore, setUserFirestore] = useState({});
     const { profileId } = useParams();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [showAdminManageUsers, setShowAdminManageUsers] = useState(false);
     const [cardsByUser, setCardsByUser] = useState([]);
 
     useEffect(() => {
@@ -69,8 +72,8 @@ export default function Profile() {
                     <div className="button-container">
                         <Link to="/card-create" className="create-card-btn">Create Card</Link>
 
-                        {userFirestore.admin == true &&                        
-                        <div className="delete-user" onClick={() => setShowAdminDeleteUsers(true)}></div>}
+                        {userFirestore.admin == true &&
+                            <div className="manage-users" onClick={() => setShowAdminManageUsers(true)}>Manage Users</div>}
 
                         <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
@@ -93,18 +96,26 @@ export default function Profile() {
                     </div>
 
                     {/* ADMIN -> */}
-            {/* All users */}
-        </section >)
+                    {/* All users */}
+                </section >)
                 : (<NotFound />)
-}
+            }
 
-{
-    showDeleteConfirm &&
-    <DeleteUserConfirmation
-        setShowDeleteConfirm={setShowDeleteConfirm}
-        userAuth={user}
-        userFirestore={userFirestore} />
-}
+            {
+                showDeleteConfirm &&
+                <DeleteUserConfirmation
+                    setShowDeleteConfirm={setShowDeleteConfirm}
+                    userAuth={user}
+                    userFirestore={userFirestore} />
+            }
+
+            {
+                showAdminManageUsers &&
+                <AdminManageUsersModal
+                    setShowAdminManageUsers={setShowAdminManageUsers}
+                    userAuth={user}
+                    userFirestore={userFirestore} />
+            }
         </>
     )
 }

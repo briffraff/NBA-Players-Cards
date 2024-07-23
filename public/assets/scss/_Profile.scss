@@ -81,6 +81,21 @@
         color: getColor(nba-s);
       }
     }
+
+    .manage-users {
+      background-color: rgb(69, 49, 184);
+      color: getColor(bg-0);
+      padding: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: getColor(bg-0);
+        color: rgb(69, 49, 184);
+      }
+    }
   }
 
   .user-items-topic {

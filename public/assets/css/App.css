@@ -845,6 +845,19 @@ h6 {
   background-color: whitesmoke;
   color: #aa0b2d;
 }
+.user-section .button-container .manage-users {
+  background-color: rgb(69, 49, 184);
+  color: whitesmoke;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.user-section .button-container .manage-users:hover {
+  background-color: whitesmoke;
+  color: rgb(69, 49, 184);
+}
 .user-section .user-items-topic {
   margin-top: 50px;
   margin-bottom: 50px;
