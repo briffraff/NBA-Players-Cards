@@ -29,14 +29,20 @@ Register
 Login
 ![Login](./public/assets/img/readme/login.jpg)
 
-User Profile
-![User Profile](./public/assets/img/readme/UserProfile.jpg)
-
 Create Card
 ![Create Card](./public/assets/img/readme/createCard.jpg)
 
+User Profile
+![User Profile](./public/assets/img/readme/UserProfile.jpg)
+
 Card Details
 ![Card Details](./public/assets/img/readme/cardDetails.jpg)
+
+Edit Card
+![Edit Card](./public/assets/img/readme/editCard.jpg)
+
+Delete Card
+![Delete Card](./public/assets/img/readme/deleteCard.jpg)
 
 User Profile Delete
 ![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)

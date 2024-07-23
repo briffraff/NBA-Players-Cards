@@ -46,7 +46,7 @@ export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth,
 
     return (
         <>
-            <section id="loginModal" className={`${styles.modalBackground}`} onClick={() => setShowDeleteConfirm(false)}>
+            <section id="deleteUserModal" className={`${styles.modalBackground}`} onClick={() => setShowDeleteConfirm(false)}>
                 <form className={`${styles.modalBox} ${styles.centered} ${styles.moveDeleteModal}`} onClick={handleModalClick} onSubmit={handleDeleteUser}>
                     <div className={styles.modalHeader}>
                         <h1 className={styles.modalSlogan}>Delete Account</h1>

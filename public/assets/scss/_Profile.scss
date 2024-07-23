@@ -81,6 +81,21 @@
         color: getColor(nba-s);
       }
     }
+
+    .manage-users {
+      background-color: rgb(69, 49, 184);
+      color: getColor(bg-0);
+      padding: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: getColor(bg-0);
+        color: rgb(69, 49, 184);
+      }
+    }
   }
 
   .user-items-topic {
@@ -108,6 +123,7 @@
 
   .liked-items-topic {
     margin-top: 150px;
+    margin-bottom: 50px;
     font-size: 18px;
     font-weight: 800;
     width: 550px;
