@@ -122,9 +122,16 @@
   opacity: 1;
 }
 
-.edit-button,
+.edit-button {
+  width: 80px;
+}
 .delete-button {
   width: 100px;
+}
+
+.edit-button,
+.delete-button {
+  text-align: center;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 10px;

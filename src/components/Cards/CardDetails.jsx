@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import NotFound from "../404/404";
 import { getCardById } from '../../service/firebase/firestore/firestore-service';
@@ -40,12 +40,12 @@ export default function CardDetails() {
                                 <h2 className={styles.playerName}>{card.playerName}</h2>
                                 <p className={styles.shortInfo}>{card.shortInfo}</p>
                             </div>
-
-                            <div className={styles.buttonContainer}>
-                                <button className={styles.editButton}>Edit</button>
-                                <button className={styles.deleteButton}>Delete</button>
-                            </div>
-
+                            {currentUser.uid == card.cardUserId &&
+                                <div className={styles.buttonContainer}>
+                                    <Link to={`/card-edit/${cardId}`} className={styles.editButton}>Edit</Link>
+                                    <button className={styles.deleteButton}>Delete</button>
+                                </div>
+                            }
                             <div className={styles.authorContainer}>
                                 author :
                                 <div className={styles.author}>{card.author}</div>

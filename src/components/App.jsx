@@ -17,7 +17,7 @@ import NotFound from "./404/404";
 import CardCreate from "./Cards/CardCreate";
 import CardsShop from "./Cards/CardsShop";
 import CardDetails from "./Cards/CardDetails";
-
+import CardEdit from "./Cards/CardEdit";
 
 export default function App() {
 
@@ -34,14 +34,16 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<Layout />}>
                                 <Route index path="/" element={<Home />}></Route>
-                                <Route path="/logout" element={<Logout />} />
                                 <Route path="/about-nba" element={<AboutNba />} />
                                 <Route path="/teams" element={<Teams />} />
                                 <Route path="/team/:teamId" element={<TeamDetails />} />
+
                                 <Route path="/profile/:profileId" element={<Profile />} />
                                 <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
                                 <Route path="/cards-shop" element={<CardsShop />} />
                                 <Route path="/card-create" element={<CardCreate />} />
+                                <Route path="/card-edit/:cardId" element={<CardEdit />} />
+                                <Route path="/logout" element={<Logout />} />
                                 <Route path="*" element={<NotFound />} />
                             </Route>
                         </Routes>
