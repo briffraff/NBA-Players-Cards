@@ -112,8 +112,7 @@ export default function Profile() {
                 showAdminManageUsers &&
                 <AdminManageUsersModal
                     setShowAdminManageUsers={setShowAdminManageUsers}
-                    userAuth={user}
-                    userFirestore={userFirestore} />
+                />
             }
         </>
     )
