@@ -6,9 +6,8 @@ import { auth } from "../../service/firebase/firebase-config";
 
 import NotFound from "../404/404";
 import DeleteUserConfirmation from "./DeleteUserConfirmation";
-import AdminDeleteUsersModal from "./AdminManageUsersModal";
-import MiniCard from "../Cards/MiniCard";
 import AdminManageUsersModal from "./AdminManageUsersModal";
+import MiniCard from "../Cards/MiniCard";
 
 export default function Profile() {
     const user = auth.currentUser;
