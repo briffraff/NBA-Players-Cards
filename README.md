@@ -8,6 +8,8 @@
   - [Links](#links)
 
 ## Demo Screenshots
+GUESTS:
+
 Home + Footer
 ![Home](./public/assets/img/readme/home.jpg)
 
@@ -29,6 +31,8 @@ Register
 Login
 ![Login](./public/assets/img/readme/login.jpg)
 
+LOGGED USERS:
+
 Create Card
 ![Create Card](./public/assets/img/readme/createCard.jpg)
 
@@ -46,6 +50,14 @@ Delete Card
 
 User Profile Delete
 ![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)
+
+ADMIN :
+
+Admin profile
+![Admin profile](./public/assets/img/readme/adminProfile.jpg)
+
+Manage users
+![Manage users](./public/assets/img/readme/manageUsers.jpg)
 
 
 
