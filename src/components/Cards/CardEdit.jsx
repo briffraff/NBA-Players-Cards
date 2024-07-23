@@ -56,12 +56,7 @@ export default function CardEdit() {
 
         try {
             setIsSubmitting(true);
-            await updateCard(cardId, {
-                ...formData,
-                image,
-                imageName,
-                cardUserId: currentUser.uid
-            });
+            await updateCard(card.imageHash, cardId, card.imageUrl, formData, image, imageName);
             setError("");
             navigate("/cards-shop");
             handleResetForm();

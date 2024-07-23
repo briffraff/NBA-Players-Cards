@@ -1,8 +1,9 @@
 import { db } from "../firebase-config";
-import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId } from "firebase/firestore";
+import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId, updateDoc } from "firebase/firestore";
 
 import { generateHashFromBase64 } from "../../utils/utils";
-import { uploadImageAndGetUrl } from "../storage/storage-service";
+import { getDownloadUrlFromPath, uploadImageAndGetUrl } from "../storage/storage-service";
+import { getDownloadURL } from "firebase/storage";
 
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
@@ -150,9 +151,57 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
     }
 }
 
-export const updateCard = async () => {
-    console.log("Update");
-}
+export const updateCard = async (currentHash, cardId, currentUrl, formData, image, imageName) => {
+    let newImageUrl = "";
+    let newImagehash = currentHash;
+
+    if (!image.includes("https:")) {
+        const cleanImage = image.split(',')[1];
+        newImagehash = await generateHashFromBase64(cleanImage);
+    }
+
+    try {
+        const docRef = doc(cardsCollectionRef, cardId);
+        const docSnapshot = await getDoc(docRef);
+
+        if (!docSnapshot.exists()) {
+            let errorMessage = "Card does not exist";
+            console.log(errorMessage);
+            throw new Error(errorMessage);
+        }
+
+        
+        if (newImagehash && newImagehash !== currentHash) {
+            const q = query(cardsCollectionRef, where("imageHash", "==", newImagehash));
+            const snapshot = await getDocs(q);
+
+            if (!snapshot.empty) {
+                let errorMessage = "Card with same image already exists";
+                console.log(errorMessage);
+                throw new Error(errorMessage);
+            }
+
+            // Upload new image and get new URL
+            const cardImagesStorage = "nba-cards";
+            newImageUrl = await uploadImageAndGetUrl(image, cardImagesStorage, imageName);
+        }
+
+        const updatedCard = {
+            playerName: formData.playerName,
+            description: formData.description,
+            shortInfo: formData.shortInfo,
+            imageUrl: newImageUrl !== "" ? newImageUrl : currentUrl,
+            imageName: imageName,
+            imageHash: newImagehash 
+        };
+
+        await updateDoc(docRef, updatedCard);
+        console.log("Firebase Card updated successfully!");
+
+    } catch (error) {
+        console.error("Error updating card: ", error);
+    }
+};
 
 export const getAllCardsByUser = async (userId, { signal }) => {
 
