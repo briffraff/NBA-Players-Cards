@@ -6,7 +6,6 @@ import { reAuthentication, deleteAuthUser } from "../../service/firebase/authent
 import { useAuth } from "../../contexts/authContext";
 import { deleteFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
 
-
 export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth, userFirestore }) {
 
     const { currentUser, userLoggedIn, loading } = useAuth();
