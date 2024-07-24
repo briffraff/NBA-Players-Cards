@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAsyncError, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTeamById, likeTeam, unlikeTeam, isTeamLiked } from "../../service/firebase/firestore/firestore-service";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
 import NotFound from "../404/404";

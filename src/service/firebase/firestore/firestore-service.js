@@ -135,7 +135,6 @@ export const deleteFirestoreUserById = async (userAuthId) => {
 
     if (docRef) {
         await deleteDoc(docRef);
-        // console.log("Firebase User deleted successfully!")
     }
 };
 
