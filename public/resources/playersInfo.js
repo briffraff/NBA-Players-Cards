@@ -1,0 +1,35 @@
+const MilesBridges = {
+    playerName: "Miles Bridges",
+    shortInfo: " PlayerOf the week | East week 1",
+    description: "Miles Emmanuel Bridges Sr. (born March 21, 1998) is an American professional basketball player for the Charlotte Hornets of the National Basketball Association (NBA). He played college basketball for the Michigan State Spartans. A native of Flint, Michigan, he competed for Flint Southwestern Academy (freshman season) at the high school level before moving to Huntington Prep School for his sophomore, junior, and senior year. Bridges was selected 12th overall by the Los Angeles Clippers in the 2018 NBA draft, but was traded to the Hornets on draft night.Miles was born on March 21, 1998, in Flint, Michigan, to Cynthia and Raymond Bridges.[1] His father Raymond, a two-time basketball state champion at Flint Northern High School, taught him the game at the age of two.[2] According to Miles, his sister Tara Rushing was an important figure in his childhood.[1] Bridges attended middle school at Woodland Park Academy in Grand Blanc, Michigan.[2] At age 12, he practiced at a local YMCA with future high school teammates and coach Keith Gray.[3][2]"
+}
+
+const StephenCurry = {
+    playerName: "Stephen Curry",
+    shortInfo: " Player Of the week | West week 1",
+    description: "Wardell Stephen Curry II (/ˈstɛfən/ STEF-ən;[1] born March 14, 1988)[2] is an American professional basketball player and point guard for the Golden State Warriors of the National Basketball Association (NBA). Widely regarded as the greatest shooter, and one of the greatest players of all time, Curry is credited with revolutionizing the sport by inspiring teams and players to take more three-point shots.[3][4][5][6] He is a four-time NBA champion, a two-time NBA Most Valuable Player (MVP), an NBA Finals MVP, an NBA All-Star Game MVP, an NBA Clutch Player of the Year, and the inaugural NBA Western Conference Finals MVP. He is also a two-time NBA scoring champion, a ten-time NBA All-Star, a ten-time All-NBA selection (including four on the First Team), and has won two gold medals at the FIBA World Cup as part of the U.S. men's national team.Curry is the son of former NBA player Dell Curry and the older brother of current NBA player Seth Curry. He played collegiately for the Davidson Wildcats, where he set career scoring records for Davidson and the Southern Conference, and helped the Wildcats advance to the Elite Eight in 2008."
+}
+
+const DeandreAyton = {
+    playerName: "Deandre Ayton",
+    shortInfo: " PlayerOf the week | West week 6",
+    description: "Deandre Edoneille Ayton Sr. (/diˈɑːndreɪ ˈeɪtən/ dee-AHN-dray AY-tən;[1] born July 23, 1998) is a Bahamian professional basketball player for the Portland Trail Blazers of the National Basketball Association (NBA). A consensus five-star prospect in the Class of 2017 and a McDonald's All-American, he played one season of college basketball for the Arizona Wildcats, where he was named the Pac-12 Player of the Year.[2] Ayton was selected with the first overall pick in the 2018 NBA draft by the Phoenix Suns and was named to the NBA All-Rookie First Team in 2019. In 2021, he helped lead the Suns to their first NBA Finals appearance since 1993.Ayton's father is Nigerian and his mother is of Jamaican and Bahamian heritage.[3] He began playing basketball in the fourth grade.[4] By age 12, he was 6 feet 5 inches (1.96 m).[4] Ayton moved from the Bahamas to San Diego, California, to play high school basketball."
+}
+
+const DemarDerozan = {
+    playerName: "Demar Derozan",
+    shortInfo: " PlayerOf the week | East week 17",
+    description: "DeMar Darnell DeRozan (born August 7, 1989) is an American professional basketball player for the Sacramento Kings of the National Basketball Association (NBA). He played college basketball for the USC Trojans and was selected ninth overall by the Toronto Raptors in the 2009 NBA draft. He is a six-time NBA All-Star and a three-time All-NBA Team member. He spent nine seasons with the Raptors, including five playoff runs, before being traded to the San Antonio Spurs in the summer of 2018 and the Chicago Bulls in 2021. DeRozan played for the United States national team in the 2014 World Cup and the 2016 Summer Olympics. DeRozan is currently sixth among all active NBA players on the all-time scoring list. DeRozan attended Compton High School and was ranked as one of the top college recruits in the nation from the class of 2008. He was ranked No. 3 in the nation by Rivals.com and No. 6 by Scout.com.[1] He played on the varsity basketball team for all four years of high school. As a freshman, he averaged 26.1 points and 8.4 rebounds. During his sophomore year, he averaged 22.6 points and 8.4 rebounds, while as a junior he averaged 22.3 points, 7.8 rebounds, 3.0 assists, and 3.2 steals"
+}
+
+const DonovanMitchel = {
+    playerName: "Donovan Mitchel",
+    shortInfo: "PlayerOf the week | East Week 12",
+    description: "Donovan Mitchell Jr. (born September 7, 1996) is an American professional basketball player for the Cleveland Cavaliers of the National Basketball Association (NBA). Nicknamed Spida,[1] he was drafted in the first round of the 2017 NBA draft and acquired by the Utah Jazz, whom he played for from 2017 to 2022. He is a five-time NBA All-Star. Mitchell played college basketball for the Louisville Cardinals, earning first- team all-conference honors in the Atlantic Coast Conference(ACC) in 2017. As a rookie with the Utah Jazz, he was named to the NBA All - Rookie First Team and won the Slam Dunk Contest in 2018. He was traded from the Jazz to the Cavaliers in 2022.Mitchell was born on September 7, 1996, to parents Donovan Sr. and Nicole in Elmsford, New York.[2] His mother, who is of Panamanian descent, is a teacher and his father is a former Minor League Baseball player.[3] With his father serving as a director of player relations for the New York Mets, Mitchell spent his childhood around Major League Baseball locker rooms."
+}
+
+const MikalBridges = {
+    playerName: "Mikal Bridges",
+    shortInfo: "PlayerOf the week | East week 24",
+    description: "Mikal Bridges (/mɪˈkɛl/ mih-KEL;[1] born August 30, 1996) is an American professional basketball player for the New York Knicks of the National Basketball Association (NBA). He played college basketball for the Villanova Wildcats, winning national championships in 2016 and 2018. Bridges was selected with the tenth overall pick by the Philadelphia 76ers in the 2018 NBA draft before being traded to the Phoenix Suns on draft night, where he was a part of the team that reached the 2021 NBA Finals. Nicknamed “the Warden”, Bridges holds the active record for the most consecutive games played, having not missed a game in his NBA career since being drafted.Bridges is the son of Jack Bridges and Tyneeha Rivers, who gave birth to him at the age of 19 and raised him as a single mother.[2] He grew up in Overbrook, Philadelphia, and nearby neighborhoods. He moved to Malvern, Pennsylvania in middle school. His second cousin is former La Salle player Tyrone Garland.[3]"
+}
