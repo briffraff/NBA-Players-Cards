@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
-import { getAllCardsByUser } from "../../service/firebase/firestore/firestore-service";
+import { getFirestoreUserById, getAllCardsByUser, getLikedTeamsByUser } from "../../service/firebase/firestore/firestore-service";
 import { auth } from "../../service/firebase/firebase-config";
 
 import NotFound from "../404/404";
@@ -26,7 +25,10 @@ export default function Profile() {
                 try {
                     const cards = await getAllCardsByUser(userFirestore.uid, { signal: abortController.signal });
                     setCardsByUser(cards);
-                    setLikedTeams(userFirestore.likes);
+
+                    const likedTeamsIds = userFirestore.likedTeams;
+                    const likes = await getLikedTeamsByUser(likedTeamsIds);
+                    setLikedTeams(likes);
                 } catch (error) {
                     console.log("Error fetching cards: ", error);
                 }
@@ -91,9 +93,27 @@ export default function Profile() {
 
                     <div className="liked-items-topic">Teams you liked :</div>
                     <div className="liked-items">
-                        {/* {likedTeams.length > 0 ? (null) : (
+
+                        {likedTeams.length > 0 ? (
+                            <div className="site-wrapper">
+                                <div className="teams-container team-info">
+                                    <div className="teams-container-flexwrap">
+                                        <div>
+                                            {
+                                                <div className="teams-container-flexwrap bottomDistance">
+                                                    {
+                                                        likedTeams.map((team) => (
+                                                            <TeamThumbnail key={team.id} team={team} />
+                                                        ))}
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
                             <p className="no-items">No teams found.</p>
-                        )} */}
+                        )}
                     </div>
 
                 </section >)

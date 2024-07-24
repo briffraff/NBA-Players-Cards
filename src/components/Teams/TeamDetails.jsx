@@ -63,10 +63,10 @@ export default function Team() {
                             <div className="mini-wall team-name">
                                 <h3 className="location">Location : {team.location}</h3>
                             </div>
-                            <i
-                                className={isLiked ? "liked fas fa-heart" : "like fas fa-heart"}
-                                onClick={handleLike}
-                            ></i>
+                            <div className="likeContainer">
+                                <span className="likeSlogan">Like : </span>
+                                <span className={isLiked ? "liked fas fa-heart" : "like fas fa-heart"} onClick={handleLike}></span>
+                            </div>
                         </section>
                     </section>
 

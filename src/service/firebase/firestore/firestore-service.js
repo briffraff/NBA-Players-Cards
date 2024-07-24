@@ -41,6 +41,14 @@ export const getTeamById = async (id) => {
     }
 };
 
+export const getLikedTeamsByUser = async (teamsIds) => {
+
+    console.log(teamsIds);
+
+    return [];
+}
+
+
 export const likeTeam = async (userId, teamId) => {
 
     const q = query(usersCollectionRef, where("uid", "==", userId));
