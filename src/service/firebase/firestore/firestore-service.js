@@ -1,9 +1,8 @@
 import { db } from "../firebase-config";
-import { query, where, doc, getDoc, getDocs, collection, addDoc, deleteDoc, documentId, updateDoc } from "firebase/firestore";
+import { query, where, doc, getDoc, getDocs, arrayUnion, collection, addDoc, deleteDoc, documentId, updateDoc, arrayRemove } from "firebase/firestore";
 
 import { generateHashFromBase64 } from "../../utils/utils";
 import { uploadImageAndGetUrl } from "../storage/storage-service";
-
 
 const teamsCollectionRef = collection(db, "nba-teams");
 const subscriberCollectionRef = collection(db, "subscribers");
@@ -42,6 +41,56 @@ export const getTeamById = async (id) => {
     }
 };
 
+export const likeTeam = async (userId, teamId) => {
+
+    const q = query(usersCollectionRef, where("uid", "==", userId));
+    const querySnapshot = await getDocs(q);
+    const documentID = querySnapshot.docs[0].id;
+    const docRef = doc(db, "users", documentID);
+
+    if (docRef) {
+        await updateDoc(docRef, {
+            likedTeams: arrayUnion(teamId)
+        });
+    }
+};
+
+export const unlikeTeam = async (userId, teamId) => {
+
+    const q = query(usersCollectionRef, where("uid", "==", userId));
+    const querySnapshot = await getDocs(q);
+    const documentID = querySnapshot.docs[0].id;
+    const docRef = doc(db, "users", documentID);
+
+    if (docRef) {
+        await updateDoc(docRef, {
+            likedTeams: arrayRemove(teamId)
+        });
+    }
+};
+
+export const isTeamLiked = async (userId, teamId) => {
+    try {
+        const q = query(usersCollectionRef, where("uid", "==", userId));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            throw new Error("No such user document!");
+        }
+
+        const userDoc = querySnapshot.docs[0];
+        const userData = userDoc.data();
+
+        if (userData.likedTeams && userData.likedTeams.includes(teamId)) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.log("Error fetching user: ", error);
+        throw error;
+    }
+};
 
 // USERS
 export const getAllFirestoreUsers = async () => {

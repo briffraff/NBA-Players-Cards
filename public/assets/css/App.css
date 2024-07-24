@@ -619,6 +619,20 @@ h6 {
   bottom: 0;
 }
 
+.like {
+  margin-top: 20px;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.liked {
+  margin-top: 20px;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+}
+
 .imaginary {
   margin-top: 1.3em;
   min-height: 41vh;

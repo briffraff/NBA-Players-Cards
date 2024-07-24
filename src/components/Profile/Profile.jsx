@@ -16,6 +16,7 @@ export default function Profile() {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [showAdminManageUsers, setShowAdminManageUsers] = useState(false);
     const [cardsByUser, setCardsByUser] = useState([]);
+    const [likedTeams, setLikedTeams] = useState([]);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -25,6 +26,7 @@ export default function Profile() {
                 try {
                     const cards = await getAllCardsByUser(userFirestore.uid, { signal: abortController.signal });
                     setCardsByUser(cards);
+                    setLikedTeams(userFirestore.likes);
                 } catch (error) {
                     console.log("Error fetching cards: ", error);
                 }
@@ -76,26 +78,24 @@ export default function Profile() {
 
                         <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
-                    <div className="user-items-topic">Your items :</div>
+                    <div className="user-items-topic">Your cards :</div>
                     <div className="user-items">
                         {cardsByUser.length > 0 ? (
                             cardsByUser.map((card) => (
                                 <MiniCard key={card.id} card={card} />
                             ))
                         ) : (
-                            <p className="no-items">No items found.</p>
+                            <p className="no-items">No cards found.</p>
                         )}
                     </div>
 
-                    <div className="liked-items-topic">Items you liked :</div>
+                    <div className="liked-items-topic">Teams you liked :</div>
                     <div className="liked-items">
-                        {null ? (null) : (
-                            <p className="no-items">No items found.</p>
-                        )}
+                        {/* {likedTeams.length > 0 ? (null) : (
+                            <p className="no-items">No teams found.</p>
+                        )} */}
                     </div>
 
-                    {/* ADMIN -> */}
-                    {/* All users */}
                 </section >)
                 : (<NotFound />)
             }
@@ -108,6 +108,8 @@ export default function Profile() {
                     userFirestore={userFirestore} />
             }
 
+            {/* ADMIN -> */}
+            {/* All users */}
             {
                 showAdminManageUsers &&
                 <AdminManageUsersModal

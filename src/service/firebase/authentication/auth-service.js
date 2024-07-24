@@ -34,6 +34,7 @@ export const registerUser = async (username, email, password) => {
             profilePictureUrl: "",
             uid: auth.currentUser.uid,
             username: username,
+            likedTeams : [],
         };
 
         await addDoc(userCollectionRef, updatedUserInfo);
