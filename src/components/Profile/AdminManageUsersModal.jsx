@@ -15,7 +15,7 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
         const fetchAllUsers = async () => {
             try {
                 const firestoreUsers = await getAllFirestoreUsers();
-                const excludeCurrentUserList = firestoreUsers.filter((user) => user.username != currentUser.displayName && user.username != "Admin")
+                const excludeCurrentUserList = firestoreUsers.filter((user) => user.username != currentUser.displayName && user.username.toLowerCase() != "admin");
                 setAllUsers(excludeCurrentUserList);
                 setError("");
             } catch (error) {

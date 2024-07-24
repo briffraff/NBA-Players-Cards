@@ -60,7 +60,7 @@ Manage users
 ![Manage users](./public/assets/img/readme/manageUsers.jpg)
 
 
-
+LOGGED USERS :
 
 Logout
 ![Logout](./public/assets/img/readme/logout.jpg)
@@ -157,6 +157,14 @@ Washington Wizards
 ## 2x SUBSCRIBERS :
 "e-mail": admin@nbacards.com
 "e-mail": asd@nbacards.com
+
+## 6x PLAYER CARDS :
+Anthony Davis
+Luka Doncic
+Julius Randle
+Lebron James
+Kevin Durant
+Giannis Antetokoumpo
 
 ```
 ## Links
