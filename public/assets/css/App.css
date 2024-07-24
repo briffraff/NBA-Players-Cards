@@ -936,4 +936,9 @@ h6 {
   margin: auto;
   color: whitesmoke;
   font-size: 20px;
+}
+
+.sideDistance {
+  padding-left: 15%;
+  padding-right: 15%;
 }/*# sourceMappingURL=App.css.map */

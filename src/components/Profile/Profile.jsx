@@ -7,6 +7,8 @@ import NotFound from "../404/404";
 import DeleteUserConfirmation from "./DeleteUserConfirmation";
 import AdminManageUsersModal from "./AdminManageUsersModal";
 import MiniCard from "../Cards/MiniCard";
+import TeamThumbnail from "../Teams/TeamThumbnail";
+
 
 export default function Profile() {
     const user = auth.currentUser;
@@ -95,20 +97,17 @@ export default function Profile() {
                     <div className="liked-items">
 
                         {likedTeams.length > 0 ? (
-                            <div className="site-wrapper">
-                                <div className="teams-container team-info">
-                                    <div className="teams-container-flexwrap">
-                                        <div>
+                            <div className="teams-container-flexwrap">
+                                <div>
+                                    {
+                                        <div className="teams-container-flexwrap bottomDistance sideDistance">
                                             {
-                                                <div className="teams-container-flexwrap bottomDistance">
-                                                    {
-                                                        likedTeams.map((team) => (
-                                                            <TeamThumbnail key={team.id} team={team} />
-                                                        ))}
-                                                </div>
+                                                likedTeams.map((team) => (
+                                                    <TeamThumbnail key={team.id} team={team} />
+                                                ))
                                             }
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         ) : (

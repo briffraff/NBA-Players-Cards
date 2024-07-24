@@ -43,9 +43,18 @@ export const getTeamById = async (id) => {
 
 export const getLikedTeamsByUser = async (teamsIds) => {
 
-    console.log(teamsIds);
+    if (!Array.isArray(teamsIds) || teamsIds.length === 0) { return [] }
 
-    return [];
+    const q = query(teamsCollectionRef, where('__name__', "in", teamsIds))
+
+    const querySnapshot = await getDocs(q);
+
+    const teams = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }));
+    console.log(teams);
+    return teams;
 }
 
 
