@@ -6,7 +6,6 @@ import { getAllFirestoreUsers, updateFirestoreUserRole } from "../../service/fir
 export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
 
     const { currentUser, userLoggedIn, loading } = useAuth();
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const [allUsers, setAllUsers] = useState([]);
@@ -15,8 +14,8 @@ export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
         const fetchAllUsers = async () => {
             try {
                 const firestoreUsers = await getAllFirestoreUsers();
-                // const excludeCurrentUserList = firestoreUsers.filter((user) => user.username != currentUser.displayName && user.username.toLowerCase() != "admin");
-                setAllUsers(firestoreUsers);
+                const excludeCurrentUserList = firestoreUsers.filter((user) => user.username != currentUser.displayName && user.username.toLowerCase() != "admin");
+                setAllUsers(excludeCurrentUserList);
                 setError("");
             } catch (error) {
                 setError(error.message);
