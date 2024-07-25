@@ -85,13 +85,14 @@
   background-repeat: no-repeat;
   position: relative;
   @include flex-center;
+  background-color: #6b6b6b;
 }
 
 .site-media:before {
   display: block;
   content: "";
   opacity: 0.8;
-  background-color: rgb(15, 16, 19);
+  background-color: rgb(32, 28, 28);
   position: absolute;
   top: 0;
   left: 0;
