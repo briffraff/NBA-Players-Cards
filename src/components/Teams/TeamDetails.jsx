@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTeamById } from "../../service/firebase/firestore/firestore-service";
+import { getTeamById, likeTeam, unlikeTeam, isTeamLiked } from "../../service/firebase/firestore/firestore-service";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
 import NotFound from "../404/404";
+import { useAuth } from "../../contexts/authContext";
 
 export default function Team() {
     const [team, setTeam] = useState(null);
     const { teamId } = useParams();
     const [logoUrl, setLogoUrl] = useState("");
+    const [isLiked, setIsLiked] = useState(false);
+    const { firestoreUser } = useAuth();
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -21,6 +24,10 @@ export default function Team() {
                     const downloadUrl = await getDownloadUrlFromPath(teamData.logo, { signal: abortController.signal });
                     setLogoUrl(downloadUrl);
                 }
+
+                const liked = await isTeamLiked(firestoreUser.uid, teamId);
+                setIsLiked(liked);
+
             } catch (error) {
                 console.log(error);
             }
@@ -32,6 +39,20 @@ export default function Team() {
         }
     }, [teamId]);
 
+
+    const handleLike = async () => {
+        try {
+            if (isLiked) {
+                await unlikeTeam(firestoreUser.uid, teamId);
+            } else {
+                await likeTeam(firestoreUser.uid, teamId);
+            }
+            setIsLiked(!isLiked);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             {team
@@ -41,6 +62,14 @@ export default function Team() {
                             <h1 className="team-title">{team.name}</h1>
                             <div className="mini-wall team-name">
                                 <h3 className="location">Location : {team.location}</h3>
+                            </div>
+                            <div className="likeContainer">
+                                {firestoreUser && (
+                                    <>
+                                        <span className="likeSlogan">Like : </span>
+                                        <span className={isLiked ? "liked fas fa-heart" : "like fas fa-heart"} onClick={handleLike}></span>
+                                    </>
+                                )}
                             </div>
                         </section>
                     </section>
@@ -58,5 +87,5 @@ export default function Team() {
                 </div>)
                 : (<NotFound />)}
         </>
-    )
+    );
 }

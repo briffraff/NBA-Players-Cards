@@ -6,7 +6,6 @@ import { getAllFirestoreUsers, updateFirestoreUserRole } from "../../service/fir
 export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
 
     const { currentUser, userLoggedIn, loading } = useAuth();
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const [allUsers, setAllUsers] = useState([]);

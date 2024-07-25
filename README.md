@@ -1,6 +1,6 @@
 # NBA Players cards shop
 
-- [NBA Players cards shop](#nba-player-cards-shop)
+- [NBA Players cards shop](#nba-players-cards-shop)
   - [Demo Screenshots](#demo-screenshots)
   - [Build with](#build-with)
   - [Installation](#installation)

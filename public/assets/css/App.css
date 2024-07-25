@@ -605,18 +605,60 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #6b6b6b;
 }
 
 .site-media:before {
   display: block;
   content: "";
   opacity: 0.8;
-  background-color: rgb(15, 16, 19);
+  background-color: rgb(32, 28, 28);
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.likeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.likeSlogan {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.like,
+.liked {
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.liked {
+  color: red;
+}
+
+.like:hover,
+.liked:hover {
+  color: #919191;
+  color: rgb(252, 96, 96);
+}
+
+.like:active,
+.liked:active {
+  transform: scale(1.2);
 }
 
 .imaginary {
@@ -895,4 +937,9 @@ h6 {
   margin: auto;
   color: whitesmoke;
   font-size: 20px;
+}
+
+.sideDistance {
+  padding-left: 15%;
+  padding-right: 15%;
 }/*# sourceMappingURL=App.css.map */
