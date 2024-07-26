@@ -4,6 +4,7 @@ import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import CartBadge from "../Cart/CartBadge";
+import MiniCart from "../Cart/MiniCart";
 import { useCart } from "../../contexts/cartContext";
 
 export default function Header({ menu, onLoginClick, onRegisterClick }) {
@@ -70,6 +71,10 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
                     )}
                 </div>
             </header>
+
+            {isCartVisible && (
+                <MiniCart cartItems={cartItems} showHideMiniCartInfo={showHideMiniCartInfo} />
+            )}
         </>
     );
 }

@@ -18,6 +18,8 @@ import CardCreate from "./Cards/CardCreate";
 import CardsShop from "./Cards/CardsShop";
 import CardDetails from "./Cards/CardDetails";
 import CardEdit from "./Cards/CardEdit";
+import Cart from "./Cart/Cart";
+
 
 export default function App() {
 
@@ -44,6 +46,7 @@ export default function App() {
                                     <Route path="/cards-shop" element={<CardsShop />} />
                                     <Route path="/card-create" element={<CardCreate />} />
                                     <Route path="/card-edit/:cardId" element={<CardEdit />} />
+                                    <Route path="/cart" element={<Cart />} />
                                     <Route path="/logout" element={<Logout />} />
                                     <Route path="*" element={<NotFound />} />
                                 </Route>
