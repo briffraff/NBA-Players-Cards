@@ -8,10 +8,10 @@ export function useCart() {
 
 export default function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
+    const [isMiniCartVisible, setIsMiniCartVisible] = useState(false);
 
     useEffect(() => {
         const storedItems = localStorage.getItem('cartItems');
-
         if (storedItems) {
             try {
                 const parsedItems = JSON.parse(storedItems);
@@ -35,8 +35,12 @@ export default function CartProvider({ children }) {
         setCartItems((prevItems) => [...prevItems, item]);
     };
 
+    const showHideMiniCart = () => {
+        setIsMiniCartVisible((prev) => !prev);
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, isMiniCartVisible, showHideMiniCart }}>
             {children}
         </CartContext.Provider>
     );

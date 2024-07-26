@@ -1,15 +1,21 @@
 import React from 'react';
 import styles from "../../../public/assets/css/modules/_MiniCart.module.scss";
+import { useCart } from '../../contexts/cartContext';
 
-export default function MiniCart({ cartItems, showHideMiniCartInfo }) {
+export default function MiniCart() {
+    const { cartItems, showHideMiniCart } = useCart();
     const items = Array.isArray(cartItems) ? cartItems : [];
 
+    const handleModalClick = (event) => {
+        event.stopPropagation();
+    };
+
     return (
-        <>
-            <div className={styles.cartContainer}>
+        <section id="cartModal" className={`${styles.modalBackground}`} onClick={showHideMiniCart}>
+            <div className={styles.cartContainer} onClick={handleModalClick}>
                 <div className={styles.cartHeader}>
                     <h2>Your cart</h2>
-                    <button onClick={showHideMiniCartInfo} className={styles.closeButton}>X</button>
+                    <button onClick={showHideMiniCart} className={styles.closeButton}>X</button>
                 </div>
                 {items.length === 0 ? (
                     <p>Cart is empty</p>
@@ -27,9 +33,8 @@ export default function MiniCart({ cartItems, showHideMiniCartInfo }) {
                     </ul>
                 )}
             </div>
-        </>
-    )
+        </section>
+    );
 }
-
 
 
