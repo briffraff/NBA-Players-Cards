@@ -53,7 +53,7 @@ export const getLikedTeamsByUser = async (teamsIds) => {
         id: doc.id,
         ...doc.data()
     }));
-    console.log(teams);
+    // console.log(teams);
     return teams;
 }
 
@@ -62,7 +62,7 @@ export const likeTeam = async (userId, teamId) => {
 
     const q = query(usersCollectionRef, where("uid", "==", userId));
     const querySnapshot = await getDocs(q);
-    const documentID = querySnapshot.docs[0].id;
+    const documentID = querySnapshot.docs[0].id; 
     const docRef = doc(db, "users", documentID);
 
     if (docRef) {

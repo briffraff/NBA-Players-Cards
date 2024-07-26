@@ -5,7 +5,7 @@ import { Start } from "../service/firebase/firestore/Seed/seedData";
 import "../../public/assets/css/App.css";
 import AuthProvider from "../contexts/authContext";
 import DefaultImagesProvider from "../contexts/defaultImagesContext";
-
+import CartProvider from "../contexts/cartContext";
 import Layout from "./_Layout/Layout";
 import Home from "./Home/Home";
 import Logout from "./User/Logout/Logout";
@@ -28,28 +28,30 @@ export default function App() {
 
     return (
         <>
-            <AuthProvider>
-                <DefaultImagesProvider>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Layout />}>
-                                <Route index path="/" element={<Home />}></Route>
-                                <Route path="/about-nba" element={<AboutNba />} />
-                                <Route path="/teams" element={<Teams />} />
-                                <Route path="/team/:teamId" element={<TeamDetails />} />
+            <CartProvider>
+                <AuthProvider>
+                    <DefaultImagesProvider>
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/" element={<Layout />}>
+                                    <Route index path="/" element={<Home />}></Route>
+                                    <Route path="/about-nba" element={<AboutNba />} />
+                                    <Route path="/teams" element={<Teams />} />
+                                    <Route path="/team/:teamId" element={<TeamDetails />} />
 
-                                <Route path="/profile/:profileId" element={<Profile />} />
-                                <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
-                                <Route path="/cards-shop" element={<CardsShop />} />
-                                <Route path="/card-create" element={<CardCreate />} />
-                                <Route path="/card-edit/:cardId" element={<CardEdit />} />
-                                <Route path="/logout" element={<Logout />} />
-                                <Route path="*" element={<NotFound />} />
-                            </Route>
-                        </Routes>
-                    </BrowserRouter>
-                </DefaultImagesProvider>
-            </AuthProvider >
+                                    <Route path="/profile/:profileId" element={<Profile />} />
+                                    <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
+                                    <Route path="/cards-shop" element={<CardsShop />} />
+                                    <Route path="/card-create" element={<CardCreate />} />
+                                    <Route path="/card-edit/:cardId" element={<CardEdit />} />
+                                    <Route path="/logout" element={<Logout />} />
+                                    <Route path="*" element={<NotFound />} />
+                                </Route>
+                            </Routes>
+                        </BrowserRouter>
+                    </DefaultImagesProvider>
+                </AuthProvider >
+            </CartProvider >
         </>
     );
 }
