@@ -54,16 +54,32 @@ export default function CardDetails() {
                                 <button className={styles.deleteButton} onClick={() => setShowDeleteCardConfirm(true)}>Delete</button>
                             </div>
                         )}
-                        <div className={styles.authorContainer}>
-                            author :
-                            <div className={styles.author}>{card.author}</div>
-                        </div>
                     </div>
+
+
 
                     <div className={styles.descriptionContainer}>
                         <p className={styles.descriptionSlogan}>Description :</p>
                         <p className={styles.description}>{card.description}</p>
+
+                        <div className={styles.cardShopInfo}>
+                            <div className={styles.authorContainer}>
+                                author :
+                                <div className={styles.author}>{card.author}</div>
+                            </div>
+
+                            <div className={styles.priceContainer}>
+                                Price :
+                                <div className={styles.price}> {card.price} BGN</div>
+
+                            </div>
+
+                            <button className={styles.shopIt}>
+                                <div className={styles.shopBtn}>Add to Cart</div>
+                            </button>
+                        </div>
                     </div>
+
                 </div>
             </div>
 

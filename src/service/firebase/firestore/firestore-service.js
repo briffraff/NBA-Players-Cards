@@ -229,6 +229,7 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
             playerName: cardData.playerName,
             description: cardData.description,
             shortInfo: cardData.shortInfo,
+            price: cardData.price,
             // image: image,
             imageUrl: imageUrl,
             imageName: imageName,
