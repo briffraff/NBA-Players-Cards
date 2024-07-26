@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
-
+import CartBadge from "../Cart/CartBadge";
+import MiniCart from "../Cart/MiniCart";
+import { useCart } from "../../contexts/cartContext";
 
 export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const defaultImages = useDefaultImages();
     const logo = defaultImages[8];
-
     const { currentUser, userLoggedIn, loading } = useAuth();
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const { isMiniCartVisible } = useCart();
 
     const handleLogout = async () => {
         setIsSubmitting(true);
-
         try {
             await logoutUser();
         } catch (error) {
@@ -29,7 +30,7 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
     return (
         <>
             <header className="site-header">
-                <Link to="/"><img className="logo" src={logo} /></Link>
+                <Link to="/"><img className="logo" src={logo} alt="Logo" /></Link>
                 <nav className="main-menu">
                     <Link className={`header-btn ${menu[0].isActive ? `active` : ''}`} to={menu[0].path}>/ {menu[0].label}</Link>
                     <Link className={`header-btn ${menu[1].isActive ? `active` : ''}`} to={menu[1].path}>/ {menu[1].label}</Link>
@@ -42,7 +43,15 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
                                 <span className="hello">Hello,</span>
                                 <Link to={menu[6].path.replace(':profileId', currentUser.uid)} className={`user-profile`}>{currentUser.displayName}</Link>
                             </div>
+
                             <Link className={`cart-btn ${menu[7].isActive ? `active` : ''}`} to={menu[7].path}>/ {menu[7].label}</Link>
+
+                            <div>
+                                <CartBadge />
+                            </div>
+
+                            {isMiniCartVisible && <MiniCart />}
+
                             <Link className={`logout-btn ${menu[8].isActive ? `active` : ''}`} onClick={handleLogout} to={menu[8].path}>{handleLoading}</Link>
                         </div>
                     ) : (
@@ -54,5 +63,5 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
                 </div>
             </header>
         </>
-    )
+    );
 }

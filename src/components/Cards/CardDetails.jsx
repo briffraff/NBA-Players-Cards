@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useAuth } from '../../contexts/authContext';
+
 import NotFound from "../404/404";
+import DeleteCardConfirmation from './DeleteCardConfirmation';
+
+import { useAuth } from '../../contexts/authContext';
 import { getCardById } from '../../service/firebase/firestore/firestore-service';
 
 import styles from "../../../public/assets/css/modules/_CardDetails.module.scss";
-import DeleteCardConfirmation from './DeleteCardConfirmation';
+
+import { useCart } from '../../contexts/cartContext';
 
 export default function CardDetails() {
+    const cart = useCart();
     const [card, setCard] = useState(null);
     const [showDeleteCardConfirm, setShowDeleteCardConfirm] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -54,15 +59,23 @@ export default function CardDetails() {
                                 <button className={styles.deleteButton} onClick={() => setShowDeleteCardConfirm(true)}>Delete</button>
                             </div>
                         )}
-                        <div className={styles.authorContainer}>
-                            author :
-                            <div className={styles.author}>{card.author}</div>
-                        </div>
                     </div>
-
                     <div className={styles.descriptionContainer}>
                         <p className={styles.descriptionSlogan}>Description :</p>
                         <p className={styles.description}>{card.description}</p>
+                        <div className={styles.cardShopInfo}>
+                            <div className={styles.authorContainer}>
+                                author :
+                                <div className={styles.author}>{card.author}</div>
+                            </div>
+                            <div className={styles.priceContainer}>
+                                Price :
+                                <div className={styles.price}> {card.price} $</div>
+                            </div>
+                            <button className={styles.shopIt} onClick={() => cart.addToCart(card)}>
+                                <div className={styles.shopBtn}>Add to Cart</div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

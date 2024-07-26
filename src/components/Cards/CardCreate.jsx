@@ -14,7 +14,8 @@ export default function CardCreate() {
     const [formData, setFormData] = useState({
         playerName: "",
         description: "",
-        shortInfo: ""
+        shortInfo: "",
+        price: ""
     });
 
     const [image, setImage] = useState("");
@@ -43,10 +44,19 @@ export default function CardCreate() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData((prevForm) => ({
-            ...prevForm,
-            [name]: value,
-        }));
+        if (name === "price" && value < 0) {
+            setError("Value cannot be negative");
+            setFormData((prevForm) => ({
+                ...prevForm,
+                [name]: 0,
+            }));
+        } else {
+            setError("");
+            setFormData((prevForm) => ({
+                ...prevForm,
+                [name]: value,
+            }));
+        }
     };
 
     const handleImageChange = (event) => {
@@ -67,6 +77,14 @@ export default function CardCreate() {
         return Object.values(data).some(value => value !== "") || image !== "";
     };
 
+    const handlePrice = (event) => {
+        if (event.target.value < 0) {
+            event.preventDefault();
+            setError("Value cannot be negative")
+            event.target.value = 0;
+        }
+    }
+
     const handleResetForm = (event) => {
         if (event) {
             event.preventDefault();
@@ -77,11 +95,13 @@ export default function CardCreate() {
         localStorage.removeItem("cardShortInfo");
         localStorage.removeItem("cardImageName");
         localStorage.removeItem("cardImage");
+        localStorage.removeItem("cardPrice");
 
         setFormData({
             playerName: "",
             description: "",
-            shortInfo: ""
+            shortInfo: "",
+            price: ""
         });
         setImageName("");
         setImage("");
@@ -94,11 +114,13 @@ export default function CardCreate() {
         const savedShortInfo = localStorage.getItem("cardShortInfo");
         const savedImageName = localStorage.getItem("cardImageName");
         const savedImage = localStorage.getItem("cardImage");
+        const savedPrice = localStorage.getItem("cardPrice");
 
         setFormData({
             playerName: savedPlayerName || "",
             description: savedDescription || "",
-            shortInfo: savedShortInfo || ""
+            shortInfo: savedShortInfo || "",
+            price: savedPrice || ""
         });
         setImageName(savedImageName || "");
         setImage(savedImage || "");
@@ -108,7 +130,8 @@ export default function CardCreate() {
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
-    }, [formData.playerName, formData.description, formData.shortInfo]);
+        localStorage.setItem("cardPrice", formData.price);
+    }, [formData.playerName, formData.description, formData.shortInfo, formData.price]);
 
     useEffect(() => {
         localStorage.setItem("cardImageName", imageName);
@@ -161,6 +184,10 @@ export default function CardCreate() {
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-info-circle"></i>
                     <input type="text" id="cardShortInfo" name="shortInfo" value={formData.shortInfo} onChange={handleChange} placeholder="Short info" required />
+                </div>
+                <div className={styles.modalTextbox}>
+                    <i className="fas fa-dollar"></i>
+                    <input type="number" id="cardPrice" name="price" max="1000" value={formData.price} onChange={handleChange} placeholder="Price" required />
                 </div>
 
                 {error && <div className={styles.errorMessage}>{error}</div>}
