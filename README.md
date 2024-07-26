@@ -48,6 +48,9 @@ Edit Card
 Delete Card
 ![Delete Card](./public/assets/img/readme/deleteCard.jpg)
 
+Mini Cart and badge
+![Mini Cart and badge](./public/assets/img/readme/miniCartAndBadge.jpg)
+
 User Profile Delete
 ![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)
 

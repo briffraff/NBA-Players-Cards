@@ -11,29 +11,32 @@ export default function MiniCart() {
     };
 
     return (
-        <section id="cartModal" className={`${styles.modalBackground}`} onClick={showHideMiniCart}>
-            <div className={styles.cartContainer} onClick={handleModalClick}>
-                <div className={styles.cartHeader}>
-                    <h2>Your cart</h2>
-                    <button onClick={showHideMiniCart} className={styles.closeButton}>X</button>
+        <>
+            <section id="cartModal" className={`${styles.modalBackground}`} onClick={showHideMiniCart}>
+                <div className={styles.cartContainer} onClick={handleModalClick}>
+                    <div className={styles.cartHeader}>
+                        <h2>Your cart</h2>
+                        <button onClick={showHideMiniCart} className={styles.closeButton}>X</button>
+                    </div>
+                    {items.length === 0 ? (
+                        <p>Cart is empty</p>
+                    ) : (
+                        <ul className={styles.cartList}>
+                            {items.map((item, index) => (
+                                <li key={index} className={styles.cartItem}>
+                                    <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
+                                    <div className={styles.cartItemDetails}>
+                                        <p>{item.playerName}</p>
+                                        <p>{item.price} $</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
-                {items.length === 0 ? (
-                    <p>Cart is empty</p>
-                ) : (
-                    <ul className={styles.cartList}>
-                        {items.map((item, index) => (
-                            <li key={index} className={styles.cartItem}>
-                                <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
-                                <div className={styles.cartItemDetails}>
-                                    <p>{item.playerName}</p>
-                                    <p>{item.price} $</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-        </section>
+            </section>
+        </>
+
     );
 }
 
