@@ -11,7 +11,7 @@ export default function CartProvider({ children }) {
     const [isMiniCartVisible, setIsMiniCartVisible] = useState(false);
 
     useEffect(() => {
-        const storedItems = localStorage.getItem('cartItems');
+        const storedItems = sessionStorage.getItem('cartItems');
         if (storedItems) {
             try {
                 const parsedItems = JSON.parse(storedItems);
@@ -25,7 +25,7 @@ export default function CartProvider({ children }) {
 
     useEffect(() => {
         try {
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
         } catch (error) {
             console.error('Error saving cart items to localStorage:', error);
         }
@@ -39,8 +39,15 @@ export default function CartProvider({ children }) {
         setIsMiniCartVisible((prev) => !prev);
     };
 
+    const clearCart = () => {
+        setCartItems([]);
+        setIsMiniCartVisible(false);
+        sessionStorage.clear();
+        localStorage.clear();
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, isMiniCartVisible, showHideMiniCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, isMiniCartVisible, showHideMiniCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );
