@@ -186,7 +186,7 @@ export default function CardCreate() {
                     <input type="text" id="cardShortInfo" name="shortInfo" value={formData.shortInfo} onChange={handleChange} placeholder="Short info" required />
                 </div>
                 <div className={styles.modalTextbox}>
-                    <i className="fas fa-info-circle"></i>
+                    <i className="fas fa-dollar"></i>
                     <input type="number" id="cardPrice" name="price" max="1000" value={formData.price} onChange={handleChange} placeholder="Price" required />
                 </div>
 

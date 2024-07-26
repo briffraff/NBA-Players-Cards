@@ -70,7 +70,7 @@ export default function CardDetails() {
 
                             <div className={styles.priceContainer}>
                                 Price :
-                                <div className={styles.price}> {card.price} BGN</div>
+                                <div className={styles.price}> {card.price} $</div>
 
                             </div>
 
