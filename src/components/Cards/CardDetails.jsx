@@ -1,21 +1,25 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import NotFound from "../404/404";
 import DeleteCardConfirmation from './DeleteCardConfirmation';
+import AddToCartSuccessModal from '../Cart/AddToCartSuccessModal';
 
 import { useAuth } from '../../contexts/authContext';
+import { useCart } from '../../contexts/cartContext';
+
 import { getCardById } from '../../service/firebase/firestore/firestore-service';
 
 import styles from "../../../public/assets/css/modules/_CardDetails.module.scss";
 
-import { useCart } from '../../contexts/cartContext';
 
 export default function CardDetails() {
     const cart = useCart();
     const [card, setCard] = useState(null);
     const [showDeleteCardConfirm, setShowDeleteCardConfirm] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const { cardId } = useParams();
     const { currentUser } = useAuth();
 
@@ -33,6 +37,12 @@ export default function CardDetails() {
 
         fetchCardById();
     }, [cardId]);
+
+    const handleAddToCart = (card, cardId) => {
+        cart.addToCart(card, cardId);
+        setShowSuccessModal(true);
+        setTimeout(() => setShowSuccessModal(false), 3000); 
+    };
 
     if (isLoading) {
         return <p className={styles.loading}>Loading...</p>;
@@ -72,7 +82,7 @@ export default function CardDetails() {
                                 Price :
                                 <div className={styles.price}> {card.price} $</div>
                             </div>
-                            <button className={styles.shopIt} onClick={() => cart.addToCart(card, cardId)}>
+                            <button className={styles.shopIt} onClick={() => handleAddToCart(card, cardId)}>
                                 <div className={styles.shopBtn}>Add to Cart</div>
                             </button>
                         </div>
@@ -82,6 +92,10 @@ export default function CardDetails() {
 
             {showDeleteCardConfirm && (
                 <DeleteCardConfirmation setShowDeleteCardConfirm={setShowDeleteCardConfirm} />
+            )}
+
+            {showSuccessModal && (
+                <AddToCartSuccessModal />
             )}
         </>
     );

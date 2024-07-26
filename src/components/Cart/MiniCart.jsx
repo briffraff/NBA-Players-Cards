@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from "../../../public/assets/css/modules/_MiniCart.module.scss";
 import { useCart } from '../../contexts/cartContext';
 
@@ -22,7 +23,7 @@ export default function MiniCart() {
             <section id="cartModal" className={`${styles.modalBackground}`} onClick={showHideMiniCart}>
                 <div className={styles.cartContainer} onClick={handleModalClick}>
                     <div className={styles.cartHeader}>
-                        <h2>Your cart</h2>
+                        <h2>Мy cart</h2>
                         <button onClick={showHideMiniCart} className={styles.closeButton}>X</button>
                     </div>
                     {items.length === 0 ? (
@@ -42,6 +43,7 @@ export default function MiniCart() {
                                 ))}
                             </ul>
                             <div className={styles.totalPrice}>Total price: <div className={styles.price}>{totalPrice}  $</div></div>
+                            <Link to="/cart" className={styles.checkout}>Checkout</Link>
                         </>
                     )}
                 </div>

@@ -8,7 +8,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
-  z-index: 1000;
+  z-index: 5000;
 }
 
 .cart-container {
@@ -85,7 +85,6 @@
   font-size: 16px;
   font-weight: bold;
   margin-left: 10px;
-  
 }
 
 .player {
@@ -105,8 +104,25 @@
   outline: none;
   border: none;
 
-  &:hover{
+  &:hover {
     color: white;
     background-color: red;
+  }
+}
+
+.checkout {
+  background-color: getColor(nba-p);
+  color: whitesmoke;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: rgb(38, 123, 202);
+    color: whitesmoke
   }
 }

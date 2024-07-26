@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid"
 
 const CartContext = createContext();
 
@@ -33,7 +33,7 @@ export default function CartProvider({ children }) {
     }, [cartItems]);
 
     const addToCart = (item, itemId) => {
-        const newItem = { ...item, id: itemId, uniqueId: uuidv4() };
+        const newItem = { ...item, id: itemId, uniqueId: itemId + uuidv4() };
         console.log(newItem);
         setCartItems((prevItems) => [...prevItems, newItem]);
     };
