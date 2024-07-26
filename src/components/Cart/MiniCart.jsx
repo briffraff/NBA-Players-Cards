@@ -3,7 +3,7 @@ import styles from "../../../public/assets/css/modules/_MiniCart.module.scss";
 import { useCart } from '../../contexts/cartContext';
 
 export default function MiniCart() {
-    const { cartItems, showHideMiniCart } = useCart();
+    const { cartItems, showHideMiniCart, removeFromCart } = useCart();
     const items = Array.isArray(cartItems) ? cartItems : [];
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -16,11 +16,6 @@ export default function MiniCart() {
     const handleModalClick = (event) => {
         event.stopPropagation();
     };
-
-    const handleCancelCartItem = (event) => {
-        const filtered = cartItems.filter((item) => item.playerName != event.target.playerName)
-        console.log(filtered);
-    }
 
     return (
         <>
@@ -42,7 +37,7 @@ export default function MiniCart() {
                                             <p className={styles.player}>{item.playerName}</p>
                                             <p className={styles.price}>{item.price} $</p>
                                         </div>
-                                        <button className={styles.cancel} onClick={handleCancelCartItem}>x</button>
+                                        <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
                                     </li>
                                 ))}
                             </ul>

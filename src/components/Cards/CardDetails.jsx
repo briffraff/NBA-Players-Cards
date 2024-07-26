@@ -72,7 +72,7 @@ export default function CardDetails() {
                                 Price :
                                 <div className={styles.price}> {card.price} $</div>
                             </div>
-                            <button className={styles.shopIt} onClick={() => cart.addToCart(card)}>
+                            <button className={styles.shopIt} onClick={() => cart.addToCart(card, cardId)}>
                                 <div className={styles.shopBtn}>Add to Cart</div>
                             </button>
                         </div>

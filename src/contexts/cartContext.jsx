@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CartContext = createContext();
 
@@ -31,8 +32,14 @@ export default function CartProvider({ children }) {
         }
     }, [cartItems]);
 
-    const addToCart = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
+    const addToCart = (item, itemId) => {
+        const newItem = { ...item, id: itemId, uniqueId: uuidv4() };
+        console.log(newItem);
+        setCartItems((prevItems) => [...prevItems, newItem]);
+    };
+
+    const removeFromCart = (uniqueId) => {
+        setCartItems((prevItems) => prevItems.filter(item => item.uniqueId !== uniqueId));
     };
 
     const showHideMiniCart = () => {
@@ -47,7 +54,14 @@ export default function CartProvider({ children }) {
     };
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, isMiniCartVisible, showHideMiniCart, clearCart }}>
+        <CartContext.Provider value={{
+            cartItems,
+            addToCart,
+            removeFromCart,
+            isMiniCartVisible,
+            showHideMiniCart,
+            clearCart
+        }}>
             {children}
         </CartContext.Provider>
     );
