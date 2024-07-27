@@ -43,7 +43,7 @@ export default function MiniCart() {
                                 ))}
                             </ul>
                             <div className={styles.totalPrice}>Total price: <div className={styles.price}>{totalPrice}  $</div></div>
-                            <Link to="/cart" className={styles.checkout}>Checkout</Link>
+                                <Link to="/cart" ><div  className={styles.checkout}>Checkout</div></Link>
                         </>
                     )}
                 </div>

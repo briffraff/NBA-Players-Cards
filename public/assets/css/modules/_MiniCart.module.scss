@@ -112,18 +112,19 @@
 }
 
 .checkout {
-  background-color: getColor(nba-p);
-  color: whitesmoke;
-  padding: 5px;
-  border-radius: 8px;
+  width: 100%;
+  text-align: center;
   border: none;
   outline: none;
-  margin: 5px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  color: whitesmoke;
+  background-color: getColor(nba-p);
   cursor: pointer;
-  width: 100%;
 
   &:hover {
     background-color: rgb(38, 123, 202);
-    color: whitesmoke
+    color: whitesmoke;
   }
 }
