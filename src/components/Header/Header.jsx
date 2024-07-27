@@ -12,7 +12,7 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const logo = defaultImages[8];
     const { currentUser, userLoggedIn, loading } = useAuth();
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const { isMiniCartVisible } = useCart();
+    const { isMiniCartVisible, clearCart } = useCart();
 
     const handleLogout = async () => {
         setIsSubmitting(true);
@@ -22,6 +22,7 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
             console.log('Error during logout:', error.message);
         } finally {
             setIsSubmitting(false);
+            clearCart();
         }
     };
 
