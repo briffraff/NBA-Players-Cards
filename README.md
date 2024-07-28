@@ -51,6 +51,9 @@ Delete Card
 Mini Cart and badge
 ![Mini Cart and badge](./public/assets/img/readme/miniCartAndBadge.jpg)
 
+Cart
+![Cart](./public/assets/img/readme/cart.jpg)
+
 User Profile Delete
 ![User Profile Delete](./public/assets/img/readme/UserProfileDelete.jpg)
 
