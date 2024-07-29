@@ -62,7 +62,7 @@ export const likeTeam = async (userId, teamId) => {
 
     const q = query(usersCollectionRef, where("uid", "==", userId));
     const querySnapshot = await getDocs(q);
-    const documentID = querySnapshot.docs[0].id; 
+    const documentID = querySnapshot.docs[0].id;
     const docRef = doc(db, "users", documentID);
 
     if (docRef) {
@@ -205,6 +205,17 @@ export const addSubscriber = async (email) => {
 
 
 // CARDS
+
+export const getAllCards = async () => {
+    const data = await getDocs(cardsCollectionRef);
+
+    const cards = data.docs.map((card) => ({
+        ...card.data(), id: card.id
+    }))
+
+    return cards;
+}
+
 export const createCard = async (cardData, image, imageName, currentUsers) => {
 
     // clean image from base64 metadata - 'data:image/jpg;base64'

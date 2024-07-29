@@ -19,7 +19,7 @@ import CardsShop from "./Cards/CardsShop";
 import CardDetails from "./Cards/CardDetails";
 import CardEdit from "./Cards/CardEdit";
 import Cart from "./Cart/Cart";
-
+import CardsProvider from "../contexts/cardsContext";
 
 export default function App() {
 
@@ -30,31 +30,32 @@ export default function App() {
 
     return (
         <>
-            <CartProvider>
-                <AuthProvider>
-                    <DefaultImagesProvider>
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/" element={<Layout />}>
-                                    <Route index path="/" element={<Home />}></Route>
-                                    <Route path="/about-nba" element={<AboutNba />} />
-                                    <Route path="/teams" element={<Teams />} />
-                                    <Route path="/team/:teamId" element={<TeamDetails />} />
-
-                                    <Route path="/profile/:profileId" element={<Profile />} />
-                                    <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
-                                    <Route path="/cards-shop" element={<CardsShop />} />
-                                    <Route path="/card-create" element={<CardCreate />} />
-                                    <Route path="/card-edit/:cardId" element={<CardEdit />} />
-                                    <Route path="/cart" element={<Cart />} />
-                                    <Route path="/logout" element={<Logout />} />
-                                    <Route path="*" element={<NotFound />} />
-                                </Route>
-                            </Routes>
-                        </BrowserRouter>
-                    </DefaultImagesProvider>
-                </AuthProvider >
-            </CartProvider >
+            <CardsProvider>
+                <CartProvider>
+                    <AuthProvider>
+                        <DefaultImagesProvider>
+                            <BrowserRouter>
+                                <Routes>
+                                    <Route path="/" element={<Layout />}>
+                                        <Route index path="/" element={<Home />}></Route>
+                                        <Route path="/about-nba" element={<AboutNba />} />
+                                        <Route path="/teams" element={<Teams />} />
+                                        <Route path="/team/:teamId" element={<TeamDetails />} />
+                                        <Route path="/profile/:profileId" element={<Profile />} />
+                                        <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
+                                        <Route path="/cards-shop" element={<CardsShop />} />
+                                        <Route path="/card-create" element={<CardCreate />} />
+                                        <Route path="/card-edit/:cardId" element={<CardEdit />} />
+                                        <Route path="/cart" element={<Cart />} />
+                                        <Route path="/logout" element={<Logout />} />
+                                        <Route path="*" element={<NotFound />} />
+                                    </Route>
+                                </Routes>
+                            </BrowserRouter>
+                        </DefaultImagesProvider>
+                    </AuthProvider >
+                </CartProvider >
+            </CardsProvider>
         </>
     );
 }

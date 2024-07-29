@@ -34,7 +34,7 @@ export default function CartProvider({ children }) {
 
     const addToCart = (item, itemId) => {
         const newItem = { ...item, id: itemId, uniqueId: itemId + uuidv4() };
-        console.log(newItem);
+        // console.log(newItem);
         setCartItems((prevItems) => [...prevItems, newItem]);
     };
 

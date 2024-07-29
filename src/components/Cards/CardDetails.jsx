@@ -41,7 +41,7 @@ export default function CardDetails() {
     const handleAddToCart = (card, cardId) => {
         cart.addToCart(card, cardId);
         setShowSuccessModal(true);
-        setTimeout(() => setShowSuccessModal(false), 3000); 
+        setTimeout(() => setShowSuccessModal(false), 3000);
     };
 
     if (isLoading) {
@@ -83,7 +83,9 @@ export default function CardDetails() {
                                 <div className={styles.price}> {card.price} $</div>
                             </div>
                             <button className={styles.shopIt} onClick={() => handleAddToCart(card, cardId)}>
-                                <div className={styles.shopBtn}>Add to Cart</div>
+                                {(currentUser && (currentUser.uid != card.cardUserId)) &&
+                                    <div className={styles.shopBtn}>Add to Cart</div>
+                                }
                             </button>
                         </div>
                     </div>
