@@ -102,8 +102,8 @@ const seedDataToFirestore = async (type) => {
 };
 
 export const Start = async () => {
-    await seedDataToFirestore('users');
-    await seedDataToFirestore('teams');
-    await seedDataToFirestore('cards');
-    await seedDataToFirestore('subscribers');
+    // await seedDataToFirestore('users');
+    // await seedDataToFirestore('teams');
+    // await seedDataToFirestore('cards');
+    // await seedDataToFirestore('subscribers');
 };
