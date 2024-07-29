@@ -15,7 +15,7 @@ export default function CardCreate() {
         playerName: "",
         description: "",
         shortInfo: "",
-        price: ""
+        price: "" 
     });
 
     const [image, setImage] = useState("");
@@ -29,9 +29,17 @@ export default function CardCreate() {
             return;
         }
 
+        const numericPrice = parseFloat(formData.price);
+        if (isNaN(numericPrice) || numericPrice < 0) {
+            setError("Please enter a valid price.");
+            return;
+        }
+
         try {
             setIsSubmitting(true);
-            await createCard(formData, image, imageName, currentUser);
+            const numericFormData = { ...formData, price: numericPrice };
+
+            await createCard(numericFormData, image, imageName, currentUser);
             setError("");
             navigate("/cards-shop");
             handleResetForm();
@@ -44,19 +52,11 @@ export default function CardCreate() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        if (name === "price" && value < 0) {
-            setError("Value cannot be negative");
-            setFormData((prevForm) => ({
-                ...prevForm,
-                [name]: 0,
-            }));
-        } else {
-            setError("");
-            setFormData((prevForm) => ({
-                ...prevForm,
-                [name]: value,
-            }));
-        }
+        setError("");
+        setFormData((prevForm) => ({
+            ...prevForm,
+            [name]: value,
+        }));
     };
 
     const handleImageChange = (event) => {
@@ -76,14 +76,6 @@ export default function CardCreate() {
     const isAnyFieldNotEmpty = (data) => {
         return Object.values(data).some(value => value !== "") || image !== "";
     };
-
-    const handlePrice = (event) => {
-        if (event.target.value < 0) {
-            event.preventDefault();
-            setError("Value cannot be negative")
-            event.target.value = 0;
-        }
-    }
 
     const handleResetForm = (event) => {
         if (event) {
@@ -130,7 +122,7 @@ export default function CardCreate() {
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
-        localStorage.setItem("cardPrice", formData.price);
+        localStorage.setItem("cardPrice", formData.price);  
     }, [formData.playerName, formData.description, formData.shortInfo, formData.price]);
 
     useEffect(() => {
@@ -187,7 +179,17 @@ export default function CardCreate() {
                 </div>
                 <div className={styles.modalTextbox}>
                     <i className="fas fa-dollar"></i>
-                    <input type="number" id="cardPrice" name="price" max="1000" value={formData.price} onChange={handleChange} placeholder="Price" required />
+                    <input
+                        type="number"
+                        id="cardPrice"
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        placeholder="Price"
+                        required
+                        min="0"
+                        step="any"
+                    />
                 </div>
 
                 {error && <div className={styles.errorMessage}>{error}</div>}
