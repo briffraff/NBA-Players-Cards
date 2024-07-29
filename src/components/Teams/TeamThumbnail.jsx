@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
 import { useEffect, useState } from "react";
 
 export default function TeamThumbnail({ team }) {
     const [thumbnailUrl, setThumbnailUrl] = useState("");
+    const { profileId } = useParams();
 
     useEffect(() => {
         const abortController = new AbortController();
+
 
         const handleImage = async () => {
             let thumbnailPath = team.thumbnail;
@@ -34,9 +36,8 @@ export default function TeamThumbnail({ team }) {
                     )
                 }
 
-                <Link to={`/team/${team.id}`}>
-                    <p className="card-name">{team.name}</p>
-                </Link>
+                <Link to={`/team/${team.id}`}><p className="card-name">{team.name}</p></Link>
+
             </div>
         </>
     )

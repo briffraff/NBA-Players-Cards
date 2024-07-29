@@ -42,7 +42,6 @@ export default function App() {
                                         <Route path="/teams" element={<Teams />} />
                                         <Route path="/team/:teamId" element={<TeamDetails />} />
                                         <Route path="/profile/:profileId" element={<Profile />} />
-                                        <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
                                         <Route path="/cards-shop" element={<CardsShop />} />
                                         <Route path="/cards-shop/:cardId" element={<CardDetails />} />
                                         <Route path="/card-create" element={<CardCreate />} />

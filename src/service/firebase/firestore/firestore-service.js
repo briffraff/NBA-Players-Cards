@@ -50,8 +50,8 @@ export const getLikedTeamsByUser = async (teamsIds) => {
     const querySnapshot = await getDocs(q);
 
     const teams = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+        ...doc.data(),
+        id: doc.id
     }));
     // console.log(teams);
     return teams;
