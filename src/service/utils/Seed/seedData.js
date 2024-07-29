@@ -36,7 +36,7 @@
 //     console.log('Data successfully uploaded to Firestore!');
 // };
 
-import { db } from "../../firebase-config";
+import { auth, db } from "../../firebase/firebase-config";
 import { query, where, getDocs, collection, addDoc } from "firebase/firestore";
 
 const collections = {
@@ -44,13 +44,13 @@ const collections = {
         teams: "id",
         subscribers: "id",
         cards: "id",
-        users: "id"
+        users: "uid"
     },
     paths: {
-        teams: "src/service/firebase/firestore/Seed/teams.json",
-        subscribers: "src/service/firebase/firestore/Seed/subscribers.json",
-        cards: "src/service/firebase/firestore/Seed/cards.json",
-        users: "src/service/firebase/firestore/Seed/users.json"
+        teams: "src/service/utils/Seed/teams.json",
+        subscribers: "src/service/utils/Seed/subscribers.json",
+        cards: "src/service/utils/Seed/cards.json",
+        users: "src/service/utils/Seed/users.json"
     },
     dbNames: {
         teams: "nba-teams",
@@ -102,8 +102,8 @@ const seedDataToFirestore = async (type) => {
 };
 
 export const Start = async () => {
+    await seedDataToFirestore('users');
     await seedDataToFirestore('teams');
     await seedDataToFirestore('cards');
     await seedDataToFirestore('subscribers');
-    // await seedDataToFirestore('users');
 };

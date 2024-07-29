@@ -25,8 +25,10 @@ export default function Team() {
                     setLogoUrl(downloadUrl);
                 }
 
-                const liked = await isTeamLiked(firestoreUser.uid, teamId);
-                setIsLiked(liked);
+                if (firestoreUser) {
+                    const liked = await isTeamLiked(firestoreUser.uid, teamId);
+                    setIsLiked(liked);
+                }
 
             } catch (error) {
                 console.log(error);

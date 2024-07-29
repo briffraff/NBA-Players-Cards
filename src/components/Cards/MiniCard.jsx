@@ -21,7 +21,10 @@ export default function MiniCard({ card }) {
                     <h2 className={styles.playerName}>{card.playerName}</h2>
                 </div>
                 <div className={styles.buttonContainer}>
-                    <Link to={`/profile/${profileId}/${card.id}`} className={styles.detailsButton}>Details</Link>
+                    {profileId
+                        ? <Link to={`/profile/${profileId}/${card.id}`} className={styles.detailsButton}>Details</Link>
+                        : <Link to={`/cards-shop/${card.id}`} className={styles.detailsButton}>Details</Link>
+                    }
                 </div>
             </div>
         </>
