@@ -32,8 +32,8 @@ export default function MiniCart() {
                         <>
                             <ul className={styles.cartList}>
                                 {items.map((item, index) => (
-                                    <Link to={`/cards-shop/${item.id}`} className={styles.links}>
-                                        <li key={index} className={styles.cartItem}>
+                                    <Link key={index} to={`/cards-shop/${item.id}`} className={styles.links}>
+                                        <li  className={styles.cartItem}>
                                             <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
                                             <div className={styles.cartItemDetails}>
                                                 <p className={styles.player}>{item.playerName}</p>

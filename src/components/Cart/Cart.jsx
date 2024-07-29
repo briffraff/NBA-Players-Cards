@@ -1,6 +1,7 @@
 import styles from "../../../public/assets/css/modules/_Cart.module.scss"
 import { useEffect, useState } from "react";
 import { useCart } from "../../contexts/cartContext";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
     const { cartItems, removeFromCart } = useCart();
@@ -30,13 +31,14 @@ export default function Cart() {
                     <>
                         <ul className={styles.cartList}>
                             {items.map((item, index) => (
-                                <li key={index} className={styles.cartItem}>
+                                <li className={styles.cartItem}>
                                     <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
-                                    <div className={styles.cartItemDetails}>
-                                        <p className={styles.player}>{item.playerName}</p>
-                                        <p className={styles.price}>{item.price} $</p>
-                                    </div>
-
+                                    <Link key={index} to={`/cards-shop/${item.id}`} className={styles.links}>
+                                        <div className={styles.cartItemDetails}>
+                                            <p className={styles.player}>{item.playerName}</p>
+                                            <p className={styles.price}>{item.price} $</p>
+                                        </div>
+                                    </Link>
                                     <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
                                 </li>
                             ))}
