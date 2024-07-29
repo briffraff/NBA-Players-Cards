@@ -1,0 +1,26 @@
+[
+    {
+        "admin": true,
+        "email": "admin@nbacards.com",
+        "profilePictureUrl": "",
+        "uid": "1",
+        "username": "Admin",
+        "likedTeams": []
+    },
+    {
+        "admin": false,
+        "email": "asd@abv.bg",
+        "profilePictureUrl": "",
+        "uid": "2",
+        "username": "asd",
+        "likedTeams": []
+    },
+    {
+        "admin": false,
+        "email": "stavri@abv.bg",
+        "profilePictureUrl": "",
+        "uid": "3",
+        "username": "Stavri",
+        "likedTeams": []
+    }
+]

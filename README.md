@@ -124,7 +124,10 @@ http://localhost:5173/
 "password": admin123
 
 --- User
-"e-mail": asd@asd.bg
+"e-mail": asd@abv.bg
+"password": asdasd
+
+"e-mail": stavri@abv.bg
 "password": asdasd
 
 ## 30x NBA TEAMS :

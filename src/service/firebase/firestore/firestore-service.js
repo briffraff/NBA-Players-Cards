@@ -50,8 +50,8 @@ export const getLikedTeamsByUser = async (teamsIds) => {
     const querySnapshot = await getDocs(q);
 
     const teams = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+        ...doc.data(),
+        id: doc.id
     }));
     // console.log(teams);
     return teams;
@@ -327,7 +327,7 @@ export const getCardById = async (cardId) => {
         const docRef = doc(db, "nba-cards", cardId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            return { ...docSnap.data(), id: docSnap.uid };
+            return { ...docSnap.data(), id: docSnap.id };
         } else {
             console.log("No such document!");
             return null;

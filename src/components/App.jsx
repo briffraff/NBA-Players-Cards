@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Start } from "../service/firebase/firestore/Seed/seedData";
+import { Start } from "../service/utils/Seed/seedData";
 
 import "../../public/assets/css/App.css";
 import AuthProvider from "../contexts/authContext";
@@ -23,7 +23,7 @@ import CardsProvider from "../contexts/cardsContext";
 
 export default function App() {
 
-    // // SEED init DATA
+    //// SEED init DATA
     // useEffect(() => {
     //   Start();
     // }, [])
@@ -42,8 +42,8 @@ export default function App() {
                                         <Route path="/teams" element={<Teams />} />
                                         <Route path="/team/:teamId" element={<TeamDetails />} />
                                         <Route path="/profile/:profileId" element={<Profile />} />
-                                        <Route path="/profile/:profileId/:cardId" element={<CardDetails />} />
                                         <Route path="/cards-shop" element={<CardsShop />} />
+                                        <Route path="/cards-shop/:cardId" element={<CardDetails />} />
                                         <Route path="/card-create" element={<CardCreate />} />
                                         <Route path="/card-edit/:cardId" element={<CardEdit />} />
                                         <Route path="/cart" element={<Cart />} />

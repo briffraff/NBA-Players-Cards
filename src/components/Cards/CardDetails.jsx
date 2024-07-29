@@ -63,12 +63,12 @@ export default function CardDetails() {
                             <h2 className={styles.playerName}>{card.playerName}</h2>
                             <p className={styles.shortInfo}>{card.shortInfo}</p>
                         </div>
-                        {currentUser.uid === card.cardUserId && (
+                        {(currentUser && (currentUser.uid == card.cardUserId)) &&
                             <div className={styles.buttonContainer}>
                                 <Link to={`/card-edit/${cardId}`} className={styles.editButton}>Edit</Link>
                                 <button className={styles.deleteButton} onClick={() => setShowDeleteCardConfirm(true)}>Delete</button>
                             </div>
-                        )}
+                        }
                     </div>
                     <div className={styles.descriptionContainer}>
                         <p className={styles.descriptionSlogan}>Description :</p>
