@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import { logoutUser } from "../../service/firebase/authentication/auth-service";
 import { useAuth } from "../../contexts/authContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
+import { useCart } from "../../contexts/cartContext";
+
 import CartBadge from "../Cart/CartBadge";
 import MiniCart from "../Cart/MiniCart";
-import { useCart } from "../../contexts/cartContext";
-import { useNavigate } from "react-router-dom";
 
 export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const defaultImages = useDefaultImages();

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { getTeamById, likeTeam, unlikeTeam, isTeamLiked } from "../../service/firebase/firestore/firestore-service";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
-import NotFound from "../404/404";
 import { useAuth } from "../../contexts/authContext";
+import NotFound from "../404/404";
 
 export default function Team() {
     const [team, setTeam] = useState(null);

@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import styles from "../../../../public/assets/css/modules/_Modal.module.scss"
-
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../../service/firebase/authentication/auth-service";
-import { useDefaultImages } from "../../../contexts/defaultImagesContext";
-import { useAuth } from "../../../contexts/authContext";
+
+import { loginUser } from "../../service/firebase/authentication/auth-service";
+
+import { useDefaultImages } from "../../contexts/defaultImagesContext";
+import { useAuth } from "../../contexts/authContext";
+
+import styles from "../../../public/assets/css/modules/_Modal.module.scss";
 
 export default function LoginModal({ setIsLoginOpen}) {
     const defaultImages = useDefaultImages();

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../public/assets/css/modules/_Modal.module.scss"
 
-import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
-import { useAuth } from "../../contexts/authContext";
 import { deleteFirestoreUserById } from "../../service/firebase/firestore/firestore-service";
+import { reAuthentication, deleteAuthUser } from "../../service/firebase/authentication/auth-service";
+
+import { useAuth } from "../../contexts/authContext";
+
+import styles from "../../../public/assets/css/modules/_Modal.module.scss"
 
 export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth, userFirestore }) {
 

@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import LoginModal from "../User/Login/LoginModal";
-import RegisterModal from "../User/Register/RegisterModal";
+import LoginModal from "../Login/LoginModal";
+import RegisterModal from "../Register/RegisterModal";
+
 import styles from "../../../public/assets/css/modules/_Layout.module.scss"
 
 

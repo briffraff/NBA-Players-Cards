@@ -1,13 +1,10 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/authContext";
+import { useCards } from "../../contexts/cardsContext";
+import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 import MiniCard from "../Cards/MiniCard";
 
-import { useAuth } from "../../contexts/authContext";
-import { useCards } from "../../contexts/cardsContext";
-
 import styles from "../../../public/assets/css/modules/_CardsShop.module.scss"
-import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 export default function CardsShop() {
     const defaultImages = useDefaultImages();

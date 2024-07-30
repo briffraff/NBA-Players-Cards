@@ -1,7 +1,8 @@
-import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getFirestoreUserById, getAllCardsByUser, getLikedTeamsByUser } from "../../service/firebase/firestore/firestore-service";
+import { Link, useParams } from "react-router-dom";
+
 import { auth } from "../../service/firebase/firebase-config";
+import { getFirestoreUserById, getAllCardsByUser, getLikedTeamsByUser } from "../../service/firebase/firestore/firestore-service";
 
 import NotFound from "../404/404";
 import DeleteUserConfirmation from "./DeleteUserConfirmation";

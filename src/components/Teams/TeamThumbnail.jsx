@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
-import { useEffect, useState } from "react";
 
 export default function TeamThumbnail({ team }) {
     const [thumbnailUrl, setThumbnailUrl] = useState("");

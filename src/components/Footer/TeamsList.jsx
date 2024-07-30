@@ -1,6 +1,6 @@
 import { useEffect, useState, useTransition } from "react";
-import { getTeams } from "../../service/firebase/firestore/firestore-service";
 import { Link } from "react-router-dom";
+import { getTeams } from "../../service/firebase/firestore/firestore-service";
 
 export default function TeamsList() {
     // const teams = [

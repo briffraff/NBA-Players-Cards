@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from "../../../public/assets/css/modules/_MiniCart.module.scss";
 import { useCart } from '../../contexts/cartContext';
+import styles from "../../../public/assets/css/modules/_MiniCart.module.scss";
 
 export default function MiniCart() {
     const { cartItems, showHideMiniCart, removeFromCart } = useCart();

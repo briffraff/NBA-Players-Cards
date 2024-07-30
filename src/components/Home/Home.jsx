@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import { useAuth } from "../../contexts/authContext";
+import { useDefaultImages } from "../../contexts/defaultImagesContext";
 
 export default function Home() {
     const { userLoggedIn } = useAuth();

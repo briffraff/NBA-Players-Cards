@@ -1,10 +1,12 @@
-import styles from "../../../../public/assets/css/modules/_Modal.module.scss"
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../../service/firebase/authentication/auth-service";
-import { useDefaultImages } from "../../../contexts/defaultImagesContext";
-import { useAuth } from "../../../contexts/authContext";
+
+import { registerUser } from "../../service/firebase/authentication/auth-service";
+
+import { useDefaultImages } from "../../contexts/defaultImagesContext";
+import { useAuth } from "../../contexts/authContext";
+
+import styles from "../../../public/assets/css/modules/_Modal.module.scss"
 
 export default function RegisterModal({ setIsRegisterOpen }) {
     const defaultImages = useDefaultImages();

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import CardPreview from './CardPreview';
-import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { updateCard, getCardById } from '../../service/firebase/firestore/firestore-service';
+
 import { useAuth } from '../../contexts/authContext';
+
+import CardPreview from './CardPreview';
 import NotFound from '../404/404';
+
+import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
 
 export default function CardEdit() {
     const [error, setError] = useState("");

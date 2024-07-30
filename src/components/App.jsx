@@ -8,7 +8,7 @@ import DefaultImagesProvider from "../contexts/defaultImagesContext";
 import CartProvider from "../contexts/cartContext";
 import Layout from "./_Layout/Layout";
 import Home from "./Home/Home";
-import Logout from "./User/Logout/Logout";
+import Logout from "./Logout/Logout";
 import AboutNba from "./About/AboutNba";
 import Teams from "./Teams/Teams";
 import TeamDetails from "./Teams/TeamDetails";

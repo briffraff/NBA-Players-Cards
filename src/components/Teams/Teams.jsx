@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
-import TeamThumbnail from "../Teams/TeamThumbnail";
 import { getTeams } from "../../service/firebase/firestore/firestore-service";
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
+import TeamThumbnail from "../Teams/TeamThumbnail";
 
 export default function Teams() {
     const defaultImages = useDefaultImages();
