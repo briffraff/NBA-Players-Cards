@@ -32,16 +32,16 @@ export default function MiniCart() {
                         <>
                             <ul className={styles.cartList}>
                                 {items.map((item, index) => (
-                                    <Link key={index} to={`/cards-shop/${item.id}`} className={styles.links}>
-                                        <li  className={styles.cartItem}>
-                                            <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
+                                    <li className={styles.cartItem}>
+                                        <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
+                                        <Link key={index} to={`/cards-shop/${item.id}`} className={styles.links}>
                                             <div className={styles.cartItemDetails}>
                                                 <p className={styles.player}>{item.playerName}</p>
                                                 <p className={styles.price}>{item.price} $</p>
                                             </div>
-                                            <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
-                                        </li>
-                                    </Link>
+                                        </Link>
+                                        <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
+                                    </li>
                                 ))}
                             </ul>
                             <div className={styles.totalPrice}>Total sub-price: <div className={styles.price}>{totalSubPrice}  $</div></div>
