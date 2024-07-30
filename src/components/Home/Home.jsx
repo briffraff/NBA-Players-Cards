@@ -1,12 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import { useAuth } from "../../contexts/authContext";
-import { useState } from 'react';
-import LoginModal from "../User/Login/LoginModal.jsx";
-import RegisterModal from "../User/Register/RegisterModal.jsx";
 
 export default function Home() {
-    const { currentUser, userLoggedIn, loading } = useAuth();
+    const { userLoggedIn } = useAuth();
 
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[1];

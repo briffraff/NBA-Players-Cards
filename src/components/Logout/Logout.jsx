@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
-import { useDefaultImages } from "../../../contexts/defaultImagesContext"
-import { useAuth } from "../../../contexts/authContext";
-import NotFound from "../../404/404";
+import { useDefaultImages } from "../../contexts/defaultImagesContext"
+import { useAuth } from "../../contexts/authContext";
+import NotFound from "../404/404";
 
 
 export default function Logout() {
