@@ -1,9 +1,6 @@
 import { storage } from "../firebase-config";
 import { ref, listAll, getDownloadURL, uploadString } from "firebase/storage";
 
-// const imagesRef = ref(storage, `/images/${storageFolder}`);
-
-
 export const getAllImagesFromStorage = async (storageFolder) => {
     try {
         const listRef = ref(storage, `/images/${storageFolder}`);
