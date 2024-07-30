@@ -6,10 +6,12 @@ import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import CartBadge from "../Cart/CartBadge";
 import MiniCart from "../Cart/MiniCart";
 import { useCart } from "../../contexts/cartContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({ menu, onLoginClick, onRegisterClick }) {
     const defaultImages = useDefaultImages();
-    const logo = defaultImages[8];
+    const logo = defaultImages[9];
+    const navigate = useNavigate();
     const { currentUser, userLoggedIn, loading } = useAuth();
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const { isMiniCartVisible, clearCart } = useCart();
@@ -18,6 +20,7 @@ export default function Header({ menu, onLoginClick, onRegisterClick }) {
         setIsSubmitting(true);
         try {
             await logoutUser();
+            navigate("logout");
         } catch (error) {
             console.log('Error during logout:', error.message);
         } finally {

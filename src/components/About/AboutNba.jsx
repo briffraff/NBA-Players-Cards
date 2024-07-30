@@ -5,8 +5,8 @@ export default function AboutNba() {
 
     const backgroundImage = defaultImages[3]
     const jordan = defaultImages[4]
-    const logoInspiration = defaultImages[6]
-    const logo = defaultImages[7]
+    const logoInspiration = defaultImages[7]
+    const logo = defaultImages[8]
 
     return (
         <>

@@ -20,6 +20,7 @@ import CardDetails from "./Cards/CardDetails";
 import CardEdit from "./Cards/CardEdit";
 import Cart from "./Cart/Cart";
 import CardsProvider from "../contexts/cardsContext";
+import PrivateRoute from "./Private/PrivateRoute";
 
 export default function App() {
 
@@ -41,12 +42,12 @@ export default function App() {
                                         <Route path="/about-nba" element={<AboutNba />} />
                                         <Route path="/teams" element={<Teams />} />
                                         <Route path="/team/:teamId" element={<TeamDetails />} />
-                                        <Route path="/profile/:profileId" element={<Profile />} />
                                         <Route path="/cards-shop" element={<CardsShop />} />
                                         <Route path="/cards-shop/:cardId" element={<CardDetails />} />
-                                        <Route path="/card-create" element={<CardCreate />} />
-                                        <Route path="/card-edit/:cardId" element={<CardEdit />} />
-                                        <Route path="/cart" element={<Cart />} />
+                                        <Route path="/profile/:profileId" element={<PrivateRoute element={Profile} />} />
+                                        <Route path="/card-create" element={<PrivateRoute element={CardCreate} />} />
+                                        <Route path="/card-edit/:cardId" element={<PrivateRoute element={CardEdit} />} />
+                                        <Route path="/cart" element={<PrivateRoute element={Cart} />} />
                                         <Route path="/logout" element={<Logout />} />
                                         <Route path="*" element={<NotFound />} />
                                     </Route>

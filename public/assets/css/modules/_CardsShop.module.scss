@@ -1,2 +1,71 @@
 @import "../../scss/Variables";
 @import "../../scss/Functions";
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.no-items {
+  margin: auto;
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-media {
+  display: flex;
+  justify-content: center;
+  min-height: 50vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-color: #6b6b6b;
+}
+
+.site-media:before {
+  display: block;
+  content: "";
+  opacity: 0.8;
+  background-color: rgb(32, 28, 28);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.section-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0.5em 0;
+  height: auto;
+  z-index: 1000;
+}
+
+.info-slogan {
+  margin-top: 40px;
+  font-size: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(text-p);
+}
+
+.info-subslogan {
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(bg-0);
+}

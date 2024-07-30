@@ -1,7 +1,7 @@
-import styles from "../../../public/assets/css/modules/_Cart.module.scss"
 import { useEffect, useState } from "react";
-import { useCart } from "../../contexts/cartContext";
 import { Link } from "react-router-dom";
+import styles from "../../../public/assets/css/modules/_Cart.module.scss"
+import { useCart } from "../../contexts/cartContext";
 
 export default function Cart() {
     const { cartItems, removeFromCart } = useCart();
