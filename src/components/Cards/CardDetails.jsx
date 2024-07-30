@@ -11,7 +11,7 @@ import { useCart } from '../../contexts/cartContext';
 
 import { getCardById } from '../../service/firebase/firestore/firestore-service';
 
-import styles from "../../../public/assets/css/modules/_CardDetails.module.scss";
+import styles from "../../../public/assets/scss/modules/_CardDetails.module.scss";
 
 
 export default function CardDetails() {

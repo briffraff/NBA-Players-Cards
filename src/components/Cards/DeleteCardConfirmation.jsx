@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteCardById } from "../../service/firebase/firestore/firestore-service";
-import styles from "../../../public/assets/css/modules/_Modal.module.scss"
+import styles from "../../../public/assets/scss/modules/_Modal.module.scss"
 
 export default function DeleteCardConfirmation({ setShowDeleteCardConfirm }) {
     const [error, setError] = useState("");

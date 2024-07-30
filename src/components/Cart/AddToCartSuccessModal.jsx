@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../../public/assets/css/modules/_AddItemToMiniCart.module.scss';
+import styles from '../../../public/assets/scss/modules/_AddItemToMiniCart.module.scss';
 
 export default function AddToCartSuccessModal() {
     const [show, setShow] = useState(false);

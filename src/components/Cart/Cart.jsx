@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
-import styles from "../../../public/assets/css/modules/_Cart.module.scss"
+import styles from "../../../public/assets/scss/modules/_Cart.module.scss"
 
 export default function Cart() {
     const { cartItems, removeFromCart } = useCart();

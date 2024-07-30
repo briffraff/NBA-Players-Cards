@@ -6,7 +6,7 @@ import { registerUser } from "../../service/firebase/authentication/auth-service
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 import { useAuth } from "../../contexts/authContext";
 
-import styles from "../../../public/assets/css/modules/_Modal.module.scss"
+import styles from "../../../public/assets/scss/modules/_Modal.module.scss"
 
 export default function RegisterModal({ setIsRegisterOpen }) {
     const defaultImages = useDefaultImages();

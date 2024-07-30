@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCart } from '../../contexts/cartContext';
-import styles from "../../../public/assets/css/modules/_CartBadge.module.scss";
+import styles from "../../../public/assets/scss/modules/_CartBadge.module.scss";
 
 export default function CartBadge() {
     const { cartItems, showHideMiniCart } = useCart();

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
+import styles from '../../../public/assets/scss/modules/_CreateCard.module.scss';
 
 export default function CardPreview({ formData, image }) {
     return (

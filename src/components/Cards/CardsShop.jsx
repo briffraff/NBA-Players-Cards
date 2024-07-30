@@ -4,7 +4,7 @@ import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
 import MiniCard from "../Cards/MiniCard";
 
-import styles from "../../../public/assets/css/modules/_CardsShop.module.scss"
+import styles from "../../../public/assets/scss/modules/_CardsShop.module.scss"
 
 export default function CardsShop() {
     const defaultImages = useDefaultImages();

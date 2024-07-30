@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import rim from "../../../public/assets/img/readme/rim.svg"
-import styles from "../../../public/assets/css/modules/_NotFound404.module.scss"
+import styles from "../../../public/assets/scss/modules/_NotFound404.module.scss"
 
 export default function NotFound() {
     return (

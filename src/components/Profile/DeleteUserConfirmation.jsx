@@ -6,7 +6,7 @@ import { reAuthentication, deleteAuthUser } from "../../service/firebase/authent
 
 import { useAuth } from "../../contexts/authContext";
 
-import styles from "../../../public/assets/css/modules/_Modal.module.scss"
+import styles from "../../../public/assets/scss/modules/_Modal.module.scss"
 
 export default function DeleteUserConfirmation({ setShowDeleteConfirm, userAuth, userFirestore }) {
 

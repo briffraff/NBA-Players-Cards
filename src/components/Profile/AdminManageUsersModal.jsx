@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllFirestoreUsers, updateFirestoreUserRole } from "../../service/firebase/firestore/firestore-service";
 import { useAuth } from "../../contexts/authContext";
-import styles from "../../../public/assets/css/modules/_ManageUsersModal.module.scss";
+import styles from "../../../public/assets/scss/modules/_ManageUsersModal.module.scss";
 
 export default function AdminManageUsersModal({ setShowAdminManageUsers }) {
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import styles from '../../../public/assets/css/modules/_MiniCard.module.scss';
+import styles from '../../../public/assets/scss/modules/_MiniCard.module.scss';
 
 export default function MiniCard({ card }) {
     const [isLoading, setIsLoading] = useState(true);

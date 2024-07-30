@@ -8,7 +8,7 @@ import { useAuth } from '../../contexts/authContext';
 import CardPreview from './CardPreview';
 import NotFound from '../404/404';
 
-import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
+import styles from '../../../public/assets/scss/modules/_CreateCard.module.scss';
 
 export default function CardEdit() {
     const [error, setError] = useState("");

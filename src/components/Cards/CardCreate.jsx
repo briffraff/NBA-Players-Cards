@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import { createCard } from '../../service/firebase/firestore/firestore-service';
 import CardPreview from './CardPreview';
-import styles from '../../../public/assets/css/modules/_CreateCard.module.scss';
+import styles from '../../../public/assets/scss/modules/_CreateCard.module.scss';
 
 export default function CardCreate() {
     const [error, setError] = useState("");
