@@ -61,7 +61,7 @@ const collections = {
     queries: {
         teams: ["name", "id"],
         subscribers: ["email"],
-        cards: ["playerName", "id"],
+        cards: ["playerName"],
         users: ["email"]
     }
 };

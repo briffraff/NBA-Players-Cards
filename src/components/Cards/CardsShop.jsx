@@ -10,7 +10,7 @@ export default function CardsShop() {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[6];
     const { firestoreUser } = useAuth();
-    const { cards } = useCards();
+    const { cards, loadMoreCards, loading } = useCards();
 
     return (
         <>
@@ -31,6 +31,11 @@ export default function CardsShop() {
                         <p className={styles.noItems}>No cards found.</p>
                     )}
                 </div>
+
+                {cards.length > 0 &&
+
+                    <button onClick={loadMoreCards} disabled={loading} className={styles.loadMore}>Load more (3)</button>
+                }
             </div>
         </>
     )

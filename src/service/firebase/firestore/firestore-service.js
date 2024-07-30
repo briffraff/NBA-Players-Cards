@@ -1,5 +1,5 @@
 import { db } from "../firebase-config";
-import { query, where, doc, getDoc, getDocs, arrayUnion, collection, addDoc, deleteDoc, documentId, updateDoc, arrayRemove } from "firebase/firestore";
+import { query, where, doc, getDoc, getDocs, arrayUnion, collection, addDoc, deleteDoc, documentId, updateDoc, arrayRemove, orderBy, limit, startAfter } from "firebase/firestore";
 
 import { generateHashFromBase64 } from "../../utils/utils";
 import { uploadImageAndGetUrl } from "../storage/storage-service";
@@ -215,6 +215,45 @@ export const getAllCards = async () => {
 
     return cards;
 }
+
+export const loadCards = async () => {
+
+    const cardsChunk = collection(db, "nba-cards");
+    const q = query(cardsChunk, orderBy("playerName"), limit(3));
+    const querySnapshot = await getDocs(q);
+
+    const cardsList = [];
+    let lastVisibleDoc = null;
+
+    querySnapshot.forEach((doc) => {
+        cardsList.push({ id: doc.id, ...doc.data() });
+        lastVisibleDoc = doc;
+    });
+
+    return { cardsList: cardsList, last: lastVisibleDoc };
+}
+
+export const loadMore = async (lastVisible) => {
+    try {
+        const cardsCollection = collection(db, 'nba-cards');
+        const q = query(cardsCollection, orderBy('playerName'), startAfter(lastVisible), limit(3));
+        const querySnapshot = await getDocs(q);
+
+        const moreCards = [];
+        let last = null;
+
+        querySnapshot.forEach((doc) => {
+            moreCards.push({ id: doc.id, ...doc.data() });
+            last = doc;
+        });
+
+        return { moreCards, last };
+    } catch (error) {
+        console.error("Error loading more cards:", error);
+        throw error;
+    }
+};
+
 
 export const createCard = async (cardData, image, imageName, currentUsers) => {
 
