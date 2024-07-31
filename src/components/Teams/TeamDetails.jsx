@@ -6,6 +6,8 @@ import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-s
 import { useAuth } from "../../contexts/authContext";
 import NotFound from "../404/404";
 
+import styles from "../../../public/assets/scss/modules/_TeamDetails.module.scss"
+
 export default function Team() {
     const [team, setTeam] = useState(null);
     const { teamId } = useParams();
@@ -59,18 +61,18 @@ export default function Team() {
     return (
         <>
             {team
-                ? (<div className="site-wrapper">
-                    <section className="site-media" style={{ backgroundImage: `url(${logoUrl})` }}>
-                        <section className="section-info-panel">
-                            <h1 className="team-title">{team.name}</h1>
-                            <div className="mini-wall team-name">
-                                <h3 className="location">Location : {team.location}</h3>
+                ? (<div className={styles.siteWrapper}>
+                    <section className={styles.siteMedia} style={{ backgroundImage: `url(${logoUrl})` }}>
+                        <section className={styles.sectionInfoPanel}>
+                            <h1 className={styles.teamTitle}>{team.name}</h1>
+                            <div className={`${styles.teamName}`}>
+                                <h3 className={styles.location}>Location : {team.location}</h3>
                             </div>
-                            <div className="likeContainer">
+                            <div className={styles.likeContainer}>
                                 {firestoreUser && (
                                     <>
-                                        <span className="likeSlogan">Like : </span>
-                                        <span className={isLiked ? "liked fas fa-heart" : "like fas fa-heart"} onClick={handleLike}></span>
+                                        <span className={styles.likeSlogan}>Like : </span>
+                                        <span className={isLiked ? `${styles.liked} fas fa-heart` : `${styles.like} fas fa-heart`} onClick={handleLike}></span>
                                     </>
                                 )}
                             </div>
@@ -78,12 +80,12 @@ export default function Team() {
                     </section>
 
                     <div className="site-content">
-                        <div className="single-team-container">
-                            <div className="team-logo">
+                        <div className={styles.singleTeamContainer}>
+                            <div className={styles.teamLogo}>
                                 <img src={logoUrl} alt={team.name} />
                             </div>
                             <article>
-                                <div className="about-text team-info">{team.info}</div>
+                                <div className={`about-text ${styles.teamInfo}`}>{team.info}</div>
                             </article>
                         </div>
                     </div>

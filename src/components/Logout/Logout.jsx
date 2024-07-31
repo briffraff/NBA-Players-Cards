@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
 import { useAuth } from "../../contexts/authContext";
 import NotFound from "../404/404";
-
+import styles from "../../../public/assets/scss/modules/_Logout.module.scss"
 
 export default function Logout() {
     const defaultImages = useDefaultImages();
@@ -23,19 +23,19 @@ export default function Logout() {
             {
                 !userLoggedIn
                     ? (
-                        <div className="content-wrapper">
-                            <section className="logout-box content">
-                                <h1 className="welcome">Thank you for visiting nbacards,</h1>
-                                <h1 className="welcome">See you next time! !</h1>
-                                <h4 className="sub-head">Everything for</h4>
-                                <Link to='/'><img className="nba" src={logo} alt="" /></Link>
-                                <p className="sub-head">Teams</p>
-                                <section className="log-reg">
+                        <div className={styles.contentWrapper}>
+                            <section className={`${styles.logoutBox} content`}>
+                                <h1 className={styles.welcome}>Thank you for visiting nbacards,</h1>
+                                <h1 className={styles.welcome}>See you next time! !</h1>
+                                <h4 className={styles.subHead}>Everything for</h4>
+                                <Link to='/'><img className={styles.nba} src={logo} alt="" /></Link>
+                                <p className={styles.subHead}>Teams</p>
+                                <section className={styles.logReg}>
                                     <p>You have no registration ?</p>
                                     <div>
-                                        <div className="login" onClick={handleLoginClick}>login</div>
+                                        <div className={styles.login} onClick={handleLoginClick}>login</div>
                                         <p>|</p>
-                                        <div className="register" onClick={handleRegisterClick}>register</div>
+                                        <div className={styles.register} onClick={handleRegisterClick}>register</div>
                                     </div>
                                 </section>
                             </section>

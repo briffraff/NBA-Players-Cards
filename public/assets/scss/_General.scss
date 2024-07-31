@@ -1,0 +1,89 @@
+@import "../scss/Variables";
+@import "../scss/Functions";
+
+// .info-slogan {
+//   margin-top: 40px;
+//   font-size: 100px;
+//   text-align: center;
+//   text-transform: uppercase;
+//   color: getColor(text-p);
+// }
+
+// .info-subslogan {
+//   font-size: 20px;
+//   letter-spacing: 10px;
+//   text-align: center;
+//   text-transform: uppercase;
+//   color: getColor(bg-0);
+// }
+
+// .site-wrapper {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 40px;
+//   margin-bottom: 60px;
+//   width: 100%;
+//   height: auto;
+// }
+
+// .mini-wall {
+//   width: 100%;
+//   overflow: hidden;
+//   background-position: center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   position: relative;
+// }
+
+// .transparent-text {
+//   text-align: center;
+//   margin-left: 18%;
+//   padding-top: 0.3em;
+//   padding-bottom: 0.3em;
+//   letter-spacing: 0.5rem;
+//   text-transform: uppercase;
+//   width: 450px;
+//   color: getColor(bg-secondary);
+//   background-color: rgba($color: #000000, $alpha: 0.3);
+//   opacity: 0.3;
+// }
+
+// .site-media {
+//   min-height: 50vh;
+//   overflow: hidden;
+//   background-position: center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   position: relative;
+//   @include flex-center;
+//   background-color: #6b6b6b;
+// }
+
+// .section-info-panel {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   text-align: center;
+//   margin: 0.5em 0;
+//   height: auto;
+//   z-index: 1000;
+// }
+
+.site-content {
+  height: auto;
+  padding-bottom: 2em;
+  padding-left: 20%;
+  padding-right: 20%;
+  color: getColor(text-p);
+  background-color: getColor(bg-1);
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  gap: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

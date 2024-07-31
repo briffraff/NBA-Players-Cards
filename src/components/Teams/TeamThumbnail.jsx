@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getDownloadUrlFromPath } from "../../service/firebase/storage/storage-service";
 
+import styles from "../../../public/assets/scss/modules/_TeamThumbnail.module.scss"
+
 export default function TeamThumbnail({ team }) {
     const [thumbnailUrl, setThumbnailUrl] = useState("");
     const { profileId } = useParams();
@@ -26,7 +28,7 @@ export default function TeamThumbnail({ team }) {
 
     return (
         <>
-            <div className="team-card">
+            <div className={styles.teamCard}>
                 {thumbnailUrl
                     ? (
                         <img src={thumbnailUrl} alt={team.name} />
@@ -36,7 +38,7 @@ export default function TeamThumbnail({ team }) {
                     )
                 }
 
-                <Link to={`/team/${team.id}`}><p className="card-name">{team.name}</p></Link>
+                <Link to={`/team/${team.id}`}><p className={styles.cardName}>{team.name}</p></Link>
 
             </div>
         </>

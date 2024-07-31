@@ -1,13 +1,11 @@
-@import "../scss/Reset.scss";
-@import "../scss/Variables";
-@import "../scss/Functions";
-@import "../scss/Mixin";
+@import "../scss/Reset";
 @import "../scss/Typography";
+@import "../scss/Mixin";
+@import "../scss/Functions";
+@import "../scss/Variables";
+@import "../scss/General";
+
+
 @import "../scss/Footer";
-@import "../scss/Login";
-@import "../scss/Register";
-// @import "../scss/Logout";
-@import "../scss/Teams";
-@import "../scss/TeamDetails";
 @import "../scss/Welcome";
 @import "../scss/Profile";
