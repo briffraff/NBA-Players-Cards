@@ -34,7 +34,6 @@ export default function Layout() {
             ...item,
             isActive: item.path === currentPath,
         })));
-
     }, [location.pathname]);
 
     const handleLoginClick = () => {
