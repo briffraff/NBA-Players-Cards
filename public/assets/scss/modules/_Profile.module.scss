@@ -1,3 +1,7 @@
+@import "../Variables";
+@import "../Functions";
+@import "../Mixin";
+
 .user-section {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -107,7 +111,7 @@
     letter-spacing: 0.5rem;
     text-align: center;
     text-transform: uppercase;
-    border-left: 5px solid getColor(nba-p);
+    // border-left: 5px solid getColor(nba-p);
     color: getColor(bg-0);
   }
 
@@ -130,7 +134,7 @@
     letter-spacing: 0.5rem;
     text-align: center;
     text-transform: uppercase;
-    border-left: 5px solid getColor(nba-p);
+    // border-left: 5px solid getColor(nba-p);
     color: getColor(bg-0);
   }
 
@@ -141,7 +145,17 @@
   }
 }
 
-.sideDistance{
+.teams-container-flexwrap {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.side-distance{
   padding-left: 15%;
   padding-right: 15%;
+}
+
+.bottom-distance {
+  margin-bottom: 50px;
 }

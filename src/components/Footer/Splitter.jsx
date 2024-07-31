@@ -1,5 +1,7 @@
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
+import styles from "../../../public/assets/scss/modules/_Footer.module.scss"
+
 export default function Splitter() {
 
     const defaultImages = useDefaultImages();
@@ -7,8 +9,8 @@ export default function Splitter() {
 
     return (
         <>
-            <div className="mini-wall" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <h2 className="transparent-text">I love this game!</h2>
+            <div className={styles.miniWall} style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <h2 className={styles.transparentText}>I love this game!</h2>
             </div>
         </>
     )

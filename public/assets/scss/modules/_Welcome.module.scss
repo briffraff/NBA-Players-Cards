@@ -1,3 +1,33 @@
+@import "../Variables";
+@import "../Functions";
+@import "../Mixin";
+
+.section-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0.5em 0;
+  height: auto;
+  z-index: 1000;
+}
+
+.info-slogan {
+  margin-top: 40px;
+  font-size: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(text-p);
+}
+
+.info-subslogan {
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: getColor(bg-0);
+}
+
 .welcome-media {
   min-height: 50vh;
   overflow: hidden;

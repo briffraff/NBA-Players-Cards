@@ -10,6 +10,7 @@ import AdminManageUsersModal from "./AdminManageUsersModal";
 import MiniCard from "../Cards/MiniCard";
 import TeamThumbnail from "../Teams/TeamThumbnail";
 
+import styles from "../../../public/assets/scss/modules/_Profile.module.scss"
 
 export default function Profile() {
     const user = auth.currentUser;
@@ -64,44 +65,44 @@ export default function Profile() {
     return (
         <>
             {user.uid === userFirestore.uid && profileId
-                ? (<section className="user-section">
-                    <div className="header-container">
-                        <div className="slogan">
+                ? (<section className={styles.userSection}>
+                    <div className={styles.headerContainer}>
+                        <div className={styles.slogan}>
                             {handleRole} PROFILE
                         </div>
-                        <div className="user-info">
-                            <div>Username: <a className="user-info-values">{user.displayName}</a></div>
-                            <div>Email: <a className="user-info-values">{user.email}</a></div>
-                            <div>Role: <a className="user-info-values">{handleRole}</a></div>
+                        <div className={styles.userInfo}>
+                            <div>Username: <a className={styles.userInfoValues}>{user.displayName}</a></div>
+                            <div>Email: <a className={styles.userInfoValues}>{user.email}</a></div>
+                            <div>Role: <a className={styles.userInfoValues}>{handleRole}</a></div>
                         </div>
                     </div>
-                    <div className="button-container">
-                        <Link to="/card-create" className="create-card-btn">Create Card</Link>
+                    <div className={styles.buttonContainer}>
+                        <Link to="/card-create" className={styles.createCardBtn}>Create Card</Link>
 
                         {userFirestore.admin == true &&
-                            <div className="manage-users" onClick={() => setShowAdminManageUsers(true)}>Manage Users</div>}
+                            <div className={styles.manageUsers} onClick={() => setShowAdminManageUsers(true)}>Manage Users</div>}
 
-                        <div className="delete-user" onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
+                        <div className={styles.deleteUser} onClick={() => setShowDeleteConfirm(true)}>Delete Account</div>
                     </div>
-                    <div className="user-items-topic">Your cards :</div>
-                    <div className="user-items">
+                    <div className={styles.userItemsTopic}>Your cards :</div>
+                    <div className={styles.userItems}>
                         {cardsByUser.length > 0 ? (
                             cardsByUser.map((card) => (
                                 <MiniCard key={card.id} card={card} />
                             ))
                         ) : (
-                            <p className="no-items">No cards found.</p>
+                            <p className={styles.noItems}>No cards found.</p>
                         )}
                     </div>
 
-                    <div className="liked-items-topic">Teams you liked :</div>
-                    <div className="liked-items">
+                    <div className={styles.likedItemsTopic}>Teams you liked :</div>
+                    <div className={styles.likedItems}>
 
                         {likedTeams.length > 0 ? (
-                            <div className="teams-container-flexwrap">
+                            <div>
                                 <div>
                                     {
-                                        <div className="teams-container-flexwrap bottomDistance sideDistance">
+                                        <div className={`${styles.teamsContainerFlexwrap} ${styles.bottomDistance} ${styles.sideDistance}`}>
                                             {
                                                 likedTeams.map((team) => (
                                                     <TeamThumbnail key={team.id} team={team} />
@@ -112,7 +113,7 @@ export default function Profile() {
                                 </div>
                             </div>
                         ) : (
-                            <p className="no-items">No teams found.</p>
+                            <p className={styles.noItems}>No teams found.</p>
                         )}
                     </div>
 

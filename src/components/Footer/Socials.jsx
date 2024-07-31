@@ -1,3 +1,5 @@
+import styles from "../../../public/assets/scss/modules/_Footer.module.scss"
+
 export default function Socials() {
     const socialLinks = [
         { href: "https://www.facebook.com/nba/", icon: "fab fa-facebook-f" },
@@ -7,13 +9,13 @@ export default function Socials() {
 
     return (
         <>
-            <div className="footer-social-icons">
-                <div className="footer-label">
+            <div className={styles.footerSocialIcons}>
+                <div className={styles.footerLabel}>
                     <h4>Social</h4>
                 </div>
-                <div className="social-icons">
+                <div className={styles.socialIcons}>
                     {socialLinks.map((link, index) => (
-                        <a className="btn btn-social btn-outline" href={link.href} key={`social-${index}`}>
+                        <a className={`${styles.btn} ${styles.btnSocial} ${styles.btnOutline}`} href={link.href} key={`social-${index}`}>
                             <i className={link.icon}></i>
                         </a>
                     ))}

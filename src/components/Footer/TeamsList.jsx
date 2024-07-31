@@ -1,7 +1,7 @@
 import { useEffect, useState, useTransition } from "react";
 import { Link } from "react-router-dom";
 import { getTeams } from "../../service/firebase/firestore/firestore-service";
-
+import styles from "../../../public/assets/scss/modules/_Footer.module.scss"
 export default function TeamsList() {
     // const teams = [
     //     ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers"],
@@ -52,13 +52,13 @@ export default function TeamsList() {
 
     return (
         <>
-            <div className="footer-teams">
-                <div className="footer-label">
+            <div className={styles.footerTeams}>
+                <div className={styles.footerLabel}>
                     <h4>Teams</h4>
                 </div>
-                <div className="teams">
+                <div className={styles.teams}>
                     {teams.map((group, groupIndex) => (
-                        <div className="teams-group" key={`group-${groupIndex}`}>
+                        <div className={styles.teamsGroup} key={`group-${groupIndex}`}>
                             {group.map((team, teamIndex) => (
                                 <Link to={`/team/${team.id}`} key={`team-${groupIndex}-${teamIndex}`}><p style={{ display: "inline-block" }}>
                                     {team.name}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { addSubscriber } from "../../service/firebase/firestore/firestore-service";
 
+import styles from "../../../public/assets/scss/modules/_Footer.module.scss"
+
 export default function Subscribe() {
     const [subscriberEmail, setSubscriberEmail] = useState("");
     const [error, setError] = useState("");
@@ -27,14 +29,14 @@ export default function Subscribe() {
     return (
         <>
 
-            <div className="footer-subscribe-form">
-                <div className="footer-label">
+            <div className={styles.footerSubscribeForm}>
+                <div className={styles.footerLabel}>
                     <h4>Subscribe</h4>
                 </div>
 
-                {error && <div className="error-message center">{error}</div>}
+                {error && <div className={`${styles.errorMessage} ${styles.center}`}>{error}</div>}
 
-                <form className="subscribe" onSubmit={handleSubmit}>
+                <form className={styles.subscribe} onSubmit={handleSubmit}>
                     <input
                         type="email"
                         id="subscriberEmail"

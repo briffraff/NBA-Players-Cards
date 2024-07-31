@@ -24,8 +24,6 @@ export default function AboutNba() {
                     <h2 className={styles.storyTitle}>Story of the game</h2>
                 </div>
 
-                <div className={styles.imaginary} style={{ backgroundImage: `url(${jordan})` }}>    </div>
-
                 <article>
                     <div className="about-text">
                         <p>The Basketball Association of America—the entity that would later become the NBA—was first founded in June of
@@ -33,6 +31,8 @@ export default function AboutNba() {
                             Canada. At the time, the league’s competition consisted of the American Basketball League (ABL) and the
                             National Basketball League (NBL) though it would be the NBA’s later competition with an upstart league known
                             as the American Basketball Association that would drive the creation of the NBA logo we now have today.</p>
+
+                        <div className={styles.imaginary} style={{ backgroundImage: `url(${jordan})` }}>    </div>
 
                         <p>After a period of competition between the three leagues, the BAA took in the NBL in a merger that formed the
                             league we now know as the NBA. Since then, the NBA has showcased superstars such as Michael Jordan, Magic
@@ -85,26 +85,21 @@ export default function AboutNba() {
                             legendary names we now have today.</p>
                     </div>
 
-                    <div className={styles.imageContainer}>
-                        <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logoInspiration})` }} alt="nba-logo-inspiration"></div>
-                        <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logo})` }} alt="nba-logo"></div>
-                    </div>
+
                 </article>
 
-                <div className="about-text team-info">
-                    <p>The photo of Jerry West that inspired the NBA logo caught Siegel’s trained eye for good reason. Even
-                        when reduced to a silhouette it seems to glide across the page. It’s a dynamic image that accurately
-                        captures the nature of the sport.</p>
+                <div className={styles.logoTextContainer}>
 
-                    <p>The color scheme of the logo (red, white, and blue) appeals to the patriotism of the NBA’s viewers
-                        and helped to establish the league as America’s choice for professional basketball.</p>
+                    <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logoInspiration})` }} alt="nba-logo-inspiration"></div>
+                    <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logo})` }} alt="nba-logo"></div>
+                    <div className="about-text">
+                        <p>The photo of Jerry West that inspired the NBA logo caught Siegel’s trained eye for good reason. Even when reduced to a silhouette it seems to glide across the page. It’s a dynamic image that accurately captures the nature of the sport.</p>
+                        <p>The color scheme of the logo (red, white, and blue) appeals to the patriotism of the NBA’s viewers and helped to establish the league as America’s choice for professional basketball.</p>
+                        <p>Lastly, in choosing one of the league’s superstars as inspiration for the logo, Siegel was able to highlight what truly sets the NBA apart. Arguably even more so than other sports, the NBA has long been propelled to success by the popularity of a handful of truly spectacular players. Choosing to showcase one of these players in the design of their logo was a wise decision and an essential design element of the NBA logo.</p>
+                    </div>
 
-                    <p>Lastly, in choosing one of the league’s superstars as inspiration for the logo, Siegel was able to
-                        highlight what truly sets the NBA apart. Arguably even more so than other sports, the NBA has long
-                        been propelled to success by the popularity of a handful of truly spectacular players. Choosing to
-                        showcase one of these players in the design of their logo was a wise decision and an essential
-                        design element of the NBA logo.</p>
                 </div>
+
 
             </main>
         </>

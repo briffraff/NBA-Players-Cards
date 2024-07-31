@@ -69,17 +69,15 @@
   flex-wrap: wrap;
 }
 
-
 .team-info {
   margin-top: 50px;
   margin-bottom: 5em;
 }
 
 .division-title {
+  display: flex;
   font-size: 30px;
-  margin-top: 70px;
-  width: 100%;
-  text-align: center;
+  text-align: left;
 
   &:before {
     content: "/ ";
