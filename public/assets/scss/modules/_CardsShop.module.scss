@@ -71,13 +71,19 @@
   color: getColor(bg-0);
 }
 
+.load-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .load-more {
   padding: 10px;
   border-radius: 8px;
   border: none;
   outline: none;
   font-size: 16px;
-  margin: 50px 45%;
+  margin: 50px;
   cursor: pointer;
   color: whitesmoke;
   background-color: getColor(nba-p);

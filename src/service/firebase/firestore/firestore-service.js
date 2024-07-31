@@ -205,16 +205,44 @@ export const addSubscriber = async (email) => {
 
 
 // CARDS
+export const getAllRemainCards = async (lastVisible = null) => {
+    try {
+        const cardsCollection = collection(db, 'nba-cards');
+        let q = query(cardsCollection, orderBy('playerName'));
 
-export const getAllCards = async () => {
-    const data = await getDocs(cardsCollectionRef);
+        if (lastVisible) {
+            q = query(cardsCollection, orderBy('playerName'), startAfter(lastVisible));
+        }
 
-    const cards = data.docs.map((card) => ({
-        ...card.data(), id: card.id
-    }))
+        const querySnapshot = await getDocs(q);
 
-    return cards;
-}
+        const allRemainingCards = [];
+        let last = null;
+
+        querySnapshot.forEach((doc) => {
+            allRemainingCards.push({ id: doc.id, ...doc.data() });
+            last = doc;
+        });
+
+        return { allRemainingCards, last };
+    } catch (error) {
+        console.error("Error loading all cards:", error);
+        throw error;
+    }
+};
+
+export const getTotalCardsCount = async () => {
+    try {
+        const cardsCollection = collection(db, 'nba-cards');
+        const q = query(cardsCollection, orderBy('playerName'));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.size;
+    } catch (error) {
+        console.error("Error fetching total cards count:", error);
+        throw error;
+    }
+};
+
 
 export const loadCards = async () => {
 

@@ -1,23 +1,25 @@
 import { useAuth } from "../../contexts/authContext";
 import { useCards } from "../../contexts/cardsContext";
-import { useDefaultImages } from "../../contexts/defaultImagesContext"
+import { useDefaultImages } from "../../contexts/defaultImagesContext";
 
 import MiniCard from "../Cards/MiniCard";
 
-import styles from "../../../public/assets/scss/modules/_CardsShop.module.scss"
+import styles from "../../../public/assets/scss/modules/_CardsShop.module.scss";
 
 export default function CardsShop() {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[6];
     const { firestoreUser } = useAuth();
-    const { cards, loadMoreCards, loading } = useCards();
+    const { cards, loadMoreCards, loading, loadAll, totalCardsCount, currentCardsCount } = useCards();
+
+    const remainingCardsCount = totalCardsCount - currentCardsCount;
 
     return (
         <>
             <section className={styles.siteMedia} style={{ backgroundImage: `url(${backgroundImage})` }}>
                 <section className={styles.sectionInfoPanel}>
                     <h1 className={styles.infoSlogan}>Cards shop</h1>
-                    <h3 className={styles.infoSubslogan}>NBA Player cards </h3>
+                    <h3 className={styles.infoSubslogan}>NBA Player cards</h3>
                 </section>
             </section>
 
@@ -33,10 +35,24 @@ export default function CardsShop() {
                 </div>
 
                 {cards.length > 0 &&
-
-                    <button onClick={loadMoreCards} disabled={loading} className={styles.loadMore}>Load more (3)</button>
+                    <>
+                        <div className={styles.loadBtns}>
+                            <button
+                                onClick={loadMoreCards}
+                                disabled={loading || remainingCardsCount <= 0}
+                                className={styles.loadMore}>
+                                {`Load more (${Math.min(3, remainingCardsCount)})`}
+                            </button>
+                            <button
+                                onClick={loadAll}
+                                disabled={loading || remainingCardsCount <= 0}
+                                className={styles.loadMore}>
+                                {`Show all (${remainingCardsCount})`}
+                            </button>
+                        </div>
+                    </>
                 }
             </div>
         </>
-    )
+    );
 }
