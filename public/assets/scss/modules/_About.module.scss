@@ -1,3 +1,6 @@
+@import "../../scss/Variables";
+@import "../../scss/Functions";
+
 .imaginary {
   margin-top: 1.3em;
   min-height: 41vh;
@@ -54,13 +57,4 @@
   text-align: center;
   text-transform: uppercase;
   color: getColor(bg-0);
-}
-
-.error-message {
-  color: red;
-  margin-top: 10px;
-}
-
-.center {
-  text-align: center;
 }

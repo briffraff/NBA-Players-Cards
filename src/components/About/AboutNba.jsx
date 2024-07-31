@@ -1,5 +1,7 @@
 import { useDefaultImages } from "../../contexts/defaultImagesContext"
 
+import styles from "../../../public/assets/scss/modules/_About.module.scss"
+
 export default function AboutNba() {
     const defaultImages = useDefaultImages();
 
@@ -12,8 +14,8 @@ export default function AboutNba() {
         <>
             <section className="site-media" style={{ backgroundImage: `url(${backgroundImage})` }}>
                 <section className="section-info-panel">
-                    <h1 className="info-slogan">About NBA</h1>
-                    <h3 className="info-subslogan">National Basketball Association</h3>
+                    <h1 className={styles.infoSlogan}>About NBA</h1>
+                    <h3 className={styles.infoSubslogan}>National Basketball Association</h3>
                 </section>
             </section>
             <main className="site-content">
@@ -21,10 +23,10 @@ export default function AboutNba() {
 
 
                     <div className="mini-wall">
-                        <h2 className="story-title">Story of the game</h2>
+                        <h2 className={styles.storyTitle}>Story of the game</h2>
                     </div>
 
-                    <div className="imaginary" style={{ backgroundImage: `url(${jordan})` }}>    </div>
+                    <div className={styles.imaginary} style={{ backgroundImage: `url(${jordan})` }}>    </div>
 
                     <article>
                         <div className="about-text">
@@ -56,7 +58,7 @@ export default function AboutNba() {
 
                 <div className="site-wrapper">
                     <div className="mini-wall">
-                        <h2 className="story-title">Design of Iconic logo</h2>
+                        <h2 className={styles.storyTitle}>Design of Iconic logo</h2>
                     </div>
 
                     <article>
@@ -87,9 +89,9 @@ export default function AboutNba() {
                                 legendary names we now have today.</p>
                         </div>
 
-                        <div className="image-container">
-                            <div className="about-logo" style={{ backgroundImage: `url(${logoInspiration})` }} alt="nba-logo-inspiration"></div>
-                            <div className="about-logo" style={{ backgroundImage: `url(${logo})` }} alt="nba-logo"></div>
+                        <div className={styles.imageContainer}>
+                            <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logoInspiration})` }} alt="nba-logo-inspiration"></div>
+                            <div className={styles.aboutLogo} style={{ backgroundImage: `url(${logo})` }} alt="nba-logo"></div>
                         </div>
                     </article>
 
