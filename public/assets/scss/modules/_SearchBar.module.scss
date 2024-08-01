@@ -1,0 +1,45 @@
+@import "../Variables";
+@import "../Functions";
+
+.search-bar {
+  background-color: red;
+  z-index: 11000;
+}
+
+.search-input {
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 50px;
+  background-color: getColor(bg);
+  padding-left: 20px;
+  width: 70%;
+
+  &:focus {
+    outline-offset: -1px;
+    outline: solid 2px getColor(nba-p);
+  }
+}
+
+.search-btn {
+  padding: 10px;
+  margin-top: 50px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: getColor(nba-p);
+  cursor: pointer;
+
+  &:hover{
+    color: getColor(nba-p);
+    background-color: whitesmoke;
+  }
+}
+
+.not-found{
+    padding-top: 15px;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+}

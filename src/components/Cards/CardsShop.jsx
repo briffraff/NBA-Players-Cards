@@ -3,6 +3,7 @@ import { useCards } from "../../contexts/cardsContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
 
 import MiniCard from "../Cards/MiniCard";
+import SearchBar from "./SearchBar";
 
 import styles from "../../../public/assets/scss/modules/_CardsShop.module.scss";
 
@@ -20,6 +21,7 @@ export default function CardsShop() {
                 <section className={styles.sectionInfoPanel}>
                     <h1 className={styles.infoSlogan}>Cards shop</h1>
                     <h3 className={styles.infoSubslogan}>NBA Player cards</h3>
+                    <SearchBar />
                 </section>
             </section>
 
