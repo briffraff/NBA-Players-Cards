@@ -7,10 +7,11 @@ export default function SearchBar() {
 
     return (
         <>
-            <section className="searchBar">
-                <input className={styles.searchInput} type="text" placeholder="Search for player card" />
-                <button className={styles.searchBtn}>Search</button>
-                
+            <section className={styles.searchBar}>
+                <div className={styles.container}>
+                    <input className={styles.searchInput} type="text" placeholder="Search for player card" />
+                    <button className={styles.searchBtn}>Search</button>
+                </div>
                 {error ? <div className={styles.notFound}>Card not found</div> : ""}
             </section >
         </>
