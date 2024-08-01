@@ -82,10 +82,10 @@ export default function CardsProvider({ children }) {
         setLoading(true);
 
         try {
-            const card = await getCardByPlayerName(searchForPlayer);
-            setFoundedCard(card);
+            const result = await getCardByPlayerName(searchForPlayer);
+            console.log(result);
+            setFoundedCard(result);
             setLoading(false);
-            return card;
         } catch (error) {
             setFoundedCard(null);
             setLoading(false);
