@@ -408,6 +408,24 @@ export const getCardById = async (cardId) => {
     }
 };
 
+export const getCardByPlayerName = async (playerName) => {
+    try {
+        const q = query(cardsCollectionRef, where("playerName", "==", playerName));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            console.log("No such document found!");
+            return [];
+        }
+
+        const cards = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        return cards;
+
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const deleteCardById = async (cardId) => {
     const docRef = doc(cardsCollectionRef, cardId);
     if (docRef) {

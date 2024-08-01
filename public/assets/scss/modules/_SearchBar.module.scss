@@ -2,7 +2,6 @@
 @import "../Functions";
 
 .search-bar {
-  // background-color: red;
   z-index: 11000;
 }
 
@@ -31,15 +30,17 @@
   cursor: pointer;
 
   &:hover {
-    color: getColor(nba-p);
-    background-color: whitesmoke;
+    &:hover {
+      color: getColor(nba-p);
+      background-color: whitesmoke;
+    }
   }
-}
 
-.not-found {
-  padding-top: 15px;
-  color: red;
-  font-size: 16px;
-  text-align: center;
-  font-weight: 500;
+  .not-found {
+    padding-top: 15px;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+  }
 }

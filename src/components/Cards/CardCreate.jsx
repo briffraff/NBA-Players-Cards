@@ -17,7 +17,7 @@ export default function CardCreate() {
         playerName: "",
         description: "",
         shortInfo: "",
-        price: ""
+        price: "" 
     });
 
     const [image, setImage] = useState("");

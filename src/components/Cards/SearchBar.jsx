@@ -5,7 +5,6 @@ import { useCards } from "../../contexts/cardsContext";
 export default function SearchBar() {
     const [searchFor, setSearchFor] = useState("");
     const { searchCard } = useCards();
-    const [foundedCard, setFoundedCard] = useState(null);
     const [error, setError] = useState(null);
 
     const handleSearch = async () => {
