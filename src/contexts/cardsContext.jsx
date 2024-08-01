@@ -82,17 +82,21 @@ export default function CardsProvider({ children }) {
         setLoading(true);
 
         try {
-            const foundedCard = await getCardByPlayerName(searchForPlayer);
-            setFoundedCard(foundedCard);
+            const card = await getCardByPlayerName(searchForPlayer);
+            setFoundedCard(card);
             setLoading(false);
+            return card;
         } catch (error) {
-            console.error("Cannot find a card", error)
+            setFoundedCard(null);
+            setLoading(false);
+            throw error;
         }
-    }
+    };
 
     return (
         <CardsContext.Provider value={{
             cards,
+            foundedCard,
             loadMoreCards,
             loadAll,
             loading,

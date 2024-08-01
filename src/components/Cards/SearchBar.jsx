@@ -4,16 +4,16 @@ import { useCards } from "../../contexts/cardsContext";
 
 export default function SearchBar() {
     const [searchFor, setSearchFor] = useState("");
-    const [foundedCard, setFoundedCard] = useState("");
-    const [error, setError] = useState(null);
     const { searchCard } = useCards();
+    const [foundedCard, setFoundedCard] = useState(null);
+    const [error, setError] = useState(null);
 
     const handleSearch = async () => {
         try {
-            const founded = await searchCard(searchFor);
-            setFoundedCard(founded);
+            setError(null); 
+            await searchCard(searchFor);
         } catch (error) {
-            setError("Card not found");
+            setError("Cannot find a card with that name.");
         }
     };
 
