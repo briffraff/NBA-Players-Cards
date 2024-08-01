@@ -40,5 +40,24 @@
   color: red;
   font-size: 16px;
   text-align: left;
+}
 
+.cancel-search {
+  position: relative;
+  left: 280px;
+  top: -30px;
+  background-color: red;
+  color: whitesmoke;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  padding: 1px 7px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    background-color: whitesmoke;
+  }
 }

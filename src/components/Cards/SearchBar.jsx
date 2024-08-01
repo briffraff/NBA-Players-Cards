@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCards } from "../../contexts/cardsContext";
 import styles from "../../../public/assets/scss/modules/_SearchBar.module.scss";
 
 export default function SearchBar() {
     const [searchFor, setSearchFor] = useState("");
-    const { searchCard } = useCards();
+    const { searchCard, foundedCard } = useCards();
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        const savedSearch = localStorage.getItem('currentSearch');
+
+        if (savedSearch) {
+            setSearchFor(savedSearch);
+        }
+    }, []);
 
     const handleSearch = async () => {
         try {
             setError("");
             await searchCard(searchFor);
+            localStorage.setItem('currentSearch', searchFor);
         } catch (error) {
             setError("Cannot find a card with that name.");
         }
@@ -20,9 +29,14 @@ export default function SearchBar() {
         const value = event.target.value;
         setSearchFor(value);
 
-        if (value == "") {
+        if (value === "") {
             setError("");
         }
+    };
+
+    const handleCancelSearch = () => {
+        setSearchFor("");
+        localStorage.removeItem('currentSearch');
     };
 
     return (
@@ -40,6 +54,15 @@ export default function SearchBar() {
                 <button onClick={handleSearch} className={styles.searchBtn}>
                     Search
                 </button>
+
+                {foundedCard.length > 0 && (
+                    <button
+                        className={styles.cancelSearch}
+                        onClick={handleCancelSearch}
+                    >
+                        x
+                    </button>
+                )}
             </div>
             {error && <div className={styles.notFound}>{error}</div>}
         </section>
