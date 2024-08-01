@@ -82,20 +82,24 @@ export default function CardsProvider({ children }) {
         setLoading(true);
 
         try {
-            if (searchForPlayer != "") {
-                const result = await getCardByPlayerName(searchForPlayer);
-                if (result.length == 0) {
-                    throw new Error("Error: ")
-                }
-                setFoundedCard(result);
-                setLoading(false);
+            // if (searchForPlayer != "") {
+            const result = await getCardByPlayerName(searchForPlayer);
+            if (result.length == 0) {
+                throw new Error("Error: ")
             }
+            setFoundedCard(result);
+            setLoading(false);
+            // }
         } catch (error) {
             setFoundedCard([]);
             setLoading(false);
             throw error;
         }
     };
+
+    const eraseFoundedCards = async () => {
+        setFoundedCard([]);
+    }
 
     const refreshCards = async () => {
         setLoading(true);
