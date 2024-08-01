@@ -4,18 +4,20 @@ import { useAuth } from '../../contexts/authContext';
 import { createCard } from '../../service/firebase/firestore/firestore-service';
 import CardPreview from './CardPreview';
 import styles from '../../../public/assets/scss/modules/_CreateCard.module.scss';
+import { useCards } from '../../contexts/cardsContext';
 
 export default function CardCreate() {
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
     const { currentUser } = useAuth();
+    const { updateTotalCardsCount, refreshCards } = useCards();
 
     const [formData, setFormData] = useState({
         playerName: "",
         description: "",
         shortInfo: "",
-        price: "" 
+        price: ""
     });
 
     const [image, setImage] = useState("");
@@ -40,6 +42,10 @@ export default function CardCreate() {
             const numericFormData = { ...formData, price: numericPrice };
 
             await createCard(numericFormData, image, imageName, currentUser);
+
+            await updateTotalCardsCount();
+            await refreshCards();
+
             setError("");
             navigate("/cards-shop");
             handleResetForm();
@@ -122,7 +128,7 @@ export default function CardCreate() {
         localStorage.setItem("cardPlayerName", formData.playerName);
         localStorage.setItem("cardDescription", formData.description);
         localStorage.setItem("cardShortInfo", formData.shortInfo);
-        localStorage.setItem("cardPrice", formData.price);  
+        localStorage.setItem("cardPrice", formData.price);
     }, [formData.playerName, formData.description, formData.shortInfo, formData.price]);
 
     useEffect(() => {

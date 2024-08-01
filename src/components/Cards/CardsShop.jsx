@@ -1,9 +1,8 @@
+import { useEffect } from "react";
 import { useAuth } from "../../contexts/authContext";
 import { useCards } from "../../contexts/cardsContext";
 import { useDefaultImages } from "../../contexts/defaultImagesContext";
-
 import MiniCard from "../Cards/MiniCard";
-import SearchBar from "./SearchBar";
 
 import styles from "../../../public/assets/scss/modules/_CardsShop.module.scss";
 
@@ -11,9 +10,13 @@ export default function CardsShop() {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[6];
     const { firestoreUser } = useAuth();
-    const { cards, loadMoreCards, loading, loadAll, totalCardsCount, currentCardsCount } = useCards();
+    const { cards, loadMoreCards, loading, loadAll, totalCardsCount, currentCardsCount, refreshCards } = useCards();
 
     const remainingCardsCount = totalCardsCount - currentCardsCount;
+
+    useEffect(() => {
+        refreshCards();
+    }, []);
 
     return (
         <>
@@ -21,7 +24,6 @@ export default function CardsShop() {
                 <section className={styles.sectionInfoPanel}>
                     <h1 className={styles.infoSlogan}>Cards shop</h1>
                     <h3 className={styles.infoSubslogan}>NBA Player cards</h3>
-                    <SearchBar />
                 </section>
             </section>
 

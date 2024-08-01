@@ -208,10 +208,13 @@ export const addSubscriber = async (email) => {
 export const getAllRemainCards = async (lastVisible = null) => {
     try {
         const cardsCollection = collection(db, 'nba-cards');
-        let q = query(cardsCollection, orderBy('playerName'));
+        let q = [];
 
         if (lastVisible) {
             q = query(cardsCollection, orderBy('playerName'), startAfter(lastVisible));
+        }
+        else {
+            q = query(cardsCollection, orderBy('playerName'));
         }
 
         const querySnapshot = await getDocs(q);
@@ -404,24 +407,6 @@ export const getCardById = async (cardId) => {
         throw error;
     }
 };
-
-export const getCardByPlayerName = async (playerName) => {
-    try {
-        const q = query(cardsCollectionRef, where("playerName", "==", playerName));
-        const querySnapshot = await getDocs(q);
-
-        if (querySnapshot.empty) {
-            console.log("No such document found!");
-            return [];
-        }
-
-        const cards = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        return cards;
-
-    } catch (error) {
-        throw error;
-    }
-}
 
 export const deleteCardById = async (cardId) => {
     const docRef = doc(cardsCollectionRef, cardId);
