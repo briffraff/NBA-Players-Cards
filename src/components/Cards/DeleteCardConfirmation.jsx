@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { deleteCardById } from "../../service/firebase/firestore/firestore-service";
+
+import { useCards } from "../../contexts/cardsContext";
+
 import styles from "../../../public/assets/scss/modules/_Modal.module.scss"
 
 export default function DeleteCardConfirmation({ setShowDeleteCardConfirm }) {
@@ -8,6 +12,7 @@ export default function DeleteCardConfirmation({ setShowDeleteCardConfirm }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
     const { cardId } = useParams();
+    const { updateTotalCardsCount, refreshCards } = useCards();
 
     const handleDeleteCard = async (event) => {
         event.preventDefault();
@@ -15,6 +20,10 @@ export default function DeleteCardConfirmation({ setShowDeleteCardConfirm }) {
 
         try {
             await deleteCardById(cardId);
+
+            await refreshCards();
+            await updateTotalCardsCount();
+
             setError("")
             navigate("/cards-shop");
         } catch (error) {
