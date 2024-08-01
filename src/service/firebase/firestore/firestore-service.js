@@ -405,6 +405,22 @@ export const getCardById = async (cardId) => {
     }
 };
 
+export const getCardByPlayerName = async (playerName) => {
+    try {
+        const docRef = doc(db, "nba-cards", playerName);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            return { ...docSnap.data(), id: docSnap.id };
+        } else {
+            console.log("No such document!");
+            return null;
+        }
+    } catch (error) {
+        console.log("Error fetching specific card player : ", error);
+        throw error;
+    }
+}
+
 export const deleteCardById = async (cardId) => {
     const docRef = doc(cardsCollectionRef, cardId);
     if (docRef) {

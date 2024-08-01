@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { loadCards, getAllRemainCards, loadMore, getTotalCardsCount } from "../service/firebase/firestore/firestore-service";
+import { loadCards, getAllRemainCards, loadMore, getTotalCardsCount, getCardByPlayerName } from "../service/firebase/firestore/firestore-service";
 const CardsContext = createContext();
 
 export function useCards() {
@@ -12,6 +12,7 @@ export default function CardsProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [totalCardsCount, setTotalCardsCount] = useState(0);
     const [currentCardsCount, setCurrentCardsCount] = useState(0);
+    const [foundedCard, setFoundedCard] = useState([]);
 
     useEffect(() => {
         const fetchTotalCardsCount = async () => {
@@ -77,6 +78,18 @@ export default function CardsProvider({ children }) {
         }
     };
 
+    const searchCard = async (searchForPlayer) => {
+        setLoading(true);
+
+        try {
+            const foundedCard = await getCardByPlayerName(searchForPlayer);
+            setFoundedCard(foundedCard);
+            setLoading(false);
+        } catch (error) {
+            console.error("Cannot find a card", error)
+        }
+    }
+
     return (
         <CardsContext.Provider value={{
             cards,
@@ -84,7 +97,8 @@ export default function CardsProvider({ children }) {
             loadAll,
             loading,
             totalCardsCount,
-            currentCardsCount
+            currentCardsCount,
+            searchCard,
         }}>
             {children}
         </CardsContext.Provider>
