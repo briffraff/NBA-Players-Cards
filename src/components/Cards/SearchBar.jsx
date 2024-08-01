@@ -1,18 +1,27 @@
 import { useState } from "react";
-import styles from "../../../public/assets/scss/modules/_SearchBar.module.scss";
 import { useCards } from "../../contexts/cardsContext";
+import styles from "../../../public/assets/scss/modules/_SearchBar.module.scss";
 
 export default function SearchBar() {
     const [searchFor, setSearchFor] = useState("");
     const { searchCard } = useCards();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
 
     const handleSearch = async () => {
         try {
-            setError(null); 
+            setError("");
             await searchCard(searchFor);
         } catch (error) {
             setError("Cannot find a card with that name.");
+        }
+    };
+
+    const handleChange = (event) => {
+        const value = event.target.value;
+        setSearchFor(value);
+
+        if (value == "") {
+            setError("");
         }
     };
 
@@ -26,7 +35,7 @@ export default function SearchBar() {
                     className={styles.searchInput}
                     type="text"
                     placeholder="Search for player card"
-                    onChange={(e) => setSearchFor(e.target.value)}
+                    onChange={handleChange}
                 />
                 <button onClick={handleSearch} className={styles.searchBtn}>
                     Search

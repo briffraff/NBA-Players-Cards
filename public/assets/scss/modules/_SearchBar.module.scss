@@ -11,7 +11,7 @@
   margin-top: 50px;
   background-color: getColor(bg);
   padding-left: 20px;
-  width: 70%;
+  width: 82%;
 
   &:focus {
     outline-offset: -1px;
@@ -30,17 +30,15 @@
   cursor: pointer;
 
   &:hover {
-    &:hover {
-      color: getColor(nba-p);
-      background-color: whitesmoke;
-    }
+    color: getColor(nba-p);
+    background-color: whitesmoke;
   }
+}
 
-  .not-found {
-    padding-top: 15px;
-    color: red;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 500;
-  }
+.not-found {
+  padding-top: 15px;
+  color: red;
+  font-size: 16px;
+  text-align: left;
+
 }

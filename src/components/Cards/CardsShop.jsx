@@ -12,7 +12,7 @@ export default function CardsShop() {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[6];
     const { firestoreUser } = useAuth();
-    const { cards, loadMoreCards, loading, loadAll, totalCardsCount, currentCardsCount, refreshCards } = useCards();
+    const { cards, loadMoreCards, loading, loadAll, totalCardsCount, foundedCard, currentCardsCount, refreshCards } = useCards();
 
     const remainingCardsCount = totalCardsCount - currentCardsCount;
 
@@ -32,33 +32,46 @@ export default function CardsShop() {
 
             <div className={styles.cardContainer}>
                 <div className={styles.items}>
-                    {cards.length > 0 ? (
-                        cards.map((card) => (
-                            <MiniCard key={card.id} card={card} />
-                        ))
-                    ) : (
+                    {foundedCard.length === 0 && cards.length === 0 ? (
                         <p className={styles.noItems}>No cards found.</p>
+                    ) : (
+                        <>
+                            {foundedCard.length > 0 ? (
+                                foundedCard.map((card) => (
+                                    <MiniCard key={card.id} card={card} />
+                                ))
+                            ) : (
+                                cards.length > 0 && (
+                                    <>
+                                        {cards.map((card) => (
+                                            <MiniCard key={card.id} card={card} />
+                                        ))}
+                                    </>
+                                )
+                            )}
+                        </>
                     )}
                 </div>
 
-                {cards.length > 0 &&
-                    <>
-                        <div className={styles.loadBtns}>
-                            <button
-                                onClick={loadMoreCards}
-                                disabled={loading || remainingCardsCount <= 0}
-                                className={styles.loadMore}>
-                                {`Load more (${Math.min(3, remainingCardsCount)})`}
-                            </button>
-                            <button
-                                onClick={loadAll}
-                                disabled={loading || remainingCardsCount <= 0}
-                                className={styles.loadMore}>
-                                {`Show all (${remainingCardsCount})`}
-                            </button>
-                        </div>
-                    </>
-                }
+                {foundedCard.length === 0 && (
+                    <div className={styles.loadBtns}>
+                        <button
+                            onClick={loadMoreCards}
+                            disabled={loading || remainingCardsCount <= 0}
+                            className={styles.loadMore}
+                        >
+                            {`Load more (${Math.min(3, remainingCardsCount)})`}
+                        </button>
+                        <button
+                            onClick={loadAll}
+                            disabled={loading || remainingCardsCount <= 0}
+                            className={styles.loadMore}
+                        >
+                            {`Show all (${remainingCardsCount})`}
+                        </button>
+                    </div>
+                )}
+
             </div>
         </>
     );
