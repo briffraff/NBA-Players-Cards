@@ -307,6 +307,8 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
         const imageUrl = await uploadImageAndGetUrl(image, cardImagesStorage, imageName);
 
         const newCard = {
+            firstName: cardData.playerName.split(" ")[0].toLowerCase(),
+            secondName: cardData.playerName.split(" ")[1].toLowerCase(),
             playerName: cardData.playerName.toLowerCase(),
             description: cardData.description,
             shortInfo: cardData.shortInfo,
@@ -408,23 +410,51 @@ export const getCardById = async (cardId) => {
     }
 };
 
+
 export const getCardByPlayerName = async (playerName) => {
     try {
-        const q = query(cardsCollectionRef, where("playerName", "==", playerName.toLowerCase()));
-        const querySnapshot = await getDocs(q);
+        const [firstName, secondName] = playerName.toLowerCase().split(" ");
 
-        if (querySnapshot.empty) {
+        let queries = [];
+
+        if (firstName && secondName) {
+            const q3 = query(cardsCollectionRef, where("firstName", "in", [firstName, secondName]));
+            const q4 = query(cardsCollectionRef, where("secondName", "in", [firstName, secondName]));
+            queries = [q3, q4];
+        } else if (firstName && !secondName) {
+            const q5 = query(cardsCollectionRef, where("firstName", "==", firstName));
+            const q6 = query(cardsCollectionRef, where("secondName", "==", firstName));
+            queries = [q5, q6];
+        } else {
             console.log("No such document found!");
             return [];
         }
 
-        const cards = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        const snapshots = await Promise.all(queries.map(q => getDocs(q)));
+
+        const noResults = snapshots.every(snapshot => snapshot.empty);
+        if (noResults) {
+            console.log("No such document found!");
+            return [];
+        }
+
+        const cards = [
+            ...new Map
+                (
+                    snapshots
+                        .flatMap(snapshot => snapshot.docs)
+                        .map(doc => [doc.id, { ...doc.data(), id: doc.id }])
+                )
+                .values()];
+
         return cards;
 
     } catch (error) {
+        console.error("Error fetching documents: ", error);
         throw error;
     }
-}
+};
+
 
 export const deleteCardById = async (cardId) => {
     const docRef = doc(cardsCollectionRef, cardId);
