@@ -307,7 +307,7 @@ export const createCard = async (cardData, image, imageName, currentUsers) => {
         const imageUrl = await uploadImageAndGetUrl(image, cardImagesStorage, imageName);
 
         const newCard = {
-            playerName: cardData.playerName,
+            playerName: cardData.playerName.toLowerCase(),
             description: cardData.description,
             shortInfo: cardData.shortInfo,
             price: cardData.price,
@@ -410,7 +410,7 @@ export const getCardById = async (cardId) => {
 
 export const getCardByPlayerName = async (playerName) => {
     try {
-        const q = query(cardsCollectionRef, where("playerName", "==", playerName));
+        const q = query(cardsCollectionRef, where("playerName", "==", playerName.toLowerCase()));
         const querySnapshot = await getDocs(q);
 
         if (querySnapshot.empty) {
