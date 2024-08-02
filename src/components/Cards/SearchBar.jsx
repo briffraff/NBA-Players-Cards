@@ -4,7 +4,7 @@ import styles from "../../../public/assets/scss/modules/_SearchBar.module.scss";
 
 export default function SearchBar() {
     const [searchFor, setSearchFor] = useState("");
-    const { searchCard, foundedCard } = useCards();
+    const { searchCard, foundedCard, eraseFoundedCards } = useCards();
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -34,9 +34,10 @@ export default function SearchBar() {
         }
     };
 
-    const handleCancelSearch = () => {
+    const handleCancelSearch = async () => {
         setSearchFor("");
         localStorage.removeItem('currentSearch');
+        await eraseFoundedCards();
     };
 
     return (

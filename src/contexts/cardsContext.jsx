@@ -135,7 +135,8 @@ export default function CardsProvider({ children }) {
             currentCardsCount,
             searchCard,
             updateTotalCardsCount,
-            refreshCards
+            refreshCards,
+            eraseFoundedCards
         }}>
             {children}
         </CardsContext.Provider>
