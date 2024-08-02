@@ -48,6 +48,9 @@ Edit Card
 Delete Card
 ![Delete Card](./public/assets/img/readme/deleteCard.jpg)
 
+Cards Shop
+![Cards Shop](./public/assets/img/readme/cardsShop.jpg)
+
 Mini Cart and badge
 ![Mini Cart and badge](./public/assets/img/readme/miniCartAndBadge.jpg)
 
