@@ -17,6 +17,10 @@ export default function SearchBar() {
 
     const handleSearch = async () => {
         try {
+            if (searchFor == "") {
+                localStorage.removeItem('currentSearch');
+                setError("");
+            }
             setError("");
             await searchCard(searchFor);
             localStorage.setItem('currentSearch', searchFor);
