@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const serviceAccountPath = path.join(__dirname, "nba-player-cards-dev-fbc78-firebase-adminsdk-xnbws-fc69ab15df.json");
+const serviceAccountPath = path.join(__dirname, 'nba-player-cards-firebase-adminsdk-uvyul-a1ca980dac.json');
 
 const serviceAccount = JSON.parse(await fs.readFile(serviceAccountPath, 'utf-8'));
 
