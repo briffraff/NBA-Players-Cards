@@ -50,5 +50,31 @@
         "imageHash": "faff1f7205196bb3b457d1dc52c79b0ce8b7672926c634b67b163d9790cf7004",
         "cardUserId": "2",
         "author": "asd"
+    },
+    {
+        "firstName": "julius",
+        "secondName": "randle",
+        "playerName": "julius randle",
+        "description": "Julius Deion Randle (born November 29, 1994) is an American professional basketball player for the New York Knicks of the National Basketball Association (NBA). A three-time NBA All-Star and a two-time member of the All-NBA Team, he was awarded the NBA Most Improved Player Award in 2021.In his only season of college basketball with the Kentucky Wildcats, Randle was named a third-team All-American. He was drafted by the Los Angeles Lakers in the first round of the 2014 NBA draft with the seventh overall pick. In his regular season debut, Randle broke his right leg and missed the remainder of his rookie season. After four years with the Lakers, he signed with the New Orleans Pelicans before joining the Knicks after one season.",
+        "shortInfo": "Player of the week | week 20",
+        "price": 12,
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nba-player-cards-dev-fbc78.appspot.com/o/images%2Fnba-cards%2Fjulius%20randle.jpg?alt=media&token=b0bf63d0-777f-437b-ade8-83a8e55ff115",
+        "imageName": "julius randle.jpg",
+        "imageHash": "8ee56224b54c41fc93607cf348264f8859a1e7318e01e5f30a3c6c2cd32cd172",
+        "cardUserId": "2",
+        "author": "asd"
+    },
+    {
+        "firstName": "giannis",
+        "secondName": "antetokounmpo",
+        "playerName": "giannis antetokounmpo",
+        "description": "Giannis Sina Ugo Antetokounmpo[a] (born Adetokunbo;[b] December 6, 1994) is a Greek and Nigerian professional basketball player for the Milwaukee Bucks of the National Basketball Association (NBA). His size, speed, strength, and country of origin have earned him the nickname Greek Freak. He is widely regarded as one of the greatest power forwards of all time as well as one of the greatest players of all time.Born and raised in Athens to Nigerian parents, Antetokounmpo began playing basketball for the youth teams of Filathlitikos in Athens. In 2011, he began playing for the club's senior team before entering the 2013 NBA draft, where he was selected 15th overall by the Bucks. In 2016–17, he led the Bucks in all five major statistical categories and became the first player in NBA history to finish a regular season in the top 20 in all five statistics: total points, rebounds, assists, steals, and blocks.He received the Most Improved Player award in 2017. Antetokounmpo has received eight All-Star selections, including being selected as an All-Star captain in 2019,2020,2023 and 2024 as he led the Eastern Conference in voting in these four years.",
+        "shortInfo": "Player of the week | week 6",
+        "price": 15,
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nba-player-cards-dev-fbc78.appspot.com/o/images%2Fnba-cards%2FGianisAntetokounmpo.JPG?alt=media&token=5333d6ca-f544-4036-9685-03876cf07dbd",
+        "imageName": "GianisAntetokounmpo.JPG",
+        "imageHash": "aaa5afe3ae76173f2d5ed26bcb1436ad260bf761662f24e5562d2bb00aae0d56",
+        "cardUserId": "3",
+        "author": "Stavri"
     }
 ]
