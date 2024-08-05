@@ -26,7 +26,9 @@ export default function Cart() {
             <div className={styles.slogan}>Cart</div>
             <div className={styles.cartContainer}>
                 {items.length === 0 ? (
-                    <p className={styles.empty}>Cart is empty</p>
+                    <div className={`${styles.cartList}`}>
+                        <p className={`${styles.empty}`}>Cart is empty</p>
+                    </div>
                 ) : (
                     <>
                         <ul className={styles.cartList}>
