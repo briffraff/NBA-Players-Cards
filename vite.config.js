@@ -8,8 +8,5 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCaseOnly'
     }
-  },
-  build: {
-    outDir: 'dist'
   }
 })
