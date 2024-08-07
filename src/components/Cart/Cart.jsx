@@ -48,7 +48,8 @@ export default function Cart() {
                                     <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
                                 </li>
                             ))}
-                        </ul>
+                                <button className={styles.clearAll}>Clear all</button>
+                            </ul>
                     </>
                 )}
 

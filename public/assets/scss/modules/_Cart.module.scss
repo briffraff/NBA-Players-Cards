@@ -150,3 +150,22 @@
 .links {
   color: whitesmoke;
 }
+
+.clear-all {
+  width: 20%;
+  margin-left: 80%;
+  align-items: right;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: whitesmoke;
+  background-color: getColor(nba-s);
+  cursor: pointer;
+
+  &:hover{
+    background-color: whitesmoke;
+    color: getColor(nba-s);
+  }
+}
