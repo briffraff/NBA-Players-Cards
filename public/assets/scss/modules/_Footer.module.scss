@@ -122,11 +122,12 @@
       height: 2em;
       width: 100%;
       margin-top: 15px;
-      border: 1px solid #bec1c5;
-      transition: all 0.4s;
+      border: 1px solid getColor(nba-s);
+      transition: all 0.3s;
       background-color: rgb(39, 39, 39);
       color: getColor(text-p);
       padding-left: 15px;
+      border-radius: 8px;
 
       &:focus {
         border-color: getColor(nba-p);
