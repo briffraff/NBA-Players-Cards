@@ -45,6 +45,12 @@ export default function SearchBar() {
         if (value === "") {
             setError("");
             eraseFoundedCards();
+
+            searchParams.delete("search");
+            navigate({
+                pathname: location.pathname,
+                search: searchParams.toString(),
+            });
         }
     };
 
@@ -54,7 +60,14 @@ export default function SearchBar() {
             pathname: location.pathname,
             search: searchParams.toString(),
         });
+
         await eraseFoundedCards();
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
     };
 
     useEffect(() => {
@@ -74,6 +87,7 @@ export default function SearchBar() {
                     type="text"
                     placeholder="Search for player card"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
                 <button onClick={handleSearch} className={styles.searchBtn}>
                     Search
