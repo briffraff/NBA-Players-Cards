@@ -150,6 +150,8 @@ export default function RegisterModal({ setIsRegisterOpen }) {
                                 <input id="img" name="img" placeholder="Your profile picture" value={form.profilePictureUrl} onChange={handleChange} />
                             </div> */}
 
+                    <p className={styles.required}>* Required</p>
+                    
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
                     <button className={styles.modalBtn} type="submit">

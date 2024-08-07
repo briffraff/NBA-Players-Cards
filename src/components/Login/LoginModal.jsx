@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/authContext";
 
 import styles from "../../../public/assets/scss/modules/_Modal.module.scss";
 
-export default function LoginModal({ setIsLoginOpen}) {
+export default function LoginModal({ setIsLoginOpen }) {
     const defaultImages = useDefaultImages();
     const backgroundImage = defaultImages[0];
 
@@ -98,12 +98,13 @@ export default function LoginModal({ setIsLoginOpen}) {
                         <input type="password" id="loginPassword" name="password" placeholder="* Password" value={form.password} onChange={handleChange} />
                     </div>
 
+                    <p className={styles.required}>* Required</p>
+                    
                     {error && <div className={styles.errorMessage}>{error}</div>}
 
                     <button className={styles.modalBtn} type="submit">
                         {handleLoading}
                     </button>
-
                     <p className={styles.forgot} onClick={handleResetForm}>Reset</p>
                     <p className={styles.forgot}>Forgot password ?</p>
                 </form>
