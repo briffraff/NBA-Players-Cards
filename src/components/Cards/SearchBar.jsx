@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useCards } from "../../contexts/cardsContext";
 import styles from "../../../public/assets/scss/modules/_SearchBar.module.scss";
 
@@ -7,23 +8,31 @@ export default function SearchBar() {
     const { searchCard, foundedCard, eraseFoundedCards } = useCards();
     const [error, setError] = useState("");
 
-    useEffect(() => {
-        const savedSearch = localStorage.getItem('currentSearch');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const searchParams = new URLSearchParams(location.search);
+    const searchValue = searchParams.get("search");
 
-        if (savedSearch) {
-            setSearchFor(savedSearch);
+    useEffect(() => {
+
+        if (searchValue) {
+            setSearchFor(searchValue);
+            searchCard(searchValue).catch(err => setError("Cannot find a card with that name."));
+        } else {
+            setSearchFor("");
+            eraseFoundedCards();
         }
-    }, []);
+    }, [searchValue]);
 
     const handleSearch = async () => {
         try {
-            if (searchFor == "") {
-                localStorage.removeItem('currentSearch');
+            if (searchFor === "") {
                 setError("");
+                return;
             }
             setError("");
             await searchCard(searchFor);
-            localStorage.setItem('currentSearch', searchFor);
+            navigate(`${location.pathname}?search=${searchFor}`);
         } catch (error) {
             setError("Cannot find a card with that name.");
         }
@@ -35,14 +44,24 @@ export default function SearchBar() {
 
         if (value === "") {
             setError("");
+            eraseFoundedCards();
         }
     };
 
     const handleCancelSearch = async () => {
-        setSearchFor("");
-        localStorage.removeItem('currentSearch');
+        searchParams.delete("search");
+        navigate({
+            pathname: location.pathname,
+            search: searchParams.toString(),
+        });
         await eraseFoundedCards();
     };
+
+    useEffect(() => {
+        if (searchFor === "" && location.search === "") {
+            eraseFoundedCards();
+        }
+    }, [location.pathname]);
 
     return (
         <section className={styles.searchBar}>
