@@ -91,6 +91,7 @@ Logout
 - [Authentication](https://firebase.google.com/products/auth)
 - [Database](https://firebase.google.com/products/firestore)
 - [Storage](https://firebase.google.com/products/storage)
+- [Hosting](https://firebase.google.com/products/hosting)
 
 
 <img src="./public/assets/img/readme/sass.svg" width="50px" height="50px">[Sass](https://sass-lang.com/)
