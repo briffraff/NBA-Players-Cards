@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { timeout } from '../../service/cart/cart-service';
 import styles from '../../../public/assets/scss/modules/_AddItemToMiniCart.module.scss';
 
 export default function AddToCartSuccessModal() {
@@ -6,8 +7,7 @@ export default function AddToCartSuccessModal() {
 
     useEffect(() => {
         setShow(true);
-        const timer = setTimeout(() => setShow(false), 3000);
-        return () => clearTimeout(timer);
+        timeout(() => setShow(false), 3000);
     }, []);
 
     return (

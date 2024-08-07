@@ -1,28 +1,32 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
-import styles from "../../../public/assets/scss/modules/_Cart.module.scss"
+import { calculateCartTotals } from "../../service/cart/cart-service"; // Обновете пътя до новото име на функцията
+import styles from "../../../public/assets/scss/modules/_Cart.module.scss";
 
 export default function Cart() {
     const { cartItems, removeFromCart } = useCart();
     const items = Array.isArray(cartItems) ? cartItems : [];
 
-    const [subTotal, setSubTotalPrice] = useState(0);
+    const [subTotal, setSubTotal] = useState(0);
     const [shipping, setShipping] = useState(0);
     const [tax, setTax] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
-        const subT = items.reduce((acc, item) => acc + item.price, 0);
-        setSubTotalPrice(subT);
-        setShipping(parseFloat(Math.floor(subTotal / 10).toFixed(2)));
-        setTax(parseFloat(Math.floor(shipping * 0.5).toFixed(2)));
-        setTotalPrice(subT + shipping + tax);
-    }, [items, subTotal, shipping, tax, totalPrice]);
+        const updateCalculations = async () => {
+            const calcs = await calculateCartTotals(items);
+            setSubTotal(calcs.subtotal);
+            setShipping(calcs.shipping);
+            setTax(calcs.tax);
+            setTotalPrice(calcs.total);
+        };
+
+        updateCalculations();
+    }, [items]);
 
     return (
         <>
-
             <div className={styles.slogan}>Cart</div>
             <div className={styles.cartContainer}>
                 {items.length === 0 ? (
@@ -35,7 +39,7 @@ export default function Cart() {
                             {items.map((item, index) => (
                                 <li key={index} className={styles.cartItem}>
                                     <img src={item.imageUrl} alt={item.playerName} className={styles.cartItemImage} />
-                                    <Link  to={`/cards-shop/${item.id}`} className={styles.links}>
+                                    <Link to={`/cards-shop/${item.id}`} className={styles.links}>
                                         <div className={styles.cartItemDetails}>
                                             <p className={styles.player}>{item.playerName}</p>
                                             <p className={styles.price}>{item.price} $</p>
