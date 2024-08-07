@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
+import { subtotal } from '../../service/cart/cart-service';
 import styles from "../../../public/assets/scss/modules/_MiniCart.module.scss";
 
 export default function MiniCart() {
@@ -10,8 +11,11 @@ export default function MiniCart() {
     const [totalSubPrice, setTotalSubPrice] = useState(0);
 
     useEffect(() => {
-        const total = items.reduce((acc, item) => acc + item.price, 0);
-        setTotalSubPrice(total);
+        const updateCalculations = async () => {
+            const total = await subtotal(items);
+            setTotalSubPrice(total);
+        }
+        updateCalculations();
     }, [items]);
 
     const handleModalClick = (event) => {
