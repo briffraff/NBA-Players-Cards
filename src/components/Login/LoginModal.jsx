@@ -90,12 +90,12 @@ export default function LoginModal({ setIsLoginOpen}) {
                     </div>
                     <div className={styles.modalTextbox}>
                         <i className="fas fa-envelope"></i>
-                        <input type="email" id="loginEmail" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+                        <input type="email" id="loginEmail" name="email" placeholder="* E-mail" value={form.email} onChange={handleChange} />
                     </div>
 
                     <div className={styles.modalTextbox}>
                         <i className="fas fa-lock"></i>
-                        <input type="password" id="loginPassword" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                        <input type="password" id="loginPassword" name="password" placeholder="* Password" value={form.password} onChange={handleChange} />
                     </div>
 
                     {error && <div className={styles.errorMessage}>{error}</div>}
