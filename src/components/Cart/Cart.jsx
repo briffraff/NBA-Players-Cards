@@ -5,7 +5,7 @@ import { calculateCartTotals } from "../../service/cart/cart-service"; // Обн
 import styles from "../../../public/assets/scss/modules/_Cart.module.scss";
 
 export default function Cart() {
-    const { cartItems, removeFromCart } = useCart();
+    const { cartItems, removeFromCart, clearCart } = useCart();
     const items = Array.isArray(cartItems) ? cartItems : [];
 
     const [subTotal, setSubTotal] = useState(0);
@@ -24,6 +24,11 @@ export default function Cart() {
 
         updateCalculations();
     }, [items]);
+
+
+    const handleClearAll = async () => {
+        await clearCart();
+    }
 
     return (
         <>
@@ -48,8 +53,8 @@ export default function Cart() {
                                     <button className={styles.cancel} onClick={() => removeFromCart(item.uniqueId)}>x</button>
                                 </li>
                             ))}
-                                <button className={styles.clearAll}>Clear all</button>
-                            </ul>
+                            <button className={styles.clearAll} onClick={handleClearAll}>Clear all</button>
+                        </ul>
                     </>
                 )}
 

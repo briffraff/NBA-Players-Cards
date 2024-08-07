@@ -46,11 +46,16 @@ export default function CartProvider({ children }) {
         setIsMiniCartVisible((prev) => !prev);
     };
 
-    const clearCart = () => {
+    const clearCartOnLogout = () => {
         setCartItems([]);
         setIsMiniCartVisible(false);
         sessionStorage.clear();
         localStorage.clear();
+    };
+
+    const clearCart = () => {
+        setCartItems([]);
+        setIsMiniCartVisible(false);
     };
 
     return (
@@ -60,7 +65,8 @@ export default function CartProvider({ children }) {
             removeFromCart,
             isMiniCartVisible,
             showHideMiniCart,
-            clearCart
+            clearCart,
+            clearCartOnLogout
         }}>
             {children}
         </CartContext.Provider>
