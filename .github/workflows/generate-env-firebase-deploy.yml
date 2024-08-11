@@ -25,15 +25,23 @@ jobs:
       - name: Check if PR is from the same repository
         id: check_repo
         run: |
-          echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
-          echo "Main Repo: ${{ github.repository }}"
-          echo "::set-output name=is_same_repo::${{ github.event.pull_request.head.repo.full_name == github.repository }}"
-          echo "is_same_repo is set to ${{ steps.check_repo.outputs.is_same_repo }}"
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
+            echo "Main Repo: ${{ github.repository }}"
+            if [ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]; then
+              echo "is_same_repo=true" >> $GITHUB_ENV
+            else
+              echo "is_same_repo=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "is_same_repo=true" >> $GITHUB_ENV
+          fi
 
   build_and_deploy:
     needs: check_repo
     runs-on: ubuntu-latest
     if: needs.check_repo.outputs.is_same_repo == 'true'
+
     
     steps:
       - uses: actions/checkout@v4
