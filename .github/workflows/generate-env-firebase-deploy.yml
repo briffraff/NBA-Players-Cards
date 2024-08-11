@@ -34,6 +34,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Debug PR and repo details
+        run: |
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "Commit Message: ${{ github.event.head_commit.message }}"
+          echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Main Repo: ${{ github.repository }}"
+
       - name: Generate .env file if PR title or last commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'cr-env') || contains(github.event.head_commit.message, 'cr-env')
         run: |
