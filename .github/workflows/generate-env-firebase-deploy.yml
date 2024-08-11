@@ -22,41 +22,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check if PR is from the same repository
+      - name: Determine if it's a PR or Push
+        id: determine_event
+        run: echo "event_type=${{ github.event_name }}" >> $GITHUB_ENV
+
+      - name: Check if PR is from the same repository or is a push event
         id: check_repo
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
-            echo "Main Repo: ${{ github.repository }}"
-            if [ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]; then
-              echo "is_same_repo=true" >> $GITHUB_ENV
-            else
-              echo "is_same_repo=false" >> $GITHUB_ENV
-            fi
+            echo "::set-output name=is_same_repo::${{ github.event.pull_request.head.repo.full_name == github.repository }}"
           else
-            echo "is_same_repo=true" >> $GITHUB_ENV
+            echo "::set-output name=is_same_repo::true"
           fi
 
   build_and_deploy:
     needs: check_repo
     runs-on: ubuntu-latest
     if: needs.check_repo.outputs.is_same_repo == 'true'
-
     
     steps:
       - uses: actions/checkout@v4
 
-      - name: Debug PR and repo details
-        run: |
-          echo "PR Title: ${{ github.event.pull_request.title }}"
-          echo "Commit Message: ${{ github.event.head_commit.message }}"
-          echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
-          echo "Main Repo: ${{ github.repository }}"
-
       - name: Generate .env file if PR title or last commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'cr-env') || contains(github.event.head_commit.message, 'cr-env')
         run: |
-          echo "Condition met: Generating .env file"
           echo "VITE_API_KEY=${{ secrets.NBA_VITE_API_KEY }}" >> .env
           echo "VITE_APP_ID=${{ secrets.NBA_VITE_APP_ID }}" >> .env
           echo "VITE_AUTH_DOMAIN=${{ secrets.NBA_VITE_AUTH_DOMAIN }}" >> .env
@@ -66,9 +55,7 @@ jobs:
 
       - name: Build project if PR title or last commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
-        run: |
-          echo "Condition met: Building project"
-          npm ci && npm run build
+        run: npm ci && npm run build
 
       - name: Deploy to Firebase Hosting if PR title or commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
