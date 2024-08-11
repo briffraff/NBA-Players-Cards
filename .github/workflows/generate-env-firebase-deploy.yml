@@ -24,7 +24,11 @@ jobs:
 
       - name: Check if PR is from the same repository
         id: check_repo
-        run: echo "::set-output name=is_same_repo::${{ github.event.pull_request.head.repo.full_name == github.repository }}"
+        run: |
+          echo "Repo Full Name: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Main Repo: ${{ github.repository }}"
+          echo "::set-output name=is_same_repo::${{ github.event.pull_request.head.repo.full_name == github.repository }}"
+          echo "is_same_repo is set to ${{ steps.check_repo.outputs.is_same_repo }}"
 
   build_and_deploy:
     needs: check_repo
@@ -44,6 +48,7 @@ jobs:
       - name: Generate .env file if PR title or last commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'cr-env') || contains(github.event.head_commit.message, 'cr-env')
         run: |
+          echo "Condition met: Generating .env file"
           echo "VITE_API_KEY=${{ secrets.NBA_VITE_API_KEY }}" >> .env
           echo "VITE_APP_ID=${{ secrets.NBA_VITE_APP_ID }}" >> .env
           echo "VITE_AUTH_DOMAIN=${{ secrets.NBA_VITE_AUTH_DOMAIN }}" >> .env
@@ -53,7 +58,9 @@ jobs:
 
       - name: Build project if PR title or last commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
-        run: npm ci && npm run build
+        run: |
+          echo "Condition met: Building project"
+          npm ci && npm run build
 
       - name: Deploy to Firebase Hosting if PR title or commit message contains "deploy"
         if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
