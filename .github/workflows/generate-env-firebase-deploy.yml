@@ -40,6 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.check_repo.outputs.is_same_repo == 'true'
     
+    environment: Production
+    
     steps:
       - uses: actions/checkout@v4
 
