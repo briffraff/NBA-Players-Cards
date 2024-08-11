@@ -16,6 +16,7 @@ dist-ssr
 .firebase
 downloads
 .env.development
+.env
 *nba-players-cards-firebase*.json
 .vscode/*
 !.vscode/extensions.json

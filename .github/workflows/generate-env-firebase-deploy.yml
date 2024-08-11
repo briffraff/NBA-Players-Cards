@@ -1,0 +1,58 @@
+name: Deploy to Firebase Hosting on PR or Push
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - develop
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  check_repo:
+    runs-on: ubuntu-latest
+    outputs:
+      is_same_repo: ${{ steps.check_repo.outputs.is_same_repo }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if PR is from the same repository
+        id: check_repo
+        run: echo "::set-output name=is_same_repo::${{ github.event.pull_request.head.repo.full_name == github.repository }}"
+
+  build_and_deploy:
+    needs: check_repo
+    runs-on: ubuntu-latest
+    if: needs.check_repo.outputs.is_same_repo == 'true'
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate .env file if PR title or last commit message contains "deploy"
+        if: contains(github.event.pull_request.title, 'cr-env') || contains(github.event.head_commit.message, 'cr-env')
+        run: |
+          echo "VITE_API_KEY=${{ secrets.NBA_VITE_API_KEY }}" >> .env
+          echo "VITE_APP_ID=${{ secrets.NBA_VITE_APP_ID }}" >> .env
+          echo "VITE_AUTH_DOMAIN=${{ secrets.NBA_VITE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_PROJECT_ID=${{ secrets.NBA_VITE_PROJECT_ID }}" >> .env
+          echo "VITE_SENDER_ID=${{ secrets.NBA_VITE_SENDER_ID }}" >> .env
+          echo "VITE_STORAGE_BUCKET=${{ secrets.NBA_VITE_STORAGE_BUCKET }}" >> .env
+
+      - name: Build project if PR title or last commit message contains "deploy"
+        if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
+        run: npm ci && npm run build
+
+      - name: Deploy to Firebase Hosting if PR title or commit message contains "deploy"
+        if: contains(github.event.pull_request.title, 'deploy') || contains(github.event.head_commit.message, 'deploy')
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NBA_PLAYER_CARDS }}
+          channelId: live
+          projectId: nba-player-cards
